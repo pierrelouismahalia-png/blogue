@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Résidence permanente au Canada : Guide complet pour immigrer au Canada avec MDPL Immigration." />
+  <title>Résidence Permanente — MDPL Immigration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy:       #0D1B2E;
+      --navy-mid:   #162440;
+      --navy-light: #1E3258;
+      --gold:       #C49A2A;
+      --gold-light: #D4A843;
+      --gold-pale:  #F0DFA8;
+      --white:      #FFFFFF;
+      --beige:      #F6F1E9;
+      --beige-mid:  #EDE5D8;
+      --beige-dark: #D9CDB8;
+      --ink:        #1A1A1A;
+      --ink-mid:    #3A3530;
+      --ink-light:  #6B635A;
+      --crimson:    #8B1A1A;
+      --gap: clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; font-size: 16px; }
+    body {
+      background: var(--beige);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; object-fit: cover; }
+
+    /* TOP BANNER */
+    .top-banner { background: var(--navy-mid); padding: 0.45rem var(--gap); border-bottom: 1px solid rgba(184,146,42,0.2); }
+    .top-banner-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 1.25rem; }
+    .top-banner-item { display: flex; align-items: center; gap: 0.4rem; font-family: 'Jost', sans-serif; font-size: 0.67rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.55); }
+    .top-banner-item strong { color: var(--gold-pale); font-weight: 500; }
+    .top-banner-sep { color: rgba(184,146,42,0.3); }
+
+    /* HEADER */
+    .site-header { background: var(--white); border-bottom: 1px solid var(--beige-dark); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 20px rgba(13,27,46,0.08); }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 var(--gap); display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 2rem; }
+    .logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.01em; }
+    .logo-name span { color: var(--gold); font-style: italic; }
+    .logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.2rem; }
+    .site-nav { display: flex; align-items: center; gap: 1.6rem; }
+    .site-nav a { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; position: relative; white-space: nowrap; }
+    .site-nav a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+    .site-nav a:hover { color: var(--navy); }
+    .site-nav a:hover::after { transform: scaleX(1); }
+    .nav-rdv { background: var(--gold) !important; color: var(--navy) !important; padding: 0.5rem 1.15rem !important; border-radius: 2px; font-weight: 600 !important; letter-spacing: 0.1em !important; }
+    .nav-rdv:hover { background: var(--gold-light) !important; }
+    .nav-rdv::after { display: none !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* SEARCH */
+    .search-section { background: var(--navy-mid); padding: 1.4rem var(--gap); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .search-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .search-label { font-family: 'Jost', sans-serif; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
+    .search-form { flex: 1; display: flex; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; min-width: 200px; max-width: 520px; }
+    .search-form input { flex: 1; background: rgba(255,255,255,0.05); border: none; padding: 0.65rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--white); outline: none; min-width: 0; }
+    .search-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-form button { background: var(--gold); border: none; padding: 0 1.1rem; font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .search-form button:hover { background: var(--gold-light); }
+    .search-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+    .search-tag { font-family: 'Jost', sans-serif; font-size: 0.6rem; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); padding: 0.18rem 0.55rem; cursor: pointer; transition: all 0.2s; border-radius: 1px; }
+    .search-tag:hover { color: var(--gold); border-color: rgba(196,154,42,0.4); }
+
+    /* CATEGORIES */
+    .categories-section { background: var(--navy); position: relative; overflow: hidden; }
+    .categories-section::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(196,154,42,0.06) 0%, transparent 70%); }
+    .categories-section .section-eyebrow { color: var(--gold-light); }
+    .categories-section .section-eyebrow::before { background: var(--gold-light); }
+    .categories-section .section-title { color: var(--white); }
+    .categories-section .section-lead { color: rgba(255,255,255,0.58); }
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; border: 1px solid rgba(196,154,42,0.15); position: relative; z-index: 1; }
+    .cat-card { background: rgba(255,255,255,0.03); display: flex; flex-direction: column; cursor: pointer; transition: background 0.25s; overflow: hidden; }
+    .cat-card:hover { background: rgba(255,255,255,0.07); }
+    .cat-card a { color: inherit; display: block; min-height: 100%; }
+    .cat-card-img { width: 100%; height: 220px; object-fit: cover; filter: brightness(0.6) saturate(0.7); transition: filter 0.4s, transform 0.4s; }
+    .cat-card:hover .cat-card-img { filter: brightness(0.75) saturate(0.85); transform: scale(1.03); }
+    .cat-card-body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+    .cat-card-num { font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .cat-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--white); line-height: 1.25; }
+    .cat-card-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.7); flex: 1; }
+    .cat-card-link { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; margin-top: auto; }
+    .cat-card-link::after { content: '→'; }
+    .cat-card:hover .cat-card-link { gap: 0.7rem; }
+
+    .section { padding: clamp(3.5rem, 7vw, 6rem) var(--gap); }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--navy); line-height: 1.18; margin-bottom: 0.9rem; }
+    .section-lead { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 300; line-height: 1.78; color: var(--ink-mid); max-width: 640px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--navy); padding: clamp(3rem, 5vw, 4.5rem) var(--gap) 0; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); }
+    .footer-logo-name span { color: var(--gold); font-style: italic; }
+    .footer-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 0.2rem; margin-bottom: 1rem; }
+    .footer-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.97rem; line-height: 1.75; color: rgba(255,255,255,0.52); max-width: 280px; }
+    .footer-col-title { font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-links a { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.52); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-contact-block { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-contact-label { font-family: 'Jost', sans-serif; font-size: 0.56rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); display: block; margin-bottom: 0.15rem; }
+    .footer-contact-value { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+    .footer-address { font-style: normal; font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .footer-rule { height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); }
+    .footer-bottom { padding: 1.25rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-bottom p { font-family: 'Jost', sans-serif; font-size: 0.63rem; color: rgba(255,255,255,0.25); }
+    .footer-legal { display: flex; gap: 1.25rem; }
+    .footer-legal a { font-family: 'Jost', sans-serif; font-size: 0.63rem; color: rgba(255,255,255,0.25); transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--gold-light); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .top-banner-inner { justify-content: center; }
+      .header-inner { padding: 0 1.5rem; gap: 1rem; height: auto; flex-wrap: wrap; }
+      .logo-name { font-size: 1.1rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .top-banner-inner { justify-content: center; text-align: center; }
+      .top-banner-item { font-size: 0.72rem; }
+      .header-inner { padding: 0 1rem; }
+      .site-nav { display: none; }
+      .site-nav.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--beige-dark); padding: 1.5rem var(--gap); gap: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 199; }
+      .site-nav.open a { display: block; padding: 0.9rem 0; white-space: normal; }
+      .nav-toggle { display: flex; }
+      .search-inner { flex-direction: column; align-items: stretch; }
+      .search-form { max-width: 100%; }
+      .search-tags { gap: 0.4rem; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 580px) {
+      .top-banner-inner { justify-content: center; gap: 0.75rem; }
+      .top-banner-item { font-size: 0.65rem; }
+      .header-inner { padding: 0 1rem; }
+      .logo-name { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .nav-toggle span { width: 22px; }
+      .search-section { padding: 1rem 1rem; }
+      .search-form input { padding: 0.75rem 0.9rem; }
+      .search-form button { padding: 0.75rem 1rem; font-size: 0.72rem; }
+      .search-tag { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
+      .cat-card-img { height: 180px; }
+      .cat-card-body { padding: 1rem 1.1rem 1.1rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .top-banner-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tel.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lun.&ndash;Ven.&nbsp;&nbsp;9&nbsp;h &ndash; 17&nbsp;h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" onclick="this.closest('header').querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#">Accueil</a>
+        <a href="#qui-sommes-nous">Qui sommes-nous</a>
+        <a href="#rechercher-blog">Rechercher</a>
+        <a href="#categories">Categories</a>
+        <a href="#questions-frequentes-immigration-canada">Questions frequentes</a>
+        <a href="#contact">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre rendez-vous</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-inner">
+      <span class="search-label">Rechercher</span>
+      <form class="search-form" action="#" method="get">
+        <input type="search" name="q" placeholder="Ex : CSQ, permis de travail, passeport..." aria-label="Recherche" />
+        <button type="submit">Rechercher</button>
+      </form>
+      <div class="search-tags" aria-label="Filtres de recherche">
+        <span class="search-tag">CSQ</span>
+        <span class="search-tag">statut</span>
+        <span class="search-tag">permis de travail</span>
+        <span class="search-tag">parrainage</span>
+        <span class="search-tag">detention</span>
+        <span class="search-tag">IRCC</span>
+        <span class="search-tag">citoyennete</span>
+        <span class="search-tag">humanitaire</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="section about-section">
+      <div class="section-inner">
+        <span class="section-eyebrow">Résidence permanente</span>
+        <h1 class="section-title">Résidence permanente au Canada</h1>
+        <p class="section-lead">Explorez les principales voies vers la résidence permanente au Canada, y compris le parrainage familial, Entrée Express et les programmes pour travailleurs qualifiés.</p>
+      </div>
+    </section>
+
+    <section class="section categories-section">
+      <div class="section-inner">
+        <span class="section-eyebrow">Parcourir par theme</span>
+        <h2 class="section-title">Categories du blogue</h2>
+        <p class="section-lead">Sélectionnez une catégorie pour consulter les articles correspondants.</p>
+        <div class="cat-grid">
+          <article class="cat-card">
+            <a href="parrainage-familial.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Famille qui se réunit" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 01</span>
+                <h3 class="cat-card-title">Parrainage familial</h3>
+                <p class="cat-card-desc">Regroupement familial pour conjoint, enfants et membres de la famille.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+          <article class="cat-card">
+            <a href="entree-express.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?auto=format&fit=crop&w=900&q=80" alt="Professionnel en contexte de travail" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 02</span>
+                <h3 class="cat-card-title">Entrée Express</h3>
+                <p class="cat-card-desc">Système de sélection basé sur les points pour les travailleurs qualifiés.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+          <article class="cat-card">
+            <a href="travailleurs-qualifies.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=900&q=80" alt="Travailleur qualifié au Canada" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 03</span>
+                <h3 class="cat-card-title">Travailleurs qualifiés</h3>
+                <p class="cat-card-desc">Programmes pour les travailleurs souhaitant s’établir au Canada.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+          <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          <p class="footer-desc">Votre partenaire de confiance pour naviguer le système d'immigration canadien avec expertise et bienveillance.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="#qui-sommes-nous">Qui sommes-nous</a></li>
+            <li><a href="#rechercher-blog">Rechercher</a></li>
+            <li><a href="#categories">Categories</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Heures</span>
+              <span class="footer-contact-value">Lun.–Ven. 9 h – 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-rule"></div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 MDPL Immigration. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

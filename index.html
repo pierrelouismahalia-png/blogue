@@ -3,724 +3,328 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Voyager avec deux passeports : obligations, droits et stratégies pour les citoyens canadiens détenteurs d'une double nationalité." />
-  <title>Voyager avec deux passeports : ce que les citoyens canadiens doivent savoir</title>
+  <meta name="description" content="Résidence permanente au Canada : Guide complet pour immigrer au Canada avec MDPL Immigration." />
+  <title>Résidence Permanente — MDPL Immigration</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --navy:        #0D1B2E;
-      --navy-mid:    #162440;
-      --navy-light:  #1E3258;
-      --gold:        #B8922A;
-      --gold-light:  #D4A843;
-      --gold-pale:   #F0DFA8;
-      --crimson:     #8B1A1A;
-      --white:       #FFFFFF;
-      --beige:       #F6F1E9;
-      --beige-mid:   #EDE5D8;
-      --beige-dark:  #D9CDB8;
-      --ink:         #1A1A1A;
-      --ink-mid:     #3A3530;
-      --ink-light:   #6B635A;
-      --rule:        rgba(184, 146, 42, 0.30);
-
-      --serif-display: 'Playfair Display', Georgia, serif;
-      --serif-body:    'Cormorant Garamond', Georgia, serif;
-      --sans:          'Jost', system-ui, sans-serif;
-
-      --max-w: 820px;
-      --col-gap: clamp(1.5rem, 4vw, 3rem);
+      --navy:       #0D1B2E;
+      --navy-mid:   #162440;
+      --navy-light: #1E3258;
+      --gold:       #C49A2A;
+      --gold-light: #D4A843;
+      --gold-pale:  #F0DFA8;
+      --white:      #FFFFFF;
+      --beige:      #F6F1E9;
+      --beige-mid:  #EDE5D8;
+      --beige-dark: #D9CDB8;
+      --ink:        #1A1A1A;
+      --ink-mid:    #3A3530;
+      --ink-light:  #6B635A;
+      --crimson:    #8B1A1A;
+      --gap: clamp(1.25rem, 4vw, 2.5rem);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 17px; }
+    html { scroll-behavior: auto; font-size: 16px; }
     body {
       background: var(--beige);
       color: var(--ink);
-      font-family: var(--serif-body);
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; object-fit: cover; }
 
     /* TOP BANNER */
-    .top-banner {
-      background: var(--navy);
-      color: var(--gold-pale);
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 0.55rem 1rem;
-    }
+    .top-banner { background: var(--navy-mid); padding: 0.45rem var(--gap); border-bottom: 1px solid rgba(184,146,42,0.2); }
+    .top-banner-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 1.25rem; }
+    .top-banner-item { display: flex; align-items: center; gap: 0.4rem; font-family: 'Jost', sans-serif; font-size: 0.67rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.55); }
+    .top-banner-item strong { color: var(--gold-pale); font-weight: 500; }
+    .top-banner-sep { color: rgba(184,146,42,0.3); }
 
     /* HEADER */
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--beige-dark);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 20px rgba(13, 27, 46, 0.06);
-    }
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--col-gap);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 72px;
-      gap: 2rem;
-    }
-    .logo { display: flex; flex-direction: column; gap: 0; }
-    .logo-name {
-      font-family: var(--serif-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
-      letter-spacing: 0.01em;
-      line-height: 1.1;
-    }
-    .logo-tagline {
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* NAVIGATION */
-    .site-nav { display: flex; align-items: center; gap: 2rem; }
-    .site-nav a {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-mid);
-      transition: color 0.2s;
-      position: relative;
-    }
-    .site-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0; right: 0;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
+    .site-header { background: var(--white); border-bottom: 1px solid var(--beige-dark); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 20px rgba(13,27,46,0.08); }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 var(--gap); display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 2rem; }
+    .logo { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.01em; }
+    .logo-name span { color: var(--gold); font-style: italic; }
+    .logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.2rem; }
+    .site-nav { display: flex; align-items: center; gap: 1.6rem; }
+    .site-nav a { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; position: relative; white-space: nowrap; }
+    .site-nav a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
     .site-nav a:hover { color: var(--navy); }
     .site-nav a:hover::after { transform: scaleX(1); }
-    .nav-cta {
-      background: var(--navy);
-      color: var(--white) !important;
-      padding: 0.55rem 1.2rem;
-      border-radius: 2px;
-      letter-spacing: 0.08em;
-      transition: background 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--navy-light) !important; }
-    .nav-cta::after { display: none !important; }
+    .nav-rdv { background: var(--gold) !important; color: var(--navy) !important; padding: 0.5rem 1.15rem !important; border-radius: 2px; font-weight: 600 !important; letter-spacing: 0.1em !important; }
+    .nav-rdv:hover { background: var(--gold-light) !important; }
+    .nav-rdv::after { display: none !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
 
-    /* BREADCRUMB */
-    .breadcrumb {
-      background: var(--beige-mid);
-      border-bottom: 1px solid var(--beige-dark);
-    }
-    .breadcrumb-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0.65rem var(--col-gap);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      color: var(--ink-light);
-    }
-    .breadcrumb-inner a { color: var(--navy-light); transition: color 0.2s; }
-    .breadcrumb-inner a:hover { color: var(--gold); }
-    .breadcrumb-sep { color: var(--gold); font-size: 0.6rem; }
-    .breadcrumb-current { color: var(--ink-mid); font-weight: 500; }
+    /* SEARCH */
+    .search-section { background: var(--navy-mid); padding: 1.4rem var(--gap); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .search-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+    .search-label { font-family: 'Jost', sans-serif; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
+    .search-form { flex: 1; display: flex; border: 1px solid rgba(255,255,255,0.12); overflow: hidden; min-width: 200px; max-width: 520px; }
+    .search-form input { flex: 1; background: rgba(255,255,255,0.05); border: none; padding: 0.65rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--white); outline: none; min-width: 0; }
+    .search-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .search-form button { background: var(--gold); border: none; padding: 0 1.1rem; font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .search-form button:hover { background: var(--gold-light); }
+    .search-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+    .search-tag { font-family: 'Jost', sans-serif; font-size: 0.6rem; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); padding: 0.18rem 0.55rem; cursor: pointer; transition: all 0.2s; border-radius: 1px; }
+    .search-tag:hover { color: var(--gold); border-color: rgba(196,154,42,0.4); }
 
-    /* HERO */
-    .hero {
-      position: relative;
-      height: clamp(380px, 52vw, 600px);
-      overflow: hidden;
-      background: var(--navy);
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(160deg, rgba(13,27,46,0.82) 0%, rgba(13,27,46,0.55) 60%, rgba(13,27,46,0.80) 100%),
-        url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
-    }
-    .hero-rule {
-      position: absolute;
-      left: clamp(1.5rem, 6vw, 5rem);
-      top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      opacity: 0.6;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--col-gap);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-    .hero-category {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-    }
-    .hero-category::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--gold-light);
-    }
-    .hero-title {
-      font-family: var(--serif-display);
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.18;
-      max-width: 700px;
-      letter-spacing: -0.01em;
-    }
-    .hero-title em { font-style: italic; color: var(--gold-pale); }
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 0.05em;
-    }
-    .hero-meta-sep { color: var(--gold); }
+    /* CATEGORIES */
+    .categories-section { background: var(--navy); position: relative; overflow: hidden; }
+    .categories-section::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(196,154,42,0.06) 0%, transparent 70%); }
+    .categories-section .section-eyebrow { color: var(--gold-light); }
+    .categories-section .section-eyebrow::before { background: var(--gold-light); }
+    .categories-section .section-title { color: var(--white); }
+    .categories-section .section-lead { color: rgba(255,255,255,0.58); }
+    .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 3rem; border: 1px solid rgba(196,154,42,0.15); position: relative; z-index: 1; }
+    .cat-card { background: rgba(255,255,255,0.03); display: flex; flex-direction: column; cursor: pointer; transition: background 0.25s; overflow: hidden; }
+    .cat-card:hover { background: rgba(255,255,255,0.07); }
+    .cat-card a { color: inherit; display: block; min-height: 100%; }
+    .cat-card-img { width: 100%; height: 220px; object-fit: cover; filter: brightness(0.6) saturate(0.7); transition: filter 0.4s, transform 0.4s; }
+    .cat-card:hover .cat-card-img { filter: brightness(0.75) saturate(0.85); transform: scale(1.03); }
+    .cat-card-body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; flex: 1; }
+    .cat-card-num { font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .cat-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--white); line-height: 1.25; }
+    .cat-card-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.7); flex: 1; }
+    .cat-card-link { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; margin-top: auto; }
+    .cat-card-link::after { content: '→'; }
+    .cat-card:hover .cat-card-link { gap: 0.7rem; }
 
-    /* LAYOUT */
-    .page-body {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: clamp(2.5rem, 5vw, 4.5rem) var(--col-gap);
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    /* ARTICLE */
-    .article-body { min-width: 0; }
-    .article-lead {
-      font-family: var(--serif-body);
-      font-size: 1.28rem;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--ink-mid);
-      border-left: 3px solid var(--gold);
-      padding-left: 1.4rem;
-      margin-bottom: 2.5rem;
-    }
-    .article-body h2 {
-      font-family: var(--serif-display);
-      font-size: 1.55rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    .article-body h2::before {
-      content: '';
-      display: block;
-      width: 36px;
-      height: 2px;
-      background: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .article-body h3 {
-      font-family: var(--serif-display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--navy-mid);
-      margin-top: 2rem;
-      margin-bottom: 0.7rem;
-      font-style: italic;
-    }
-    .article-body p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--ink);
-      margin-bottom: 1.35rem;
-    }
-    .article-body strong { font-weight: 600; color: var(--navy); }
-    .article-rule { border: none; border-top: 1px solid var(--beige-dark); margin: 2.5rem 0; }
-
-    .pull-quote {
-      background: var(--navy);
-      color: var(--white);
-      padding: 2rem 2rem 2rem 2.5rem;
-      margin: 2.5rem 0;
-      border-left: 4px solid var(--gold);
-      position: relative;
-    }
-    .pull-quote::before {
-      content: '\201C';
-      font-family: var(--serif-display);
-      font-size: 5rem;
-      color: var(--gold);
-      opacity: 0.3;
-      position: absolute;
-      top: -0.5rem;
-      left: 1rem;
-      line-height: 1;
-    }
-    .pull-quote p {
-      font-family: var(--serif-display);
-      font-size: 1.15rem;
-      font-weight: 400;
-      font-style: italic;
-      line-height: 1.6;
-      color: var(--white) !important;
-      margin: 0 !important;
-      position: relative;
-      z-index: 1;
-    }
-
-    .infobox {
-      background: var(--beige-mid);
-      border: 1px solid var(--beige-dark);
-      border-top: 3px solid var(--navy);
-      padding: 1.5rem 1.75rem;
-      margin: 2rem 0;
-    }
-    .infobox-title {
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 0.75rem;
-    }
-    .infobox p { font-size: 0.95rem !important; line-height: 1.7 !important; color: var(--ink-mid) !important; margin-bottom: 0.5rem !important; }
-    .infobox p:last-child { margin-bottom: 0 !important; }
-
-    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 0; padding-left: 1.5rem; }
-    .article-body li { font-size: 1.03rem; line-height: 1.75; color: var(--ink); margin-bottom: 0.5rem; padding-left: 0.3rem; }
-    .article-body ul li::marker { color: var(--gold); }
-    .article-body ol li::marker { font-family: var(--sans); font-weight: 600; color: var(--navy); font-size: 0.85rem; }
-
-    /* KEY TAKEAWAYS */
-    .takeaways {
-      background: var(--navy);
-      color: var(--white);
-      padding: clamp(2.5rem, 5vw, 4rem) var(--col-gap);
-      margin-top: 1rem;
-    }
-    .takeaways-inner { max-width: 1200px; margin: 0 auto; }
-    .takeaways-label {
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-    .takeaways-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold-light); }
-    .takeaways h2 {
-      font-family: var(--serif-display);
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 2.5rem;
-      line-height: 1.2;
-    }
-    .takeaways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-    .takeaway-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(184,146,42,0.25);
-      border-top: 2px solid var(--gold);
-      padding: 1.5rem;
-      transition: background 0.2s;
-    }
-    .takeaway-card:hover { background: rgba(255,255,255,0.08); }
-    .takeaway-num { font-family: var(--serif-display); font-size: 2.2rem; font-weight: 700; color: var(--gold); opacity: 0.5; line-height: 1; margin-bottom: 0.6rem; }
-    .takeaway-card p { font-family: var(--serif-body); font-size: 0.98rem; line-height: 1.65; color: rgba(255,255,255,0.85); }
-
-    /* CTA */
-    .cta-section { background: var(--beige-mid); border-top: 1px solid var(--beige-dark); border-bottom: 1px solid var(--beige-dark); padding: clamp(2.5rem, 4vw, 3.5rem) var(--col-gap); }
-    .cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
-    .cta-text p:first-child { font-family: var(--sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.4rem; }
-    .cta-text h3 { font-family: var(--serif-display); font-size: 1.4rem; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 0.6rem; }
-    .cta-text p.cta-sub { font-family: var(--serif-body); font-size: 1rem; color: var(--ink-mid); max-width: 480px; }
-    .cta-actions { display: flex; gap: 1rem; flex-shrink: 0; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; background: var(--navy); color: var(--white); font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 1.8rem; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
-    .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
-    .btn-secondary { display: inline-block; background: transparent; color: var(--navy); font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 1.8rem; border: 1.5px solid var(--navy); border-radius: 2px; transition: all 0.2s; }
-    .btn-secondary:hover { background: var(--navy); color: var(--white); }
-
-    /* SIDEBAR */
-    .sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 1.5rem; }
-    .sidebar-widget { background: var(--white); border: 1px solid var(--beige-dark); padding: 1.5rem; }
-    .sidebar-widget-title { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--beige-dark); padding-bottom: 0.65rem; margin-bottom: 1rem; }
-    .toc-list { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
-    .toc-list li { counter-increment: toc; border-bottom: 1px solid var(--beige-mid); padding: 0.5rem 0; }
-    .toc-list li:last-child { border-bottom: none; }
-    .toc-list a { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-mid); display: flex; gap: 0.6rem; align-items: baseline; line-height: 1.4; transition: color 0.2s; }
-    .toc-list a::before { content: counter(toc, decimal-leading-zero); font-family: var(--serif-display); font-size: 0.7rem; color: var(--gold); font-weight: 700; flex-shrink: 0; }
-    .toc-list a:hover { color: var(--navy); }
-    .contact-widget { background: var(--navy); color: var(--white); padding: 1.5rem; border: none; }
-    .contact-widget .sidebar-widget-title { color: var(--gold-light); border-color: rgba(255,255,255,0.15); }
-    .contact-widget p { font-family: var(--serif-body); font-size: 0.92rem; line-height: 1.65; color: rgba(255,255,255,0.78); margin-bottom: 1rem; }
-    .contact-widget .btn-primary { width: 100%; text-align: center; background: var(--gold); color: var(--navy); }
-    .contact-widget .btn-primary:hover { background: var(--gold-light); }
-    .contact-info { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.12); }
-    .contact-info-item { display: flex; gap: 0.5rem; font-family: var(--sans); font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; }
-    .contact-info-item strong { color: rgba(255,255,255,0.9); font-weight: 500; }
-    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0; list-style: none; }
-    .tag-list a { font-family: var(--sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--beige-mid); border: 1px solid var(--beige-dark); padding: 0.3rem 0.65rem; border-radius: 2px; transition: all 0.2s; }
-    .tag-list a:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .section { padding: clamp(3.5rem, 7vw, 6rem) var(--gap); }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+    .section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--navy); line-height: 1.18; margin-bottom: 0.9rem; }
+    .section-lead { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-weight: 300; line-height: 1.78; color: var(--ink-mid); max-width: 640px; }
 
     /* FOOTER */
-    .site-footer { background: var(--navy); color: var(--white); padding: clamp(3rem, 5vw, 5rem) var(--col-gap) 0; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .footer-brand .logo-name { font-size: 1.25rem; color: var(--white); margin-bottom: 0.3rem; }
-    .footer-brand .logo-tagline { color: var(--gold-light); margin-bottom: 1rem; }
-    .footer-brand p { font-family: var(--serif-body); font-size: 0.9rem; line-height: 1.7; color: rgba(255,255,255,0.58); max-width: 260px; }
-    .footer-col-title { font-family: var(--sans); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.2rem; }
-    .footer-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .footer-links a { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .site-footer { background: var(--navy); padding: clamp(3rem, 5vw, 4.5rem) var(--gap) 0; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3.5rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--white); }
+    .footer-logo-name span { color: var(--gold); font-style: italic; }
+    .footer-logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 0.2rem; margin-bottom: 1rem; }
+    .footer-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.97rem; line-height: 1.75; color: rgba(255,255,255,0.52); max-width: 280px; }
+    .footer-col-title { font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-links a { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.52); transition: color 0.2s; }
     .footer-links a:hover { color: var(--gold-light); }
-    .footer-contact-item { font-family: var(--sans); font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 0.65rem; line-height: 1.5; }
-    .footer-contact-item strong { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.1rem; }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.4rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .footer-bottom p { font-family: var(--sans); font-size: 0.68rem; color: rgba(255,255,255,0.35); letter-spacing: 0.03em; }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { font-family: var(--sans); font-size: 0.68rem; color: rgba(255,255,255,0.35); transition: color 0.2s; letter-spacing: 0.03em; }
+    .footer-contact-block { display: flex; flex-direction: column; gap: 1rem; }
+    .footer-contact-label { font-family: 'Jost', sans-serif; font-size: 0.56rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); display: block; margin-bottom: 0.15rem; }
+    .footer-contact-value { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.55; }
+    .footer-address { font-style: normal; font-family: 'Jost', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .footer-rule { height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); }
+    .footer-bottom { padding: 1.25rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-bottom p { font-family: 'Jost', sans-serif; font-size: 0.63rem; color: rgba(255,255,255,0.25); }
+    .footer-legal { display: flex; gap: 1.25rem; }
+    .footer-legal a { font-family: 'Jost', sans-serif; font-size: 0.63rem; color: rgba(255,255,255,0.25); transition: color 0.2s; }
     .footer-legal a:hover { color: var(--gold-light); }
-    .footer-rule { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.4; }
 
     /* RESPONSIVE */
-    @media (max-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+    @media (max-width: 1100px) {
+      .top-banner-inner { justify-content: center; }
+      .header-inner { padding: 0 1.5rem; gap: 1rem; height: auto; flex-wrap: wrap; }
+      .logo-name { font-size: 1.1rem; }
+      .logo-sub { font-size: 0.5rem; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 860px) {
-      .page-body { grid-template-columns: 1fr; }
-      .sidebar { position: static; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+      .top-banner-inner { justify-content: center; text-align: center; }
+      .top-banner-item { font-size: 0.72rem; }
+      .header-inner { padding: 0 1rem; }
       .site-nav { display: none; }
-      .hero-rule { display: none; }
+      .site-nav.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--beige-dark); padding: 1.5rem var(--gap); gap: 1rem; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 199; }
+      .site-nav.open a { display: block; padding: 0.9rem 0; white-space: normal; }
+      .nav-toggle { display: flex; }
+      .search-inner { flex-direction: column; align-items: stretch; }
+      .search-form { max-width: 100%; }
+      .search-tags { gap: 0.4rem; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 580px) {
+      .top-banner-inner { justify-content: center; gap: 0.75rem; }
+      .top-banner-item { font-size: 0.65rem; }
+      .header-inner { padding: 0 1rem; }
+      .logo-name { font-size: 1rem; }
+      .logo-sub { font-size: 0.48rem; }
+      .nav-toggle span { width: 22px; }
+      .search-section { padding: 1rem 1rem; }
+      .search-form input { padding: 0.75rem 0.9rem; }
+      .search-form button { padding: 0.75rem 1rem; font-size: 0.72rem; }
+      .search-tag { font-size: 0.72rem; padding: 0.25rem 0.65rem; }
+      .cat-card-img { height: 180px; }
+      .cat-card-body { padding: 1rem 1.1rem 1.1rem; }
       .footer-top { grid-template-columns: 1fr; }
-      .cta-inner { flex-direction: column; }
-      .sidebar { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .top-banner-sep { display: none; }
     }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-    .hero-category { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
-    .hero-title    { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
-    .hero-meta     { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
   </style>
 </head>
 <body>
 
+  <!-- TOP BANNER -->
   <div class="top-banner">
-    Cabinet conseil en immigration canadienne &mdash; Laval &bull; Montreal
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tel.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lun.&ndash;Ven.&nbsp;&nbsp;9&nbsp;h &ndash; 17&nbsp;h</span>
+    </div>
   </div>
 
+  <!-- HEADER -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="/" class="logo">
-        <span class="logo-name">Cabinet Immigration</span>
-        <span class="logo-tagline">Conseils juridiques en immigration</span>
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
       </a>
-      <nav class="site-nav">
-        <a href="/services">Services</a>
-        <a href="/residence-temporaire">Residence temporaire</a>
-        <a href="/residence-permanente">Residence permanente</a>
-        <a href="/citoyennete">Citoyennete</a>
-        <a href="/blogue">Blogue</a>
-        <a href="/contact" class="nav-cta">Consultation</a>
+      <button class="nav-toggle" aria-label="Menu" onclick="this.closest('header').querySelector('.site-nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#">Accueil</a>
+        <a href="#qui-sommes-nous">Qui sommes-nous</a>
+        <a href="#rechercher-blog">Rechercher</a>
+        <a href="#categories">Categories</a>
+        <a href="#questions-frequentes-immigration-canada">Questions frequentes</a>
+        <a href="#contact">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre rendez-vous</a>
       </nav>
     </div>
   </header>
 
-  <nav class="breadcrumb">
-    <div class="breadcrumb-inner">
-      <a href="/">Accueil</a>
-      <span class="breadcrumb-sep">&#9658;</span>
-      <a href="/blogue">Blogue</a>
-      <span class="breadcrumb-sep">&#9658;</span>
-      <a href="/blogue/residence-temporaire">Residence temporaire</a>
-      <span class="breadcrumb-sep">&#9658;</span>
-      <span class="breadcrumb-current">Voyager avec deux passeports</span>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-rule"></div>
-    <div class="hero-content">
-      <span class="hero-category">Residence temporaire</span>
-      <h1 class="hero-title">
-        Voyager avec deux passeports :<br />
-        <em>ce que les citoyens canadiens doivent savoir</em>
-      </h1>
-      <div class="hero-meta">
-        <span>Cabinet Immigration</span>
-        <span class="hero-meta-sep">|</span>
-        <time datetime="2025-04-28">28 avril 2025</time>
-        <span class="hero-meta-sep">|</span>
-        <span>Lecture : 8 min</span>
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-inner">
+      <span class="search-label">Rechercher</span>
+      <form class="search-form" action="#" method="get">
+        <input type="search" name="q" placeholder="Ex : CSQ, permis de travail, passeport..." aria-label="Recherche" />
+        <button type="submit">Rechercher</button>
+      </form>
+      <div class="search-tags" aria-label="Filtres de recherche">
+        <span class="search-tag">CSQ</span>
+        <span class="search-tag">statut</span>
+        <span class="search-tag">permis de travail</span>
+        <span class="search-tag">parrainage</span>
+        <span class="search-tag">detention</span>
+        <span class="search-tag">IRCC</span>
+        <span class="search-tag">citoyennete</span>
+        <span class="search-tag">humanitaire</span>
       </div>
     </div>
-  </section>
-
-  <div class="page-body">
-
-    <main class="article-body" id="article">
-
-      <p class="article-lead">
-        Detenir deux passeports est un privilege que partagent des millions de Canadiens. Pourtant, cette situation souleve des questions pratiques et juridiques que beaucoup ignorent au moment de franchir une frontiere. Connaissez-vous reellement vos obligations et vos droits ?
-      </p>
-
-      <h2 id="double-nationalite">La double nationalite au Canada : un droit reconnu, mais encadre</h2>
-      <p>Le Canada reconnait pleinement la double nationalite depuis 1977. Un citoyen canadien peut donc detenir en parallele la nationalite d'un autre pays sans perdre automatiquement sa citoyennete canadienne. Cette ouverture est generalement bien vecue, tant pour des raisons familiales que professionnelles ou pratiques.</p>
-      <p>Cependant, la double nationalite ne confere pas un droit absolu de choisir a sa guise lequel de ses deux passeports utiliser dans toutes les circonstances. Plusieurs regles doivent etre respectees, et l'ignorance de celles-ci peut entrainer des consequences allant du simple inconvenient a des complications juridiques serieuses.</p>
-
-      <div class="infobox">
-        <p class="infobox-title">A savoir</p>
-        <p>Le Canada ne notifie pas automatiquement les autres pays lorsqu'un de leurs ressortissants acquiert la citoyennete canadienne. Vous pourriez donc demeurer soumis aux obligations du pays de votre autre nationalite, comme le service militaire, sans en etre informe.</p>
-      </div>
-
-      <h2 id="entrer-canada">Entrer et sortir du Canada : l'obligation du passeport canadien</h2>
-      <p>Voici une regle que tout citoyen canadien binational doit connaitre : <strong>vous avez l'obligation legale d'utiliser votre passeport canadien pour entrer au Canada et, dans la plupart des cas, pour en sortir.</strong></p>
-      <p>Cette obligation decoule de la <em>Loi sur l'immigration et la protection des refugies</em> ainsi que des politiques de l'Agence des services frontaliers du Canada (ASFC). Un agent frontalier canadien peut refuser l'entree a un individu qui se presente avec un passeport etranger et ne peut pas prouver sa citoyennete canadienne de maniere satisfaisante.</p>
-
-      <h3>Pourquoi cette obligation existe-t-elle ?</h3>
-      <p>La raison est simple : le Canada doit pouvoir identifier ses citoyens et s'assurer qu'ils exercent leur droit d'entrer sur le territoire national. Un passeport etranger ne prouve pas la citoyennete canadienne. En situation de doute, l'agent frontalier pourrait vous soumettre a un interrogatoire prolonge ou, dans des cas extremes, refuser temporairement l'entree.</p>
-
-      <div class="pull-quote">
-        <p>Un citoyen canadien a toujours le droit inconditionnellement d'entrer au Canada &mdash; mais ce droit doit etre exerce avec le bon document d'identite.</p>
-      </div>
-
-      <h3>Exception notable : les vols transitant par les Etats-Unis</h3>
-      <p>Si vous transitez par un aeroport americain pour rejoindre le Canada, les autorites americaines appliqueront leurs propres regles d'entree. Elles ne se soucient pas de votre citoyennete canadienne : elles verifient si vous etes admissible aux Etats-Unis. Dans ce cas, votre deuxieme passeport peut jouer un role determinant, notamment si vous etes citoyen d'un pays membre du programme d'exemption de visa americain.</p>
-
-      <h2 id="voyager-autre-pays">Voyager vers d'autres pays : lequel utiliser ?</h2>
-      <p>Hors des frontieres canadiennes, la question du choix du passeport devient plus strategique. Aucune loi canadienne ne vous oblige a utiliser votre passeport canadien pour entrer dans un pays tiers. Vous etes donc libre &mdash; sous reserve des lois de l'autre pays &mdash; de presenter le passeport qui vous est le plus avantageux.</p>
-      <p>Dans la pratique, plusieurs criteres peuvent guider ce choix :</p>
-      <ul>
-        <li><strong>Acces sans visa :</strong> Le passeport canadien figure parmi les plus puissants au monde, offrant un acces sans visa ou avec visa a l'arrivee dans pres de 185 destinations.</li>
-        <li><strong>Relations diplomatiques :</strong> Certains pays sont en tension politique avec le Canada ou votre pays d'origine.</li>
-        <li><strong>Obligations militaires ou civiques :</strong> Certains pays exigent que leurs ressortissants utilisent leur passeport national lors d'une entree sur leur territoire.</li>
-        <li><strong>Fiscalite internationale :</strong> Certains pays comme les Etats-Unis imposent leurs citoyens sur leurs revenus mondiaux, quelle que soit leur residence.</li>
-      </ul>
-
-      <hr class="article-rule" />
-
-      <h2 id="obligations-autre-pays">Les obligations du pays de votre autre nationalite</h2>
-      <p>Le fait de posseder la citoyennete canadienne ne vous soustrait pas necessairement aux obligations que vous impose votre autre pays de nationalite.</p>
-
-      <h3>Le service militaire</h3>
-      <p>De nombreux pays maintiennent une forme de service militaire obligatoire. Si vous avez la nationalite de l'un de ces pays et que vous le visitez, les autorites locales peuvent vous considerer soumis a cette obligation, independamment de votre citoyennete canadienne.</p>
-      <p><strong>Le gouvernement canadien ne peut pas vous proteger contre les lois du pays dont vous avez egalement la nationalite.</strong></p>
-
-      <h3>Les obligations fiscales</h3>
-      <p>Certains pays taxent leurs nationaux sur leurs revenus mondiaux, quelle que soit leur residence. Les Etats-Unis en sont l'exemple le plus connu. Si vous etes citoyen americano-canadien, vous avez probablement des obligations de declaration fiscale aupres de l'IRS, meme en vivant au Canada.</p>
-
-      <div class="infobox">
-        <p class="infobox-title">Recommandation professionnelle</p>
-        <p>Avant de voyager dans votre pays d'origine ou celui de votre deuxieme nationalite, consultez le site Voyage.gc.ca du gouvernement canadien et, si necessaire, les services consulaires de ce pays.</p>
-      </div>
-
-      <h2 id="coherence-documents">La coherence dans vos documents de voyage</h2>
-      <p>Il est fortement conseille d'utiliser le meme passeport pour entrer et sortir d'un pays donne. Les systemes informatiques de nombreux pays comparent votre entree et votre sortie. Si vous entrez avec votre passeport canadien et sortez avec votre passeport etranger, cela peut generer des alertes et des complications administratives inutiles.</p>
-
-      <h3>Les compagnies aeriennes et la documentation</h3>
-      <p>Lors de l'enregistrement, les compagnies aeriennes verifient votre eligibilite a entrer dans le pays de destination. Il est conseille de presenter le passeport que vous utiliserez pour entrer dans ce pays au moment du check-in.</p>
-
-      <h2 id="eta-canada">L'AVE (autorisation de voyage electronique) et les binationaux</h2>
-      <p>Depuis 2016, les ressortissants de nombreux pays doivent obtenir une Autorisation de voyage electronique (AVE) pour entrer au Canada par voie aerienne. <strong>Les citoyens canadiens sont expressement exemptes de l'AVE.</strong> Presentez toujours votre passeport canadien a l'enregistrement pour les vols a destination du Canada.</p>
-
-      <h2 id="protection-consulaire">La protection consulaire : ses limites reelles</h2>
-      <p>Si vous entrez dans un pays avec votre passeport etranger et que vous etes confronte a une difficulte, les autorites locales peuvent vous considerer uniquement comme leur ressortissant. Dans ce cas, <strong>l'ambassade ou le consulat du Canada pourrait se voir refuser l'acces a vous.</strong></p>
-
-      <hr class="article-rule" />
-
-      <h2 id="conseils-pratiques">Conseils pratiques pour les voyageurs binationnaux</h2>
-      <ol>
-        <li><strong>Conserver les deux passeports valides.</strong> Un passeport expire peut vous causer des problemes imprevisibles.</li>
-        <li><strong>Ne jamais voyager avec un seul passeport si vous en avez deux.</strong> Avoir votre passeport canadien sur vous peut s'averer crucial.</li>
-        <li><strong>Verifier les regles du pays visite avant le depart.</strong> Service militaire, obligations fiscales, restrictions de sortie pour les mineurs, etc.</li>
-        <li><strong>Etre coherent dans l'utilisation de vos passeports.</strong> Entrez et sortez d'un meme pays avec le meme passeport.</li>
-        <li><strong>Informer votre conseiller juridique ou en immigration.</strong> Un avis professionnel peut eviter des complications couteuses.</li>
-        <li><strong>S'inscrire aupres de l'ambassade canadienne</strong> lors d'un sejour prolonge a l'etranger via le service ICE.</li>
-      </ol>
-
-    </main>
-
-    <aside class="sidebar">
-
-      <div class="sidebar-widget">
-        <p class="sidebar-widget-title">Sommaire</p>
-        <ol class="toc-list">
-          <li><a href="#double-nationalite">La double nationalite au Canada</a></li>
-          <li><a href="#entrer-canada">Entrer et sortir du Canada</a></li>
-          <li><a href="#voyager-autre-pays">Voyager vers d'autres pays</a></li>
-          <li><a href="#obligations-autre-pays">Obligations du second pays</a></li>
-          <li><a href="#coherence-documents">Coherence des documents</a></li>
-          <li><a href="#eta-canada">L'AVE et les binationaux</a></li>
-          <li><a href="#protection-consulaire">La protection consulaire</a></li>
-          <li><a href="#conseils-pratiques">Conseils pratiques</a></li>
-        </ol>
-      </div>
-
-      <div class="sidebar-widget contact-widget">
-        <p class="sidebar-widget-title">Orientation personnalisee</p>
-        <p>Votre situation de double nationalite souleve des questions specifiques ? Nos conseillers analysent votre dossier et vous orientent avec precision.</p>
-        <a href="/contact" class="btn-primary">Prendre rendez-vous</a>
-        <div class="contact-info">
-          <div class="contact-info-item"><strong>Telephone</strong>(514) 000-0000</div>
-          <div class="contact-info-item"><strong>Courriel</strong>info@cabinet-immigration.ca</div>
-          <div class="contact-info-item"><strong>Disponibilite</strong>Lun &ndash; Ven, 9 h &ndash; 17 h</div>
-        </div>
-      </div>
-
-      <div class="sidebar-widget">
-        <p class="sidebar-widget-title">Sujets connexes</p>
-        <ul class="tag-list">
-          <li><a href="#">Double nationalite</a></li>
-          <li><a href="#">Passeport canadien</a></li>
-          <li><a href="#">AVE</a></li>
-          <li><a href="#">Citoyennete</a></li>
-          <li><a href="#">Voyage international</a></li>
-          <li><a href="#">Protection consulaire</a></li>
-          <li><a href="#">Fiscalite internationale</a></li>
-          <li><a href="#">Service militaire</a></li>
-        </ul>
-      </div>
-
-    </aside>
   </div>
 
-  <section class="takeaways">
-    <div class="takeaways-inner">
-      <p class="takeaways-label">Synthese</p>
-      <h2>Points a retenir</h2>
-      <div class="takeaways-grid">
-        <div class="takeaway-card"><p class="takeaway-num">01</p><p>Utilisez toujours votre passeport canadien pour entrer au Canada. C'est une obligation legale, non une simple recommandation.</p></div>
-        <div class="takeaway-card"><p class="takeaway-num">02</p><p>Hors du Canada, vous etes libre de choisir le passeport le plus avantageux &mdash; sous reserve des lois du pays visite.</p></div>
-        <div class="takeaway-card"><p class="takeaway-num">03</p><p>La citoyennete canadienne ne vous protege pas contre les obligations imposees par votre autre pays de nationalite.</p></div>
-        <div class="takeaway-card"><p class="takeaway-num">04</p><p>Entrez et sortez d'un meme pays avec le meme passeport pour eviter les incoherences dans les registres frontaliers.</p></div>
-        <div class="takeaway-card"><p class="takeaway-num">05</p><p>Les citoyens canadiens sont exemptes de l'AVE : presentez toujours votre passeport canadien au check-in pour les vols vers le Canada.</p></div>
-        <div class="takeaway-card"><p class="takeaway-num">06</p><p>L'assistance consulaire canadienne peut etre limitee si vous avez entre dans un pays avec votre passeport etranger.</p></div>
+  <main>
+    <section class="section about-section">
+      <div class="section-inner">
+        <span class="section-eyebrow">Résidence permanente</span>
+        <h1 class="section-title">Résidence permanente au Canada</h1>
+        <p class="section-lead">Explorez les principales voies vers la résidence permanente au Canada, y compris le parrainage familial, Entrée Express et les programmes pour travailleurs qualifiés.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-section">
-    <div class="cta-inner">
-      <div class="cta-text">
-        <p>Besoin d'une orientation personnalisee</p>
-        <h3>Votre situation merite une analyse sur mesure</h3>
-        <p class="cta-sub">Chaque dossier de double nationalite est unique. Nos conseillers en immigration examinent vos documents, identifient les risques eventuels et vous proposent une strategie adaptee a votre realite.</p>
+    <section class="section categories-section">
+      <div class="section-inner">
+        <span class="section-eyebrow">Parcourir par theme</span>
+        <h2 class="section-title">Categories du blogue</h2>
+        <p class="section-lead">Sélectionnez une catégorie pour consulter les articles correspondants.</p>
+        <div class="cat-grid">
+          <article class="cat-card">
+            <a href="parrainage-familial.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1523978591478-c753949ff840?auto=format&fit=crop&w=900&q=80" alt="Famille réunie avec couple et enfants" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 01</span>
+                <h3 class="cat-card-title">Parrainage familial</h3>
+                <p class="cat-card-desc">Regroupement familial pour conjoint, enfants et membres de la famille.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+          <article class="cat-card">
+            <a href="entree-express.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?auto=format&fit=crop&w=900&q=80" alt="Professionnel en contexte de travail" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 02</span>
+                <h3 class="cat-card-title">Entrée Express</h3>
+                <p class="cat-card-desc">Système de sélection basé sur les points pour les travailleurs qualifiés.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+          <article class="cat-card">
+            <a href="travailleurs-qualifies.html">
+              <img class="cat-card-img" src="https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&w=900&q=80" alt="Travailleur qualifié au Canada" />
+              <div class="cat-card-body">
+                <span class="cat-card-num">Categorie 03</span>
+                <h3 class="cat-card-title">Travailleurs qualifiés</h3>
+                <p class="cat-card-desc">Programmes pour les travailleurs souhaitant s’établir au Canada.</p>
+                <span class="cat-card-link">Voir les articles</span>
+              </div>
+            </a>
+          </article>
+        </div>
       </div>
-      <div class="cta-actions">
-        <a href="/contact" class="btn-primary">Consulter un conseiller</a>
-        <a href="/services" class="btn-secondary">Nos services</a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-top">
-        <div class="footer-brand">
-          <div class="logo">
-            <span class="logo-name">Cabinet Immigration</span>
-            <span class="logo-tagline">Conseils juridiques en immigration</span>
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Votre partenaire de confiance pour naviguer le système d'immigration canadien avec expertise et bienveillance.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#qui-sommes-nous">Qui sommes-nous</a></li>
+            <li><a href="#rechercher-blog">Rechercher</a></li>
+            <li><a href="#categories">Categories</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Heures</span>
+              <span class="footer-contact-value">Lun.–Ven. 9 h – 17 h</span>
+            </div>
           </div>
-          <p style="margin-top:1rem;">Nous accompagnons les particuliers et les familles dans leurs demarches d'immigration au Canada avec rigueur, transparence et bienveillance.</p>
-        </div>
-        <div>
-          <p class="footer-col-title">Services</p>
-          <ul class="footer-links">
-            <li><a href="#">Residence temporaire</a></li>
-            <li><a href="#">Residence permanente</a></li>
-            <li><a href="#">Citoyennete canadienne</a></li>
-            <li><a href="#">Parrainage familial</a></li>
-            <li><a href="#">Permis de travail</a></li>
-            <li><a href="#">Permis d'etudes</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer-col-title">Ressources</p>
-          <ul class="footer-links">
-            <li><a href="#">Blogue juridique</a></li>
-            <li><a href="#">Guides pratiques</a></li>
-            <li><a href="#">Questions frequentes</a></li>
-            <li><a href="#">Liens officiels</a></li>
-            <li><a href="#">Tarifs et honoraires</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer-col-title">Coordonnees</p>
-          <div class="footer-contact-item"><strong>Adresse</strong>1234, Boulevard des Laurentides<br />Laval (Quebec) H7G 2V4</div>
-          <div class="footer-contact-item"><strong>Telephone</strong>(514) 000-0000</div>
-          <div class="footer-contact-item"><strong>Courriel</strong>info@cabinet-immigration.ca</div>
-          <div class="footer-contact-item"><strong>Horaires</strong>Lundi au vendredi, 9 h &ndash; 17 h</div>
         </div>
       </div>
       <div class="footer-rule"></div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Cabinet Immigration. Tous droits reserves. Ce contenu est fourni a titre informatif uniquement et ne constitue pas un avis juridique.</p>
-        <nav class="footer-legal">
-          <a href="#">Politique de confidentialite</a>
+        <p>&copy; 2024 MDPL Immigration. Tous droits réservés.</p>
+        <div class="footer-legal">
+          <a href="#">Politique de confidentialité</a>
           <a href="#">Conditions d'utilisation</a>
-          <a href="#">Accessibilite</a>
-        </nav>
+        </div>
       </div>
     </div>
   </footer>

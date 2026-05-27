@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dropbox
+.dropbox
+.dropbox.attr
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Temp
+*.tmp
+*.bak

@@ -1,0 +1,1098 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculez votre score CRS (Comprehensive Ranking System) pour Entrée express. Estimation instantanée sur 1200 points avec répartition détaillée par catégorie. Grille IRCC 2025-2026, sans champ offre d'emploi." />
+  <meta name="keywords" content="calculateur CRS, score Entrée express, Comprehensive Ranking System, score SCG, immigration Canada, IRCC, résidence permanente, score CRS 2026" />
+  <title>Calculateur Entrée Express (CRS) 2026 — Score sur 1200 pts | MDPL Immigration</title>
+  <link rel="canonical" href="https://mdplimmigration.com/calculateur-entree-express" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <style>
+    /* ── CRS CALCULATOR LAYOUT ── */
+    .crs-outer { background: var(--beige); padding: 3rem var(--gap) 5rem; }
+    .crs-inner { max-width: 1180px; margin: 0 auto; }
+
+    @media (min-width: 960px) {
+      .crs-layout { display: grid; grid-template-columns: 1fr 360px; gap: 2.5rem; align-items: start; }
+      .crs-score-col { order: 2; }
+      .crs-form-col  { order: 1; }
+    }
+    @media (max-width: 959px) {
+      .crs-score-col { margin-bottom: 2rem; }
+    }
+
+    /* ── SCORE PANEL ── */
+    .crs-score-sticky {
+      position: sticky;
+      top: 88px;
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      color: var(--white);
+    }
+    .crs-score-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .crs-score-total {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .crs-score-total.has-value { color: var(--gold-pale); }
+    .crs-score-denom {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 1rem;
+    }
+    .crs-bar-track {
+      height: 6px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .crs-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--gold);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+    .crs-status-badge {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 0.55rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.65);
+    }
+    .crs-status-badge.green  { background: rgba(52,199,89,0.18); color: #a3f0b9; }
+    .crs-status-badge.blue   { background: rgba(50,140,240,0.18); color: #a8d0ff; }
+    .crs-status-badge.orange { background: rgba(255,149,0,0.18); color: #ffd59a; }
+
+    /* ── BREAKDOWN TABLE ── */
+    .crs-breakdown { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem; }
+    .crs-breakdown-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .crs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .crs-row:last-child { border-bottom: none; }
+    .crs-row-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.65);
+      flex: 1;
+    }
+    .crs-row-value {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--white);
+      min-width: 36px;
+      text-align: right;
+    }
+    .crs-row.total .crs-row-label { color: var(--gold); font-weight: 600; }
+    .crs-row.total .crs-row-value { color: var(--gold); font-size: 0.88rem; }
+    .crs-row.sep { border-top: 1px solid rgba(255,255,255,0.15); margin-top: 0.25rem; padding-top: 0.55rem; }
+
+    /* ── FORM CARDS ── */
+    .crs-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 6px rgba(13,27,46,0.06);
+    }
+    .crs-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--beige-dark);
+    }
+    .crs-card-num {
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .crs-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+    }
+    .crs-field { margin-bottom: 1.25rem; }
+    .crs-field:last-child { margin-bottom: 0; }
+    .crs-label {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .crs-help {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      display: block;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    .crs-select {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      color: var(--ink);
+      background: var(--white);
+      border: 1.5px solid var(--beige-dark);
+      border-radius: 4px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B635A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .crs-select:focus { outline: none; border-color: var(--gold); }
+    .crs-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem 1rem;
+    }
+    @media (min-width: 640px) {
+      .crs-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+    .crs-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1rem; }
+    .crs-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--beige-dark);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .crs-checkbox-row:last-child { margin-bottom: 0; }
+    .crs-checkbox-row:hover { border-color: var(--gold); }
+    .crs-checkbox-row input[type="checkbox"] { margin-top: 2px; accent-color: var(--gold); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .crs-checkbox-row label { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: var(--ink); line-height: 1.5; cursor: pointer; }
+    .crs-checkbox-row label strong { color: var(--navy); display: block; margin-bottom: 0.1rem; font-size: 0.82rem; }
+    .crs-badge-pts {
+      margin-left: auto;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--gold);
+      background: rgba(196,154,42,0.1);
+      border: 1px solid rgba(196,154,42,0.25);
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .crs-hidden { display: none !important; }
+    .crs-section-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 1.5rem 0 0.75rem;
+    }
+    .crs-info-box {
+      background: #fffbf0;
+      border: 1.5px solid rgba(196,154,42,0.3);
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      margin-top: 1rem;
+    }
+    .crs-info-box p { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: var(--navy); line-height: 1.55; margin: 0; }
+    .crs-legal {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 var(--gap) 3rem;
+      background: var(--beige);
+    }
+    .crs-legal p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+      border-left: 3px solid var(--beige-dark);
+      padding-left: 1rem;
+      margin: 0;
+    }
+    @media (max-width: 640px) {
+      .crs-card { padding: 1.25rem 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo-mdpl.png" alt="MDPL Immigration — Cabinet conseil en immigration" class="logo-img" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="calculateur-eligibilite.html">Calculateur d'éligibilité</a>
+            <a href="calculateur-entree-express.html">Calculateur Entrée Express</a>
+            <a href="quiz-programme.html">Quiz : quel programme&nbsp;?</a>
+            <a href="calculateur-couts.html">Calculateur de coûts</a>
+            <a href="delais-ircc.html">Suivi des délais IRCC</a>
+            <a href="generateur-documents.html">Générateur de documents</a>
+            <a href="assistant-immigration.html">Assistant immigration</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a><span class="breadcrumb-sep">/</span><a href="outils.html">Nos outils</a><span class="breadcrumb-sep">/</span>Calculateur Entrée Express
+      </nav>
+      <p class="page-hero-eyebrow">Outil interactif · Grille IRCC 2025-2026</p>
+      <h1 class="page-hero-title">Calculateur <em>Entrée Express</em> — Score CRS</h1>
+      <p class="page-hero-subtitle">Estimez votre score sur 1200 points en temps réel.</p>
+      <p class="page-hero-desc">Ce calculateur applique la grille officielle du Système de classement global (CRS) d'IRCC, mise à jour pour 2025-2026. Saisissez votre profil ci-dessous et obtenez votre score estimé avec la répartition complète par catégorie. Mise à jour : les points pour offre d'emploi ont été retirés du CRS le 25 mars 2025 et ne sont pas inclus dans ce calculateur.</p>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <div class="crs-outer">
+    <div class="crs-inner">
+      <div class="crs-layout">
+
+        <!-- ══ SCORE PANEL ══ -->
+        <div class="crs-score-col">
+          <div class="crs-score-sticky" role="region" aria-label="Score CRS estimé" aria-live="polite">
+            <p class="crs-score-eyebrow">Score CRS estimé</p>
+            <div class="crs-score-total" id="crs-total">—</div>
+            <p class="crs-score-denom">sur 1200 points</p>
+            <div class="crs-bar-track">
+              <div class="crs-bar-fill" id="crs-bar"></div>
+            </div>
+            <div class="crs-status-badge" id="crs-status">Complétez le formulaire pour estimer votre score</div>
+
+            <div class="crs-breakdown" id="crs-breakdown" aria-hidden="true">
+              <p class="crs-breakdown-title">Répartition des points</p>
+              <div id="crs-bd-rows"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ FORM ══ -->
+        <div class="crs-form-col">
+          <form id="crs-form" autocomplete="off" novalidate>
+
+            <!-- SECTION 1 — Profil personnel -->
+            <div class="crs-card">
+              <div class="crs-card-header">
+                <span class="crs-card-num">1</span>
+                <h2 class="crs-card-title">Profil personnel</h2>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="marital-status">État matrimonial</label>
+                <select class="crs-select" id="marital-status" required>
+                  <option value="">— Choisir —</option>
+                  <option value="single">Célibataire / Sans conjoint accompagnant</option>
+                  <option value="spouse">Avec conjoint accompagnant (marié ou conjoint de fait)</option>
+                </select>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="age">Âge au moment de la demande</label>
+                <select class="crs-select" id="age" required>
+                  <option value="">— Choisir —</option>
+                  <option value="less18">Moins de 18 ans</option>
+                  <option value="18">18 ans</option>
+                  <option value="19">19 ans</option>
+                  <option value="20-29">20 à 29 ans</option>
+                  <option value="30">30 ans</option>
+                  <option value="31">31 ans</option>
+                  <option value="32">32 ans</option>
+                  <option value="33">33 ans</option>
+                  <option value="34">34 ans</option>
+                  <option value="35">35 ans</option>
+                  <option value="36">36 ans</option>
+                  <option value="37">37 ans</option>
+                  <option value="38">38 ans</option>
+                  <option value="39">39 ans</option>
+                  <option value="40">40 ans</option>
+                  <option value="41">41 ans</option>
+                  <option value="42">42 ans</option>
+                  <option value="43">43 ans</option>
+                  <option value="44">44 ans</option>
+                  <option value="45plus">45 ans ou plus</option>
+                </select>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="education">Plus haut niveau d'études complété</label>
+                <span class="crs-help">Les diplômes étrangers nécessitent une évaluation des diplômes (ECA) reconnue par IRCC.</span>
+                <select class="crs-select" id="education" required>
+                  <option value="">— Choisir —</option>
+                  <option value="none">Moins qu'un diplôme secondaire</option>
+                  <option value="secondary">Diplôme d'études secondaires</option>
+                  <option value="post1">Post-secondaire — 1 an (diplôme, certificat)</option>
+                  <option value="post2">Post-secondaire — 2 ans</option>
+                  <option value="bachelor">Baccalauréat (programme de 3 ans ou plus)</option>
+                  <option value="two_degrees">Deux diplômes ou plus (dont un de 3 ans+)</option>
+                  <option value="masters">Maîtrise ou diplôme professionnel</option>
+                  <option value="phd">Doctorat (Ph.D.)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- SECTION 2 — Première langue officielle -->
+            <div class="crs-card">
+              <div class="crs-card-header">
+                <span class="crs-card-num">2</span>
+                <h2 class="crs-card-title">Première langue officielle</h2>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="first-language">Langue</label>
+                <select class="crs-select" id="first-language" required>
+                  <option value="">— Choisir —</option>
+                  <option value="fr">Français (résultats NCLC / TEF / TCF)</option>
+                  <option value="en">Anglais (résultats CLB / IELTS / CELPIP)</option>
+                </select>
+              </div>
+
+              <span class="crs-help" style="display:block; margin-bottom: 0.75rem;">Saisissez votre niveau CLB (ou NCLC) pour chaque habileté. Si vous n'avez pas encore passé un test, estimez votre niveau.</span>
+
+              <div class="crs-grid-4">
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="fl-speaking">Expression orale</label>
+                  <select class="crs-select" id="fl-speaking" required>
+                    <option value="">—</option>
+                    <option value="4less">CLB 4 ou moins</option>
+                    <option value="5">CLB 5</option>
+                    <option value="6">CLB 6</option>
+                    <option value="7">CLB 7</option>
+                    <option value="8">CLB 8</option>
+                    <option value="9">CLB 9</option>
+                    <option value="10plus">CLB 10 ou plus</option>
+                  </select>
+                </div>
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="fl-listening">Compréhension orale</label>
+                  <select class="crs-select" id="fl-listening" required>
+                    <option value="">—</option>
+                    <option value="4less">CLB 4 ou moins</option>
+                    <option value="5">CLB 5</option>
+                    <option value="6">CLB 6</option>
+                    <option value="7">CLB 7</option>
+                    <option value="8">CLB 8</option>
+                    <option value="9">CLB 9</option>
+                    <option value="10plus">CLB 10 ou plus</option>
+                  </select>
+                </div>
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="fl-reading">Lecture</label>
+                  <select class="crs-select" id="fl-reading" required>
+                    <option value="">—</option>
+                    <option value="4less">CLB 4 ou moins</option>
+                    <option value="5">CLB 5</option>
+                    <option value="6">CLB 6</option>
+                    <option value="7">CLB 7</option>
+                    <option value="8">CLB 8</option>
+                    <option value="9">CLB 9</option>
+                    <option value="10plus">CLB 10 ou plus</option>
+                  </select>
+                </div>
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="fl-writing">Écriture</label>
+                  <select class="crs-select" id="fl-writing" required>
+                    <option value="">—</option>
+                    <option value="4less">CLB 4 ou moins</option>
+                    <option value="5">CLB 5</option>
+                    <option value="6">CLB 6</option>
+                    <option value="7">CLB 7</option>
+                    <option value="8">CLB 8</option>
+                    <option value="9">CLB 9</option>
+                    <option value="10plus">CLB 10 ou plus</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3 — Deuxième langue officielle -->
+            <div class="crs-card">
+              <div class="crs-card-header">
+                <span class="crs-card-num">3</span>
+                <h2 class="crs-card-title">Deuxième langue officielle <span style="font-family:'Jost',sans-serif; font-size:0.65rem; font-weight:400; color:var(--ink-light);">(facultatif)</span></h2>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="second-lang-toggle">Déclarez-vous une deuxième langue officielle&nbsp;?</label>
+                <select class="crs-select" id="second-lang-toggle">
+                  <option value="none">Non — je ne déclare pas de deuxième langue</option>
+                  <option value="yes">Oui — je déclare ma deuxième langue</option>
+                </select>
+              </div>
+
+              <div id="second-lang-fields" class="crs-hidden">
+                <span class="crs-help" style="display:block; margin-bottom: 0.75rem;">Niveaux CLB pour la deuxième langue officielle (l'autre langue que votre première).</span>
+                <div class="crs-grid-4">
+                  <div class="crs-field" style="margin-bottom:0">
+                    <label class="crs-label" for="sl-speaking">Expression orale</label>
+                    <select class="crs-select" id="sl-speaking">
+                      <option value="">—</option>
+                      <option value="4less">CLB 4 ou moins</option>
+                      <option value="5">CLB 5</option>
+                      <option value="6">CLB 6</option>
+                      <option value="7">CLB 7</option>
+                      <option value="8">CLB 8</option>
+                      <option value="9">CLB 9</option>
+                      <option value="10plus">CLB 10 ou plus</option>
+                    </select>
+                  </div>
+                  <div class="crs-field" style="margin-bottom:0">
+                    <label class="crs-label" for="sl-listening">Compréhension orale</label>
+                    <select class="crs-select" id="sl-listening">
+                      <option value="">—</option>
+                      <option value="4less">CLB 4 ou moins</option>
+                      <option value="5">CLB 5</option>
+                      <option value="6">CLB 6</option>
+                      <option value="7">CLB 7</option>
+                      <option value="8">CLB 8</option>
+                      <option value="9">CLB 9</option>
+                      <option value="10plus">CLB 10 ou plus</option>
+                    </select>
+                  </div>
+                  <div class="crs-field" style="margin-bottom:0">
+                    <label class="crs-label" for="sl-reading">Lecture</label>
+                    <select class="crs-select" id="sl-reading">
+                      <option value="">—</option>
+                      <option value="4less">CLB 4 ou moins</option>
+                      <option value="5">CLB 5</option>
+                      <option value="6">CLB 6</option>
+                      <option value="7">CLB 7</option>
+                      <option value="8">CLB 8</option>
+                      <option value="9">CLB 9</option>
+                      <option value="10plus">CLB 10 ou plus</option>
+                    </select>
+                  </div>
+                  <div class="crs-field" style="margin-bottom:0">
+                    <label class="crs-label" for="sl-writing">Écriture</label>
+                    <select class="crs-select" id="sl-writing">
+                      <option value="">—</option>
+                      <option value="4less">CLB 4 ou moins</option>
+                      <option value="5">CLB 5</option>
+                      <option value="6">CLB 6</option>
+                      <option value="7">CLB 7</option>
+                      <option value="8">CLB 8</option>
+                      <option value="9">CLB 9</option>
+                      <option value="10plus">CLB 10 ou plus</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 4 — Expérience professionnelle -->
+            <div class="crs-card">
+              <div class="crs-card-header">
+                <span class="crs-card-num">4</span>
+                <h2 class="crs-card-title">Expérience professionnelle</h2>
+              </div>
+
+              <div class="crs-grid-2">
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="canadian-experience">Expérience canadienne qualifiée</label>
+                  <span class="crs-help">Emploi dans une profession de niveau TEER 0, 1, 2 ou 3 (CNP 2021) au Canada.</span>
+                  <select class="crs-select" id="canadian-experience" required>
+                    <option value="">— Choisir —</option>
+                    <option value="0">Moins d'un an</option>
+                    <option value="1">1 an</option>
+                    <option value="2">2 ans</option>
+                    <option value="3">3 ans</option>
+                    <option value="4">4 ans</option>
+                    <option value="5plus">5 ans ou plus</option>
+                  </select>
+                </div>
+                <div class="crs-field" style="margin-bottom:0">
+                  <label class="crs-label" for="foreign-experience">Expérience étrangère qualifiée</label>
+                  <span class="crs-help">Emploi qualifié acquis hors du Canada (TEER 0, 1, 2 ou 3).</span>
+                  <select class="crs-select" id="foreign-experience" required>
+                    <option value="">— Choisir —</option>
+                    <option value="0">Moins d'un an</option>
+                    <option value="1-2">1 à 2 ans</option>
+                    <option value="3plus">3 ans ou plus</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 5 — Facteurs du conjoint (conditional) -->
+            <div class="crs-card crs-hidden" id="section-spouse">
+              <div class="crs-card-header">
+                <span class="crs-card-num">5</span>
+                <h2 class="crs-card-title">Facteurs du conjoint</h2>
+              </div>
+              <span class="crs-help" style="display:block; margin-bottom: 1rem;">Ces points s'appliquent seulement si votre conjoint vous accompagne dans votre demande d'immigration.</span>
+
+              <div class="crs-field">
+                <label class="crs-label" for="spouse-education">Niveau d'études du conjoint</label>
+                <select class="crs-select" id="spouse-education">
+                  <option value="">— Choisir —</option>
+                  <option value="none">Moins qu'un diplôme secondaire</option>
+                  <option value="secondary">Diplôme d'études secondaires</option>
+                  <option value="post1">Post-secondaire — 1 an</option>
+                  <option value="post2">Post-secondaire — 2 ans</option>
+                  <option value="bachelor">Baccalauréat (3 ans ou plus)</option>
+                  <option value="two_degrees">Deux diplômes ou plus (dont un de 3 ans+)</option>
+                  <option value="masters">Maîtrise</option>
+                  <option value="phd">Doctorat</option>
+                </select>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="spouse-canexp">Expérience canadienne qualifiée du conjoint</label>
+                <select class="crs-select" id="spouse-canexp">
+                  <option value="">— Choisir —</option>
+                  <option value="0">Aucune</option>
+                  <option value="1">1 an</option>
+                  <option value="2">2 ans</option>
+                  <option value="3">3 ans</option>
+                  <option value="4">4 ans</option>
+                  <option value="5plus">5 ans ou plus</option>
+                </select>
+              </div>
+
+              <div class="crs-field">
+                <label class="crs-label" for="spouse-clb">Niveau CLB moyen du conjoint (toutes habiletés)</label>
+                <span class="crs-help">Utilisez la valeur la plus basse parmi les 4 habiletés pour une estimation prudente.</span>
+                <select class="crs-select" id="spouse-clb">
+                  <option value="">— Choisir —</option>
+                  <option value="4less">CLB 4 ou moins</option>
+                  <option value="5">CLB 5</option>
+                  <option value="6">CLB 6</option>
+                  <option value="7">CLB 7</option>
+                  <option value="8">CLB 8</option>
+                  <option value="9plus">CLB 9 ou plus</option>
+                </select>
+              </div>
+
+              <div class="crs-info-box">
+                <p>Max : 10 points pour les études du conjoint, 20 points pour la langue, 10 points pour l'expérience canadienne — total plafonné à 40 points.</p>
+              </div>
+            </div>
+
+            <!-- SECTION 6 — Points additionnels -->
+            <div class="crs-card">
+              <div class="crs-card-header">
+                <span class="crs-card-num" id="section-6-num">5</span>
+                <h2 class="crs-card-title">Points additionnels</h2>
+              </div>
+
+              <label class="crs-checkbox-row" for="pnp">
+                <input type="checkbox" id="pnp" />
+                <label for="pnp">
+                  <strong>Nomination provinciale (PNP)</strong>
+                  Vous détenez un certificat de nomination d'une province ou d'un territoire canadien.
+                </label>
+                <span class="crs-badge-pts">+600</span>
+              </label>
+
+              <label class="crs-checkbox-row" for="sibling">
+                <input type="checkbox" id="sibling" />
+                <label for="sibling">
+                  <strong>Frère ou sœur au Canada</strong>
+                  Votre frère ou sœur (18 ans ou plus) est citoyen(ne) canadien(ne) ou résident(e) permanent(e) au Canada.
+                </label>
+                <span class="crs-badge-pts">+15</span>
+              </label>
+
+              <div class="crs-field" style="margin-top: 1rem;">
+                <label class="crs-label" for="studies-canada">Études complétées au Canada</label>
+                <select class="crs-select" id="studies-canada">
+                  <option value="none">Aucune étude au Canada</option>
+                  <option value="1-2">Diplôme ou certificat de 1 ou 2 ans (+15 pts)</option>
+                  <option value="3plus">Diplôme de 3 ans+, maîtrise, doctorat ou diplôme professionnel (+30 pts)</option>
+                </select>
+              </div>
+
+              <div class="crs-info-box" style="margin-top: 0.5rem;">
+                <p>Le bonus pour le français est calculé automatiquement selon vos résultats de langue déclarés aux sections 2 et 3. Vous n'avez pas à le saisir ici.</p>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="background: var(--navy); border-radius: 8px; padding: 2rem; text-align: center; margin-top: 1rem;">
+              <p style="font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--white); font-weight:700; margin-bottom:0.5rem;">Votre score vous questionne&nbsp;?</p>
+              <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:rgba(255,255,255,0.75); margin-bottom:1.5rem;">Une évaluation personnalisée avec notre cabinet peut identifier des stratégies concrètes pour optimiser votre profil.</p>
+              <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold">Prendre rendez-vous</a>
+                <a href="contact.html" class="btn-outline gold">Nous contacter</a>
+              </div>
+            </div>
+
+          </form>
+        </div><!-- /.crs-form-col -->
+      </div><!-- /.crs-layout -->
+    </div><!-- /.crs-inner -->
+
+    <!-- Legal notice -->
+    <div class="crs-legal">
+      <p>Outil d'estimation seulement. Pour un résultat officiel, consultez la grille officielle d'IRCC sur canada.ca. Les seuils des tirages varient selon la catégorie&nbsp;: tirages généraux typiquement 480–550&nbsp;pts, tirages francophones aussi bas que 379–400&nbsp;pts. Ce calculateur applique la grille CRS en vigueur depuis le 25 mars 2025 — les points pour offre d'emploi ont été supprimés à cette date et ne sont pas inclus.</p>
+    </div>
+  </div><!-- /.crs-outer -->
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title">Information importante</p>
+        <p class="disclaimer-text">Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Chaque situation d'immigration est unique et dépend de plusieurs facteurs. Pour toute démarche concrète, une consultation personnalisée avec un représentant autorisé en immigration est nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d'immigration canadienne avec rigueur, transparence et bienveillance.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="notre-histoire.html">Notre histoire</a></li>
+            <li><a href="nos-services.html">Nos services</a></li>
+            <li><a href="outils.html">Nos outils</a></li>
+            <li><a href="pourquoi-mdpl.html">Pourquoi MDPL</a></li>
+            <li><a href="blog.html">Blogue</a></li>
+            <li><a href="questions-frequentes.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Nous contacter</a></li>
+            <li><a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Coordonnées</p>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Adresse</span>
+              <address class="footer-address"><a href="https://www.google.com/maps/search/1565+boul.+de+l'Avenir+suite+206+Laval+Quebec+H7S+2N5" target="_blank" rel="noreferrer">1565 boul. de l'Avenir, suite 206<br />Laval, Québec H7S 2N5</a></address>
+            </div>
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Horaires</span>
+              <span class="footer-contact-value">Lundi au vendredi, 9 h à 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    /* ══════════════════════════════════════════════
+       SCORING TABLES  (grille IRCC 2025-2026)
+       Index 0 = sans conjoint, Index 1 = avec conjoint
+    ══════════════════════════════════════════════ */
+    var AGE = {
+      'less18':[0,0],'18':[90,85],'19':[95,90],'20-29':[110,100],
+      '30':[105,95],'31':[99,90],'32':[94,85],'33':[88,80],
+      '34':[83,75],'35':[77,70],'36':[72,65],'37':[66,60],
+      '38':[61,55],'39':[55,50],'40':[50,45],'41':[39,35],
+      '42':[28,25],'43':[17,15],'44':[6,5],'45plus':[0,0]
+    };
+
+    var EDU = {
+      'none':[0,0],'secondary':[30,28],'post1':[90,84],'post2':[98,91],
+      'bachelor':[120,112],'two_degrees':[128,119],'masters':[135,126],'phd':[150,140]
+    };
+
+    var LANG1 = {
+      '4less':[0,0],'5':[6,6],'6':[9,8],'7':[17,16],
+      '8':[23,22],'9':[31,29],'10plus':[34,32]
+    };
+
+    /* second language: per skill */
+    function lang2Pts(v) {
+      if (v==='5'||v==='6') return 1;
+      if (v==='7'||v==='8') return 3;
+      if (v==='9'||v==='10plus') return 6;
+      return 0;
+    }
+
+    var CANEXP = {
+      '0':[0,0],'1':[40,35],'2':[53,46],'3':[64,56],'4':[72,63],'5plus':[80,70]
+    };
+
+    var SP_EDU = {
+      'none':0,'secondary':2,'post1':6,'post2':7,
+      'bachelor':8,'two_degrees':9,'masters':10,'phd':10
+    };
+
+    function spLangPts(v) {
+      if (v==='5'||v==='6') return 1;
+      if (v==='7'||v==='8') return 3;
+      if (v==='9plus') return 5;
+      return 0;
+    }
+
+    var SP_CANEXP = {
+      '0':0,'1':5,'2':7,'3':8,'4':9,'5plus':10
+    };
+
+    /* CLB value as numeric (for min checks) */
+    function clbN(v) {
+      var m = {'4less':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10plus':10,'9plus':9};
+      return m[v]||0;
+    }
+
+    /* ══════════════════════════════════════════════
+       HELPERS
+    ══════════════════════════════════════════════ */
+    function val(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+    function checked(id) { var el = document.getElementById(id); return el ? el.checked : false; }
+
+    /* ══════════════════════════════════════════════
+       MAIN COMPUTE
+    ══════════════════════════════════════════════ */
+    function compute() {
+      var hasSpouse = val('marital-status') === 'spouse';
+      var sp = hasSpouse ? 1 : 0;
+
+      /* — Âge — */
+      var ageKey = val('age');
+      var ageScore = (AGE[ageKey] ? AGE[ageKey][sp] : 0);
+
+      /* — Études — */
+      var eduKey = val('education');
+      var eduScore = (EDU[eduKey] ? EDU[eduKey][sp] : 0);
+
+      /* — Première langue — */
+      var firstLang = val('first-language');
+      var flKeys = [val('fl-speaking'), val('fl-listening'), val('fl-reading'), val('fl-writing')];
+      var flComplete = flKeys.every(function(v){ return v !== ''; });
+      var firstLangScore = 0;
+      if (flComplete) {
+        var flRaw = flKeys.reduce(function(s, v){ return s + (LANG1[v] ? LANG1[v][sp] : 0); }, 0);
+        firstLangScore = Math.min(flRaw, hasSpouse ? 128 : 136);
+      }
+
+      /* — Deuxième langue — */
+      var hasSecondLang = val('second-lang-toggle') === 'yes';
+      var slKeys = [val('sl-speaking'), val('sl-listening'), val('sl-reading'), val('sl-writing')];
+      var slComplete = slKeys.every(function(v){ return v !== ''; });
+      var secondLangScore = 0;
+      if (hasSecondLang && slComplete) {
+        var slRaw = slKeys.reduce(function(s, v){ return s + lang2Pts(v); }, 0);
+        secondLangScore = Math.min(slRaw, hasSpouse ? 22 : 24);
+      }
+
+      /* — Expérience canadienne — */
+      var canExpKey = val('canadian-experience');
+      var canExpScore = (CANEXP[canExpKey] ? CANEXP[canExpKey][sp] : 0);
+
+      /* — Facteurs du conjoint — */
+      var spouseEduScore = 0, spouseLangScore = 0, spouseCanExpScore = 0, spouseTotal = 0;
+      if (hasSpouse) {
+        var spEduKey = val('spouse-education');
+        spouseEduScore = Math.min(SP_EDU[spEduKey] || 0, 10);
+
+        var spClb = val('spouse-clb');
+        spouseLangScore = Math.min(spLangPts(spClb) * 4, 20);
+
+        var spCanExpKey = val('spouse-canexp');
+        spouseCanExpScore = Math.min(SP_CANEXP[spCanExpKey] || 0, 10);
+
+        spouseTotal = Math.min(spouseEduScore + spouseLangScore + spouseCanExpScore, 40);
+      }
+
+      /* — Transférabilité (max 100) — */
+      var isPostSec  = ['post1','post2','bachelor','two_degrees','masters','phd'].indexOf(eduKey) >= 0;
+      var isHigher   = ['two_degrees','masters','phd'].indexOf(eduKey) >= 0;
+      var foreignKey = val('foreign-experience');
+
+      var minCLB     = flComplete ? Math.min.apply(null, flKeys.map(clbN)) : 0;
+      var clb7plus   = minCLB >= 7;
+      var clb9plus   = minCLB >= 9;
+
+      var canExp1pl  = ['1','2','3','4','5plus'].indexOf(canExpKey) >= 0;
+      var canExp2pl  = ['2','3','4','5plus'].indexOf(canExpKey) >= 0;
+
+      /* A — Études (max 50) */
+      var A1 = 0, A2 = 0;
+      if (isHigher) {
+        A1 = clb9plus ? 50 : (clb7plus ? 25 : 0);
+        A2 = canExp2pl ? 50 : (canExp1pl ? 25 : 0);
+      } else if (isPostSec) {
+        A1 = clb9plus ? 25 : (clb7plus ? 13 : 0);
+        A2 = canExp2pl ? 25 : (canExp1pl ? 13 : 0);
+      }
+      var A = Math.min(A1 + A2, 50);
+
+      /* B — Expérience étrangère (max 50) */
+      var B1 = 0, B2 = 0;
+      if (foreignKey === '3plus') {
+        B1 = clb9plus ? 50 : (clb7plus ? 25 : 0);
+        B2 = canExp2pl ? 50 : (canExp1pl ? 25 : 0);
+      } else if (foreignKey === '1-2') {
+        B1 = clb9plus ? 25 : (clb7plus ? 13 : 0);
+        B2 = canExp2pl ? 25 : (canExp1pl ? 13 : 0);
+      }
+      var B = Math.min(B1 + B2, 50);
+      var transferScore = Math.min(A + B, 100);
+
+      /* — Points additionnels — */
+      var pnpScore      = checked('pnp') ? 600 : 0;
+      var siblingScore  = checked('sibling') ? 15 : 0;
+      var studiesCAKey  = val('studies-canada');
+      var studiesCAScore = (studiesCAKey === '1-2') ? 15 : (studiesCAKey === '3plus') ? 30 : 0;
+
+      /* — Bonus français — */
+      var frenchBonus = 0;
+      var frMinCLB = 0, enMinCLB = 0;
+      if (firstLang === 'fr' && flComplete) {
+        frMinCLB = Math.min.apply(null, flKeys.map(clbN));
+        if (hasSecondLang && slComplete) {
+          enMinCLB = Math.min.apply(null, slKeys.map(clbN));
+        }
+      } else if (firstLang === 'en' && hasSecondLang && slComplete && flComplete) {
+        enMinCLB = Math.min.apply(null, flKeys.map(clbN));
+        frMinCLB = Math.min.apply(null, slKeys.map(clbN));
+      }
+      if (frMinCLB >= 7) {
+        frenchBonus = (enMinCLB >= 5) ? 50 : 25;
+      }
+
+      /* — Total — */
+      var coreScore = ageScore + eduScore + firstLangScore + secondLangScore + canExpScore;
+      var total = coreScore + spouseTotal + transferScore + pnpScore + siblingScore + studiesCAScore + frenchBonus;
+
+      return {
+        age: ageScore,
+        edu: eduScore,
+        lang1: firstLangScore,
+        lang2: secondLangScore,
+        canExp: canExpScore,
+        spouseEdu: spouseEduScore,
+        spouseLang: spouseLangScore,
+        spouseCanExp: spouseCanExpScore,
+        spouseTotal: spouseTotal,
+        transfer: transferScore,
+        pnp: pnpScore,
+        sibling: siblingScore,
+        studiesCA: studiesCAScore,
+        frenchBonus: frenchBonus,
+        core: coreScore,
+        total: total,
+        hasSpouse: hasSpouse
+      };
+    }
+
+    /* ══════════════════════════════════════════════
+       DISPLAY
+    ══════════════════════════════════════════════ */
+    function updateDisplay() {
+      var r = compute();
+      var total = r.total;
+
+      /* Score number */
+      var totalEl = document.getElementById('crs-total');
+      totalEl.textContent = total;
+      totalEl.classList.toggle('has-value', total > 0);
+
+      /* Progress bar */
+      var pct = Math.min(total / 1200 * 100, 100);
+      document.getElementById('crs-bar').style.width = pct + '%';
+
+      /* Status badge */
+      var statusEl = document.getElementById('crs-status');
+      statusEl.className = 'crs-status-badge';
+      if (total >= 600) {
+        statusEl.classList.add('green');
+        statusEl.textContent = 'Score très compétitif — invitation quasi assurée';
+      } else if (total >= 510) {
+        statusEl.classList.add('green');
+        statusEl.textContent = 'Score au-dessus des tirages généraux récents';
+      } else if (total >= 400) {
+        statusEl.classList.add('blue');
+        statusEl.textContent = 'Score possible pour les tirages francophones';
+      } else if (total > 0) {
+        statusEl.classList.add('orange');
+        statusEl.textContent = 'Sous les seuils récents — explorer les catégories ciblées';
+      } else {
+        statusEl.textContent = 'Complétez le formulaire pour estimer votre score';
+      }
+
+      /* Breakdown rows */
+      var rows = [];
+      rows.push(['Âge', r.age]);
+      rows.push(['Études', r.edu]);
+      rows.push(['1re langue officielle', r.lang1]);
+      if (r.lang2 > 0) rows.push(['2e langue officielle', r.lang2]);
+      rows.push(['Expérience canadienne', r.canExp]);
+      if (r.hasSpouse) {
+        rows.push(['Facteurs du conjoint', r.spouseTotal]);
+      }
+      rows.push(['Transférabilité', r.transfer]);
+      if (r.frenchBonus > 0) rows.push(['Bonus français', r.frenchBonus]);
+      if (r.studiesCA > 0)   rows.push(['Études au Canada', r.studiesCA]);
+      if (r.sibling > 0)     rows.push(['Frère/sœur au Canada', r.sibling]);
+      if (r.pnp > 0)         rows.push(['Nomination provinciale', r.pnp]);
+
+      var html = rows.map(function(row) {
+        return '<div class="crs-row"><span class="crs-row-label">' + row[0] +
+          '</span><span class="crs-row-value">' + row[1] + '</span></div>';
+      }).join('');
+      html += '<div class="crs-row total sep"><span class="crs-row-label">Total</span><span class="crs-row-value">' + total + '</span></div>';
+      document.getElementById('crs-bd-rows').innerHTML = html;
+    }
+
+    /* ══════════════════════════════════════════════
+       CONDITIONAL SECTIONS
+    ══════════════════════════════════════════════ */
+    function toggleConditionalSections() {
+      var hasSpouse = val('marital-status') === 'spouse';
+      var sectionSpouse = document.getElementById('section-spouse');
+      var numEl = document.getElementById('section-6-num');
+
+      if (sectionSpouse) {
+        sectionSpouse.classList.toggle('crs-hidden', !hasSpouse);
+      }
+      if (numEl) numEl.textContent = hasSpouse ? '6' : '5';
+    }
+
+    function toggleSecondLang() {
+      var show = val('second-lang-toggle') === 'yes';
+      var fields = document.getElementById('second-lang-fields');
+      if (fields) fields.classList.toggle('crs-hidden', !show);
+    }
+
+    /* ══════════════════════════════════════════════
+       EVENT LISTENERS
+    ══════════════════════════════════════════════ */
+    document.getElementById('crs-form').addEventListener('change', function () {
+      toggleConditionalSections();
+      toggleSecondLang();
+      updateDisplay();
+    });
+
+    /* Initial state */
+    toggleConditionalSections();
+    toggleSecondLang();
+    updateDisplay();
+  })();
+  </script>
+</body>
+</html>

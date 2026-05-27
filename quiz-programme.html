@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quiz interactif pour identifier le programme d'immigration canadienne adapté à votre situation : études, travail, résidence permanente, parrainage. Six questions, résultat personnalisé." />
+  <meta name="keywords" content="quiz immigration Canada, programme immigration adapté, quel visa Canada, quel programme immigration Québec" />
+  <title>Quiz : quel programme d'immigration canadienne est fait pour vous ?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo-mdpl.png" alt="MDPL Immigration — Cabinet conseil en immigration" class="logo-img" />
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="calculateur-eligibilite.html">Calculateur d'éligibilité</a>n            <a href="calculateur-entree-express.html">Calculateur Entrée Express</a>
+            <a href="quiz-programme.html">Quiz : quel programme&nbsp;?</a>
+            <a href="calculateur-couts.html">Calculateur de coûts</a>
+            <a href="delais-ircc.html">Suivi des délais IRCC</a>
+            <a href="generateur-documents.html">Générateur de documents</a>
+            <a href="assistant-immigration.html">Assistant immigration</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a><span class="breadcrumb-sep">/</span><a href="outils.html">Nos outils</a><span class="breadcrumb-sep">/</span>Quiz programme
+      </nav>
+      <p class="page-hero-eyebrow">Outil interactif · 2 minutes</p>
+      <h1 class="page-hero-title">Quel programme d'<em>immigration</em> est fait pour vous&nbsp;?</h1>
+      <p class="page-hero-subtitle">Six questions simples pour trouver votre voie.</p>
+      <p class="page-hero-desc">Le système canadien d'immigration comporte des dizaines de programmes différents — études, travail temporaire, résidence permanente, parrainage familial, visa visiteur. Ce quiz vous aide à identifier rapidement la catégorie de programme qui correspond le mieux à votre situation actuelle et à votre projet de vie au Canada.</p>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="section tool-form-section">
+    <div class="section-inner">
+      <div class="prose" style="max-width: 820px; margin: 0 auto;">
+        <p>Répondez honnêtement à chaque question. À la fin, vous recevrez une orientation personnalisée vers le programme le plus adapté à votre situation. Aucune donnée n'est conservée — tout reste dans votre navigateur.</p>
+      </div>
+
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quiz-progress"></div>
+      </div>
+
+      <div class="tool-form-wrapper" id="quiz-form">
+
+        <div class="quiz-step active" data-step="1">
+          <p class="quiz-step-num">Question 1 / 6</p>
+          <h2 class="quiz-question">Quel est votre <em>objectif principal</em> au Canada&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="objectif" data-v="etudes">Étudier dans un établissement canadien</button>
+            <button type="button" class="quiz-option" data-q="objectif" data-v="travail">Travailler temporairement au Canada</button>
+            <button type="button" class="quiz-option" data-q="objectif" data-v="rp">M'établir de façon permanente (résidence permanente)</button>
+            <button type="button" class="quiz-option" data-q="objectif" data-v="famille">Rejoindre ou parrainer un membre de ma famille</button>
+            <button type="button" class="quiz-option" data-q="objectif" data-v="visite">Visiter le Canada pour un court séjour</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <p class="quiz-step-num">Question 2 / 6</p>
+          <h2 class="quiz-question">Où vous trouvez-vous <em>actuellement</em>&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="lieu" data-v="hors">À l'étranger</button>
+            <button type="button" class="quiz-option" data-q="lieu" data-v="canada_etudiant">Au Canada, avec un permis d'études</button>
+            <button type="button" class="quiz-option" data-q="lieu" data-v="canada_travail">Au Canada, avec un permis de travail</button>
+            <button type="button" class="quiz-option" data-q="lieu" data-v="canada_visite">Au Canada, comme visiteur</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <p class="quiz-step-num">Question 3 / 6</p>
+          <h2 class="quiz-question">Quelle est votre <em>tranche d'âge</em>&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="age" data-v="moins18">Moins de 18 ans</button>
+            <button type="button" class="quiz-option" data-q="age" data-v="18_29">18-29 ans</button>
+            <button type="button" class="quiz-option" data-q="age" data-v="30_39">30-39 ans</button>
+            <button type="button" class="quiz-option" data-q="age" data-v="40_49">40-49 ans</button>
+            <button type="button" class="quiz-option" data-q="age" data-v="50plus">50 ans et plus</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="4">
+          <p class="quiz-step-num">Question 4 / 6</p>
+          <h2 class="quiz-question">Parlez-vous <em>français ou anglais</em>&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="langue" data-v="fr">Français principalement</button>
+            <button type="button" class="quiz-option" data-q="langue" data-v="en">Anglais principalement</button>
+            <button type="button" class="quiz-option" data-q="langue" data-v="fren">Les deux à un bon niveau</button>
+            <button type="button" class="quiz-option" data-q="langue" data-v="aucun">Ni l'un ni l'autre couramment</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="5">
+          <p class="quiz-step-num">Question 5 / 6</p>
+          <h2 class="quiz-question">Avez-vous <em>une offre d'emploi</em> ou un employeur potentiel au Canada&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="emploi" data-v="oui_quebec">Oui, au Québec</button>
+            <button type="button" class="quiz-option" data-q="emploi" data-v="oui_hors">Oui, hors Québec</button>
+            <button type="button" class="quiz-option" data-q="emploi" data-v="negociations">En discussion / négociation</button>
+            <button type="button" class="quiz-option" data-q="emploi" data-v="non">Non</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="6">
+          <p class="quiz-step-num">Question 6 / 6</p>
+          <h2 class="quiz-question">Avez-vous de la <em>famille</em> au Canada&nbsp;?</h2>
+          <div class="quiz-options">
+            <button type="button" class="quiz-option" data-q="famille" data-v="conjoint">Mon conjoint(e) ou enfant(s)</button>
+            <button type="button" class="quiz-option" data-q="famille" data-v="parents">Mes parents ou grands-parents</button>
+            <button type="button" class="quiz-option" data-q="famille" data-v="autres">Frères/sœurs ou autres parents</button>
+            <button type="button" class="quiz-option" data-q="famille" data-v="aucun">Personne de proche</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-result" id="quiz-result">
+        <p class="tool-result-eyebrow">Votre orientation personnalisée</p>
+        <h2 class="tool-result-title" id="quiz-result-title">Programme suggéré</h2>
+        <div class="tool-result-body" id="quiz-result-body"></div>
+        <div class="tool-result-recommendations" id="quiz-result-recommendations"></div>
+        <div class="tool-result-cta">
+          <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold">Prendre rendez-vous</a>
+          <a href="contact.html" class="btn-outline">Nous contacter</a>
+          <button type="button" class="btn-outline" onclick="location.reload()">Refaire le quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLANATION -->
+  <section class="section" style="background: var(--white);">
+    <div class="section-inner">
+      <div class="prose" style="max-width: 920px; margin: 0 auto;">
+        <h2>Pourquoi <em>ce quiz</em>&nbsp;?</h2>
+        <p>Beaucoup de candidats à l'immigration s'engagent dans une démarche sans avoir clairement identifié le programme qui leur correspond. Résultat&nbsp;: ils se retrouvent à investir du temps et de l'argent dans une voie inadaptée, parfois avec des refus à la clé. Ce quiz est un point de départ pour orienter votre réflexion.</p>
+
+        <p>Les algorithmes de ce quiz s'appuient sur les critères généraux des principaux programmes d'immigration canadienne&nbsp;:</p>
+        <ul>
+          <li><strong>Entrée express</strong> — système fédéral pour travailleurs qualifiés (FSW, FST, CEC).</li>
+          <li><strong>Programmes québécois</strong> — PEQ (expérience québécoise), PRTQ (travailleurs qualifiés).</li>
+          <li><strong>Programmes des candidats des provinces (PCP)</strong> — 11 provinces et territoires avec leurs propres critères.</li>
+          <li><strong>Parrainage familial</strong> — conjoint, enfants, parents, grands-parents.</li>
+          <li><strong>Permis temporaires</strong> — études, travail, visa visiteur, AVE.</li>
+          <li><strong>Programmes spéciaux</strong> — mobilité francophone, ACEUM, EIC, Volet des talents mondiaux.</li>
+        </ul>
+
+        <div class="info-box">
+          <p class="info-box-title">Important</p>
+          <p>Ce quiz donne une orientation indicative. Le résultat ne tient pas compte de l'ensemble des subtilités de votre dossier&nbsp;: antécédents, situation médicale, refus passés, structure familiale précise, qualifications professionnelles spécifiques. Pour une analyse complète, un entretien avec un consultant en immigration réglementé reste indispensable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>Approfondissons votre <em>orientation</em></h2>
+      <p>Le quiz vous a donné une piste. Maintenant, voyons ensemble comment la concrétiser. Une consultation initiale clarifie les étapes, les délais et les options à explorer.</p>
+      <div class="cta-band-actions">
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold">Prendre rendez-vous</a>
+        <a href="contact.html" class="btn-outline gold">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz JS -->
+  <script>
+  (function() {
+    const answers = {};
+    const totalSteps = 6;
+    let currentStep = 1;
+    const progressBar = document.getElementById('quiz-progress');
+
+    function updateProgress() {
+      progressBar.style.width = ((currentStep - 1) / totalSteps * 100) + '%';
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+      const next = document.querySelector('.quiz-step[data-step="' + n + '"]');
+      if (next) next.classList.add('active');
+    }
+
+    function buildResult() {
+      const r = answers;
+      let title = 'Programmes suggérés';
+      let intro = '';
+      let bullets = [];
+      let advice = '';
+
+      const wantsQuebec = r.emploi === 'oui_quebec';
+
+      if (r.objectif === 'visite') {
+        title = 'Programmes de séjour <em>temporaire</em>';
+        intro = '<p>Pour un séjour temporaire au Canada, voici les options les plus pertinentes selon votre profil.</p>';
+        bullets.push('<strong>Visa de résident temporaire (VRT)</strong> — pour les ressortissants de pays exigeant un visa.');
+        bullets.push('<strong>Autorisation de voyage électronique (AVE)</strong> — pour les pays exemptés de visa, lors d\'un voyage par avion.');
+        if (r.famille === 'parents') bullets.push('<strong>Super visa pour parents et grands-parents</strong> — visa à entrées multiples spécialement conçu pour les parents/grands-parents de citoyens et résidents permanents.');
+        advice = 'Un dossier de visiteur bien préparé démontre clairement vos liens avec votre pays d\'origine, vos moyens financiers et l\'objet de votre voyage.';
+      }
+      else if (r.objectif === 'etudes') {
+        title = 'Programmes d\'<em>études</em>';
+        intro = '<p>Pour étudier au Canada, voici la voie principale et les démarches associées.</p>';
+        bullets.push('<strong>Permis d\'études fédéral</strong> — délivré par IRCC, sur la base d\'une lettre d\'acceptation d\'un établissement d\'enseignement désigné (EED).');
+        if (wantsQuebec || r.langue === 'fr' || r.langue === 'fren') bullets.push('<strong>CAQ pour études (Québec)</strong> — étape préalable obligatoire pour étudier au Québec.');
+        bullets.push('<strong>Permis de travail postdiplôme (PGWP)</strong> — à obtenir après les études, ouvre la voie à l\'expérience canadienne puis à la RP.');
+        advice = 'Le projet d\'études (statement of purpose) et la preuve de fonds sont les éléments clés d\'un dossier d\'études crédible.';
+      }
+      else if (r.objectif === 'travail') {
+        title = 'Programmes de <em>permis de travail</em>';
+        if (r.langue === 'fr' && !wantsQuebec) {
+          bullets.push('<strong>Mobilité francophone</strong> — permis de travail sans EIMT pour les francophones qualifiés hors Québec. Excellente option pour vous.');
+        }
+        if (r.emploi === 'oui_quebec' || r.emploi === 'oui_hors') {
+          bullets.push('<strong>Permis de travail fermé avec EIMT</strong> — votre employeur devra obtenir une étude d\'impact favorable.');
+        }
+        if (r.age === '18_29' || r.age === '30_39') {
+          bullets.push('<strong>Expérience internationale Canada (EIC)</strong> — vacances-travail, jeunes professionnels, stage coop pour les moins de 35 ans selon les ententes.');
+        }
+        if (r.lieu === 'canada_etudiant') {
+          bullets.push('<strong>Permis postdiplôme (PGWP)</strong> — si vous terminez bientôt un programme admissible.');
+        }
+        intro = '<p>Plusieurs voies de travail temporaire peuvent vous convenir.</p>';
+        advice = 'Le choix entre permis avec EIMT et permis dispensé d\'EIMT change radicalement les délais et la complexité du dossier — il mérite une analyse attentive.';
+      }
+      else if (r.objectif === 'rp') {
+        title = 'Programmes de <em>résidence permanente</em>';
+        if (wantsQuebec || (r.langue === 'fr' && (r.lieu === 'canada_etudiant' || r.lieu === 'canada_travail'))) {
+          bullets.push('<strong>Programme de l\'expérience québécoise (PEQ)</strong> — voie accélérée pour les diplômés et travailleurs du Québec maîtrisant le français.');
+          bullets.push('<strong>Programme régulier des travailleurs qualifiés du Québec (PRTQ)</strong> — via Arrima, pour les profils qualifiés visant le Québec.');
+        }
+        if (r.lieu === 'canada_travail') {
+          bullets.push('<strong>Entrée express — Catégorie de l\'expérience canadienne (CEC)</strong> — si vous accumulez l\'expérience canadienne qualifiée requise.');
+        }
+        if (r.langue !== 'aucun' && (r.age === '18_29' || r.age === '30_39')) {
+          bullets.push('<strong>Entrée express — Travailleurs qualifiés fédéraux (FSW)</strong> — pour les profils internationaux qualifiés.');
+        }
+        bullets.push('<strong>Programmes des candidats des provinces (PCP)</strong> — Ontario, C.-B., Alberta, Saskatchewan, Manitoba, etc., avec différents volets.');
+        intro = '<p>Plusieurs voies mènent à la résidence permanente. Votre profil rend les options suivantes potentiellement pertinentes.</p>';
+        advice = 'Pour les programmes économiques, l\'examen linguistique officiel (TEF, IELTS) et l\'évaluation des diplômes (ECA) sont les premières étapes à anticiper.';
+      }
+      else if (r.objectif === 'famille') {
+        title = 'Programmes de <em>parrainage familial</em>';
+        if (r.famille === 'conjoint') {
+          bullets.push('<strong>Parrainage de conjoint</strong> — outland (extérieur) ou inland (intérieur). Le choix dépend de votre situation et de vos projets de voyage.');
+        }
+        if (r.famille === 'parents') {
+          bullets.push('<strong>Parrainage des parents et grands-parents (PGP)</strong> — programme contingenté, souvent ouvert via un appel d\'intérêt annuel.');
+          bullets.push('<strong>Super visa</strong> — alternative permettant des séjours prolongés en attendant le parrainage.');
+        }
+        if (r.famille === 'autres') {
+          bullets.push('<strong>Parrainage d\'autres membres de la famille</strong> — possible dans des conditions précises (frère, sœur, neveu/nièce orphelin, ou en l\'absence de tout autre proche).');
+        }
+        intro = '<p>Voici les voies de parrainage familial les plus pertinentes selon votre situation.</p>';
+        advice = 'La preuve de la relation est l\'élément central de tout parrainage. Sa qualité fait souvent la différence entre une demande approuvée et un refus.';
+      }
+
+      // Fallback if no bullets
+      if (bullets.length === 0) {
+        bullets.push('<strong>Consultation personnalisée recommandée</strong> — votre profil mérite une analyse détaillée pour identifier les meilleures options.');
+      }
+
+      document.getElementById('quiz-result-title').innerHTML = title;
+      document.getElementById('quiz-result-body').innerHTML = intro + '<ul>' + bullets.map(b => '<li>' + b + '</li>').join('') + '</ul>';
+      document.getElementById('quiz-result-recommendations').innerHTML = advice ? '<p><strong>Conseil pratique.</strong> ' + advice + '</p>' : '';
+
+      progressBar.style.width = '100%';
+      document.getElementById('quiz-form').style.display = 'none';
+      const panel = document.getElementById('quiz-result');
+      panel.classList.add('visible');
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const q = this.getAttribute('data-q');
+        const v = this.getAttribute('data-v');
+        answers[q] = v;
+
+        // Visual feedback
+        this.parentElement.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+
+        setTimeout(() => {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            showStep(currentStep);
+            updateProgress();
+          } else {
+            buildResult();
+          }
+        }, 280);
+      });
+    });
+
+    updateProgress();
+  })();
+  </script>
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title">Information importante</p>
+        <p class="disclaimer-text">Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Chaque situation d'immigration est unique et dépend de plusieurs facteurs. Pour toute démarche concrète, une consultation personnalisée avec un représentant autorisé en immigration est nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d'immigration canadienne avec rigueur, transparence et bienveillance.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="notre-histoire.html">Notre histoire</a></li>
+            <li><a href="nos-services.html">Nos services</a></li>
+            <li><a href="outils.html">Nos outils</a></li>
+            <li><a href="pourquoi-mdpl.html">Pourquoi MDPL</a></li>
+            <li><a href="blog.html">Blogue</a></li>
+            <li><a href="questions-frequentes.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Nous contacter</a></li>
+            <li><a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Coordonnées</p>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Adresse</span>
+              <address class="footer-address"><a href="https://www.google.com/maps/search/1565+boul.+de+l'Avenir+suite+206+Laval+Quebec+H7S+2N5" target="_blank" rel="noreferrer">1565 boul. de l'Avenir, suite 206<br />Laval, Québec H7S 2N5</a></address>
+            </div>
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Horaires</span>
+              <span class="footer-contact-value">Lundi au vendredi, 9 h à 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

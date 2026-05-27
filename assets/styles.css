@@ -49,7 +49,6 @@ img { display: block; max-width: 100%; object-fit: cover; }
 .site-header { background: var(--white); border-bottom: 1px solid var(--beige-dark); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 20px rgba(13,27,46,0.08); }
 .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 var(--gap); display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 2rem; }
 .logo { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
-.logo-img { height: 52px; width: auto; display: block; object-fit: contain; }
 .logo-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); letter-spacing: 0.01em; }
 .logo-name span { color: var(--gold); font-style: italic; }
 .logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.2rem; }
@@ -468,7 +467,6 @@ img { display: block; max-width: 100%; object-fit: cover; }
   .top-banner-inner { justify-content: center; gap: 0.75rem; }
   .top-banner-item { font-size: 0.65rem; }
   .header-inner { padding: 0 1rem; }
-  .logo-img { height: 40px; }
   .logo-name { font-size: 1rem; }
   .logo-sub { font-size: 0.48rem; }
   .hero-left { padding: clamp(1.5rem, 8vw, 3rem) 1.25rem; }
@@ -615,7 +613,6 @@ img { display: block; max-width: 100%; object-fit: cover; }
   .site-nav { gap: 0.95rem; }
   .site-nav > a, .nav-dropdown > a { font-size: 0.62rem; letter-spacing: 0.06em; }
   .header-inner { gap: 1rem; }
-  .logo-img { height: 46px; }
   .logo-name { font-size: 1.1rem; }
 }
 @media (max-width: 1180px) {

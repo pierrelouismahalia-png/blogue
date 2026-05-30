@@ -1184,3 +1184,21 @@ img { display: block; max-width: 100%; object-fit: cover; }
   .cost-item { flex-wrap: wrap; }
   .tool-form-wrapper { padding: 1.5rem 1.25rem; }
 }
+
+/* ==========================================================================
+   LANG TOGGLE
+   ========================================================================== */
+.lang-toggle {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: none; border: 1px solid rgba(196,154,42,0.25); border-radius: 2px;
+  cursor: pointer; padding: 0.2rem 0.6rem;
+  font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.12em; color: rgba(255,255,255,0.55);
+  transition: border-color 0.2s, color 0.2s;
+}
+.lang-toggle:hover { border-color: var(--gold); color: var(--gold-pale); }
+.lang-opt { transition: color 0.2s; }
+.lang-sep { color: rgba(196,154,42,0.3); font-weight: 300; }
+html[lang="fr"] .lang-toggle .lang-opt[data-lang="fr"] { color: var(--gold); }
+html[lang="en"] .lang-toggle .lang-opt[data-lang="en"] { color: var(--gold); }

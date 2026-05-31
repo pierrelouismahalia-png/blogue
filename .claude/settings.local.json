@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\Admin\\\\Dropbox\\\\17-PRODUITS NUMÉRIQUES\\\\SITE WEB-MDPL\\\\Site Html V2\\\\assets\\\\\")",
+      "Read(//c/Users/Admin/Dropbox/17-PRODUITS NUM�RIQUES/SITE WEB-MDPL/Site Html V2/**)"
+    ]
+  }
+}

@@ -1812,7 +1812,35 @@
     'blog.cta.btn1': 'Book an appointment',
     'blog.cta.btn2': 'Contact us',
     'blog.disclaimer.title': 'Important information',
-    'blog.disclaimer.text': 'Information presented on this site is provided for informational purposes only and does not constitute legal advice. Every immigration situation is unique and depends on several factors. For any concrete action, a personalized consultation with an authorized immigration representative is necessary.'
+    'blog.disclaimer.text': 'Information presented on this site is provided for informational purposes only and does not constitute legal advice. Every immigration situation is unique and depends on several factors. For any concrete action, a personalized consultation with an authorized immigration representative is necessary.',
+
+    // Terms of Use page translations (16 items)
+    'terms.page.title': 'Terms of Use — MDPL Immigration',
+    'terms.bc.current': 'Terms of use',
+    'terms.hero.eyebrow': 'Legal information',
+    'terms.hero.title': 'Terms of <em>use</em>',
+    'terms.hero.subtitle': 'The framework for using our site and tools.',
+    'terms.updated': '<em>Last updated: January 2025</em>',
+    'terms.h2.1': '1. <em>Acceptance of terms</em>',
+    'terms.p1': 'By accessing the mdplimmigration.com website and using its content or tools, you acknowledge that you have read these terms and agree to comply with them. If you do not accept these terms, we ask that you do not use this site.',
+    'terms.h2.2': '2. <em>Nature of information provided</em>',
+    'terms.p2': 'The MDPL Immigration website is informational in nature. The content presented — articles, service sheets, interactive tools, FAQs — is written for general information purposes. It <strong>does not constitute legal advice</strong> and does <strong>not create a client-representative relationship</strong> between you and our firm.',
+    'terms.h2.3': '3. <em>Use of tools</em>',
+    'terms.p3': 'The calculators, quizzes, simulators and other interactive tools available on this site are provided for guidance purposes. Their results are indicative and do not account for all the subtleties of an individual immigration file. No important decision should be made solely on the basis of the results of these tools. For an analysis tailored to your situation, a personalized consultation with an authorized representative is necessary.',
+    'terms.h2.4': '4. <em>Intellectual property</em>',
+    'terms.p4': 'All site content — text, images, logos, code, design — is protected by intellectual property laws and belongs to MDPL Immigration, unless otherwise noted. Any reproduction, distribution or commercial use without prior written authorization is prohibited. Short quotation for information or research purposes is permitted, provided the source is mentioned.',
+    'terms.h2.5': '5. <em>External links</em>',
+    'terms.p5': 'The site may contain links to third-party websites — notably IRCC, MIFI, Service Canada. These links are provided for your convenience. MDPL Immigration is not responsible for the content, availability, or privacy policies of these external sites.',
+    'terms.h2.6': '6. <em>Limitation of liability</em>',
+    'terms.p6': 'MDPL Immigration endeavors to keep the information on the site accurate and up-to-date. However, immigration rules change frequently: fees, timelines, criteria and programs may change without notice. MDPL Immigration cannot be held responsible for decisions made by a user solely on the basis of information accessed on this site.',
+    'terms.h2.7': '7. <em>Professional regulation</em>',
+    'terms.p7': 'MDPL Immigration is a firm of regulated immigration consultants. Any immigration service provision is governed by the rules of the College of Immigration and Citizenship Consultants (CICC). A client-representative relationship is established only upon signing a written mandate, following an initial consultation.',
+    'terms.h2.8': '8. <em>Modification of terms</em>',
+    'terms.p8': 'MDPL Immigration reserves the right to modify these terms of use at any time. The date of the last update appears at the top of this page. It is your responsibility to consult this page regularly.',
+    'terms.h2.9': '9. <em>Governing law</em>',
+    'terms.p9': 'These terms are governed by the laws in force in Quebec and Canada. Any dispute relating to the use of the site falls under the exclusive jurisdiction of the courts of the Laval judicial district, Quebec.',
+    'terms.h2.10': '10. <em>Contact</em>',
+    'terms.p10': 'For any questions about these terms, contact us at info@mdplimmigration.com or 450 977-0066.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──

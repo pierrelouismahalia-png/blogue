@@ -1202,7 +1202,15 @@
     'blog.cta.btn1':      'Book an Appointment',
     'blog.cta.btn2':      'Contact Us',
     'blog.disclaimer.title': 'Important Notice',
-    'blog.disclaimer.text':  'The information presented on this site is provided for informational purposes only and does not constitute legal advice. Each immigration situation is unique and depends on several factors. For any concrete steps, a personalized consultation with an authorized immigration representative is required.'
+    'blog.disclaimer.text':  'The information presented on this site is provided for informational purposes only and does not constitute legal advice. Each immigration situation is unique and depends on several factors. For any concrete steps, a personalized consultation with an authorized immigration representative is required.',
+
+    // Article intro paragraphs (Group 5b - 9 articles)
+    'art.adoption.intro.p1': 'She\'s called her mom since she was two years old. She taught her to walk, to read, to grow. She spent difficult nights with her, illnesses, school days. She loved her as if she had been born from her.',
+    'art.csq.intro.p1': 'You\'re filing an immigration application for Quebec. Very quickly, an acronym comes up in every conversation, in every form: the CSQ. But what exactly is it? What is it for? When must you apply for it? And especially — why do so many people find themselves searching for it years after settling, when they thought they would never need it again?',
+    'art.enfant.intro.p1': '"Your daughter is a Canadian citizen. She cannot board the plane without a Canadian passport."',
+    'art.inspection.intro.p1': 'Recently, one of our employer clients received a letter from Service Canada / ESDC informing them that they were subject to an inspection pursuant to sections 209.3 and 209.4 of the Immigration and Refugee Protection Regulations (IRPR). Time to respond: approximately three weeks. Documents requested: considerable.',
+    'art.parr.intro.p1': 'Filing an immigration form truthfully. Providing all requested documents. Following each step to the letter. And yet, finding yourself in a situation where an officer questions your place of residence, your intention, even your honesty.',
+    'art.pere.intro.p1': 'He is a Canadian citizen. He knows he is the father. The child was born abroad, where his partner lived. And yet, on the official birth certificate of that country, his name does not appear.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──

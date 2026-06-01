@@ -1897,8 +1897,8 @@
     'faq.a11': 'Yes, in many cases it is possible to change status while in Canada. For example, you can apply for permanent residence while holding a work or study permit. However, not all transitions are possible, and some have strict requirements or time limitations. The rules are complex and depend on your current status, your country of origin and your family situation. During the consultation, we evaluate which transitions are available to you.',
     'faq.q12': 'What happens if I don\'t meet all the requirements for a program?',
     'faq.a12': 'If you do not fully meet the standard requirements for a particular program, there may still be alternatives. Some programs have provisions for applicants who fall slightly short of certain criteria, or there may be other programs better suited to your profile. Our role is to analyze your situation comprehensively and identify all possible pathways, not just the most obvious ones. Sometimes, the best solution is an approach you hadn\'t considered.',
-    'faq.cta.title': 'Vous avez d\'autres questions?',
-    'faq.cta.desc': 'La plupart des réponses à vos questions se trouvent ici. Sinon, ne tardez pas à nous contacter — c\'est à ça que nous servons.'
+    'faq.cta.title': 'Do you have more questions?',
+    'faq.cta.desc': 'Most of the answers to your questions can be found here. Otherwise, don\'t hesitate to contact us — that\'s what we\'re here for.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──

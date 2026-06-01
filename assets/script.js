@@ -894,6 +894,14 @@
     'calc.elig.hero.subtitle':'Discover in 3 minutes the programs suited to your profile.',
     'calc.elig.hero.desc':    'This calculator assesses your eligibility for the main Canadian immigration programs — Express Entry, Quebec Regular Skilled Worker Program, Quebec Experience Program, Provincial Nominee Programs — based on your age, level of education, language skills, and professional experience. The result is indicative and constitutes a first reading, not legal advice.',
     'calc.elig.cta.title':    'To go further, <em>let\'s talk</em>',
+    'calc.elig.intro.p1':     'Fill in the fields below. All information stays in your browser — nothing is sent or saved. The calculator applies the scoring grids published by <strong>IRCC</strong> and <strong>MIFI</strong>, as well as our experience with over 600 files since 2015.',
+    'calc.elig.exp.h2.1':     'How does <em>this calculator</em> work?',
+    'calc.elig.exp.p1':       'Our calculator is inspired by the <strong>Comprehensive Ranking System (CRS)</strong> used by IRCC in the Express Entry system, as well as Quebec\'s scoring grids for the PRTQ. It evaluates six major dimensions:',
+    'calc.elig.exp.h2.2':     'FEER <em>Levels</em>, in a nutshell',
+    'calc.elig.exp.p2':       'Since 2022, IRCC has used the <strong>FEER</strong> (Formation, Education, Experience, Responsibility) system to classify professions in the <strong>National Occupational Classification (NOC)</strong>. FEER levels 0, 1, 2, and 3 are generally eligible for federal economic programs. FEER 4 and 5 correspond to lower-skilled positions and open different programs (often provincial or for temporary foreign workers).',
+    'calc.elig.infobox.title':'Limitations of this tool',
+    'calc.elig.infobox.p1':   'This calculator provides an estimate. It does not replace personalized analysis by an authorized representative. Several additional factors can influence your actual eligibility: job offer, sibling in Canada, specific provincial PCP program, humanitarian considerations, background, etc. For reliable advice, book an appointment with our firm.',
+    'calc.elig.cta.p1':       'An initial consultation allows us to examine your file in depth, identify the nuances this calculator doesn\'t capture, and build a realistic strategy.',
 
     // ── CALCULATEUR ENTRÉE EXPRESS ──────────────────────────────────────────
     'calc.ee.page.title':   'Express Entry (CRS) Calculator 2026 — Score out of 1200 pts | MDPL Immigration',

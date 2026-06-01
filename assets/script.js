@@ -1864,7 +1864,41 @@
     'privacy.h2.7': '7. <em>Cookies and statistics</em>',
     'privacy.p7': 'Our site does not use advertising tracking cookies. Technical cookies may be used for proper functioning of the site. We do not use any third-party tracking tools for profiling purposes.',
     'privacy.h2.8': '8. <em>Modifications</em>',
-    'privacy.p8': 'This policy may be updated. The date of the last revision appears at the top of this page. If you have any questions, please do not hesitate to contact us.'
+    'privacy.p8': 'This policy may be updated. The date of the last revision appears at the top of this page. If you have any questions, please do not hesitate to contact us.',
+
+    // FAQ page translations (34 items)
+    'faq.page.title': 'Frequently Asked Questions — MDPL Immigration | FAQ Canadian immigration',
+    'faq.bc.current': 'Frequently asked questions',
+    'faq.hero.eyebrow': 'Frequently asked questions',
+    'faq.hero.title': 'Your <em>questions</em>, our answers',
+    'faq.hero.subtitle': 'To better understand our services and the immigration process.',
+    'faq.hero.desc': 'We have gathered here the questions our clients ask us most frequently during the initial consultation. If your question is not in this list, please do not hesitate to contact us — we will be happy to answer it during a personalized conversation.',
+    'faq.q1': 'How does an initial consultation with MDPL Immigration work?',
+    'faq.a1': 'The initial consultation allows us to assess your personal, professional and family situation to identify possible immigration options. We take the time to listen to your project, answer your questions and present the procedures best suited to your situation. This meeting is essential to build a realistic and personalized strategy. It can take place in person at our Laval office, or remotely by video conference for our clients located abroad.',
+    'faq.q2': 'What types of files do you handle?',
+    'faq.a2': 'Our firm handles a wide variety of files: study permits, work permits, visitor visas, electronic travel authorizations (eTA), family sponsorships, family reunification, permanent residence applications (federal and Quebec programs) as well as procedures for temporary foreign workers (including LMIAs) for employers. We support individuals, families and employers alike. If your situation is particular or complex, we evaluate it carefully to determine the best possible path.',
+    'faq.q3': 'How long does an immigration application take?',
+    'faq.a3': 'Processing times vary greatly depending on the type of application, country of residence, program chosen and workload of immigration authorities. A visitor visa application may take a few weeks, while family sponsorship or permanent residence application may take several months or more than a year. IRCC regularly publishes processing timeframes on its official website. During the initial consultation, we communicate realistic timelines for your situation, taking into account the latest official updates.',
+    'faq.q4': 'Is it mandatory to work with an immigration consultant?',
+    'faq.a4': 'No, it is never mandatory to use an immigration consultant. Anyone can prepare and submit their own application to Canadian authorities. That said, the Canadian immigration system is complex and constantly evolving. A poorly prepared application can result in a refusal, additional delays, or even consequences on future procedures. Using an authorized representative allows you to benefit from a professional analysis of your file, a tailored strategy and careful follow-up until the decision.',
+    'faq.q5': 'What happens if my previous application was refused?',
+    'faq.a5': 'A refusal is not necessarily the end of the road. Many of our clients came to us after one or more refusals and ultimately obtained their visa, permit or permanent residence with a well-prepared new application. The key is to precisely understand the reasons for the refusal and address them concretely. During the consultation, we analyze the refusal letter, identify the weak points of the previous file and propose a corrective strategy. In some cases, an appeal or application for judicial review may also be considered.',
+    'faq.q6': 'Do you accept clients abroad?',
+    'faq.a6': 'Yes, absolutely. Our firm supports clients from over 40 countries. We offer consultations remotely by video conference and all communications can be conducted by email or telephone. The vast majority of immigration procedures can be completed without you needing to travel to Canada before obtaining your status. We manage the file preparation, online submission and follow-up with authorities remotely.',
+    'faq.q7': 'What documents should I prepare for the initial consultation?',
+    'faq.a7': 'To optimize your initial consultation, we recommend preparing: a copy of your passport (identification page); your diplomas, transcripts and professional credentials; your language exam results if applicable (IELTS, TEF, etc.); your travel history, visas and Canadian permits (including refusals); a description of your family situation and immigration project. If you don\'t have all these documents, that\'s okay: we can do a first assessment with what you have. We will then let you know what else needs to be completed.',
+    'faq.q8': 'How much does it cost to work with your firm?',
+    'faq.a8': 'Our fees vary depending on the type of file and services required. We provide transparent pricing during the initial consultation. Our costs are competitive and our service is rigorous. We also work with clients on payment plans if needed. Remember: the cost of professional help is often far less than the cost of a refused application or the delays resulting from a poorly prepared file.',
+    'faq.q9': 'Can you represent me before IRCC or other immigration authorities?',
+    'faq.a9': 'Yes. MDPL Immigration is a firm of immigration consultants regulated by the College of Immigration and Citizenship Consultants (CICC). We are authorized to represent clients before IRCC, Citizenship and Immigration Canada, provincial immigration programs and other Canadian immigration authorities. Our role is to prepare your file, submit your application and follow up with authorities on your behalf until a decision is made.',
+    'faq.q10': 'What is the difference between a work permit, a study permit and permanent residence?',
+    'faq.a10': 'A work permit allows a foreign national to work in Canada for a specific employer for a limited period (usually 1-3 years). A study permit allows a foreign student to attend a designated learning institution for the duration of their studies. Permanent residence (PR) is a status that allows a person to live, work and study in Canada indefinitely, with rights similar to those of a Canadian citizen (except voting and running for office). Each has different requirements, procedures and implications for your future in Canada.',
+    'faq.q11': 'Can I change my immigration status while in Canada?',
+    'faq.a11': 'Yes, in many cases it is possible to change status while in Canada. For example, you can apply for permanent residence while holding a work or study permit. However, not all transitions are possible, and some have strict requirements or time limitations. The rules are complex and depend on your current status, your country of origin and your family situation. During the consultation, we evaluate which transitions are available to you.',
+    'faq.q12': 'What happens if I don\'t meet all the requirements for a program?',
+    'faq.a12': 'If you do not fully meet the standard requirements for a particular program, there may still be alternatives. Some programs have provisions for applicants who fall slightly short of certain criteria, or there may be other programs better suited to your profile. Our role is to analyze your situation comprehensively and identify all possible pathways, not just the most obvious ones. Sometimes, the best solution is an approach you hadn\'t considered.',
+    'faq.cta.title': 'Vous avez d\'autres questions?',
+    'faq.cta.desc': 'La plupart des réponses à vos questions se trouvent ici. Sinon, ne tardez pas à nous contacter — c\'est à ça que nous servons.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──

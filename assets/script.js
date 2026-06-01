@@ -1840,7 +1840,31 @@
     'terms.h2.9': '9. <em>Governing law</em>',
     'terms.p9': 'These terms are governed by the laws in force in Quebec and Canada. Any dispute relating to the use of the site falls under the exclusive jurisdiction of the courts of the Laval judicial district, Quebec.',
     'terms.h2.10': '10. <em>Contact</em>',
-    'terms.p10': 'For any questions about these terms, contact us at info@mdplimmigration.com or 450 977-0066.'
+    'terms.p10': 'For any questions about these terms, contact us at info@mdplimmigration.com or 450 977-0066.',
+
+    // Privacy Policy page translations (16 items)
+    'privacy.page.title': 'Privacy Policy — MDPL Immigration',
+    'privacy.bc.current': 'Privacy policy',
+    'privacy.hero.eyebrow': 'Legal information',
+    'privacy.hero.title': 'Privacy <em>policy</em>',
+    'privacy.hero.subtitle': 'How we protect your personal information.',
+    'privacy.updated': '<em>Last updated: January 2025</em>',
+    'privacy.h2.1': '1. <em>Our commitment</em>',
+    'privacy.p1': 'MDPL Immigration places the utmost importance on the privacy of its clients and website visitors. This document explains what information we collect, for what purposes, how it is protected and what your rights are.',
+    'privacy.h2.2': '2. <em>Information collected</em>',
+    'privacy.p2': 'On this site, we only collect information that you voluntarily provide to us: through the contact form, by email or phone. No personal information is collected without your knowledge when simply visiting the site. Our interactive tools (calculators, quizzes) operate entirely in your browser: no data entered is transmitted to our servers.',
+    'privacy.h2.3': '3. <em>Use of information</em>',
+    'privacy.p3': 'The information you provide to us is used exclusively for: responding to your information requests, scheduling a consultation appointment, processing your immigration file if you become a client, occasionally informing you of legislative changes that may affect you. We never sell, rent or share your personal information with third parties for commercial purposes.',
+    'privacy.h2.4': '4. <em>Professional confidentiality</em>',
+    'privacy.p4': 'As authorized immigration representatives, we are subject to a strict duty of professional confidentiality. Every client file is treated with the strictest confidentiality, in accordance with the rules of the College of Immigration and Citizenship Consultants (CICC) and the Personal Information Protection Act.',
+    'privacy.h2.5': '5. <em>Storage and security</em>',
+    'privacy.p5': 'Client information is stored in secure systems for the duration required by legal and professional obligations. Beyond that, it is destroyed according to applicable standards. Access to files is strictly limited to authorized members of our firm.',
+    'privacy.h2.6': '6. <em>Your rights</em>',
+    'privacy.p6': 'In accordance with Quebec and Canadian personal information protection legislation (including Bill 25 in Quebec), you have the right to access your information, correct it, request its withdrawal within limits provided by law. To exercise these rights, contact us at info@mdplimmigration.com.',
+    'privacy.h2.7': '7. <em>Cookies and statistics</em>',
+    'privacy.p7': 'Our site does not use advertising tracking cookies. Technical cookies may be used for proper functioning of the site. We do not use any third-party tracking tools for profiling purposes.',
+    'privacy.h2.8': '8. <em>Modifications</em>',
+    'privacy.p8': 'This policy may be updated. The date of the last revision appears at the top of this page. If you have any questions, please do not hesitate to contact us.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──

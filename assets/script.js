@@ -2062,19 +2062,28 @@
   // ── Injection du bouton dans la bannière ──────────────────────────────────
   function injectButton() {
     var inner = document.querySelector('.top-banner-inner');
-    if (!inner || document.getElementById('lang-toggle')) return;
+    if (!inner) {
+      console.warn('top-banner-inner not found');
+      return;
+    }
+    if (document.getElementById('lang-toggle')) return;
+
     var sep = document.createElement('span');
     sep.className = 'top-banner-sep';
     sep.setAttribute('aria-hidden', 'true');
     sep.textContent = '|';
+
     var btn = document.createElement('button');
     btn.className = 'lang-toggle';
     btn.id = 'lang-toggle';
     btn.setAttribute('type', 'button');
-    btn.setAttribute('aria-label', 'Switch to English');
-    btn.innerHTML = '<span class="lang-opt" data-lang="fr">FR</span><span class="lang-sep" aria-hidden="true">|</span><span class="lang-opt" data-lang="en">EN</span>';
+    btn.setAttribute('aria-label', 'Switch language / Changer la langue');
+    btn.innerHTML = '<span class="lang-opt" data-lang="fr">FR</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-opt" data-lang="en">EN</span>';
+
     inner.appendChild(sep);
     inner.appendChild(btn);
+
+    console.log('Language toggle button injected');
 
     btn.addEventListener('click', function () {
       var current = document.documentElement.lang || 'fr';

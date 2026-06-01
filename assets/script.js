@@ -2062,6 +2062,10 @@
   // ── Injection du bouton dans la bannière ──────────────────────────────────
   function injectButton() {
     if (document.getElementById('lang-toggle')) return;
+    if (!document.body) {
+      setTimeout(injectButton, 100);
+      return;
+    }
 
     var btn = document.createElement('button');
     btn.className = 'lang-toggle-fixed';
@@ -2076,11 +2080,19 @@
       var current = document.documentElement.lang || 'fr';
       applyLang(current === 'fr' ? 'en' : 'fr');
     });
+
+    console.log('✓ Language toggle button injected successfully');
   }
 
   // ── Initialisation ────────────────────────────────────────────────────────
   cacheAllFr();
-  injectButton();
+
+  // Ensure button injection happens after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectButton);
+  } else {
+    injectButton();
+  }
 
   var stored = localStorage.getItem('mdpl-lang') || 'fr';
   if (stored === 'en') {

@@ -26,7 +26,7 @@
 
     trigger.addEventListener('click', (e) => {
       // Only intercept the click on mobile (where the dropdown is in vertical layout)
-      if (window.innerWidth <= 860) {
+      if (window.innerWidth <= 1080) {
         e.preventDefault();
         dropdown.classList.toggle('open');
       }
@@ -39,7 +39,7 @@
     link.addEventListener('click', (e) => {
       // Don't close nav if it's a dropdown trigger on mobile
       const isDropdownTrigger = link.parentElement.classList.contains('nav-dropdown');
-      if (isDropdownTrigger && window.innerWidth <= 860) return;
+      if (isDropdownTrigger && window.innerWidth <= 1080) return;
       if (siteNav) siteNav.classList.remove('open');
     });
   });
@@ -84,7 +84,11 @@
     'permis-travail.html',
     'visa-visiteur-ave.html',
     'parrainage-regroupement-familial.html',
-    'travailleurs-etrangers-temporaires.html'
+    'travailleurs-etrangers-temporaires.html',
+    'demande-asile.html',
+    'appel-demande-asile.html',
+    'detention-immigration.html',
+    'appels-immigration.html'
   ];
   if (serviceFiles.includes(currentPage)) {
     const servicesNav = document.querySelector('.nav-dropdown');
@@ -166,6 +170,10 @@
         .trim();
     }
 
+    function getCurrentLang() {
+      return (typeof localStorage !== 'undefined' && localStorage.getItem('mdpl-lang')) || 'fr';
+    }
+
     function getArticlesData() {
       return Array.from(document.querySelectorAll('#articles article')).map(function(article) {
         const tagEl = article.querySelector('.article-tag');
@@ -173,6 +181,8 @@
         const excerptEl = article.querySelector('.article-featured-excerpt, .article-card-sm-excerpt, .article-card-bottom-excerpt');
         const kwEls = article.querySelectorAll('.kw');
         const linkEl = article.querySelector('a[href]');
+        const tagsAttr = article.getAttribute('data-tags') || '';
+        const extraTags = tagsAttr ? tagsAttr.split(',').map(function(t) { return t.trim(); }).filter(Boolean) : [];
 
         return {
           tag: tagEl ? tagEl.textContent.trim() : '',
@@ -180,6 +190,7 @@
           title: titleEl ? titleEl.textContent.trim() : '',
           excerpt: excerptEl ? excerptEl.textContent.trim() : '',
           keywords: Array.from(kwEls).map(function(kw) { return kw.textContent.trim(); }),
+          extraTags: extraTags,
           link: linkEl ? linkEl.getAttribute('href') : 'contact.html'
         };
       });
@@ -189,6 +200,7 @@
       var q = normalizeStr(query);
       var haystack = [article.tag, article.title, article.excerpt]
         .concat(article.keywords)
+        .concat(article.extraTags || [])
         .map(normalizeStr)
         .join(' ');
       return haystack.indexOf(q) !== -1;
@@ -215,17 +227,18 @@
       searchResultsEl.classList.remove('hidden');
 
       var count = matched.length;
+      var isEn = getCurrentLang() === 'en';
       var html = '<div class="search-results-header">'
-        + '<p class="search-results-title">Résultats de recherche</p>'
+        + '<p class="search-results-title">' + (isEn ? 'Search results' : 'Résultats de recherche') + '</p>'
         + '<p class="search-results-info">'
-        + count + ' article' + (count !== 1 ? 's' : '') + ' trouvé' + (count !== 1 ? 's' : '') + ' pour '
+        + count + ' article' + (count !== 1 ? 's' : '') + ' ' + (isEn ? 'found for' : ('trouvé' + (count !== 1 ? 's' : '') + ' pour')) + ' '
         + '<strong>« ' + escHtml(query) + ' »</strong>'
-        + ' — <button type="button" id="search-clear" style="background:none;border:none;color:var(--gold);font-family:\'Jost\',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;padding:0;text-decoration:underline;">Réinitialiser</button>'
+        + ' — <button type="button" id="search-clear" style="background:none;border:none;color:var(--gold);font-family:\'Jost\',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;padding:0;text-decoration:underline;">' + (isEn ? 'Reset' : 'Réinitialiser') + '</button>'
         + '</p></div>';
 
       if (count === 0) {
         html += '<div class="search-empty">'
-          + '<p class="search-empty-text">Aucun article ne correspond à <strong>« ' + escHtml(query) + ' »</strong>.<br>Essayez un autre mot-clé ou consultez toutes les catégories.</p>'
+          + '<p class="search-empty-text">' + (isEn ? 'No article matches' : 'Aucun article ne correspond à') + ' <strong>« ' + escHtml(query) + ' »</strong>.<br>' + (isEn ? 'Try another keyword or browse all categories.' : 'Essayez un autre mot-clé ou consultez toutes les catégories.') + '</p>'
           + '</div>';
       } else {
         html += '<div class="search-results-list">';
@@ -238,7 +251,7 @@
             + '<p class="search-result-title">' + escHtml(a.title) + '</p>'
             + '<p class="search-result-desc">' + escHtml(a.excerpt) + '</p>'
             + '<div class="article-kw" style="margin-bottom:1rem;">' + kws + '</div>'
-            + '<a href="' + escHtml(a.link) + '" class="search-result-link">Lire l\'article</a>'
+            + '<a href="' + escHtml(a.link) + '" class="search-result-link">' + (isEn ? 'Read article' : 'Lire l\'article') + '</a>'
             + '</div>';
         });
         html += '</div>';
@@ -277,7 +290,10 @@
     document.querySelectorAll('.cat-card[data-search]').forEach(function(card) {
       card.addEventListener('click', function(e) {
         e.preventDefault();
-        var q = card.getAttribute('data-search');
+        var lang = getCurrentLang();
+        var q = (lang === 'en' && card.getAttribute('data-search-en'))
+          ? card.getAttribute('data-search-en')
+          : card.getAttribute('data-search');
         searchInput.value = q;
         runSearch(q);
         var searchSection = document.getElementById('site-search');
@@ -404,8 +420,8 @@
     'services.hero.subtitle':   'Whether you want to study, work, visit, settle, or sponsor.',
     'services.hero.desc':       'Our firm supports individuals, families, and employers in all Canadian immigration processes. From the initial consultation to file follow-up, we bring over 10 years of experience and an approach built on rigour, transparency, and respect.',
     'services.intro.lead':      'The Canadian immigration system includes dozens of different programs, each with its own criteria, timelines, and nuances. Choosing the right path from the start can make all the difference in the success of an immigration project.',
-    'services.intro.p':         'At MDPL Immigration, we handle a wide variety of files, which gives us a comprehensive view of the system. For each client, we take the time to understand their life goals, assess possible options, and choose together the most suitable approach. Below is an overview of the six main service categories we offer.',
-    'services.grid.eyebrow':    'Our Six Main Services',
+    'services.intro.p':         'At MDPL Immigration, we handle a wide variety of immigration files and represent clients before the four sections of the Immigration and Refugee Board of Canada (IRB). For each client, we take the time to understand their life goals, assess possible options, and choose together the most suitable approach.',
+    'services.grid.eyebrow':    'Our Immigration Services',
     'services.grid.title':      'Explore <em>each service</em> in detail',
     'services.grid.lead':       'Click on each service to discover the programs we handle, the key elements of your file, and how we support you.',
     'services.cta.p':           "Is your situation different, complex, or doesn't fit any of these services? We evaluate every file individually.",
@@ -1795,18 +1811,6 @@
     'blog.faq.eyebrow': 'Frequently asked questions',
     'blog.faq.title': 'Frequently asked questions about <em>immigration to Canada</em>',
     'blog.faq.lead': 'This section groups the main questions related to Canadian immigration procedures. It aims to provide clear and accessible answers to help better understand the different stages of the process.',
-    'blog.faq.q1': 'Can I immigrate to Canada easily?',
-    'blog.faq.a1': 'Immigration to Canada cannot be considered a simple or automatic process. It depends on several factors, including your profile, education level, work experience and personal situation. Each program has specific criteria that must be met. A good understanding of these requirements is essential for evaluating your chances and directing your approach strategically.',
-    'blog.faq.q2': 'How long does it take to immigrate to Canada?',
-    'blog.faq.a2': 'Immigration timelines vary significantly depending on the program you choose. Permanent residence applications can take 6 months to 2 years. Work permits may take weeks to months. Student permits typically take a few weeks. It is important to understand the timeline for the program you are applying to and to plan accordingly.',
-    'blog.faq.q3': 'What is the cost of immigrating to Canada?',
-    'blog.faq.a3': 'Immigration costs include government application fees, medical exams, police certificates, document translation, and professional advice if you choose to hire a consultant. Costs can range from a few hundred to several thousand dollars depending on your situation and the program you are applying to.',
-    'blog.faq.q4': 'Do I need a job offer to immigrate to Canada?',
-    'blog.faq.a4': 'A job offer is not always required to immigrate to Canada. Some programs (like Express Entry) do not require a job offer, although having one can improve your chances. Other programs, like the Temporary Foreign Worker Program, do require an employer job offer. The importance of a job offer depends on the program you are considering.',
-    'blog.faq.q5': 'Do I need to hire an immigration consultant?',
-    'blog.faq.a5': 'Hiring an immigration consultant is not mandatory, but it can offer significant advantages in certain situations. A professional can help you better understand your options, structure your file and avoid common mistakes.',
-    'blog.faq.q6': 'What is the purpose of this blog?',
-    'blog.faq.a6': 'This blog was designed as an information space intended to make immigration procedures more accessible. Content is based on real situations and aims to explain the different stages of the process in a clear manner. It is a starting point for seriously learning about Canadian immigration.',
     'blog.cta.title': 'A question related to <em>your situation?</em>',
     'blog.cta.desc': 'Blog articles inform, but do not replace a personalized assessment. Let\'s discuss your file in consultation.',
     'blog.cta.btn1': 'Book an appointment',
@@ -1873,32 +1877,154 @@
     'faq.hero.title': 'Your <em>questions</em>, our answers',
     'faq.hero.subtitle': 'To better understand our services and the immigration process.',
     'faq.hero.desc': 'We have gathered here the questions our clients ask us most frequently during the initial consultation. If your question is not in this list, please do not hesitate to contact us — we will be happy to answer it during a personalized conversation.',
-    'faq.q1': 'How does an initial consultation with MDPL Immigration work?',
-    'faq.a1': 'The initial consultation allows us to assess your personal, professional and family situation to identify possible immigration options. We take the time to listen to your project, answer your questions and present the procedures best suited to your situation. This meeting is essential to build a realistic and personalized strategy. It can take place in person at our Laval office, or remotely by video conference for our clients located abroad.',
-    'faq.q2': 'What types of files do you handle?',
-    'faq.a2': 'Our firm handles a wide variety of files: study permits, work permits, visitor visas, electronic travel authorizations (eTA), family sponsorships, family reunification, permanent residence applications (federal and Quebec programs) as well as procedures for temporary foreign workers (including LMIAs) for employers. We support individuals, families and employers alike. If your situation is particular or complex, we evaluate it carefully to determine the best possible path.',
-    'faq.q3': 'How long does an immigration application take?',
-    'faq.a3': 'Processing times vary greatly depending on the type of application, country of residence, program chosen and workload of immigration authorities. A visitor visa application may take a few weeks, while family sponsorship or permanent residence application may take several months or more than a year. IRCC regularly publishes processing timeframes on its official website. During the initial consultation, we communicate realistic timelines for your situation, taking into account the latest official updates.',
-    'faq.q4': 'Is it mandatory to work with an immigration consultant?',
-    'faq.a4': 'No, it is never mandatory to use an immigration consultant. Anyone can prepare and submit their own application to Canadian authorities. That said, the Canadian immigration system is complex and constantly evolving. A poorly prepared application can result in a refusal, additional delays, or even consequences on future procedures. Using an authorized representative allows you to benefit from a professional analysis of your file, a tailored strategy and careful follow-up until the decision.',
-    'faq.q5': 'What happens if my previous application was refused?',
-    'faq.a5': 'A refusal is not necessarily the end of the road. Many of our clients came to us after one or more refusals and ultimately obtained their visa, permit or permanent residence with a well-prepared new application. The key is to precisely understand the reasons for the refusal and address them concretely. During the consultation, we analyze the refusal letter, identify the weak points of the previous file and propose a corrective strategy. In some cases, an appeal or application for judicial review may also be considered.',
-    'faq.q6': 'Do you accept clients abroad?',
-    'faq.a6': 'Yes, absolutely. Our firm supports clients from over 40 countries. We offer consultations remotely by video conference and all communications can be conducted by email or telephone. The vast majority of immigration procedures can be completed without you needing to travel to Canada before obtaining your status. We manage the file preparation, online submission and follow-up with authorities remotely.',
-    'faq.q7': 'What documents should I prepare for the initial consultation?',
-    'faq.a7': 'To optimize your initial consultation, we recommend preparing: a copy of your passport (identification page); your diplomas, transcripts and professional credentials; your language exam results if applicable (IELTS, TEF, etc.); your travel history, visas and Canadian permits (including refusals); a description of your family situation and immigration project. If you don\'t have all these documents, that\'s okay: we can do a first assessment with what you have. We will then let you know what else needs to be completed.',
-    'faq.q8': 'How much does it cost to work with your firm?',
-    'faq.a8': 'Our fees vary depending on the type of file and services required. We provide transparent pricing during the initial consultation. Our costs are competitive and our service is rigorous. We also work with clients on payment plans if needed. Remember: the cost of professional help is often far less than the cost of a refused application or the delays resulting from a poorly prepared file.',
-    'faq.q9': 'Can you represent me before IRCC or other immigration authorities?',
-    'faq.a9': 'Yes. MDPL Immigration is a firm of immigration consultants regulated by the College of Immigration and Citizenship Consultants (CICC). We are authorized to represent clients before IRCC, Citizenship and Immigration Canada, provincial immigration programs and other Canadian immigration authorities. Our role is to prepare your file, submit your application and follow up with authorities on your behalf until a decision is made.',
-    'faq.q10': 'What is the difference between a work permit, a study permit and permanent residence?',
-    'faq.a10': 'A work permit allows a foreign national to work in Canada for a specific employer for a limited period (usually 1-3 years). A study permit allows a foreign student to attend a designated learning institution for the duration of their studies. Permanent residence (PR) is a status that allows a person to live, work and study in Canada indefinitely, with rights similar to those of a Canadian citizen (except voting and running for office). Each has different requirements, procedures and implications for your future in Canada.',
-    'faq.q11': 'Can I change my immigration status while in Canada?',
-    'faq.a11': 'Yes, in many cases it is possible to change status while in Canada. For example, you can apply for permanent residence while holding a work or study permit. However, not all transitions are possible, and some have strict requirements or time limitations. The rules are complex and depend on your current status, your country of origin and your family situation. During the consultation, we evaluate which transitions are available to you.',
-    'faq.q12': 'What happens if I don\'t meet all the requirements for a program?',
-    'faq.a12': 'If you do not fully meet the standard requirements for a particular program, there may still be alternatives. Some programs have provisions for applicants who fall slightly short of certain criteria, or there may be other programs better suited to your profile. Our role is to analyze your situation comprehensively and identify all possible pathways, not just the most obvious ones. Sometimes, the best solution is an approach you hadn\'t considered.',
     'faq.cta.title': 'Do you have more questions?',
-    'faq.cta.desc': 'Most of the answers to your questions can be found here. Otherwise, don\'t hesitate to contact us — that\'s what we\'re here for.'
+    'faq.cta.desc': 'Most of the answers to your questions can be found here. Otherwise, don\'t hesitate to contact us — that\'s what we\'re here for.',
+
+    // ── CISR — section nos-services.html ────────────────────────────────────
+    'cisr.section.eyebrow': 'Representation before the IRB',
+    'cisr.section.title':   'Representation before <em>the four sections</em> of the Board',
+    'cisr.section.lead':    'We represent our clients before the four sections of the Immigration and Refugee Board of Canada (IRB): the RPD, the RAD, the ID, and the IAD.',
+    'svc.cisr1.num':   'IRB · Section 01',
+    'svc.cisr1.title': 'Refugee Claims',
+    'svc.cisr1.desc':  'Representation before the Refugee Protection Division (RPD): preparation of the Basis of Claim (BOC) form, gathering of supporting evidence, and full accompaniment at the hearing.',
+    'svc.cisr2.num':   'IRB · Section 02',
+    'svc.cisr2.title': 'Refugee Appeals',
+    'svc.cisr2.desc':  'Challenging an unfavourable RPD decision before the Refugee Appeal Division (RAD): analysis of the decision, appeal memorandum, and new admissible evidence where applicable.',
+    'svc.cisr3.num':   'IRB · Section 03',
+    'svc.cisr3.title': 'Immigration Detention',
+    'svc.cisr3.desc':  'Representation at detention reviews before the Immigration Division (ID): release applications, bail planning, and conditions of release.',
+    'svc.cisr4.num':   'IRB · Section 04',
+    'svc.cisr4.title': 'Immigration Appeals',
+    'svc.cisr4.desc':  'Appeals before the Immigration Appeal Division (IAD): sponsorship refusals, removal orders, and failure to comply with permanent residence obligations.',
+    'svc.btn.learn':   'Learn More',
+
+    // ── DEMANDE D'ASILE (SPR / RPD) ──────────────────────────────────────
+    'spr.page.title':    'Refugee Claims (RPD) — MDPL Immigration | IRB Representation',
+    'spr.bc.current':    'Refugee Claims',
+    'spr.hero.eyebrow':  'IRB · Refugee Protection Division (RPD)',
+    'spr.hero.title':    'Refugee Claims <em>in Canada</em>',
+    'spr.hero.subtitle': 'Rigorous preparation to defend your refugee claim.',
+    'spr.hero.desc':     'Filing a refugee claim means submitting your story, your fears, and your evidence to an adjudicator. MDPL Immigration accompanies you at every step of this process before the Refugee Protection Division (RPD) of the Immigration and Refugee Board of Canada (IRB).',
+    'spr.intro.lead':    'A refugee claim is one of the most humanly and legally complex procedures in immigration law. It involves personal accounts, documentary evidence, country conditions, and precise legal rules. Well-prepared representation can make all the difference in the outcome of a hearing.',
+    'spr.intro.p1':      'A refugee claim can be made at a port of entry into Canada or from within the country. Once the IRB receives the file, a schedule is set: the claimant must submit the Basis of Claim (BOC) form within strict deadlines, then appear before an RPD member who will assess the credibility of the account and eligibility for international protection.',
+    'spr.scope.h2':      'What we handle',
+    'spr.scope.p':       'We assist refugee claimants in a wide variety of situations:',
+    'spr.scope.ul':      '<li>claims made <strong>at a port of entry</strong> (land border or airport);</li><li>claims made <strong>from within Canada</strong> with IRCC or the IRB;</li><li>claims based on <strong>persecution</strong> related to race, religion, nationality, membership in a particular social group, or political opinion;</li><li>claims based on <strong>risk to life</strong> or risk of cruel and unusual treatment or punishment;</li><li>situations involving <strong>family members</strong> (spouses, minor children) included in the same claim.</li>',
+    'spr.accomp.h2':     'Our support',
+    'spr.f1.title':      'BOC Preparation',
+    'spr.f1.desc':       'The Basis of Claim (BOC) form is the central document of your file. We help you write a clear, complete, and coherent account, meeting the IRB\'s requirements and deadlines.',
+    'spr.f2.title':      'Gathering Evidence',
+    'spr.f2.desc':       'We gather and organize the evidence supporting your claim: country condition documentation, testimonials, personal evidence, and any other relevant element to support your account.',
+    'spr.f3.title':      'Hearing Preparation',
+    'spr.f3.desc':       'We prepare you to appear before the member: explanation of how the hearing works, preparation for questions, identification of sensitive points in the file, and presentation strategy.',
+    'spr.f4.title':      'Hearing Representation',
+    'spr.f4.desc':       'We represent you at the RPD hearing: pleading, presentation of evidence, cross-examination of witnesses if applicable, and legal arguments in support of your refugee claim.',
+    'spr.f5.title':      'Post-Hearing Follow-Up',
+    'spr.f5.desc':       'If the decision is favourable, we inform you of the next steps toward permanent resident status. If unfavourable, we assess with you the available recourses, including an appeal before the RAD.',
+    'spr.f6.title':      'Family Members',
+    'spr.f6.desc':       'Spouses and minor children can be included in the same refugee claim. We coordinate the preparation of the family file in a coherent and complete manner.',
+    'spr.infobox.title': 'Important',
+    'spr.infobox.p':     'A refugee claim has strict deadlines from the moment of initial filing. Insufficient preparation of the BOC or gaps in the evidence can compromise the outcome of the hearing. The sooner you consult an authorized representative, the better your chances of presenting a solid file.',
+    'spr.btn1':          'Discuss your situation',
+    'spr.btn2':          'Book an appointment',
+    'spr.cta.title':     'Prepare your <em>refugee claim</em> with an authorized representative',
+    'spr.cta.desc':      'Every refugee claim is unique. Contact us to assess your situation and determine the best strategy for your file before the RPD.',
+
+    // ── APPEL D'ASILE (SAR / RAD) ────────────────────────────────────────
+    'sar.page.title':    'Refugee Appeals (RAD) — MDPL Immigration | IRB Representation',
+    'sar.bc.current':    'Refugee Appeal',
+    'sar.hero.eyebrow':  'IRB · Refugee Appeal Division (RAD)',
+    'sar.hero.title':    'Refugee Appeal <em>before the RAD</em>',
+    'sar.hero.subtitle': 'Challenging an unfavourable RPD decision with rigour and speed.',
+    'sar.hero.desc':     'A refusal from the Refugee Protection Division (RPD) is not always the last word. The Refugee Appeal Division (RAD) offers a recourse based on law and facts. MDPL Immigration accompanies you through this demanding process, where deadlines are strict and every argument counts.',
+    'sar.intro.lead':    'When an RPD member rejects a refugee claim, the claimant may, under certain conditions, appeal that decision before the RAD. This appeal is a written procedure based primarily on the RPD file and the legal arguments submitted by the parties. It is not a new trial, but an examination of the initial decision to identify errors of fact or law.',
+    'sar.intro.p1':      '<strong>Appeal deadlines before the RAD are strict.</strong> If you have received an unfavourable decision from the RPD, it is essential to consult an authorized representative without delay to avoid losing your right of appeal. Every day counts.',
+    'sar.scope.h2':      'What we handle',
+    'sar.scope.p':       'We represent rejected refugee claimants before the RAD in various situations:',
+    'sar.scope.ul':      '<li>appeals based on <strong>errors of fact</strong> made by the RPD member;</li><li>appeals based on <strong>errors of law</strong> in the interpretation or application of refugee criteria;</li><li>appeals involving the <strong>submission of new admissible evidence</strong> under the conditions provided by law;</li><li>appeals where the claimant\'s <strong>credibility</strong> was challenged by the RPD.</li>',
+    'sar.accomp.h2':     'Our support',
+    'sar.f1.title':      'RPD Decision Analysis',
+    'sar.f1.desc':       'We carefully examine the decision rendered by the RPD to identify errors of fact, errors of law, and passages that can be successfully challenged before the RAD.',
+    'sar.f2.title':      'Appeal Memorandum',
+    'sar.f2.desc':       'We draft a structured and well-argued appeal memorandum that sets out the grounds of appeal and the legal bases in support, in compliance with the IRB\'s procedural rules.',
+    'sar.f3.title':      'New Admissible Evidence',
+    'sar.f3.desc':       'In certain cases, it is possible to submit evidence that was not available at the RPD hearing. We assess its admissibility and integrate it into the appeal file where appropriate.',
+    'sar.f4.title':      'Deadline Management',
+    'sar.f4.desc':       'The RAD appeal procedure is governed by strict deadlines. We take charge of managing these deadlines from the moment we receive the mandate, to ensure your right of appeal is preserved in all circumstances.',
+    'sar.f5.title':      'RAD Decision Follow-Up',
+    'sar.f5.desc':       'Depending on the outcome of the appeal, we inform you of the available avenues: return before the RPD, judicial review before the Federal Court, or other recourses depending on your situation.',
+    'sar.f6.title':      'Free Preliminary Assessment',
+    'sar.f6.desc':       'We offer a preliminary assessment of the RPD decision to determine whether an appeal is well-founded and what your reasonable chances of success before the RAD are.',
+    'sar.infobox.title': 'Act Without Delay',
+    'sar.infobox.p':     'The deadlines for filing an appeal before the RAD are strict and non-extendable in the vast majority of cases. If you have received a negative decision from the RPD, consult an authorized representative as quickly as possible to avoid losing your right of appeal.',
+    'sar.btn1':          'Assess my appeal file',
+    'sar.btn2':          'Book an appointment',
+    'sar.cta.title':     'An RPD refusal? <em>Act quickly.</em>',
+    'sar.cta.desc':      'Deadlines for appealing to the RAD are short and strict. Contact us as soon as possible to assess the grounds for your appeal.',
+
+    // ── DÉTENTION EN IMMIGRATION (SI / ID) ───────────────────────────────
+    'si.page.title':    'Immigration Detention (ID) — MDPL Immigration | IRB Representation',
+    'si.bc.current':    'Immigration Detention',
+    'si.hero.eyebrow':  'IRB · Immigration Division (ID)',
+    'si.hero.title':    'Immigration Detention <em>before the ID</em>',
+    'si.hero.subtitle': 'Fast and rigorous intervention to defend your freedom.',
+    'si.hero.desc':     'Being detained under the Immigration and Refugee Protection Act (IRPA) is an urgent situation requiring immediate intervention. MDPL Immigration represents you before the Immigration Division (ID) of the IRB to defend your right to liberty and put in place a solid release plan.',
+    'si.intro.lead':    'Immigration detention occurs when authorities believe a person poses a danger to public safety, is likely to evade immigration proceedings, or has not had their identity established. The Immigration Division (ID) is responsible for reviewing the grounds for detention at regular intervals and deciding whether the person should remain in detention or be released under conditions.',
+    'si.intro.p1':      '<strong>Immigration detention is an urgent situation.</strong> Detention reviews take place within short deadlines after arrest. Contacting an authorized representative as soon as possible is essential to prepare an effective release plan before the first hearing.',
+    'si.scope.h2':      'What we handle',
+    'si.scope.p':       'We intervene before the ID in the following situations:',
+    'si.scope.ul':      '<li><strong>detention reviews</strong> at the deadlines set by law;</li><li><strong>release applications</strong> with a bail plan;</li><li>situations where detention is based on a <strong>risk to public safety</strong>;</li><li>situations where detention is based on a <strong>flight risk</strong> or failure to establish identity;</li><li><strong>admissibility hearings</strong> before the ID (criminality, security, misrepresentation, etc.).</li>',
+    'si.accomp.h2':     'Our support',
+    'si.f1.title':      'Emergency Intervention',
+    'si.f1.desc':       'We intervene quickly as soon as we learn of the detention situation, in order to be ready for the first detention review before the ID. Every hour counts in these circumstances.',
+    'si.f2.title':      'Bail Plan',
+    'si.f2.desc':       'We work with you and your family to build a solid release plan: identifying a bondsperson, defining proposed conditions, and preparing the evidence to submit to the ID.',
+    'si.f3.title':      'Representation at Reviews',
+    'si.f3.desc':       'We represent you at periodic detention reviews before the ID, arguing for your release and responding to the Canada Border Services Agency (CBSA)\'s arguments.',
+    'si.f4.title':      'Admissibility Hearings',
+    'si.f4.desc':       'When the ID holds a hearing to determine whether a person is inadmissible to Canada, we represent them and present all relevant arguments to contest or mitigate the allegations.',
+    'si.f5.title':      'Conditions of Release',
+    'si.f5.desc':       'We negotiate realistic release conditions adapted to your situation, and help you comply with them to avoid any revocation.',
+    'si.f6.title':      'Coordination with Other Proceedings',
+    'si.f6.desc':       'Detention often occurs alongside a refugee claim or a removal order. We coordinate your representation before the ID with all other ongoing proceedings for a coherent and comprehensive defence.',
+    'si.infobox.title': 'Urgent — Contact Us Immediately',
+    'si.infobox.p':     'If you or a loved one is detained under Canadian immigration laws, contact us without delay. The first detention reviews take place quickly after arrest, and prepared representation from the start significantly increases the chances of obtaining release.',
+    'si.btn1':          'Contact us urgently',
+    'si.btn2':          'Book an appointment',
+    'si.cta.title':     'Immigration detention? <em>Act without delay.</em>',
+    'si.cta.desc':      'Representation before the Immigration Division (ID) requires fast intervention and rigorous preparation. Contact us now to assess your situation and prepare your defence.',
+
+    // ── APPELS EN IMMIGRATION (SAI / IAD) ────────────────────────────────
+    'sai.page.title':    'Immigration Appeals (IAD) — MDPL Immigration | IRB Representation',
+    'sai.bc.current':    'Immigration Appeals (IAD)',
+    'sai.hero.eyebrow':  'IRB · Immigration Appeal Division (IAD)',
+    'sai.hero.title':    'Immigration Appeals <em>before the IAD</em>',
+    'sai.hero.subtitle': 'Challenging an unfavourable decision on sponsorship, removal, or residence obligations.',
+    'sai.hero.desc':     'The Immigration Appeal Division (IAD) of the IRB hears appeals filed by permanent residents, recognized refugees, and Canadian citizens facing a family sponsorship refusal, a removal order, or a breach of their residency obligation. MDPL Immigration analyzes your eligibility to appeal and represents you throughout the process.',
+    'sai.intro.lead':    'The IAD has the power to overturn an unfavourable decision not only on legal grounds, but also on humanitarian and compassionate grounds. This dual recourse makes IAD appeals particularly important for people who have developed strong ties to Canada.',
+    'sai.intro.p1':      'Each type of appeal before the IAD is governed by its own procedural rules, deadlines, and eligibility conditions. A rigorous preliminary assessment is essential before undertaking any proceedings.',
+    'sai.scope.h2':      'When can you appeal to the IAD?',
+    'sai.scope.p':       'We handle the three main categories of appeals before the IAD:',
+    'sai.scope.ul':      '<li><strong>Family sponsorship refusals</strong>: appeal of a decision by IRCC or a mission abroad rejecting an application to sponsor a spouse, child, parent, or other family member;</li><li><strong>Removal orders against a permanent resident</strong>: appeal of a deportation, exclusion, or departure order made against a permanent resident;</li><li><strong>Residency obligation</strong>: appeal of a decision finding that a permanent resident has failed to meet their residency obligation in Canada.</li>',
+    'sai.accomp.h2':     'Our support',
+    'sai.f1.title':      'Eligibility Assessment',
+    'sai.f1.desc':       'First and foremost, we analyze your file to determine whether your situation entitles you to appeal before the IAD, and we inform you of the chances of success, deadlines to meet, and steps to take.',
+    'sai.f2.title':      'Appeal File Preparation',
+    'sai.f2.desc':       'We gather and organize all relevant evidence: identity and status documents, proof of the family relationship, proof of establishment in Canada, support letters, and any other element likely to support your appeal.',
+    'sai.f3.title':      'Appeal Memorandum',
+    'sai.f3.desc':       'We draft a structured appeal memorandum that clearly sets out the legal grounds and humanitarian considerations that favour you, in response to the contested decision.',
+    'sai.f4.title':      'Hearing Representation',
+    'sai.f4.desc':       'We represent you at the IAD hearing: presenting arguments, examining witnesses, answering the member\'s questions, and making a final plea on your behalf.',
+    'sai.f5.title':      'Humanitarian and Compassionate (H&C) Considerations',
+    'sai.f5.desc':       'The IAD can take into account humanitarian and compassionate grounds independently of legal issues. We highlight your degree of establishment in Canada, family ties, hardship you would face, and any other relevant factor.',
+    'sai.f6.title':      'Post-Decision Follow-Up',
+    'sai.f6.desc':       'In case of success, we help you resume your immigration file. If the decision is unfavourable, we inform you of additional recourse options, including before the Federal Court.',
+    'sai.infobox.title': 'Deadlines to Respect',
+    'sai.infobox.p':     'The deadlines to file an appeal before the IAD are strictly governed by law and vary depending on the type of appeal. It is essential to consult an authorized representative promptly after receiving an unfavourable decision so as not to let these deadlines run. A late filing generally results in the appeal being inadmissible.',
+    'sai.btn1':          'Assess my eligibility',
+    'sai.btn2':          'Book an appointment',
+    'sai.cta.title':     'A refusal or removal order? <em>Assert your rights before the IAD.</em>',
+    'sai.cta.desc':      'MDPL Immigration analyzes your file, assesses your eligibility to appeal, and represents you before the Immigration Appeal Division with rigour and commitment.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──
@@ -1918,13 +2044,12 @@
     { fr: 'Permis de travail',    en: 'Work Permit' },
     { fr: 'Parrainage familial',  en: 'Family Sponsorship' },
     { fr: 'Travailleurs étrangers', en: 'Foreign Workers' },
-    { fr: 'Nos outils',           en: 'Our Tools' },
-    { fr: "Calculateur d’éligibilité", en: 'Eligibility Calculator' },
-    { fr: 'Calculateur Entrée Express', en: 'Express Entry Calculator' },
-    { fr: 'Calculateur de coûts', en: 'Cost Calculator' },
-    { fr: 'Suivi des délais IRCC', en: 'IRCC Processing Times' },
-    { fr: 'Générateur de documents', en: 'Document Generator' },
-    { fr: 'Assistant immigration', en: 'Immigration Assistant' },
+    { fr: "Demande d'asile (SPR)",      en: 'Refugee Claims (RPD)' },
+    { fr: "Appel d'asile (SAR)",        en: 'Refugee Appeals (RAD)' },
+    { fr: 'Détention (SI)',              en: 'Detention (ID)' },
+    { fr: 'Appels en immigration (SAI)', en: 'Immigration Appeals (IAD)' },
+    { fr: ‘Nos outils’,           en: ‘Our Tools’ },
+    { fr: ‘Assistant immigration’, en: ‘Immigration Assistant’ },
     { fr: 'Pourquoi MDPL',        en: 'Why MDPL' },
     { fr: 'Blogue',               en: 'Blog' },
     { fr: 'Questions fréquentes', en: 'FAQ' },
@@ -2103,4 +2228,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-01)
+// Force Cloudflare redeploy (2026-06-14b — fix FAQ EN mode duplicate translations)

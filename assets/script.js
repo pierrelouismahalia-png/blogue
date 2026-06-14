@@ -317,6 +317,7 @@
 
     searchTags.forEach(function(tag) {
       tag.addEventListener('click', function() {
+        if (tag.tagName === 'A') return;
         searchInput.value = tag.textContent.trim();
         runSearch(searchInput.value);
         var searchSection = document.getElementById('site-search');
@@ -1872,6 +1873,12 @@
     'blog.disclaimer.title': 'Important information',
     'blog.disclaimer.text': 'Information presented on this site is provided for informational purposes only and does not constitute legal advice. Every immigration situation is unique and depends on several factors. For any concrete action, a personalized consultation with an authorized immigration representative is necessary.',
 
+    // Tag archive page
+    'tag.bc.blog':      'Blog',
+    'tag.hero.eyebrow': 'Tag',
+    'tag.arts.eyebrow': 'Articles',
+    'tag.back.blog':    '&larr; Back to Blog',
+
     // Terms of Use page translations (16 items)
     'terms.page.title': 'Terms of Use — MDPL Immigration',
     'terms.bc.current': 'Terms of use',
@@ -2292,4 +2299,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14g — Web3Forms contact form)
+// Force Cloudflare redeploy (2026-06-14h — blog tag pages)

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWHSQ78PJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GWHSQ78PJ9');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Articles du blogue MDPL Immigration classés par mot-clé — immigration canadienne." />
+  <title>Blogue — MDPL Immigration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <a href="assistant-immigration.html">Nos outils</a>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html" class="active">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a><span class="breadcrumb-sep">/</span><a href="blog.html" data-i18n="tag.bc.blog">Blogue</a><span class="breadcrumb-sep">/</span><span id="tag-bc-current">Mot-clé</span>
+      </nav>
+      <p class="page-hero-eyebrow" data-i18n="tag.hero.eyebrow">Mot-clé</p>
+      <h1 class="page-hero-title" id="tag-hero-title">Articles</h1>
+      <p class="page-hero-desc" id="tag-hero-desc"></p>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section class="section articles-section">
+    <div class="section-inner">
+      <p class="section-eyebrow" data-i18n="tag.arts.eyebrow">Articles</p>
+      <h2 class="section-title" id="tag-arts-title">Articles du <em>blogue</em></h2>
+      <div class="articles-grid" id="tag-articles-grid"></div>
+      <p id="tag-no-results" style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink-mid);text-align:center;padding:4rem 0;"></p>
+      <div class="articles-cta">
+        <a href="blog.html" class="btn-outline" data-i18n="tag.back.blog">&larr; Retour au blogue</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2 data-i18n="blog.cta.title">Une question liée à <em>votre situation&nbsp;?</em></h2>
+      <p data-i18n="blog.cta.desc">Les articles du blogue informent, mais ne remplacent pas une évaluation personnalisée. Discutons de votre dossier en consultation.</p>
+      <div class="cta-band-actions">
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold" data-i18n="blog.cta.btn1">Prendre rendez-vous</a>
+        <a href="contact.html" class="btn-outline gold" data-i18n="blog.cta.btn2">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title" data-i18n="blog.disclaimer.title">Information importante</p>
+        <p class="disclaimer-text" data-i18n="blog.disclaimer.text">Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Chaque situation d'immigration est unique et dépend de plusieurs facteurs. Pour toute démarche concrète, une consultation personnalisée avec un représentant autorisé en immigration est nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d'immigration canadienne avec rigueur, transparence et bienveillance.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="notre-histoire.html">Notre histoire</a></li>
+            <li><a href="nos-services.html">Nos services</a></li>
+            <li><a href="outils.html">Nos outils</a></li>
+            <li><a href="pourquoi-mdpl.html">Pourquoi MDPL</a></li>
+            <li><a href="blog.html">Blogue</a></li>
+            <li><a href="questions-frequentes.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Nous contacter</a></li>
+            <li><a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Coordonnées</p>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Adresse</span>
+              <address class="footer-address"><a href="https://www.google.com/maps/search/1565+boul.+de+l'Avenir+suite+206+Laval+Quebec+H7S+2N5" target="_blank" rel="noreferrer">1565 boul. de l'Avenir, suite 206<br />Laval, Québec H7S 2N5</a></address>
+            </div>
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Horaires</span>
+              <span class="footer-contact-value">Lundi au vendredi, 9 h à 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+
+  <!-- Tag archive — reads ?tag=SLUG from URL, renders matching articles -->
+  <script>
+  (function() {
+    var ARTICLES = [
+      {
+        slug: 'article-enfant-citoyen-canadien-refus-embarquement-passeport.html',
+        img: 'https://images.unsplash.com/photo-1523633589114-88eaf4b4f1a8?w=900&auto=format&fit=crop&q=80',
+        tags: ['citoyennete', 'passeport', 'ave'],
+        fr: {
+          cat: 'Double citoyenneté',
+          title: 'Refus d’embarquement : quand la citoyenneté canadienne bloque le voyage',
+          excerpt: 'Une enfant née à l’étranger, une AVE invalidée après la reconnaissance de citoyenneté, un refus brutal à l’aéroport. Ce que chaque parent citoyen canadien doit absolument savoir avant de voyager.',
+          kw:      ['passeport canadien', 'refus embarquement', 'AVE invalide', 'certificat citoyenneté'],
+          kwSlugs: ['passeport', 'citoyennete', 'citoyennete', 'citoyennete']
+        },
+        en: {
+          cat: 'Dual citizenship',
+          title: 'Boarding refusal: when Canadian citizenship blocks travel',
+          excerpt: 'A child born abroad, an eTA invalidated after citizenship recognition, a brutal refusal at the airport. What every Canadian citizen parent must know before traveling.',
+          kw:      ['Canadian passport', 'boarding refusal', 'invalid eTA', 'citizenship certificate'],
+          kwSlugs: ['passeport', 'citoyennete', 'citoyennete', 'citoyennete']
+        }
+      },
+      {
+        slug: 'article-registre-voyages-resident-permanent-citoyennete.html',
+        img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&auto=format&fit=crop&q=80',
+        tags: ['residence-permanente', 'citoyennete', 'ircc'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Registre de voyages et résidence permanente : un outil essentiel pour votre demande de citoyenneté',
+          excerpt: '1 095 jours à prouver à IRCC avec des dates exactes. Votre mémoire ne suffira pas — téléchargez notre carnet gratuit et commencez dès aujourd’hui.',
+          kw:      ['registre voyages RP', '1 095 jours citoyenneté'],
+          kwSlugs: ['residence-permanente', 'citoyennete']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'Travel registry and permanent residence: an essential tool for your citizenship application',
+          excerpt: '1,095 days to prove to IRCC with exact dates. Your memory will not be enough — download our free logbook and start today.',
+          kw:      ['travel registry PR', '1,095 days citizenship'],
+          kwSlugs: ['residence-permanente', 'citoyennete']
+        }
+      },
+      {
+        slug: 'article-csq-certificat-selection-quebec-immigration.html',
+        img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&auto=format&fit=crop&q=80',
+        tags: ['csq', 'mifi', 'residence-permanente', 'immigration-quebec'],
+        fr: {
+          cat: 'Immigration Québec',
+          title: 'Qu’est-ce que le CSQ ? Le Certificat de sélection du Québec expliqué',
+          excerpt: 'MIFI, IRCC, parrainage, perte du document : tout ce que vous devez savoir sur le CSQ et pourquoi il faut le conserver toute votre vie.',
+          kw:      ['CSQ', 'MIFI', 'immigration Québec'],
+          kwSlugs: ['csq', 'mifi', 'immigration-quebec']
+        },
+        en: {
+          cat: 'Quebec immigration',
+          title: 'What is the CSQ? The Quebec Selection Certificate explained',
+          excerpt: 'MIFI, IRCC, sponsorship, loss of document: everything you need to know about the CSQ and why you must keep it for life.',
+          kw:      ['CSQ', 'MIFI', 'Quebec immigration'],
+          kwSlugs: ['csq', 'mifi', 'immigration-quebec']
+        }
+      },
+      {
+        slug: 'article-parrainage-conjoint-ontario-quebec-ottawa-gatineau-intention-residence.html',
+        img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'residence-permanente', 'conjoint'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Il vit en Ontario, travaille au Québec : un dossier de parrainage qui a failli virer au cauchemar',
+          excerpt: 'Ottawa–Gatineau, intention de résidence, CSQ exigé par erreur. Comment une mauvaise interprétation de l’agent a failli compromettre une demande de résidence permanente.',
+          kw:      ['parrainage conjoint', 'Ottawa Gatineau', 'article 40 LIPR'],
+          kwSlugs: ['parrainage', 'parrainage', 'residence-permanente']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'He lives in Ontario, works in Quebec: a sponsorship file that nearly turned into a nightmare',
+          excerpt: 'Ottawa–Gatineau, intention to reside, CSQ mistakenly required. How a misinterpretation by the officer nearly compromised a permanent residence application.',
+          kw:      ['spousal sponsorship', 'Ottawa Gatineau', 'section 40 IRPA'],
+          kwSlugs: ['parrainage', 'parrainage', 'residence-permanente']
+        }
+      },
+      {
+        slug: 'article-pere-canadien-enfant-etranger-test-adn-citoyennete-filiation.html',
+        img: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=500&auto=format&fit=crop&q=80',
+        tags: ['citoyennete', 'residence-permanente', 'ircc', 'adn', 'filiation'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Il est le père, l’enfant est Canadien : mais la preuve du lien reste essentielle',
+          excerpt: 'Acte de naissance sans le nom du père, test ADN obligatoire, délais d’un an et plus. Ce que les familles doivent savoir sur la citoyenneté canadienne par filiation.',
+          kw:      ['citoyenneté par filiation', 'test ADN IRCC'],
+          kwSlugs: ['citoyennete', 'adn']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'He is the father, the child is Canadian: but proof of the bond remains essential',
+          excerpt: 'Birth certificate without the father\'s name, mandatory DNA test, delays of a year or more. What families need to know about Canadian citizenship by descent.',
+          kw:      ['citizenship by descent', 'IRCC DNA test'],
+          kwSlugs: ['citoyennete', 'adn']
+        }
+      },
+      {
+        slug: 'article-adoption-tutelle-enfant-immigration-canada-caraibes.html',
+        img: 'https://images.unsplash.com/photo-1576765608622-067973a79f53?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'parrainage-enfant', 'adoption', 'tutelle'],
+        fr: {
+          cat: 'Parrainage enfant',
+          title: '« C’est ma fille depuis des années » : adoption, tutelle et immigration au Canada depuis les Caraïbes',
+          excerpt: 'Tutelle coutumière, adoption non officielle, enfant confié à la famille : pourquoi l’IRCC refuse ces liens et comment régulariser la situation pour immigrer au Canada.',
+          kw:      ['adoption tutelle Canada', 'parrainage enfant Caraïbes'],
+          kwSlugs: ['adoption', 'parrainage-enfant']
+        },
+        en: {
+          cat: 'Child sponsorship',
+          title: '"She\'s been my daughter for years": adoption, guardianship and immigration to Canada from the Caribbean',
+          excerpt: 'Customary guardianship, informal adoption, child entrusted to family: why IRCC refuses these bonds and how to regularize the situation to immigrate to Canada.',
+          kw:      ['adoption guardianship Canada', 'child sponsorship Caribbean'],
+          kwSlugs: ['adoption', 'parrainage-enfant']
+        }
+      },
+      {
+        slug: 'article-inspection-edsc-eimt-employeur-ptet.html',
+        img: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=500&auto=format&fit=crop&q=80',
+        tags: ['permis-de-travail', 'travailleurs-etrangers', 'eimt'],
+        fr: {
+          cat: 'Travailleurs étrangers',
+          title: 'Inspections EDSC sur l’EIMT : ce que tout employeur doit savoir avant de recevoir cette lettre',
+          excerpt: 'Une lettre d’EDSC arrive sans avertissement. Ce que vous avez déclaré lors de l’EIMT, vos pratiques salariales et vos conditions d’emploi seront scrutinées. Ce que tout employeur du PTET doit absolument préparer.',
+          kw:      ['inspection EDSC', 'EIMT employeur', 'PTET conformité'],
+          kwSlugs: ['eimt', 'eimt', 'permis-de-travail']
+        },
+        en: {
+          cat: 'Foreign workers',
+          title: 'ESDC inspections on LMIAs: what every employer must know before receiving this letter',
+          excerpt: 'An ESDC letter arrives without warning. What you declared in your LMIA, your salary practices and employment conditions will be scrutinized. What every TFWP employer must absolutely prepare.',
+          kw:      ['ESDC inspection', 'LMIA employer', 'TFWP compliance'],
+          kwSlugs: ['eimt', 'eimt', 'permis-de-travail']
+        }
+      },
+      {
+        slug: 'article-monogamie-polygamie-parrainage-conjoint-canada.html',
+        img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'parrainage-familial', 'ircc', 'mariage', 'polygamie'],
+        fr: {
+          cat: 'Parrainage familial',
+          title: 'Monogamie ou polygamie : ce qu’il faut savoir avant de déposer un parrainage d’époux',
+          excerpt: 'Un régime polygame inscrit sur un certificat de mariage — même par erreur — peut mener directement à un refus. Cas vécu, correction officielle exigée, et règles du Québec : ce qu’il faut vérifier avant de déposer.',
+          kw:      ['polygamie parrainage', 'certificat mariage IRCC', 'régime matrimonial'],
+          kwSlugs: ['polygamie', 'mariage', 'mariage']
+        },
+        en: {
+          cat: 'Family sponsorship',
+          title: 'Monogamy or polygamy: what you need to know before filing spouse sponsorship',
+          excerpt: 'A polygamous regime on a marriage certificate — even by mistake — can lead directly to a refusal. A real case, official correction required, and Quebec rules: what to check before filing.',
+          kw:      ['polygamy sponsorship', 'marriage certificate IRCC', 'matrimonial regime'],
+          kwSlugs: ['polygamie', 'mariage', 'mariage']
+        }
+      },
+      {
+        slug: 'article-importance-documents-immigration-canada.html',
+        img: 'https://images.unsplash.com/photo-1568234928966-359c35dd8327?w=500&auto=format&fit=crop&q=80',
+        tags: ['ircc', 'delais', 'documents', 'residence-permanente'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'L’importance de soumettre ses documents à temps en immigration canadienne',
+          excerpt: 'Un dossier admissible peut être refusé uniquement parce qu’un document n’a pas été soumis à temps. Délais, bonne foi, prolongation et exemption : ce qu’il faut savoir avant qu’il soit trop tard.',
+          kw:      ['délais IRCC', 'documents immigration', 'prolongation délai'],
+          kwSlugs: ['delais', 'documents', 'delais']
+        },
+        en: {
+          cat: 'Canadian immigration',
+          title: 'The importance of submitting documents on time in Canadian immigration',
+          excerpt: 'An eligible file can be refused simply because a document was not submitted on time. Deadlines, good faith, extension and exemption: what you need to know before it\'s too late.',
+          kw:      ['IRCC deadlines', 'immigration documents', 'deadline extension'],
+          kwSlugs: ['delais', 'documents', 'delais']
+        }
+      }
+    ];
+
+    var TAG_NAMES = {
+      'residence-permanente':   { fr: 'Résidence permanente',        en: 'Permanent Residence' },
+      'citoyennete':            { fr: 'Citoyenneté',                 en: 'Citizenship' },
+      'parrainage':             { fr: 'Parrainage',                        en: 'Sponsorship' },
+      'parrainage-familial':    { fr: 'Parrainage familial',               en: 'Family Sponsorship' },
+      'parrainage-enfant':      { fr: 'Parrainage d’enfant',          en: 'Child Sponsorship' },
+      'permis-de-travail':      { fr: 'Permis de travail',                 en: 'Work Permit' },
+      'travailleurs-etrangers': { fr: 'Travailleurs étrangers',       en: 'Foreign Workers' },
+      'csq':                    { fr: 'CSQ',                               en: 'CSQ' },
+      'mifi':                   { fr: 'MIFI',                              en: 'MIFI' },
+      'ircc':                   { fr: 'IRCC',                              en: 'IRCC' },
+      'delais':                 { fr: 'Délais',                       en: 'Processing Times' },
+      'documents':              { fr: 'Documents',                         en: 'Documents' },
+      'passeport':              { fr: 'Passeport',                         en: 'Passport' },
+      'adn':                    { fr: 'Test ADN',                          en: 'DNA Test' },
+      'adoption':               { fr: 'Adoption',                          en: 'Adoption' },
+      'tutelle':                { fr: 'Tutelle',                           en: 'Guardianship' },
+      'conjoint':               { fr: 'Conjoint',                          en: 'Spousal' },
+      'mariage':                { fr: 'Mariage',                           en: 'Marriage' },
+      'polygamie':              { fr: 'Polygamie',                         en: 'Polygamy' },
+      'eimt':                   { fr: 'EIMT / EDSC',                  en: 'LMIA / ESDC' },
+      'filiation':              { fr: 'Filiation',                         en: 'Filiation' },
+      'immigration-quebec':     { fr: 'Immigration Québec',           en: 'Quebec Immigration' },
+      'ave':                    { fr: 'AVE',                               en: 'eTA' },
+      'statut':                 { fr: 'Statut',                            en: 'Status' },
+      'detention':              { fr: 'Détention',                    en: 'Detention' },
+      'humanitaire':            { fr: 'Humanitaire',                       en: 'Humanitarian' }
+    };
+
+    function getSlug() {
+      try {
+        return new URLSearchParams(window.location.search).get('tag') || '';
+      } catch(e) {
+        var m = window.location.search.match(/[?&]tag=([^&]*)/);
+        return m ? decodeURIComponent(m[1]) : '';
+      }
+    }
+
+    function getLang() {
+      return document.documentElement.lang === 'en' ? 'en' : 'fr';
+    }
+
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function render() {
+      var slug = getSlug();
+      var lang = getLang();
+      var tagInfo = TAG_NAMES[slug];
+      var tagLabel = tagInfo ? tagInfo[lang] : (slug || (lang === 'en' ? 'Tag' : 'Mot-clé'));
+
+      // Update document title
+      document.title = tagLabel + ' — Blogue — MDPL Immigration';
+
+      // Update hero
+      var elBc     = document.getElementById('tag-bc-current');
+      var elTitle  = document.getElementById('tag-hero-title');
+      var elDesc   = document.getElementById('tag-hero-desc');
+      var elArtH2  = document.getElementById('tag-arts-title');
+
+      if (elBc) elBc.textContent = tagLabel;
+      if (elTitle) elTitle.innerHTML = lang === 'en'
+        ? 'Tag: <em>' + esc(tagLabel) + '</em>'
+        : 'Mot-clé : <em>' + esc(tagLabel) + '</em>';
+      if (elDesc) elDesc.textContent = lang === 'en'
+        ? 'All articles on the topic "' + tagLabel + '" published by MDPL Immigration.'
+        : 'Tous les articles sur le thème « ' + tagLabel + ' » publiés par MDPL Immigration.';
+      if (elArtH2) elArtH2.innerHTML = lang === 'en'
+        ? 'Articles on <em>' + esc(tagLabel) + '</em>'
+        : 'Articles sur <em>' + esc(tagLabel) + '</em>';
+
+      // Filter and render articles
+      var matching = slug
+        ? ARTICLES.filter(function(a) { return a.tags.indexOf(slug) !== -1; })
+        : [];
+
+      var grid      = document.getElementById('tag-articles-grid');
+      var noResults = document.getElementById('tag-no-results');
+
+      if (!matching.length) {
+        grid.innerHTML = '';
+        noResults.style.display = '';
+        noResults.textContent = lang === 'en'
+          ? 'No articles found for this tag.'
+          : 'Aucun article trouvé pour ce mot-clé.';
+        return;
+      }
+
+      noResults.style.display = 'none';
+      grid.innerHTML = matching.map(function(article) {
+        var d = article[lang];
+        var kws = d.kw.map(function(k, i) {
+          return '<a class="kw dark" href="tag.html?tag=' + article.kwSlugs[i] + '">' + esc(k) + '</a>';
+        }).join('');
+        return '<article class="article-card-bottom">' +
+          '<img class="article-card-bottom-img" src="' + esc(article.img) + '" alt="' + esc(d.title) + '" />' +
+          '<div class="article-card-bottom-body">' +
+            '<span class="article-tag light">' + esc(d.cat) + '</span>' +
+            '<h3 class="article-card-bottom-title">' + d.title + '</h3>' +
+            '<p class="article-card-bottom-excerpt">' + d.excerpt + '</p>' +
+            '<div class="article-kw" style="margin-bottom:0.6rem;">' + kws + '</div>' +
+            '<a href="' + esc(article.slug) + '" class="btn-lire dark">' +
+              (lang === 'en' ? 'Read article' : 'Lire l’article') +
+            '</a>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+
+    // Re-render on language switch (applyLang sets html[lang])
+    if (typeof MutationObserver !== 'undefined') {
+      new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'lang') { render(); break; }
+        }
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    }
+
+    render();
+  })();
+  </script>
+</body>
+</html>

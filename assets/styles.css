@@ -535,8 +535,10 @@ img { display: block; max-width: 100%; object-fit: cover; }
 .article-featured-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 0.75rem; }
 .article-featured-excerpt { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.75; color: rgba(255,255,255,0.65); margin-bottom: 1rem; flex: 1; }
 .article-kw { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem; }
-.kw { font-family: 'Jost', sans-serif; font-size: 0.56rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 0.15rem 0.45rem; }
+.kw { font-family: 'Jost', sans-serif; font-size: 0.56rem; font-weight: 500; letter-spacing: 0.06em; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 0.15rem 0.45rem; text-decoration: none; cursor: pointer; }
 .kw.dark { color: var(--ink-light); background: var(--beige); border: 1px solid var(--beige-dark); }
+a.kw:hover { opacity: 0.75; }
+a.search-tag { text-decoration: none; }
 .btn-lire { font-family: 'Jost', sans-serif; font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
 .btn-lire.light { color: var(--gold); }
 .btn-lire.dark { color: var(--navy); }

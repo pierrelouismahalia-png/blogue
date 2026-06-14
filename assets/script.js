@@ -2164,7 +2164,9 @@
     { fr: "Appel d'asile (SAR)",        en: 'Refugee Appeals (RAD)' },
     { fr: 'Détention (SI)',              en: 'Detention (ID)' },
     { fr: 'Appels en immigration (SAI)', en: 'Immigration Appeals (IAD)' },
+    { fr: 'Visa visiteur & AVE',   en: 'Visitor Visa & eTA' },
     { fr: 'Nos outils',           en: 'Our Tools' },
+    { fr: 'Test de citoyenneté',  en: 'Citizenship Test' },
     { fr: 'Assistant immigration', en: 'Immigration Assistant' },
     { fr: 'Pourquoi MDPL',        en: 'Why MDPL' },
     { fr: 'Blogue',               en: 'Blog' },
@@ -2606,4 +2608,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14j — SEO: injectSEO, canonical, hreflang, OG, schemas, lazy loading, data-i18n-content)
+// Force Cloudflare redeploy (2026-06-14k — fix nav TT: Visa visiteur & AVE + Test de citoyenneté)

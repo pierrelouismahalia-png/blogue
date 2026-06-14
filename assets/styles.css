@@ -53,7 +53,7 @@ img { display: block; max-width: 100%; object-fit: cover; }
 .logo-name span { color: var(--gold); font-style: italic; }
 .logo-sub { font-family: 'Jost', sans-serif; font-size: 0.54rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.2rem; }
 
-.site-nav { display: flex; align-items: center; gap: 1.4rem; }
+.site-nav { display: flex; align-items: center; gap: 0.95rem; }
 .site-nav > a, .nav-dropdown > a { font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mid); transition: color 0.2s; position: relative; white-space: nowrap; padding: 0.3rem 0; }
 .site-nav > a::after, .nav-dropdown > a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
 .site-nav > a:hover, .nav-dropdown > a:hover { color: var(--navy); }
@@ -305,6 +305,7 @@ img { display: block; max-width: 100%; object-fit: cover; }
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
 .faq-item.open .faq-answer {
+  max-height: 1200px;
   padding: 1.4rem 1.5rem 1.6rem;
   border-top: 1px solid var(--beige-dark);
 }
@@ -429,33 +430,6 @@ img { display: block; max-width: 100%; object-fit: cover; }
   .service-features { grid-template-columns: 1fr; }
 }
 @media (max-width: 860px) {
-  .site-nav {
-    position: absolute; top: 72px; left: 0; right: 0;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--white); border-top: 1px solid var(--beige-dark);
-    padding: 1rem var(--gap);
-    transform: translateY(-110%); transition: transform 0.28s;
-    box-shadow: 0 12px 25px rgba(13,27,46,0.12);
-    max-height: calc(100vh - 72px); overflow-y: auto;
-  }
-  .site-nav.open { transform: translateY(0); }
-  .site-nav > a, .nav-dropdown > a { padding: 0.85rem 0; border-bottom: 1px solid var(--beige-dark); font-size: 0.78rem; letter-spacing: 0.1em; }
-  .site-nav > a:last-child { border-bottom: none; }
-  .nav-toggle { display: flex; }
-  .nav-rdv { text-align: center; margin-top: 0.5rem; }
-  .nav-dropdown { border-bottom: 1px solid var(--beige-dark); }
-  .nav-dropdown > a { border-bottom: none; }
-  .nav-dropdown-menu {
-    position: static; opacity: 1; visibility: visible; transform: none;
-    box-shadow: none; border: none; padding: 0 0 0.5rem 1rem;
-    min-width: auto; max-height: 0; overflow: hidden;
-    transition: max-height 0.3s ease;
-    border-top: none;
-  }
-  .nav-dropdown.open .nav-dropdown-menu { max-height: 500px; }
-  .nav-dropdown-menu a { padding: 0.55rem 0; border-bottom: none; font-size: 0.7rem; color: var(--ink-light); border-left: none; }
-  .nav-dropdown-menu a:hover { padding-left: 0.5rem; background: transparent; }
-  .nav-dropdown .caret { float: right; }
   .services-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
@@ -619,6 +593,38 @@ img { display: block; max-width: 100%; object-fit: cover; }
   .site-nav { gap: 0.75rem; }
   .site-nav > a, .nav-dropdown > a { font-size: 0.58rem; }
   .nav-rdv { padding: 0.5rem 0.85rem !important; font-size: 0.6rem !important; }
+}
+/* Hamburger menu — breakpoint relevé à 1080px pour couvrir le débordement de la nav
+   entre 860 et ~1070px. Ce bloc est placé APRÈS les blocs 1280/1180 pour
+   les écraser en cascade et rétablir la mise en page mobile. */
+@media (max-width: 1080px) {
+  .site-nav {
+    position: absolute; top: 72px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--white); border-top: 1px solid var(--beige-dark);
+    padding: 1rem var(--gap);
+    transform: translateY(-110%); transition: transform 0.28s;
+    box-shadow: 0 12px 25px rgba(13,27,46,0.12);
+    max-height: calc(100vh - 72px); overflow-y: auto;
+  }
+  .site-nav.open { transform: translateY(0); }
+  .site-nav > a, .nav-dropdown > a { padding: 0.85rem 0; border-bottom: 1px solid var(--beige-dark); font-size: 0.78rem; letter-spacing: 0.1em; }
+  .site-nav > a:last-child { border-bottom: none; }
+  .nav-toggle { display: flex; }
+  .nav-rdv { text-align: center; margin-top: 0.5rem; }
+  .nav-dropdown { border-bottom: 1px solid var(--beige-dark); }
+  .nav-dropdown > a { border-bottom: none; }
+  .nav-dropdown-menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    box-shadow: none; border: none; padding: 0 0 0.5rem 1rem;
+    min-width: auto; max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: none;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { max-height: 500px; }
+  .nav-dropdown-menu a { padding: 0.55rem 0; border-bottom: none; font-size: 0.7rem; color: var(--ink-light); border-left: none; }
+  .nav-dropdown-menu a:hover { padding-left: 0.5rem; background: transparent; }
+  .nav-dropdown .caret { float: right; }
 }
 
 /* ==========================================================================
@@ -1245,4 +1251,12 @@ html[lang="en"] .lang-toggle-fixed .lang-opt[data-lang="en"] {
   color: var(--navy);
   opacity: 0.4;
   font-weight: 500;
+}
+/* On mobile the fixed lang button would cover the hamburger (same top-right corner).
+   Move it to the bottom-right so the nav-toggle is fully clickable. */
+@media (max-width: 1080px) {
+  .lang-toggle-fixed {
+    top: auto;
+    bottom: 1.5rem;
+  }
 }

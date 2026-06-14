@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    MDPL Immigration - Scripts partagés
    ========================================================================== */
 
@@ -2048,8 +2048,8 @@
     { fr: "Appel d'asile (SAR)",        en: 'Refugee Appeals (RAD)' },
     { fr: 'Détention (SI)',              en: 'Detention (ID)' },
     { fr: 'Appels en immigration (SAI)', en: 'Immigration Appeals (IAD)' },
-    { fr: ‘Nos outils’,           en: ‘Our Tools’ },
-    { fr: ‘Assistant immigration’, en: ‘Immigration Assistant’ },
+    { fr: 'Nos outils',           en: 'Our Tools' },
+    { fr: 'Assistant immigration', en: 'Immigration Assistant' },
     { fr: 'Pourquoi MDPL',        en: 'Why MDPL' },
     { fr: 'Blogue',               en: 'Blog' },
     { fr: 'Questions fréquentes', en: 'FAQ' },
@@ -2059,8 +2059,8 @@
     // Footer
     { fr: "Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d’immigration canadienne avec rigueur, transparence et bienveillance.",
       en: "Founded in Laval in 2015, MDPL Immigration supports individuals, families, and employers in their Canadian immigration processes with rigour, transparency, and care." },
-    { fr: ‘Navigation’,      en: ‘Navigation’ },
-    { fr: ‘Coordonnées’,     en: ‘Contact’ },
+    { fr: 'Navigation',      en: 'Navigation' },
+    { fr: 'Coordonnées',     en: 'Contact' },
     { fr: 'Adresse',              en: 'Address' },
     { fr: 'Téléphone',  en: 'Phone' },
     { fr: 'Horaires',             en: 'Hours' },
@@ -2228,4 +2228,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14b — fix FAQ EN mode duplicate translations)
+// Force Cloudflare redeploy (2026-06-14c — fix SyntaxError curly quotes in TT array)

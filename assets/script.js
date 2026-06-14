@@ -1879,6 +1879,33 @@
     'tag.arts.eyebrow': 'Articles',
     'tag.back.blog':    '&larr; Back to Blog',
 
+    // Citizenship test page
+    'quiz.page.title':    'Canadian Citizenship Test — MDPL Immigration',
+    'quiz.bc.outils':     'Our Tools',
+    'quiz.bc.current':    'Citizenship Test',
+    'quiz.hero.eyebrow':  'Free interactive tool',
+    'quiz.hero.title':    'Canadian <em>Citizenship Test</em>',
+    'quiz.hero.subtitle': '20 questions based on the official Discover Canada guide. Passing score: 15/20.',
+    'quiz.start.eyebrow': 'Ready to Start?',
+    'quiz.start.title':   'Canadian Civic Knowledge Test',
+    'quiz.start.desc':    'This quiz tests your knowledge of Canadian history, values, institutions and symbols. All 20 questions are drawn from the official Discover Canada guide.',
+    'quiz.meta.questions': '20 questions',
+    'quiz.meta.choices':  '4 choices per question',
+    'quiz.meta.pass':     'Passing: 15 / 20',
+    'quiz.start.btn':     'Start the Test',
+    'quiz.corr.title':    'Detailed Correction',
+    'quiz.restart.btn':   'Restart',
+
+    // Outils page — quiz card and updated tool list
+    'outils.tools.eyebrow': 'Available Tools',
+    'outils.tools.title':   'Explore our <em>toolbox</em>',
+    'outils.tools.lead':    'All our tools are free and work in your browser. Results are indicative and remain strictly confidential — nothing is saved without your consent.',
+    'outils.quiz.title':    'Citizenship Test',
+    'outils.quiz.desc':     '20 multiple-choice questions drawn from the official Discover Canada guide. Get your score, review the detailed correction, and check whether you reach the passing threshold of 15/20.',
+    'outils.quiz.cta':      'Take the Test',
+    'outils.cta.rdv':       'Book an Appointment',
+    'outils.cta.contact':   'Contact Us',
+
     // Terms of Use page translations (16 items)
     'terms.page.title': 'Terms of Use — MDPL Immigration',
     'terms.bc.current': 'Terms of use',
@@ -2299,4 +2326,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14h — blog tag pages)
+// Force Cloudflare redeploy (2026-06-14i — citizenship test + Nos outils dropdown)

@@ -1,6 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWHSQ78PJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GWHSQ78PJ9');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Contactez MDPL Immigration à Laval, Québec. Téléphone : 450 977-0066. Courriel : info@mdplimmigration.com. Adresse : 1565 boul. de l'Avenir, suite 206." />
@@ -46,20 +54,13 @@
             <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
             <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
             <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
           </div>
         </div>
-        <div class="nav-dropdown">
-          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
-          <div class="nav-dropdown-menu">
-            <a href="calculateur-eligibilite.html">Calculateur d'éligibilité</a>
-            <a href="calculateur-entree-express.html">Calculateur Entrée Express</a>
-            <a href="quiz-programme.html">Quiz : quel programme&nbsp;?</a>
-            <a href="calculateur-couts.html">Calculateur de coûts</a>
-            <a href="delais-ircc.html">Suivi des délais IRCC</a>
-            <a href="generateur-documents.html">Générateur de documents</a>
-            <a href="assistant-immigration.html">Assistant immigration</a>
-          </div>
-        </div>
+        <a href="assistant-immigration.html">Nos outils</a>
         <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
         <a href="blog.html">Blogue</a>
         <a href="questions-frequentes.html">Questions fréquentes</a>
@@ -147,9 +148,10 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contact-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
-        <input type="hidden" name="_subject" value="Nouveau message — MDPL Immigration" />
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="e1de4656-6f35-4089-840d-8b78f129f704" />
+        <input type="hidden" name="subject" value="Nouvelle demande via le site MDPL" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
         <label class="form-field">
           <span data-i18n="contact.form.name.label">Nom complet</span>
           <input type="text" name="nom" data-i18n-ph="contact.form.name.placeholder" placeholder="Votre nom et prénom" required />
@@ -172,6 +174,10 @@
             <option value="Visa visiteur / AVE">Visa visiteur / AVE</option>
             <option value="Parrainage / regroupement familial">Parrainage / regroupement familial</option>
             <option value="Travailleurs étrangers (employeur)">Travailleurs étrangers (employeur)</option>
+            <option value="Demande d'asile (SPR)">Demande d'asile — SPR</option>
+            <option value="Appel d'une demande d'asile (SAR)">Appel d'une demande d'asile — SAR</option>
+            <option value="Détention en immigration (SI)">Détention en immigration — SI</option>
+            <option value="Appels en immigration (SAI)">Appels en immigration — SAI</option>
             <option value="Autre / Je ne sais pas">Autre / Je ne sais pas</option>
           </select>
         </label>

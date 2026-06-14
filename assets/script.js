@@ -128,7 +128,7 @@
   }
 
   // ==========================================================================
-  // Contact form — Formspree AJAX
+  // Contact form — Web3Forms AJAX
   // ==========================================================================
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
@@ -138,40 +138,48 @@
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
+      // Honeypot: bots that tick the hidden checkbox are silently dropped.
+      var botcheck = contactForm.querySelector('[name="botcheck"]');
+      if (botcheck && botcheck.checked) return;
+
+      var isEn = document.documentElement.lang === 'en';
+
       sendBtn.disabled = true;
-      sendBtn.textContent = 'Envoi en cours…';
+      sendBtn.textContent = isEn ? 'Sending…' : 'Envoi en cours…';
       if (formStatus) {
         formStatus.className = 'form-status';
         formStatus.textContent = '';
       }
 
-      fetch(contactForm.action, {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
+        body: new FormData(contactForm)
       })
-      .then(function(response) {
-        if (response.ok) {
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        if (data.success) {
           contactForm.reset();
           if (formStatus) {
             formStatus.className = 'form-status form-status--success';
-            formStatus.textContent = 'Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.';
+            formStatus.textContent = isEn
+              ? 'Your message has been sent successfully. We will get back to you as soon as possible.'
+              : 'Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.';
           }
         } else {
-          return response.json().then(function(data) {
-            throw new Error(data.error || 'Erreur serveur');
-          });
+          throw new Error(data.message || '');
         }
       })
       .catch(function() {
         if (formStatus) {
           formStatus.className = 'form-status form-status--error';
-          formStatus.innerHTML = 'Une erreur s\'est produite. Veuillez nous écrire directement à <a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a>.';
+          formStatus.innerHTML = isEn
+            ? 'An error occurred. Please write to us directly at <a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a>.'
+            : 'Une erreur s\'est produite. Veuillez nous écrire directement à <a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a>.';
         }
       })
       .finally(function() {
         sendBtn.disabled = false;
-        sendBtn.textContent = 'Envoyer le message';
+        sendBtn.textContent = isEn ? 'Send Message' : 'Envoyer le message';
       });
     });
   }
@@ -2284,4 +2292,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14f — lang toggle inline in top banner)
+// Force Cloudflare redeploy (2026-06-14g — Web3Forms contact form)

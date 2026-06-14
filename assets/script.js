@@ -1003,6 +1003,20 @@
     'asst.hero.subtitle':'Ask your questions about permits, visas, and permanent residence.',
     'asst.hero.desc':    'This interactive assistant answers the most frequently asked questions from our clients about Canadian immigration: study permits, work permits, sponsorship, permanent residence, citizenship. Answers are based on current IRCC and MIFI rules and our firm\'s experience. For any complex personal situation, a consultation is recommended.',
     'asst.cta.title':    'For a <em>personalized answer</em>, let\'s talk',
+    'asst.cta.p':            'This assistant is a useful starting point. For an analysis tailored to your specific situation, let\'s schedule a consultation.',
+    'asst.intro.p':          'Choose a question from the suggestions below to explore further. The assistant stores no data — the entire conversation stays in your browser.',
+    'asst.chat.title':       'MDPL Immigration Assistant',
+    'asst.chat.status':      'Online · immediate answers',
+    'asst.suggestions.label':'Frequently Asked Questions',
+    'asst.chat.welcome':     '<strong>Welcome!</strong><br />I am your assistant for general questions about Canadian immigration. Choose a question below to get started.',
+    'asst.about.h2':         'About <em>this assistant</em>',
+    'asst.about.p':          'This tool provides standardized answers to the most common questions in Canadian immigration. It is based on a knowledge base written by our firm from the official texts in force — IRCC regulations, ministerial guidelines, relevant case law, and practices observed in more than 600 files handled since 2015.',
+    'asst.can.h3':           'What the assistant can do',
+    'asst.can.ul':           '<li>Explain the <strong>general rules</strong> of each program.</li><li>Provide <strong>indicative processing times</strong>.</li><li>Identify the <strong>standard documents</strong> to prepare.</li><li>Direct you to <strong>the right point of contact</strong> based on your situation.</li>',
+    'asst.cannot.h3':        'What the assistant cannot do',
+    'asst.cannot.ul':        '<li>Analyze <strong>your personal file</strong> in depth.</li><li>Anticipate <strong>all the nuances</strong> of your individual situation.</li><li>Provide <strong>legal advice</strong>: only an authorized representative can do that.</li><li>Guarantee <strong>the outcome of an application</strong> — every case is unique.</li>',
+    'asst.infobox.title':    'To go further',
+    'asst.infobox.p':        'If the assistant does not precisely address your situation, or if your file includes sensitive elements (previous refusal, particular background, atypical situation), an initial consultation with our firm is the recommended next step. We have been supporting clients since 2015 from over 40 countries of origin, with rigour, transparency, and care.',
 
     // ── RISQUE REFUS ────────────────────────────────────────────────────────
     'risk.page.title':   'Assess the Refusal Risk of Your Immigration Application — MDPL',
@@ -2260,4 +2274,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14d — fix FAQ accordion height clipping)
+// Force Cloudflare redeploy (2026-06-14e — bilingual assistant-immigration chat)

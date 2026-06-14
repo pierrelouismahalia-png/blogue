@@ -2,7 +2,21 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem \"c:\\\\Users\\\\Admin\\\\Dropbox\\\\17-PRODUITS NUMÉRIQUES\\\\SITE WEB-MDPL\\\\Site Html V2\\\\assets\\\\\")",
-      "Read(//c/Users/Admin/Dropbox/17-PRODUITS NUM�RIQUES/SITE WEB-MDPL/Site Html V2/**)"
+      "Read(//c/Users/Admin/Dropbox/17-PRODUITS NUM�RIQUES/SITE WEB-MDPL/Site Html V2/**)",
+      "Bash(grep '<p\\\\|<h1\\\\|<h2\\\\|<h3' __TRACKED_VAR__.html)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(grep '<h1\\\\|<h2\\\\|<h3\\\\|<p' __TRACKED_VAR__.html)",
+      "Bash(grep 'data-i18n=\"calc\\\\|data-i18n=\"quiz\\\\|data-i18n=\"del\\\\|data-i18n=\"risk\\\\|data-i18n=\"gen' __TRACKED_VAR__.html)",
+      "Bash(grep disclaimer-title *)",
+      "Bash(sed -i 's/<p class=\"disclaimer-title\">Information importante<\\\\/p>/<p class=\"disclaimer-title\" data-i18n=\"common.disclaimer.title\">Information importante<\\\\/p>/g' __TRACKED_VAR__.html)",
+      "Bash(sed -i 's/<p class=\"disclaimer-text\">Les informations présentées/<p class=\"disclaimer-text\" data-i18n=\"common.disclaimer.p1\">Les informations présentées/g' __TRACKED_VAR__.html)",
+      "Bash(git commit -m 'Improve language toggle button — add logging and visual separators *)",
+      "Bash(git push *)",
+      "Bash(git checkout *)",
+      "Bash(git commit -m 'Add visible FR/EN toggle button in top-right corner *)",
+      "Bash(git commit -m 'Fix language button injection — wait for DOM ready *)",
+      "Bash(node -c assets/script.js)"
     ]
   }
 }

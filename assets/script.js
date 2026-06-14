@@ -2112,7 +2112,35 @@
     'sai.btn1':          'Assess my eligibility',
     'sai.btn2':          'Book an appointment',
     'sai.cta.title':     'A refusal or removal order? <em>Assert your rights before the IAD.</em>',
-    'sai.cta.desc':      'MDPL Immigration analyzes your file, assesses your eligibility to appeal, and represents you before the Immigration Appeal Division with rigour and commitment.'
+    'sai.cta.desc':      'MDPL Immigration analyzes your file, assesses your eligibility to appeal, and represents you before the Immigration Appeal Division with rigour and commitment.',
+
+    // ── Meta descriptions EN (data-i18n-content) ─────────────────────────────
+    'index.meta.desc':       'MDPL Immigration — Canadian immigration consulting firm in Laval, Quebec. Permanent residence, work permits, study permits, family sponsorship, visitor visas. Regulated consultants (RCIC).',
+    'services.meta.desc':    'All MDPL Immigration services: permanent residence, Express Entry, study permits, work permits, visitor visas, family sponsorship, refugee claims, immigration appeals. Laval, QC.',
+    'history.meta.desc':     'Learn about MDPL Immigration: our story, our team of regulated immigration consultants (RCIC), our values, and our commitment to supporting your Canadian immigration journey.',
+    'why.meta.desc':         'Why choose MDPL Immigration? Regulated consultants, 10+ years of experience, bilingual service, transparent fees, personalized strategy. Immigration consulting firm in Laval, QC.',
+    'contact.meta.desc':     'Contact MDPL Immigration — Call 450 977-0066 or email info@mdplimmigration.com. Office: 1565 boul. de l\'Avenir, suite 206, Laval, QC H7S 2N5. Mon–Fri, 9 a.m.–5 p.m.',
+    'rp.meta.desc':          'Permanent residence in Canada: Express Entry, Provincial Nominee Programs (PNP), Quebec selection (CSQ). MDPL Immigration guides you through every step. Laval, QC.',
+    'pe.meta.desc':          'Study permit Canada: apply to a DLI, extend your permit, work while studying. MDPL Immigration prepares your application and supports you with IRCC. Laval, QC.',
+    'pt.meta.desc':          'Canadian work permit: LMIA, intracompany transfer, open work permit, PGWP. MDPL Immigration assists employers and foreign workers with all IRCC applications. Laval, QC.',
+    'vv.meta.desc':          'Visitor visa and Electronic Travel Authorization (eTA) for Canada. MDPL Immigration prepares your application and optimizes your chances of approval. Laval, QC.',
+    'pf.meta.desc':          'Sponsoring your spouse, common-law partner, children or parents for Canadian permanent residence. MDPL Immigration manages your family reunification file from start to finish.',
+    'te.meta.desc':          'Temporary foreign workers: LMIA applications, employer compliance, PGWP, EIMT. MDPL Immigration supports both employers and workers with Canadian immigration procedures.',
+    'asile.meta.desc':       'Filing a refugee claim (RPD) in Canada: Basis of Claim, hearing preparation and representation before the Immigration and Refugee Board. MDPL Immigration accompanies you.',
+    'appel.asile.meta.desc': 'Appealing a negative refugee decision before the Refugee Appeal Division (RAD): analysis, appeal memorandum, new evidence. MDPL Immigration represents you at the RAD.',
+    'detention.meta.desc':   'Immigration detention review before the Immigration Division (ID): release application, bail conditions, urgent representation. MDPL Immigration defends your rights.',
+    'appels.meta.desc':      'Immigration appeals before the Immigration Appeal Division (IAD): sponsorship refusals, removal orders, residency obligation. MDPL Immigration represents you at the IAD.',
+    'blog.meta.desc':        'MDPL Immigration blog: practical articles on Canadian immigration — permanent residence, citizenship, work permits, refugee claims, family sponsorship and more.',
+    'faq.meta.desc':         'Frequently asked questions about Canadian immigration: delays, eligibility, costs, programs, IRCC rules. Answers from MDPL Immigration, regulated consulting firm.',
+    'outils.meta.desc':      'Free Canadian immigration tools: citizenship test, immigration assistant. All tools work in your browser. MDPL Immigration, consulting firm in Laval, QC.',
+    'quiz.citoy.meta.desc':  'Canadian citizenship test — 20 multiple-choice questions from the official Discover Canada guide. Test your knowledge and find out if you pass the 15/20 threshold.',
+    'asst.meta.desc':        'Immigration assistant: ask your questions about permits, visas, sponsorship, and permanent residence. Free interactive tool by MDPL Immigration, Laval, QC.',
+    'delays.meta.desc':      'IRCC processing times — estimated delays for work permits, study permits, visitor visas, permanent residence, and citizenship applications. Updated regularly.',
+    'calc.ee.meta.desc':     'Express Entry CRS score calculator: estimate your Comprehensive Ranking System score and find out your chances of receiving an invitation to apply (ITA). Free tool.',
+    'calc.elig.meta.desc':   'Check your eligibility for Canadian immigration programs: Express Entry, PNP, family sponsorship, work permits. Free assessment tool from MDPL Immigration.',
+    'calc.costs.meta.desc':  'Estimate the costs of your Canadian immigration application: government fees, biometrics, medical exams and more. Free tool from MDPL Immigration, Laval, QC.',
+    'privacy.meta.desc':     'MDPL Immigration privacy policy: how we collect, use, and protect your personal information. Compliant with Quebec Bill 25 and Canadian privacy legislation.',
+    'terms.meta.desc':       'Terms of use for the MDPL Immigration website and interactive tools. Legal framework governing access to content and immigration tools on mdplimmigration.com.'
   };
 
   // ── Remplacement de nœuds texte (éléments partagés sans balises enfants) ──
@@ -2189,6 +2217,10 @@
       var key = el.getAttribute('data-i18n-ph');
       if (!frCache['ph:' + key]) frCache['ph:' + key] = el.placeholder || '';
     });
+    document.querySelectorAll('[data-i18n-content]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-content');
+      if (!frCache['cnt:' + key]) frCache['cnt:' + key] = el.getAttribute('content') || '';
+    });
   }
 
   // ── Marcheur de nœuds texte ───────────────────────────────────────────────
@@ -2251,6 +2283,10 @@
         var key = el.getAttribute('data-i18n-ph');
         if (EN[key] !== undefined) el.placeholder = EN[key];
       });
+      document.querySelectorAll('[data-i18n-content]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-content');
+        if (EN[key] !== undefined) el.setAttribute('content', EN[key]);
+      });
     } else {
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var key = el.getAttribute('data-i18n');
@@ -2262,6 +2298,10 @@
       document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-ph');
         if (frCache['ph:' + key] !== undefined) el.placeholder = frCache['ph:' + key];
+      });
+      document.querySelectorAll('[data-i18n-content]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n-content');
+        if (frCache['cnt:' + key] !== undefined) el.setAttribute('content', frCache['cnt:' + key]);
       });
     }
 
@@ -2307,14 +2347,254 @@
     console.log('✓ Language toggle button injected successfully');
   }
 
+  // ── Injection SEO (canonical, hreflang, OG, schemas, lazy loading) ────────
+  function injectSEO() {
+    var head = document.head;
+    var base = 'https://mdplimmigration.com';
+    var rawSlug = (window.location.pathname.split('/').pop() || 'index.html') || 'index.html';
+    var slug = rawSlug === '' ? 'index.html' : rawSlug;
+    var url = base + '/' + (slug === 'index.html' ? '' : slug);
+
+    // ── 1. Canonical ──────────────────────────────────────────────────────────
+    if (!document.querySelector('link[rel="canonical"]')) {
+      var canon = document.createElement('link');
+      canon.rel = 'canonical';
+      canon.href = url;
+      head.appendChild(canon);
+    }
+
+    // ── 2. Hreflang ───────────────────────────────────────────────────────────
+    if (!document.querySelector('link[hreflang]')) {
+      [['x-default', url], ['fr', url], ['en', url]].forEach(function (pair) {
+        var l = document.createElement('link');
+        l.rel = 'alternate';
+        l.setAttribute('hreflang', pair[0]);
+        l.href = pair[1];
+        head.appendChild(l);
+      });
+    }
+
+    // ── 3. Open Graph + Twitter (fallback pour les pages sans balises statiques) ──
+    if (!document.querySelector('meta[property="og:title"]')) {
+      var pageTitle = document.title || 'MDPL Immigration';
+      var descEl = document.querySelector('meta[name="description"]');
+      var pageDesc = descEl ? descEl.getAttribute('content') : 'Cabinet conseil en immigration canadienne. Laval, Quebec.';
+      var ogImg = base + '/assets/og-default.jpg';
+      [
+        ['og:type',              'website'],
+        ['og:locale',            'fr_CA'],
+        ['og:locale:alternate',  'en_CA'],
+        ['og:site_name',         'MDPL Immigration'],
+        ['og:title',             pageTitle],
+        ['og:description',       pageDesc],
+        ['og:url',               url],
+        ['og:image',             ogImg],
+        ['og:image:width',       '1200'],
+        ['og:image:height',      '630'],
+        ['og:image:alt',         'MDPL Immigration — Cabinet conseil en immigration canadienne, Laval'],
+      ].forEach(function (pair) {
+        var m = document.createElement('meta');
+        m.setAttribute('property', pair[0]);
+        m.setAttribute('content', pair[1]);
+        head.appendChild(m);
+      });
+      [
+        ['twitter:card',         'summary_large_image'],
+        ['twitter:title',        pageTitle],
+        ['twitter:description',  pageDesc],
+        ['twitter:image',        ogImg],
+      ].forEach(function (pair) {
+        var m = document.createElement('meta');
+        m.setAttribute('name', pair[0]);
+        m.setAttribute('content', pair[1]);
+        head.appendChild(m);
+      });
+    }
+
+    // ── 4. LocalBusiness + Person schemas ─────────────────────────────────────
+    if (!document.getElementById('schema-lb')) {
+      var lb = {
+        "@context": "https://schema.org",
+        "@type": ["LegalService", "ProfessionalService"],
+        "name": "MDPL Immigration",
+        "description": "Cabinet conseil en immigration canadienne fonde a Laval en 2015. Residence permanente, permis etudes, permis de travail, parrainage familial, visa visiteur, travailleurs etrangers temporaires.",
+        "url": "https://mdplimmigration.com",
+        "telephone": "+14509770066",
+        "email": "info@mdplimmigration.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1565 boul. de l'Avenir, suite 206",
+          "addressLocality": "Laval",
+          "addressRegion": "QC",
+          "postalCode": "H7S 2N5",
+          "addressCountry": "CA"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 45.5683,
+          "longitude": -73.7421
+        },
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }],
+        "areaServed": [
+          {"@type": "Place", "name": "Laval, Quebec, Canada"},
+          {"@type": "Place", "name": "Montreal, Quebec, Canada"},
+          {"@type": "Place", "name": "Ottawa, Ontario, Canada"},
+          {"@type": "Place", "name": "Canada"}
+        ],
+        "priceRange": "$$",
+        "founder": {
+          "@type": "Person",
+          "name": "Mahalia Pierre Louis",
+          "jobTitle": "Consultante reglementee en immigration canadienne (CRIC)",
+          "memberOf": {
+            "@type": "Organization",
+            "name": "Conseil de reglementation des consultants en immigration du Canada (CICC)",
+            "url": "https://cicc-conseil.ca"
+          }
+        }
+      };
+      var lbS = document.createElement('script');
+      lbS.type = 'application/ld+json';
+      lbS.id = 'schema-lb';
+      lbS.textContent = JSON.stringify(lb);
+      head.appendChild(lbS);
+
+      var person = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mahalia Pierre Louis",
+        "jobTitle": "Consultante reglementee en immigration canadienne (CRIC)",
+        "url": "https://mdplimmigration.com/notre-histoire.html",
+        "worksFor": {
+          "@type": "LegalService",
+          "name": "MDPL Immigration",
+          "url": "https://mdplimmigration.com"
+        },
+        "memberOf": {
+          "@type": "Organization",
+          "name": "CICC — Conseil de reglementation des consultants en immigration du Canada",
+          "url": "https://cicc-conseil.ca"
+        },
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "Numero CICC",
+          "value": "R512154"
+        },
+        "knowsAbout": ["Canadian immigration", "Permanent residence", "Study permits", "Work permits", "Family sponsorship", "Refugee claims", "Immigration appeals"]
+      };
+      var pS = document.createElement('script');
+      pS.type = 'application/ld+json';
+      pS.id = 'schema-person';
+      pS.textContent = JSON.stringify(person);
+      head.appendChild(pS);
+    }
+
+    // ── 5. BreadcrumbList ─────────────────────────────────────────────────────
+    var bcEl = document.querySelector('.breadcrumb');
+    if (bcEl && !document.getElementById('schema-bc')) {
+      var bcItems = [];
+      var bcPos = 1;
+      bcEl.querySelectorAll('a').forEach(function (a) {
+        var href = a.getAttribute('href') || '';
+        var absHref = href.indexOf('http') === 0 ? href : base + '/' + href;
+        bcItems.push({"@type": "ListItem", "position": bcPos++, "name": a.textContent.trim(), "item": absHref});
+      });
+      var curSpan = bcEl.querySelector('span[data-i18n], span:not(.breadcrumb-sep):not([aria-hidden])');
+      if (curSpan) {
+        bcItems.push({"@type": "ListItem", "position": bcPos, "name": curSpan.textContent.trim()});
+      }
+      if (bcItems.length >= 2) {
+        var bcSchema = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": bcItems};
+        var bcS = document.createElement('script');
+        bcS.type = 'application/ld+json';
+        bcS.id = 'schema-bc';
+        bcS.textContent = JSON.stringify(bcSchema);
+        head.appendChild(bcS);
+      }
+    }
+
+    // ── 6. Article schema (pages article-*.html) ──────────────────────────────
+    if (/^article-[^/]+\.html$/.test(slug) && !document.getElementById('schema-art')) {
+      var artH1 = document.querySelector('h1');
+      var artDescEl = document.querySelector('meta[name="description"]');
+      var artImgEl = document.querySelector('meta[property="og:image"]');
+      var artSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": artH1 ? artH1.textContent.trim().substring(0, 110) : document.title,
+        "description": artDescEl ? artDescEl.getAttribute('content') : '',
+        "image": artImgEl ? artImgEl.getAttribute('content') : (base + '/assets/og-default.jpg'),
+        "datePublished": "2025-10-01",
+        "dateModified": "2026-06-14",
+        "author": {
+          "@type": "Person",
+          "name": "Mahalia Pierre Louis",
+          "url": "https://mdplimmigration.com/notre-histoire.html",
+          "identifier": {"@type": "PropertyValue", "name": "Numero CICC", "value": "R512154"}
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "MDPL Immigration",
+          "url": "https://mdplimmigration.com"
+        },
+        "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+        "inLanguage": "fr-CA"
+      };
+      var artS = document.createElement('script');
+      artS.type = 'application/ld+json';
+      artS.id = 'schema-art';
+      artS.textContent = JSON.stringify(artSchema);
+      head.appendChild(artS);
+    }
+
+    // ── 7. FAQPage schema (questions-frequentes.html) ─────────────────────────
+    if (slug === 'questions-frequentes.html' && !document.getElementById('schema-faq')) {
+      var faqItems = [];
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        var q = item.querySelector('.faq-question');
+        var a = item.querySelector('.faq-answer');
+        if (q && a) {
+          faqItems.push({
+            "@type": "Question",
+            "name": q.textContent.trim().replace(/\s+/g, ' '),
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": a.textContent.trim().replace(/\s+/g, ' ').substring(0, 500)
+            }
+          });
+        }
+      });
+      if (faqItems.length) {
+        var faqSchema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faqItems};
+        var faqS = document.createElement('script');
+        faqS.type = 'application/ld+json';
+        faqS.id = 'schema-faq';
+        faqS.textContent = JSON.stringify(faqSchema);
+        head.appendChild(faqS);
+      }
+    }
+
+    // ── 8. Lazy loading (images hors écran initial) ───────────────────────────
+    document.querySelectorAll('img:not([loading])').forEach(function (img, i) {
+      if (i > 2) img.setAttribute('loading', 'lazy');
+    });
+  }
+
   // ── Initialisation ────────────────────────────────────────────────────────
   cacheAllFr();
 
-  // Ensure button injection happens after DOM is ready
+  // Ensure button + SEO injection happen after DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectButton);
+    document.addEventListener('DOMContentLoaded', injectSEO);
   } else {
     injectButton();
+    injectSEO();
   }
 
   var stored = localStorage.getItem('mdpl-lang') || 'fr';
@@ -2326,4 +2606,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14i — citizenship test + Nos outils dropdown)
+// Force Cloudflare redeploy (2026-06-14j — SEO: injectSEO, canonical, hreflang, OG, schemas, lazy loading, data-i18n-content)

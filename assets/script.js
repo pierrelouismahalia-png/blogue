@@ -2239,13 +2239,23 @@
     }
 
     var btn = document.createElement('button');
-    btn.className = 'lang-toggle-fixed';
+    btn.className = 'lang-toggle';
     btn.id = 'lang-toggle';
     btn.setAttribute('type', 'button');
     btn.setAttribute('aria-label', 'Switch language / Changer la langue');
     btn.innerHTML = '<span class="lang-opt" data-lang="fr">FR</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-opt" data-lang="en">EN</span>';
 
-    document.body.appendChild(btn);
+    var banner = document.querySelector('.top-banner-inner');
+    if (banner) {
+      var sep = document.createElement('span');
+      sep.className = 'top-banner-sep top-banner-lang-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '|';
+      banner.appendChild(sep);
+      banner.appendChild(btn);
+    } else {
+      document.body.appendChild(btn);
+    }
 
     btn.addEventListener('click', function () {
       var current = document.documentElement.lang || 'fr';
@@ -2274,4 +2284,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14e — bilingual assistant-immigration chat)
+// Force Cloudflare redeploy (2026-06-14f — lang toggle inline in top banner)

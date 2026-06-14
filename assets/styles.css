@@ -1194,69 +1194,67 @@ img { display: block; max-width: 100%; object-fit: cover; }
 /* ==========================================================================
    LANG TOGGLE
    ========================================================================== */
+/* Desktop: inline at the end of the top banner */
 .lang-toggle {
   flex-shrink: 0;
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  background: none; border: 1px solid rgba(196,154,42,0.25); border-radius: 2px;
-  cursor: pointer; padding: 0.2rem 0.6rem;
-  font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.12em; color: rgba(255,255,255,0.55);
-  transition: border-color 0.2s, color 0.2s;
-}
-.lang-toggle:hover { border-color: var(--gold); color: var(--gold-pale); }
-.lang-opt { transition: color 0.2s; }
-.lang-sep { color: rgba(196,154,42,0.3); font-weight: 300; }
-html[lang="fr"] .lang-toggle .lang-opt[data-lang="fr"] { color: var(--gold); }
-html[lang="en"] .lang-toggle .lang-opt[data-lang="en"] { color: var(--gold); }
-
-/* Fixed language toggle in top right corner */
-.lang-toggle-fixed {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: var(--gold);
+  gap: 0.25rem;
+  background: none;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 0;
   font-family: 'Jost', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--navy);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-.lang-toggle-fixed:hover {
-  background: var(--gold-pale);
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-.lang-toggle-fixed .lang-opt {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
   transition: color 0.2s;
-  color: var(--navy);
-  font-weight: 700;
 }
-html[lang="fr"] .lang-toggle-fixed .lang-opt[data-lang="fr"] {
+.lang-toggle:hover { color: rgba(255,255,255,0.85); }
+.lang-opt { transition: color 0.2s; }
+.lang-sep { color: rgba(196,154,42,0.3); font-weight: 300; }
+html[lang="fr"] .lang-toggle .lang-opt[data-lang="fr"] {
+  color: var(--gold);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
-html[lang="en"] .lang-toggle-fixed .lang-opt[data-lang="en"] {
+html[lang="en"] .lang-toggle .lang-opt[data-lang="en"] {
+  color: var(--gold);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
-.lang-toggle-fixed .lang-sep {
-  color: var(--navy);
-  opacity: 0.4;
-  font-weight: 500;
-}
-/* On mobile the fixed lang button would cover the hamburger (same top-right corner).
-   Move it to the bottom-right so the nav-toggle is fully clickable. */
+
+/* Hide the dynamic separator when button leaves the banner flow on mobile */
 @media (max-width: 1080px) {
-  .lang-toggle-fixed {
+  .top-banner-lang-sep { display: none; }
+}
+
+/* Mobile (≤1080px): pull out of banner, pin gold badge to bottom-right */
+@media (max-width: 1080px) {
+  .lang-toggle {
+    position: fixed;
     top: auto;
     bottom: 1.5rem;
+    right: 1rem;
+    background: var(--gold);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 9999;
+    transition: background 0.2s, box-shadow 0.2s;
   }
+  .lang-toggle:hover { background: var(--gold-pale); color: var(--navy); }
+  .lang-toggle .lang-opt { color: var(--navy); }
+  html[lang="fr"] .lang-toggle .lang-opt[data-lang="fr"],
+  html[lang="en"] .lang-toggle .lang-opt[data-lang="en"] {
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .lang-toggle .lang-sep { color: var(--navy); opacity: 0.4; }
 }

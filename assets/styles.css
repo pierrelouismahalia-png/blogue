@@ -603,7 +603,7 @@ img { display: block; max-width: 100%; object-fit: cover; }
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--white); border-top: 1px solid var(--beige-dark);
     padding: 1rem var(--gap);
-    transform: translateY(-110%); transition: transform 0.28s;
+    transform: translateY(calc(-100% - 72px)); transition: transform 0.28s;
     box-shadow: 0 12px 25px rgba(13,27,46,0.12);
     max-height: calc(100vh - 72px); overflow-y: auto;
   }

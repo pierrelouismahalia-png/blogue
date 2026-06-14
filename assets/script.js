@@ -53,13 +53,45 @@
     if (!answer) return;
 
     button.addEventListener('click', () => {
-      const isOpen = item.classList.toggle('open');
-      button.setAttribute('aria-expanded', isOpen);
+      const alreadyOpen = item.classList.contains('open');
       const toggle = button.querySelector('.faq-toggle');
-      if (toggle) toggle.textContent = isOpen ? '−' : '+';
-      answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0';
+
+      if (!alreadyOpen) {
+        // Padding has no transition, so it's applied immediately when .open is added —
+        // scrollHeight now includes it and the panel never clips content.
+        item.classList.add('open');
+        button.setAttribute('aria-expanded', 'true');
+        if (toggle) toggle.textContent = '−';
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        // Keep .open during the closing transition so padding stays intact,
+        // then remove the class (and padding) once max-height has reached 0.
+        button.setAttribute('aria-expanded', 'false');
+        if (toggle) toggle.textContent = '+';
+        answer.style.maxHeight = answer.scrollHeight + 'px'; // snapshot current
+        answer.getBoundingClientRect();                       // force reflow
+        answer.style.maxHeight = '0';
+        const onEnd = (e) => {
+          if (e.propertyName === 'max-height') {
+            item.classList.remove('open');
+            answer.removeEventListener('transitionend', onEnd);
+          }
+        };
+        answer.addEventListener('transitionend', onEnd);
+      }
     });
   });
+
+  // Recalculate height of open accordions when the language toggle changes innerHTML.
+  if (typeof MutationObserver !== 'undefined') {
+    document.querySelectorAll('.faq-answer[data-i18n]').forEach(ans => {
+      new MutationObserver(() => {
+        if (ans.closest('.faq-item')?.classList.contains('open')) {
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+        }
+      }).observe(ans, { childList: true, subtree: true });
+    });
+  }
 
   // ==========================================================================
   // Highlight active nav link based on current page
@@ -2228,4 +2260,4 @@
 
 }());
 
-// Force Cloudflare redeploy (2026-06-14c — fix SyntaxError curly quotes in TT array)
+// Force Cloudflare redeploy (2026-06-14d — fix FAQ accordion height clipping)

@@ -51,7 +51,21 @@
     .flashcard-shuffle-btn { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; background: var(--navy); color: var(--white); border: none; padding: 0.8rem 1.8rem; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
     .flashcard-shuffle-btn:hover { background: var(--gold); color: var(--navy); }
 
-    /* Quiz */
+    /* Quiz Mode Selector */
+    .quiz-mode-selector { padding: 1.5rem 0; }
+    .quiz-mode-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 2.5rem; }
+    .quiz-mode-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .quiz-mode-card { background: var(--white); border: 2px solid var(--beige-dark); border-radius: 8px; padding: 2rem 1.8rem; text-align: center; cursor: pointer; transition: all 0.25s; position: relative; }
+    .quiz-mode-card:not(.quiz-mode-card-disabled):hover { border-color: var(--gold); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .quiz-mode-card-disabled { opacity: 0.65; cursor: not-allowed; }
+    .quiz-mode-card-header { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .quiz-mode-icon { font-size: 2rem; color: var(--gold); }
+    .quiz-mode-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin: 0; }
+    .quiz-mode-card-subtitle { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--gold); margin: 0.5rem 0 0; }
+    .quiz-mode-card-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--ink-light); margin: 0.8rem 0 0; line-height: 1.6; }
+    .quiz-mode-badge { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; background: var(--beige); color: var(--ink-light); padding: 0.7rem 1.2rem; border-radius: 4px; margin-top: 1.5rem; display: inline-block; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Quiz Start */
     .quiz-start-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 2.5rem 2rem; text-align: center; }
     .quiz-start-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
     .quiz-start-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink); line-height: 1.7; margin-bottom: 1.5rem; }
@@ -100,6 +114,10 @@
       .flashcards-grid { grid-template-columns: 1fr; }
       .quiz-card, .quiz-start-card { padding: 1.5rem 1.1rem; }
       .quiz-score-num { font-size: 3rem; }
+      .quiz-mode-cards { grid-template-columns: 1fr; }
+      .quiz-mode-card { padding: 1.5rem 1.2rem; }
+      .quiz-btn-row { flex-direction: column; }
+      .quiz-btn-row .quiz-btn { width: 100%; }
     }
   </style>
 </head>
@@ -588,23 +606,44 @@
 
     function initQuiz() {
       const container = document.getElementById('quizContent');
-      if (container.innerHTML && container.innerHTML.includes('quiz-start-card')) return; // Already initialized
+      if (container.innerHTML && (container.innerHTML.includes('quiz-mode-selector') || container.innerHTML.includes('quiz-start-card'))) return;
 
-      container.innerHTML = `<div class="quiz-start-card">
-        <h3 class="quiz-start-title">50 questions de pratique</h3>
-        <p class="quiz-start-desc">Testez vos connaissances sur les valeurs québécoises. Une seule réponse par question. Score final sur 50.</p>
-        <button class="quiz-btn quiz-btn" onclick="startQuiz()">Commencer le quiz</button>
-      </div>`;
+      container.innerHTML = `
+        <div class="quiz-mode-selector">
+          <h3 class="quiz-mode-title">Choisissez votre mode de pratique</h3>
+          <div class="quiz-mode-cards">
+            <div class="quiz-mode-card" onclick="startQuiz(50)">
+              <div class="quiz-mode-card-header">
+                <div class="quiz-mode-icon">◆</div>
+                <h4 class="quiz-mode-card-title">Pratique rapide</h4>
+              </div>
+              <p class="quiz-mode-card-subtitle">50 questions</p>
+              <p class="quiz-mode-card-desc">Idéal pour une révision ciblée</p>
+              <button class="quiz-btn" style="margin-top: 1.2rem; width: 100%; box-sizing: border-box;">Commencer →</button>
+            </div>
+            <div class="quiz-mode-card quiz-mode-card-disabled">
+              <div class="quiz-mode-card-header">
+                <div class="quiz-mode-icon">◆</div>
+                <h4 class="quiz-mode-card-title">Pratique complète</h4>
+              </div>
+              <p class="quiz-mode-card-subtitle">100 questions</p>
+              <p class="quiz-mode-card-desc">Pour une préparation approfondie avant l'examen</p>
+              <div class="quiz-mode-badge">50 questions à venir</div>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
-    function startQuiz() {
+    function startQuiz(numQuestions = 50) {
       let currentQ = 0, score = 0;
-      const responses = new Array(quizData.length).fill(null);
+      const quizQuestions = quizData.slice(0, numQuestions);
+      const responses = new Array(quizQuestions.length).fill(null);
       shuffleQuizAnswers();
       displayQuestion();
 
       function shuffleQuizAnswers() {
-        quizData.forEach(q => {
+        quizQuestions.forEach(q => {
           const correctAnswer = q.opts[q.ans];
           const opts = q.opts;
           for (let i = opts.length - 1; i > 0; i--) {
@@ -616,19 +655,19 @@
       }
 
       function displayQuestion() {
-        if (currentQ >= quizData.length) {
+        if (currentQ >= quizQuestions.length) {
           showScore();
           return;
         }
 
-        const q = quizData[currentQ];
+        const q = quizQuestions[currentQ];
         const hasAnswered = responses[currentQ] !== null;
         const chosenAnswer = responses[currentQ];
 
         let html = `
           <div class="quiz-progress">
-            <div class="quiz-prog-bar-outer"><div class="quiz-prog-bar-inner" style="width: ${currentQ/quizData.length*100}%"></div></div>
-            <div class="quiz-prog-text">Question ${currentQ + 1} sur 50</div>
+            <div class="quiz-prog-bar-outer"><div class="quiz-prog-bar-inner" style="width: ${currentQ/quizQuestions.length*100}%"></div></div>
+            <div class="quiz-prog-text">Question ${currentQ + 1} sur ${numQuestions}</div>
           </div>
           <div class="quiz-card">
             <div class="quiz-q-text">${q.q}</div>
@@ -658,7 +697,7 @@
               </div>
               <div class="quiz-btn-row" style="margin-top: 1.5rem;">
                 <button class="quiz-btn" onclick="prevQ()" ${currentQ === 0 ? 'disabled' : ''}>← Précédent</button>
-                <button class="quiz-btn" onclick="nextQ()">${currentQ === quizData.length - 1 ? 'Terminer' : 'Suivant →'}</button>
+                <button class="quiz-btn" onclick="nextQ()">${currentQ === quizQuestions.length - 1 ? 'Terminer' : 'Suivant →'}</button>
               </div>
             ` : `<div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; color: var(--ink-light);">Choisissez une réponse pour continuer</div>`}
           </div>
@@ -669,12 +708,12 @@
       window.answerQ = (chosen) => {
         if (responses[currentQ] !== null) return;
         responses[currentQ] = chosen;
-        if (chosen === quizData[currentQ].ans) score++;
+        if (chosen === quizQuestions[currentQ].ans) score++;
         displayQuestion();
       };
 
       window.nextQ = () => {
-        if (currentQ < quizData.length - 1) {
+        if (currentQ < quizQuestions.length - 1) {
           currentQ++;
           displayQuestion();
         } else {
@@ -690,11 +729,12 @@
       };
 
       function showScore() {
+        const passageScore = Math.round(score / numQuestions * 100);
         const html = `
           <div class="quiz-score-banner">
-            <div class="quiz-score-num">${score}/50</div>
-            <div class="quiz-score-sub">${score >= 40 ? 'Excellent !' : score >= 30 ? 'Bon travail' : 'À revoir'}</div>
-            <div style="font-family: 'Jost', sans-serif; font-size: 0.9rem; margin-top: 0.8rem; color: rgba(255,255,255,0.7);">L'examen réel exige 75 % (15 sur 20).</div>
+            <div class="quiz-score-num">${score}/${numQuestions}</div>
+            <div class="quiz-score-sub">${passageScore >= 75 ? 'Excellent !' : passageScore >= 60 ? 'Bon travail' : 'À revoir'}</div>
+            <div style="font-family: 'Jost', sans-serif; font-size: 0.9rem; margin-top: 0.8rem; color: rgba(255,255,255,0.7);">Votre résultat : ${passageScore} % — L'examen réel exige 75 % (15 sur 20).</div>
           </div>
           <button class="quiz-btn quiz-btn" onclick="location.reload()">Recommencer</button>
         `;

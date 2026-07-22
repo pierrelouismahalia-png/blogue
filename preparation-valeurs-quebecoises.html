@@ -64,15 +64,16 @@
     .quiz-choices { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .quiz-choice { background: var(--beige); border: 2px solid var(--beige-dark); border-radius: 6px; padding: 0.85rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--navy); text-align: left; cursor: pointer; transition: all 0.15s; width: 100%; }
     .quiz-choice:hover:not(:disabled) { border-color: var(--gold); background: #fdf8ed; }
+    .quiz-choice:disabled { opacity: 0.7; cursor: not-allowed; }
     .quiz-choice.correct { border-color: #2d7a4f; background: #e8f4ec; color: #1a5e36; font-weight: 500; }
     .quiz-choice.wrong { border-color: #b03a2e; background: #fde8e6; color: #7b241c; font-weight: 500; }
-    .quiz-feedback { margin-top: 1rem; padding: 1rem; background: #f0f0f0; border-radius: 4px; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--navy); }
+    .quiz-feedback { margin-top: 1.5rem; padding: 1.2rem 1.4rem; background: #f9f9f9; border-left: 4px solid var(--gold); border-radius: 4px; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--ink); line-height: 1.65; }
     .quiz-btn { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; background: var(--navy); color: var(--white); border: none; border-radius: 4px; padding: 0.85rem 2rem; cursor: pointer; transition: background 0.2s; }
     .quiz-btn:hover:not(:disabled) { background: var(--gold); color: var(--navy); }
     .quiz-btn:disabled { opacity: 0.35; cursor: not-allowed; }
     .quiz-btn.gold { background: var(--gold); color: var(--navy); }
     .quiz-btn.gold:hover { background: var(--navy); color: var(--white); }
-    .quiz-btn-row { display: flex; justify-content: space-between; gap: 1rem; }
+    .quiz-btn-row { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
     .quiz-score-banner { background: var(--navy); border-radius: 8px; padding: 2.5rem 2rem; text-align: center; margin: 2rem 0; }
     .quiz-score-num { font-family: 'Playfair Display', serif; font-size: 3.75rem; font-weight: 900; color: var(--gold); line-height: 1; }
     .quiz-score-sub { font-family: 'Jost', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin: 0.4rem 0 0.8rem; }
@@ -597,7 +598,8 @@
     }
 
     function startQuiz() {
-      let currentQ = 0, score = 0, answered = [];
+      let currentQ = 0, score = 0;
+      const responses = new Array(quizData.length).fill(null);
       shuffleQuizAnswers();
       displayQuestion();
 
@@ -620,6 +622,9 @@
         }
 
         const q = quizData[currentQ];
+        const hasAnswered = responses[currentQ] !== null;
+        const chosenAnswer = responses[currentQ];
+
         let html = `
           <div class="quiz-progress">
             <div class="quiz-prog-bar-outer"><div class="quiz-prog-bar-inner" style="width: ${currentQ/quizData.length*100}%"></div></div>
@@ -628,33 +633,60 @@
           <div class="quiz-card">
             <div class="quiz-q-text">${q.q}</div>
             <div class="quiz-choices">
-              ${q.opts.map((opt, i) => `
-                <button class="quiz-choice" onclick="answerQ(${i}, ${q.ans})" style="cursor: pointer;">
-                  ${opt}
-                </button>
-              `).join('')}
+              ${q.opts.map((opt, i) => {
+                let classes = 'quiz-choice';
+                let isDisabled = '';
+                if (hasAnswered) {
+                  isDisabled = 'disabled';
+                  if (i === q.ans) classes += ' correct';
+                  if (i === chosenAnswer && i !== q.ans) classes += ' wrong';
+                }
+                return `<button class="${classes}" onclick="answerQ(${i})" ${isDisabled} style="cursor: ${isDisabled ? 'not-allowed' : 'pointer'};">${opt}</button>`;
+              }).join('')}
             </div>
+            ${hasAnswered ? `
+              <div class="quiz-feedback">
+                <div style="font-weight: 600; margin-bottom: 0.6rem; color: ${chosenAnswer === q.ans ? '#2d7a4f' : '#7b241c'};">
+                  ${chosenAnswer === q.ans ? '✓ Correcte !' : '✗ Mauvaise réponse'}
+                </div>
+                <div style="margin-bottom: 0.5rem; font-size: 0.95rem;">
+                  <strong>Bonne réponse :</strong> ${q.opts[q.ans]}
+                </div>
+                <div style="font-size: 0.9rem; color: var(--ink-light);">
+                  <strong>Clé du guide :</strong> ${q.key}
+                </div>
+              </div>
+              <div class="quiz-btn-row" style="margin-top: 1.5rem;">
+                <button class="quiz-btn" onclick="prevQ()" ${currentQ === 0 ? 'disabled' : ''}>← Précédent</button>
+                <button class="quiz-btn" onclick="nextQ()">${currentQ === quizData.length - 1 ? 'Terminer' : 'Suivant →'}</button>
+              </div>
+            ` : `<div style="text-align: center; margin-top: 0.5rem; font-size: 0.9rem; color: var(--ink-light);">Choisissez une réponse pour continuer</div>`}
           </div>
         `;
         document.getElementById('quizContent').innerHTML = html;
       }
 
-      window.answerQ = (chosen, correct) => {
-        answered.push(currentQ);
-        if (chosen === correct) score++;
+      window.answerQ = (chosen) => {
+        if (responses[currentQ] !== null) return;
+        responses[currentQ] = chosen;
+        if (chosen === quizData[currentQ].ans) score++;
+        displayQuestion();
+      };
 
-        const choices = document.querySelectorAll('.quiz-choice');
-        choices[correct].classList.add('correct');
-        if (chosen !== correct) choices[chosen].classList.add('wrong');
-        choices.forEach(c => c.disabled = true);
-
-        const feedback = `<div class="quiz-feedback">${chosen === correct ? '✓ Correcte !' : '✗ Mauvaise réponse'} <br><strong>Clé : ${quizData[currentQ].key}</strong></div>`;
-        document.querySelector('.quiz-card').innerHTML += feedback;
-
-        setTimeout(() => {
+      window.nextQ = () => {
+        if (currentQ < quizData.length - 1) {
           currentQ++;
           displayQuestion();
-        }, 1500);
+        } else {
+          showScore();
+        }
+      };
+
+      window.prevQ = () => {
+        if (currentQ > 0) {
+          currentQ--;
+          displayQuestion();
+        }
       };
 
       function showScore() {

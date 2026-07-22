@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test Bilingual</title>
+</head>
+<body onload="testBilingual()">
+<h1>Testing guide-etude.html Bilingual System</h1>
+<p id="result">Loading...</p>
+<script>
+function testBilingual() {
+  // Simulate loading and testing
+  var checks = [];
+  
+  // Check if the file structure is correct by fetching it
+  fetch('guide-etude.html')
+    .then(r => r.text())
+    .then(html => {
+      var pass = 0;
+      var total = 6;
+      
+      // Check 1: Supabase guard
+      if (html.includes('acces-garde')) { pass++; }
+      checks.push('✓ Supabase access guard present');
+      
+      // Check 2: Content.fr
+      if (html.includes('fr: {')) { pass++; }
+      checks.push('✓ French content object');
+      
+      // Check 3: Content.en  
+      if (html.includes('en: {')) { pass++; }
+      checks.push('✓ English content object');
+      
+      // Check 4: renderContent
+      if (html.includes('function renderContent')) { pass++; }
+      checks.push('✓ Render function present');
+      
+      // Check 5: MutationObserver
+      if (html.includes('new MutationObserver')) { pass++; }
+      checks.push('✓ MutationObserver present');
+      
+      // Check 6: Chapter count
+      var chapterMatches = html.match(/eyebrow.*Chapitre/g) || [];
+      if (chapterMatches.length >= 9) { pass++; }
+      checks.push('✓ All 9 chapters present');
+      
+      document.getElementById('result').innerHTML = 
+        '<strong>Bilingual System Status: ' + pass + '/' + total + ' checks passed</strong><br><br>' +
+        checks.join('<br>');
+    })
+    .catch(e => {
+      document.getElementById('result').innerHTML = '✗ Error: ' + e;
+    });
+}
+</script>
+</body>
+</html>

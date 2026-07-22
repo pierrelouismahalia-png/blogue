@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Mon programme de preparation — MDPL Immigration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body.acces-verrouille > *:not(#acces-garde) { display: none !important; }
+    #acces-garde { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; background: #0d1b2a; color: #fff; font-family: 'Jost', sans-serif; text-align: center; padding: 2rem; }
+    #acces-garde .ag-inner { max-width: 420px; }
+    #acces-garde h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.75rem; color: #fff; }
+    #acces-garde p { font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 1.5rem; }
+    #acces-garde a { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #c9a14a; color: #0d1b2a; text-decoration: none; border-radius: 5px; padding: 0.85rem 1.75rem; }
+
+    .mp-wrap { max-width: 980px; margin: 0 auto; }
+    .mp-progress { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 10px; padding: 1.5rem 1.75rem; margin-bottom: 2rem; }
+    .mp-progress-title { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
+    .mp-bar { background: var(--beige-dark); height: 10px; border-radius: 6px; overflow: hidden; margin-bottom: 0.6rem; }
+    .mp-bar-fill { background: linear-gradient(90deg, var(--gold), #d9b85f); height: 10px; width: 0%; border-radius: 6px; }
+    .mp-bar-txt { font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink-light); }
+
+    .mp-choices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+    .mp-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--beige-dark); border-radius: 10px; padding: 1.5rem 1.25rem; }
+    .mp-card-emoji { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .mp-card h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 0 0 0.9rem; }
+    .mp-card ul { list-style: none; margin: 0 0 1.5rem; padding: 0; flex: 1; }
+    .mp-card li { font-family: 'Jost', sans-serif; font-size: 0.84rem; color: var(--ink-mid); padding: 0.35rem 0 0.35rem 1.4rem; position: relative; }
+    .mp-card li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .mp-card-btn { display: block; text-align: center; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; background: var(--navy); color: #fff; text-decoration: none; border-radius: 6px; padding: 0.8rem 0.6rem; transition: background 0.2s, color 0.2s; }
+    .mp-card-btn:hover { background: var(--gold); color: var(--navy); }
+    @media (max-width: 900px) { .mp-choices { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .mp-choices { grid-template-columns: 1fr; } }
+
+    .mp-foot { text-align: center; margin-top: 2rem; }
+    .mp-signout { background: none; border: none; color: var(--ink-light); text-decoration: underline; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.8rem; }
+  </style>
+</head>
+<body class="acces-verrouille">
+
+  <div id="acces-garde">
+    <div class="ag-inner">
+      <h2 id="ag-titre">Verification de votre acces...</h2>
+      <p id="ag-texte">Un instant, nous verifions votre abonnement.</p>
+      <a id="ag-lien" href="connexion.html" style="display:none">Aller a la connexion</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (function () {
+    var SUPABASE_URL  = "https://kzvgwbgnzinvjcautihq.supabase.co";
+    var SUPABASE_ANON = "sb_publishable_uemRYIKSPA2A1xY5K-6qSw_4NnrBQjR";
+    var PRODUIT        = "citoyennete";
+    var PAGE_CONNEXION = "connexion.html";
+    var elTitre = document.getElementById("ag-titre");
+    var elTexte = document.getElementById("ag-texte");
+    var elLien  = document.getElementById("ag-lien");
+    function rediriger() { setTimeout(function () { window.location.replace(PAGE_CONNEXION); }, 1500); }
+    function refuser(t, x) { elTitre.textContent = t; elTexte.textContent = x; elLien.style.display = "inline-block"; rediriger(); }
+    function deverrouiller() {
+      document.body.classList.remove("acces-verrouille");
+      var g = document.getElementById("acces-garde");
+      if (g && g.parentNode) g.parentNode.removeChild(g);
+      var so = document.getElementById("mp-signout");
+      if (so) so.addEventListener("click", function () { sbC.auth.signOut().then(function () { window.location.replace(PAGE_CONNEXION); }); });
+    }
+    if (!window.supabase) { refuser("Erreur de chargement", "Impossible de verifier votre acces. Redirection..."); return; }
+    var sbC = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    sbC.auth.getSession().then(function (res) {
+      var session = res && res.data ? res.data.session : null;
+      if (!session) { refuser("Connexion requise", "Vous devez vous connecter pour acceder au programme. Redirection..."); return; }
+      sbC.rpc("mon_acces_actif", { p_produit: PRODUIT }).then(function (r) {
+        if (r.error) { refuser("Verification impossible", "Une erreur est survenue. Redirection..."); return; }
+        if (r.data === true) { deverrouiller(); }
+        else { refuser("Acces non actif", "Votre acces n'est pas actif ou a expire. Redirection..."); }
+      });
+    });
+  })();
+  </script>
+
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tel.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h a 17 h</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="https://square.link/u/0eJllmks" target="_blank" rel="noreferrer">Programme préparatoire à l'examen de citoyenneté</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Votre espace</p>
+      <h1 class="page-hero-title">Mon programme de preparation a la <em>citoyennete canadienne</em></h1>
+      <p class="page-hero-subtitle">Bienvenue. Choisissez par ou commencer votre preparation.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--beige);">
+    <div class="section-inner">
+      <div class="mp-wrap">
+
+        <div class="mp-progress">
+          <p class="mp-progress-title">Votre progression</p>
+          <div class="mp-bar"><div class="mp-bar-fill"></div></div>
+          <p class="mp-bar-txt">Progression : 0 % &middot; Commencez quand vous etes pret(e).</p>
+        </div>
+
+        <div class="mp-choices">
+
+          <div class="mp-card">
+            <div class="mp-card-emoji">&#128218;</div>
+            <h2>Etudier le guide</h2>
+            <ul>
+              <li>12 chapitres</li>
+              <li>Resumes et points cles</li>
+              <li>Mini-quiz par chapitre</li>
+            </ul>
+            <a href="guide-etude.html" class="mp-card-btn">Commencer le guide</a>
+          </div>
+
+          <div class="mp-card">
+            <div class="mp-card-emoji">&#129504;</div>
+            <h2>Flashcards</h2>
+            <ul>
+              <li>48 cartes memoire</li>
+              <li>Pratiquez seul ou en famille</li>
+            </ul>
+            <a href="flashcards.html" class="mp-card-btn">Pratiquer les cartes</a>
+          </div>
+
+          <div class="mp-card">
+            <div class="mp-card-emoji">&#128221;</div>
+            <h2>Passer aux questions</h2>
+            <ul>
+              <li>250 questions</li>
+              <li>Examens simules</li>
+            </ul>
+            <a href="test-citoyennete-250-premium-a9f3k2.html" class="mp-card-btn">Commencer les questions</a>
+          </div>
+
+          <div class="mp-card">
+            <div class="mp-card-emoji">&#128640;</div>
+            <h2>Revision rapide</h2>
+            <ul>
+              <li>20 faits essentiels</li>
+              <li>Revision avant l'examen</li>
+            </ul>
+            <a href="guide-etude.html#ch9" class="mp-card-btn">Revision rapide</a>
+          </div>
+
+        </div>
+
+        <div class="mp-foot">
+          <button id="mp-signout" class="mp-signout" type="button">Se deconnecter</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits reserves.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialite</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
+

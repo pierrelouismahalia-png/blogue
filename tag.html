@@ -1,0 +1,891 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWHSQ78PJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GWHSQ78PJ9');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Articles du blogue MDPL Immigration classés par mot-clé — immigration canadienne." />
+  <title>Blogue — MDPL Immigration</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="programme-preparation.html">Programme préparatoire à l'examen de citoyenneté</a>
+            <a href="preparation-valeurs-quebecoises.html">Préparation aux valeurs québécoises (gratuit)</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html" class="active">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a><span class="breadcrumb-sep">/</span><a href="blog.html" data-i18n="tag.bc.blog">Blogue</a><span class="breadcrumb-sep">/</span><span id="tag-bc-current">Mot-clé</span>
+      </nav>
+      <p class="page-hero-eyebrow" data-i18n="tag.hero.eyebrow">Mot-clé</p>
+      <h1 class="page-hero-title" id="tag-hero-title">Articles</h1>
+      <p class="page-hero-desc" id="tag-hero-desc"></p>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section class="section articles-section">
+    <div class="section-inner">
+      <p class="section-eyebrow" data-i18n="tag.arts.eyebrow">Articles</p>
+      <h2 class="section-title" id="tag-arts-title">Articles du <em>blogue</em></h2>
+      <div class="articles-grid" id="tag-articles-grid"></div>
+      <p id="tag-no-results" style="display:none;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink-mid);text-align:center;padding:4rem 0;"></p>
+      <div class="articles-cta">
+        <a href="blog.html" class="btn-outline" data-i18n="tag.back.blog">&larr; Retour au blogue</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2 data-i18n="blog.cta.title">Une question liée à <em>votre situation&nbsp;?</em></h2>
+      <p data-i18n="blog.cta.desc">Les articles du blogue informent, mais ne remplacent pas une évaluation personnalisée. Discutons de votre dossier en consultation.</p>
+      <div class="cta-band-actions">
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold" data-i18n="blog.cta.btn1">Prendre rendez-vous</a>
+        <a href="contact.html" class="btn-outline gold" data-i18n="blog.cta.btn2">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title" data-i18n="blog.disclaimer.title">Information importante</p>
+        <p class="disclaimer-text" data-i18n="blog.disclaimer.text">Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Chaque situation d'immigration est unique et dépend de plusieurs facteurs. Pour toute démarche concrète, une consultation personnalisée avec un représentant autorisé en immigration est nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d'immigration canadienne avec rigueur, transparence et bienveillance.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="notre-histoire.html">Notre histoire</a></li>
+            <li><a href="nos-services.html">Nos services</a></li>
+            <li><a href="outils.html">Nos outils</a></li>
+            <li><a href="pourquoi-mdpl.html">Pourquoi MDPL</a></li>
+            <li><a href="blog.html">Blogue</a></li>
+            <li><a href="questions-frequentes.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Nous contacter</a></li>
+            <li><a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Coordonnées</p>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Adresse</span>
+              <address class="footer-address"><a href="https://www.google.com/maps/search/1565+boul.+de+l'Avenir+suite+206+Laval+Quebec+H7S+2N5" target="_blank" rel="noreferrer">1565 boul. de l'Avenir, suite 206<br />Laval, Québec H7S 2N5</a></address>
+            </div>
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Horaires</span>
+              <span class="footer-contact-value">Lundi au vendredi, 9 h à 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+
+  <!-- Tag archive — reads ?tag=SLUG from URL, renders matching articles -->
+  <script>
+  (function() {
+    var ARTICLES = [
+      {
+        slug: 'article-enfant-citoyen-canadien-refus-embarquement-passeport.html',
+        img: 'https://images.unsplash.com/photo-1523633589114-88eaf4b4f1a8?w=900&auto=format&fit=crop&q=80',
+        tags: ['citoyennete', 'passeport', 'ave'],
+        fr: {
+          cat: 'Double citoyenneté',
+          title: 'Refus d’embarquement : quand la citoyenneté canadienne bloque le voyage',
+          excerpt: 'Une enfant née à l’étranger, une AVE invalidée après la reconnaissance de citoyenneté, un refus brutal à l’aéroport. Ce que chaque parent citoyen canadien doit absolument savoir avant de voyager.',
+          kw:      ['passeport canadien', 'refus embarquement', 'AVE invalide', 'certificat citoyenneté'],
+          kwSlugs: ['passeport', 'citoyennete', 'citoyennete', 'citoyennete']
+        },
+        en: {
+          cat: 'Dual citizenship',
+          title: 'Boarding refusal: when Canadian citizenship blocks travel',
+          excerpt: 'A child born abroad, an eTA invalidated after citizenship recognition, a brutal refusal at the airport. What every Canadian citizen parent must know before traveling.',
+          kw:      ['Canadian passport', 'boarding refusal', 'invalid eTA', 'citizenship certificate'],
+          kwSlugs: ['passeport', 'citoyennete', 'citoyennete', 'citoyennete']
+        }
+      },
+      {
+        slug: 'article-registre-voyages-resident-permanent-citoyennete.html',
+        img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&auto=format&fit=crop&q=80',
+        tags: ['residence-permanente', 'citoyennete', 'ircc'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Registre de voyages et résidence permanente : un outil essentiel pour votre demande de citoyenneté',
+          excerpt: '1 095 jours à prouver à IRCC avec des dates exactes. Votre mémoire ne suffira pas — téléchargez notre carnet gratuit et commencez dès aujourd’hui.',
+          kw:      ['registre voyages RP', '1 095 jours citoyenneté'],
+          kwSlugs: ['residence-permanente', 'citoyennete']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'Travel registry and permanent residence: an essential tool for your citizenship application',
+          excerpt: '1,095 days to prove to IRCC with exact dates. Your memory will not be enough — download our free logbook and start today.',
+          kw:      ['travel registry PR', '1,095 days citizenship'],
+          kwSlugs: ['residence-permanente', 'citoyennete']
+        }
+      },
+      {
+        slug: 'article-csq-certificat-selection-quebec-immigration.html',
+        img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&auto=format&fit=crop&q=80',
+        tags: ['csq', 'mifi', 'residence-permanente', 'immigration-quebec'],
+        fr: {
+          cat: 'Immigration Québec',
+          title: 'Qu’est-ce que le CSQ ? Le Certificat de sélection du Québec expliqué',
+          excerpt: 'MIFI, IRCC, parrainage, perte du document : tout ce que vous devez savoir sur le CSQ et pourquoi il faut le conserver toute votre vie.',
+          kw:      ['CSQ', 'MIFI', 'immigration Québec'],
+          kwSlugs: ['csq', 'mifi', 'immigration-quebec']
+        },
+        en: {
+          cat: 'Quebec immigration',
+          title: 'What is the CSQ? The Quebec Selection Certificate explained',
+          excerpt: 'MIFI, IRCC, sponsorship, loss of document: everything you need to know about the CSQ and why you must keep it for life.',
+          kw:      ['CSQ', 'MIFI', 'Quebec immigration'],
+          kwSlugs: ['csq', 'mifi', 'immigration-quebec']
+        }
+      },
+      {
+        slug: 'article-parrainage-conjoint-ontario-quebec-ottawa-gatineau-intention-residence.html',
+        img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'residence-permanente', 'conjoint'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Il vit en Ontario, travaille au Québec : un dossier de parrainage qui a failli virer au cauchemar',
+          excerpt: 'Ottawa–Gatineau, intention de résidence, CSQ exigé par erreur. Comment une mauvaise interprétation de l’agent a failli compromettre une demande de résidence permanente.',
+          kw:      ['parrainage conjoint', 'Ottawa Gatineau', 'article 40 LIPR'],
+          kwSlugs: ['parrainage', 'parrainage', 'residence-permanente']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'He lives in Ontario, works in Quebec: a sponsorship file that nearly turned into a nightmare',
+          excerpt: 'Ottawa–Gatineau, intention to reside, CSQ mistakenly required. How a misinterpretation by the officer nearly compromised a permanent residence application.',
+          kw:      ['spousal sponsorship', 'Ottawa Gatineau', 'section 40 IRPA'],
+          kwSlugs: ['parrainage', 'parrainage', 'residence-permanente']
+        }
+      },
+      {
+        slug: 'article-pere-canadien-enfant-etranger-test-adn-citoyennete-filiation.html',
+        img: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=500&auto=format&fit=crop&q=80',
+        tags: ['citoyennete', 'residence-permanente', 'ircc', 'adn', 'filiation'],
+        fr: {
+          cat: 'Résidence permanente',
+          title: 'Il est le père, l’enfant est Canadien : mais la preuve du lien reste essentielle',
+          excerpt: 'Acte de naissance sans le nom du père, test ADN obligatoire, délais d’un an et plus. Ce que les familles doivent savoir sur la citoyenneté canadienne par filiation.',
+          kw:      ['citoyenneté par filiation', 'test ADN IRCC'],
+          kwSlugs: ['citoyennete', 'adn']
+        },
+        en: {
+          cat: 'Permanent residence',
+          title: 'He is the father, the child is Canadian: but proof of the bond remains essential',
+          excerpt: 'Birth certificate without the father\'s name, mandatory DNA test, delays of a year or more. What families need to know about Canadian citizenship by descent.',
+          kw:      ['citizenship by descent', 'IRCC DNA test'],
+          kwSlugs: ['citoyennete', 'adn']
+        }
+      },
+      {
+        slug: 'article-adoption-tutelle-enfant-immigration-canada-caraibes.html',
+        img: 'https://images.unsplash.com/photo-1576765608622-067973a79f53?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'parrainage-enfant', 'adoption', 'tutelle'],
+        fr: {
+          cat: 'Parrainage enfant',
+          title: '« C’est ma fille depuis des années » : adoption, tutelle et immigration au Canada depuis les Caraïbes',
+          excerpt: 'Tutelle coutumière, adoption non officielle, enfant confié à la famille : pourquoi l’IRCC refuse ces liens et comment régulariser la situation pour immigrer au Canada.',
+          kw:      ['adoption tutelle Canada', 'parrainage enfant Caraïbes'],
+          kwSlugs: ['adoption', 'parrainage-enfant']
+        },
+        en: {
+          cat: 'Child sponsorship',
+          title: '"She\'s been my daughter for years": adoption, guardianship and immigration to Canada from the Caribbean',
+          excerpt: 'Customary guardianship, informal adoption, child entrusted to family: why IRCC refuses these bonds and how to regularize the situation to immigrate to Canada.',
+          kw:      ['adoption guardianship Canada', 'child sponsorship Caribbean'],
+          kwSlugs: ['adoption', 'parrainage-enfant']
+        }
+      },
+      {
+        slug: 'article-inspection-edsc-eimt-employeur-ptet.html',
+        img: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=500&auto=format&fit=crop&q=80',
+        tags: ['permis-de-travail', 'travailleurs-etrangers', 'eimt'],
+        fr: {
+          cat: 'Travailleurs étrangers',
+          title: 'Inspections EDSC sur l’EIMT : ce que tout employeur doit savoir avant de recevoir cette lettre',
+          excerpt: 'Une lettre d’EDSC arrive sans avertissement. Ce que vous avez déclaré lors de l’EIMT, vos pratiques salariales et vos conditions d’emploi seront scrutinées. Ce que tout employeur du PTET doit absolument préparer.',
+          kw:      ['inspection EDSC', 'EIMT employeur', 'PTET conformité'],
+          kwSlugs: ['eimt', 'eimt', 'permis-de-travail']
+        },
+        en: {
+          cat: 'Foreign workers',
+          title: 'ESDC inspections on LMIAs: what every employer must know before receiving this letter',
+          excerpt: 'An ESDC letter arrives without warning. What you declared in your LMIA, your salary practices and employment conditions will be scrutinized. What every TFWP employer must absolutely prepare.',
+          kw:      ['ESDC inspection', 'LMIA employer', 'TFWP compliance'],
+          kwSlugs: ['eimt', 'eimt', 'permis-de-travail']
+        }
+      },
+      {
+        slug: 'article-monogamie-polygamie-parrainage-conjoint-canada.html',
+        img: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'parrainage-familial', 'ircc', 'mariage', 'polygamie'],
+        fr: {
+          cat: 'Parrainage familial',
+          title: 'Monogamie ou polygamie : ce qu’il faut savoir avant de déposer un parrainage d’époux',
+          excerpt: 'Un régime polygame inscrit sur un certificat de mariage — même par erreur — peut mener directement à un refus. Cas vécu, correction officielle exigée, et règles du Québec : ce qu’il faut vérifier avant de déposer.',
+          kw:      ['polygamie parrainage', 'certificat mariage IRCC', 'régime matrimonial'],
+          kwSlugs: ['polygamie', 'mariage', 'mariage']
+        },
+        en: {
+          cat: 'Family sponsorship',
+          title: 'Monogamy or polygamy: what you need to know before filing spouse sponsorship',
+          excerpt: 'A polygamous regime on a marriage certificate — even by mistake — can lead directly to a refusal. A real case, official correction required, and Quebec rules: what to check before filing.',
+          kw:      ['polygamy sponsorship', 'marriage certificate IRCC', 'matrimonial regime'],
+          kwSlugs: ['polygamie', 'mariage', 'mariage']
+        }
+      },
+      {
+        slug: 'article-importance-documents-immigration-canada.html',
+        img: 'https://images.unsplash.com/photo-1568234928966-359c35dd8327?w=500&auto=format&fit=crop&q=80',
+        tags: ['ircc', 'delais', 'documents', 'residence-permanente'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'L’importance de soumettre ses documents à temps en immigration canadienne',
+          excerpt: 'Un dossier admissible peut être refusé uniquement parce qu’un document n’a pas été soumis à temps. Délais, bonne foi, prolongation et exemption : ce qu’il faut savoir avant qu’il soit trop tard.',
+          kw:      ['délais IRCC', 'documents immigration', 'prolongation délai'],
+          kwSlugs: ['delais', 'documents', 'delais']
+        },
+        en: {
+          cat: 'Canadian immigration',
+          title: 'The importance of submitting documents on time in Canadian immigration',
+          excerpt: 'An eligible file can be refused simply because a document was not submitted on time. Deadlines, good faith, extension and exemption: what you need to know before it\'s too late.',
+          kw:      ['IRCC deadlines', 'immigration documents', 'deadline extension'],
+          kwSlugs: ['delais', 'documents', 'delais']
+        }
+      },
+      {
+        slug: 'article-detention-immigration-controle-motifs-enquete.html',
+        img: 'https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=80',
+        tags: ['detention', 'detention-immigration', 'controle-detention', 'asfc-cbsa'],
+        fr: {
+          cat: 'Détention',
+          title: 'Détention en immigration : comprendre le contrôle des motifs et l\'enquête',
+          excerpt: 'Être détenu par l\'ASFC ou recevoir un avis d\'enquête est stressant — mais ces procédures sont strictement encadrées par la loi. Délais de 48 h, 7 jours, 30 jours, motifs de détention, caution et alternatives : le point complet.',
+          kw:      ['détention immigration', 'contrôle des motifs', 'ASFC'],
+          kwSlugs: ['detention-immigration', 'controle-detention', 'asfc-cbsa']
+        },
+        en: {
+          cat: 'Detention',
+          title: 'Immigration detention: understanding the detention review and admissibility hearing',
+          excerpt: 'Being detained by CBSA or receiving a notice of inquiry is stressful — but these procedures are strictly governed by law. 48-hour, 7-day, 30-day timelines, grounds of detention, bail and alternatives: the full overview.',
+          kw:      ['immigration detention', 'detention review', 'CBSA'],
+          kwSlugs: ['detention-immigration', 'controle-detention', 'asfc-cbsa']
+        }
+      },
+      {
+        slug: 'article-appels-sai.html',
+        img: 'https://images.unsplash.com/photo-1589578527966-fdac0f44566c?w=500&auto=format&fit=crop&q=80',
+        tags: ['appel-immigration', 'sai-iad', 'cisr-irb', 'parrainage', 'mesure-renvoi', 'resident-permanent'],
+        fr: {
+          cat: 'Appels (SAI)',
+          title: 'Faire appel d\'une décision d\'immigration : le guide de la Section d\'appel de l\'immigration (SAI)',
+          excerpt: 'Refus de parrainage, mesure de renvoi, perte du statut de résident permanent : qui peut faire appel devant la SAI, quels sont les délais stricts, et ce qui se joue vraiment à une audience de novo.',
+          kw:      ['appel immigration', 'SAI — CISR', 'parrainage'],
+          kwSlugs: ['appel-immigration', 'sai-iad', 'parrainage']
+        },
+        en: {
+          cat: 'Immigration Appeals (IAD)',
+          title: 'Appealing an Immigration Decision: A Guide to the Immigration Appeal Division (IAD)',
+          excerpt: 'Sponsorship refusal, removal order, loss of permanent resident status: who can appeal to the IAD, what are the strict deadlines, and what is really at stake at a de novo hearing.',
+          kw:      ['immigration appeal', 'IAD — IRB', 'sponsorship'],
+          kwSlugs: ['appel-immigration', 'sai-iad', 'parrainage']
+        }
+      },
+      {
+        slug: 'article-demande-asile.html',
+        img: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=500&auto=format&fit=crop&q=80',
+        tags: ['asile', 'asylum', 'demande-asile', 'refugie', 'refugee', 'spr', 'rpd', 'sar', 'rad', 'etps', 'stca', 'fda', 'boc', 'erar', 'prra'],
+        fr: {
+          cat: 'Demande d\'asile',
+          title: 'Faire une demande d\'asile au Canada : le guide complet (mis a jour 2026)',
+          excerpt: 'Refugie au sens de la Convention, LIPR art. 97, ETPS, formulaire FDA, SPR et SAR : tout ce que chaque demandeur d\'asile au Canada doit savoir avant de faire le premier pas.',
+          kw:      ['demande d\'asile', 'SPR — CISR', 'ETPS'],
+          kwSlugs: ['demande-asile', 'spr', 'etps']
+        },
+        en: {
+          cat: 'Asylum Claim',
+          title: 'Claiming Asylum in Canada: The Complete Guide (Updated 2026)',
+          excerpt: 'Convention refugee, IRPA s. 97, STCA, BOC form, RPD and RAD: what every asylum claimant in Canada must know before taking the first step.',
+          kw:      ['asylum claim', 'RPD — IRB', 'STCA'],
+          kwSlugs: ['demande-asile', 'rpd', 'stca']
+        }
+      },
+      {
+        slug: 'article-considerations-humanitaires.html',
+        img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80',
+        tags: ['humanitaire', 'humanitarian', 'ch', 'hc', 'motifs-humanitaires', 'kanthasamy', 'interet-enfant', 'best-interests', 'etablissement', 'residence-permanente'],
+        fr: {
+          cat: 'Humanitaire (CH)',
+          title: 'La demande pour considerations d\'ordre humanitaire (CH) : le guide',
+          excerpt: 'Article 25(1) LIPR, test Kanthasamy, interet superieur de l\'enfant, regle du 1 an : le guide CH pour toute personne ne se qualifiant dans aucune categorie reguliere d\'immigration.',
+          kw:      ['demande CH', 'Kanthasamy', 'interet superieur de l\'enfant'],
+          kwSlugs: ['humanitaire', 'kanthasamy', 'interet-enfant']
+        },
+        en: {
+          cat: 'Humanitarian (H&C)',
+          title: 'Humanitarian and Compassionate Applications: The Complete Guide',
+          excerpt: 'Section 25(1) IRPA, the Kanthasamy test, best interests of the child, one-year bar after a refugee refusal: the H&C guide for anyone who doesn\'t fit a regular immigration category.',
+          kw:      ['H&C application', 'Kanthasamy', 'best interests of child'],
+          kwSlugs: ['humanitarian', 'kanthasamy', 'best-interests']
+        }
+      },
+      {
+        slug: 'article-erreurs-frequentes-immigration.html',
+        img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&auto=format&fit=crop&q=80',
+        tags: ['erreurs', 'errors', 'super-visa', 'lico', 'fausse-declaration', 'misrepresentation', 'double-intention', 'dual-intent', 'parrainage', 'sponsorship', 'visa-visiteur', 'biometrie'],
+        fr: {
+          cat: 'Erreurs a eviter',
+          title: 'Les 6 erreurs les plus frequentes dans une demande d\'immigration (et comment les eviter)',
+          excerpt: 'Formulaires incoherents, seuil LICO, double intention, fausse declaration, assurance Super Visa, biometrie : les pieges les plus courants avant la soumission — et comment les eviter.',
+          kw:      ['erreurs immigration', 'Super Visa LICO', 'fausse declaration'],
+          kwSlugs: ['erreurs', 'super-visa', 'fausse-declaration']
+        },
+        en: {
+          cat: 'Common Mistakes',
+          title: 'The 6 Most Common Mistakes in an Immigration Application (and How to Avoid Them)',
+          excerpt: 'Inconsistent forms, LICO threshold, dual intent, misrepresentation, Super Visa insurance, biometrics: the most frequent pitfalls before submission — and how to avoid them.',
+          kw:      ['immigration mistakes', 'Super Visa LICO', 'misrepresentation'],
+          kwSlugs: ['errors', 'super-visa', 'misrepresentation']
+        }
+      },
+      {
+        slug: 'demande-citoyennete.html',
+        img: 'https://images.unsplash.com/photo-1541360052-5f47a02a6734?w=600&auto=format&fit=crop&q=80',
+        tags: ['citoyennete', 'citizenship', 'demande-citoyennete', 'examen-citoyennete', 'naturalisation', 'presence-physique', 'certificat-citoyennete', 'passeport'],
+        fr: {
+          cat: 'Citoyenneté',
+          title: 'Demande de citoyenneté canadienne : guide complet',
+          excerpt: 'Conditions d\'admissibilité, calcul des 1 095 jours, examen de citoyenneté, cérémonie et passeport : tout ce qu\'il faut savoir pour préparer votre demande.',
+          kw:      ['citoyenneté canadienne', 'naturalisation', '1 095 jours', 'examen citoyenneté', 'passeport canadien'],
+          kwSlugs: ['citoyennete', 'naturalisation', 'presence-physique', 'examen-citoyennete', 'passeport']
+        },
+        en: {
+          cat: 'Citizenship',
+          title: 'Canadian citizenship application: complete guide',
+          excerpt: 'Eligibility requirements, 1,095-day calculation, citizenship test, ceremony, and passport: everything you need to know to prepare your application.',
+          kw:      ['Canadian citizenship', 'naturalization', '1,095 days', 'citizenship test', 'Canadian passport'],
+          kwSlugs: ['citoyennete', 'naturalisation', 'presence-physique', 'examen-citoyennete', 'passeport']
+        }
+      },
+      {
+        slug: 'article-pstq-volets-pointage.html',
+        img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&auto=format&fit=crop&q=80',
+        tags: ['pstq', 'immigration-quebec', 'csq', 'arrima', 'mifi'],
+        fr: {
+          cat: 'Immigration Québec',
+          title: 'PSTQ : comprendre les 4 volets et votre pointage',
+          excerpt: 'Le PSTQ sélectionne les travailleurs qualifiés souhaitant s\'établir au Québec via Arrima. Découvrez les 4 volets du programme, la logique du pointage et les facteurs pris en compte par le MIFI.',
+          kw:      ['PSTQ', 'volets PSTQ', 'pointage PSTQ', 'Arrima', 'immigration Québec'],
+          kwSlugs: ['pstq', 'pstq', 'pstq', 'arrima', 'immigration-quebec']
+        },
+        en: {
+          cat: 'Quebec Immigration',
+          title: 'PSTQ: understanding the 4 streams and your score',
+          excerpt: 'The PSTQ selects skilled workers wishing to settle in Quebec through Arrima. Discover the 4 streams, the scoring logic, and what a strong profile looks like.',
+          kw:      ['PSTQ streams', 'Quebec points', 'Arrima', 'CSQ', 'Quebec immigration'],
+          kwSlugs: ['pstq', 'pstq', 'arrima', 'csq', 'immigration-quebec']
+        }
+      },
+      {
+        slug: 'article-entrevue-parrainage-epoux.html',
+        img: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&auto=format&fit=crop&q=80',
+        tags: ['parrainage', 'parrainage-familial', 'conjoint', 'mariage', 'ircc'],
+        fr: {
+          cat: 'Parrainage familial',
+          title: 'Entrevue de parrainage d\'époux : à quoi s\'attendre (avec exemples de questions)',
+          excerpt: 'IRCC peut convoquer un couple à une entrevue pour vérifier l\'authenticité de la relation. Déroulement, exemples de questions et conseils pour se préparer.',
+          kw:      ['entrevue parrainage', 'parrainage conjoint', 'relation bonne foi', 'questions entrevue IRCC'],
+          kwSlugs: ['parrainage', 'parrainage-familial', 'conjoint', 'ircc']
+        },
+        en: {
+          cat: 'Family Sponsorship',
+          title: 'Spousal sponsorship interview: what to expect (with sample questions)',
+          excerpt: 'IRCC may invite a couple to an interview to verify the authenticity of their relationship. What to expect, sample questions, and tips to prepare.',
+          kw:      ['sponsorship interview', 'genuine relationship', 'IRCC interview', 'spousal sponsorship'],
+          kwSlugs: ['parrainage', 'parrainage-familial', 'conjoint', 'ircc']
+        }
+      },
+      {
+        slug: 'article-demande-atip-notes-smgc.html',
+        img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&auto=format&fit=crop&q=80',
+        tags: ['atip', 'ircc', 'documents', 'refus-immigration'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'Qu\'est-ce qu\'une demande ATIP et quand la faire (notamment après un refus)',
+          excerpt: 'Une demande ATIP vous donne accès aux notes internes SMGC de votre dossier IRCC. Essentielle après un refus pour comprendre les vraies raisons de la décision et préparer la suite.',
+          kw:      ['demande ATIP', 'notes SMGC', 'refus immigration', 'accès information IRCC'],
+          kwSlugs: ['atip', 'atip', 'refus-immigration', 'ircc']
+        },
+        en: {
+          cat: 'Canadian Immigration',
+          title: 'What is an ATIP request and when to file one (especially after a refusal)',
+          excerpt: 'An ATIP request gives you access to the internal GCMS notes in your IRCC file. Essential after a refusal to understand the real reasons behind the decision.',
+          kw:      ['ATIP request', 'GCMS notes', 'immigration refusal', 'access to information IRCC'],
+          kwSlugs: ['atip', 'atip', 'refus-immigration', 'ircc']
+        }
+      },
+      {
+        slug: 'article-invitation-pstq-arrima-delais-documents.html',
+        img: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop&q=80',
+        tags: ['pstq', 'arrima', 'immigration-quebec', 'csq', 'mifi', 'documents', 'delais'],
+        fr: {
+          cat: 'Immigration Québec',
+          title: 'Vous avez été repêché dans le PSTQ (invitation Arrima) : délais et documents à fournir',
+          excerpt: 'Repêché dans le PSTQ ? Vous avez 30 jours pour accepter et 60 jours pour déposer votre dossier complet. Délais, documents requis et formats acceptés par le MIFI.',
+          kw:      ['invitation PSTQ', 'délai Arrima', 'documents CSQ', 'MIFI', 'repêché PSTQ'],
+          kwSlugs: ['pstq', 'arrima', 'csq', 'mifi', 'pstq']
+        },
+        en: {
+          cat: 'Quebec Immigration',
+          title: 'PSTQ invitation (Arrima): deadlines and documents to provide',
+          excerpt: 'Selected in the PSTQ? You have 30 days to accept and 60 days to submit your complete file. Deadlines, required documents, and formats accepted by MIFI.',
+          kw:      ['PSTQ invitation', 'Arrima deadline', 'CSQ documents', 'MIFI', 'Quebec selection'],
+          kwSlugs: ['pstq', 'arrima', 'csq', 'mifi', 'immigration-quebec']
+        }
+      },
+      {
+        slug: 'article-depute-aide-dossier-immigration.html',
+        img: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?w=500&auto=format&fit=crop&q=80',
+        tags: ['depute', 'ircc', 'delais'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'Comment un député peut vous aider dans votre dossier d\'immigration — et ce qu\'il ne peut pas faire',
+          excerpt: 'Un député fédéral peut faire des démarches auprès d\'IRCC pour un dossier bloqué ou en retard — mais son rôle a des limites importantes à connaître.',
+          kw:      ['député immigration', 'retard dossier IRCC', 'intervention député', 'consentement IRCC'],
+          kwSlugs: ['depute', 'ircc', 'depute', 'ircc']
+        },
+        en: {
+          cat: 'Canadian Immigration',
+          title: 'How a Member of Parliament can help with your immigration file — and what they can\'t do',
+          excerpt: 'A federal MP can make inquiries to IRCC about a delayed or stalled file — but their role has important limits to know.',
+          kw:      ['Member of Parliament immigration', 'MP help immigration case', 'IRCC processing delay', 'MP inquiry IRCC'],
+          kwSlugs: ['depute', 'ircc', 'delais', 'ircc']
+        }
+      },
+      {
+        slug: 'article-biometrie-portail-vfs.html',
+        img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=80',
+        tags: ['biometrie', 'vfs', 'ircc', 'documents'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'Biométrie : que faire lorsque VFS ne répond pas — l\'option du portail',
+          excerpt: 'VFS Global ne répond pas ? Utilisez le portail VFS pour planifier votre rendez-vous de biométrie. Étapes complètes, avertissements critiques et ce qu\'il faut apporter le jour J.',
+          kw:      ['biométrie', 'portail VFS', 'rendez-vous biométrie', 'convocation biométrie'],
+          kwSlugs: ['biometrie', 'vfs', 'biometrie', 'ircc']
+        },
+        en: {
+          cat: 'Canadian Immigration',
+          title: 'Biometrics: what to do when VFS does not respond — the portal option',
+          excerpt: 'VFS Global not responding? Use the VFS portal to schedule your biometrics appointment. Step-by-step guide and what to bring on the day.',
+          kw:      ['biometrics VFS', 'VFS portal', 'biometrics appointment', 'IRCC biometrics'],
+          kwSlugs: ['biometrie', 'vfs', 'biometrie', 'ircc']
+        }
+      },
+      {
+        slug: 'article-suivi-demande-recu-paiement.html',
+        img: 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=500&auto=format&fit=crop&q=80',
+        tags: ['ircc', 'documents', 'delais'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'Confirmer la réception de votre demande et retrouver votre dossier grâce au numéro de reçu de paiement',
+          excerpt: 'Pas d\'accusé de réception d\'IRCC après un envoi recommandé ? C\'est normal. Voici comment confirmer que votre demande est en traitement et obtenir votre numéro de dossier.',
+          kw:      ['suivi demande immigration', 'reçu de paiement IRCC', 'numéro de dossier', 'courrier recommandé'],
+          kwSlugs: ['ircc', 'ircc', 'documents', 'delais']
+        },
+        en: {
+          cat: 'Canadian Immigration',
+          title: 'Confirm receipt of your application and track your file using the payment receipt number',
+          excerpt: 'No acknowledgment of receipt from IRCC? That\'s normal for registered mail. Here\'s how to confirm your application is in processing and get your IRCC file number.',
+          kw:      ['IRCC application tracking', 'payment receipt number', 'IRCC file number', 'registered mail'],
+          kwSlugs: ['ircc', 'ircc', 'documents', 'delais']
+        }
+      },
+      {
+        slug: 'article-etudier-canada-permis-etudes-exemptions.html',
+        img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&auto=format&fit=crop&q=80',
+        tags: ['permis-etudes', 'ircc', 'demande-asile', 'permis-de-travail'],
+        fr: {
+          cat: 'Immigration canadienne',
+          title: 'Qui peut étudier au Canada avec ou sans permis d\'études ? Règles, exemptions et cas particuliers',
+          excerpt: 'Permis d\'études obligatoire ou non ? Exemption pour programmes de 6 mois ou moins (art. 188 RIPR), politique temporaire pour permis de travail (expire le 27 juin 2026), demandeurs d\'asile et enfants mineurs.',
+          kw:      ['permis d\'études', 'exemption études', 'politique temporaire', 'demandeur d\'asile études'],
+          kwSlugs: ['permis-etudes', 'permis-etudes', 'permis-de-travail', 'demande-asile']
+        },
+        en: {
+          cat: 'Canadian Immigration',
+          title: 'Who can study in Canada with or without a study permit? Rules, exemptions and special cases',
+          excerpt: 'Study permit required or not? Exemption for programs of 6 months or less (s. 188 IRPR), temporary policy for work permit holders (expires June 27, 2026), asylum claimants and minor children.',
+          kw:      ['study permit Canada', 'study permit exemption', 'temporary policy work permit', 'asylum claimant study permit'],
+          kwSlugs: ['permis-etudes', 'permis-etudes', 'permis-de-travail', 'demande-asile']
+        }
+      },
+      {
+        slug: 'article-calendrier-engagement-regroupement-familial-csq.html',
+        img: 'assets/famille-ombre.jpg',
+        tags: ['regroupement-familial', 'engagement', 'csq', 'mifi', 'parrainage', 'immigration-quebec'],
+        fr: {
+          cat: 'Immigration Québec',
+          title: 'Regroupement familial au Québec : nouveau calendrier de réception des demandes d\'engagement (CSQ) 2026-2028',
+          excerpt: 'Le Québec a rouvert la réception des demandes d\'engagement en regroupement familial le 2 juillet 2026. Calendrier complet, plafonds (15 700 demandes sur 2 ans) et marche à suivre.',
+          kw:      ['regroupement familial', 'calendrier engagement CSQ', 'MIFI demande engagement', 'parrainage Québec'],
+          kwSlugs: ['regroupement-familial', 'engagement', 'mifi', 'parrainage']
+        },
+        en: {
+          cat: 'Québec Immigration',
+          title: 'Family Reunification in Québec: New Reception Calendar for Undertaking Applications (CSQ) 2026–2028',
+          excerpt: 'Québec has reopened the reception of undertaking applications for family reunification as of 2 July 2026. Full calendar, caps (15,700 applications over 2 years) and steps to follow.',
+          kw:      ['family reunification Quebec', 'undertaking application CSQ', 'MIFI reception calendar', 'Quebec sponsorship'],
+          kwSlugs: ['regroupement-familial', 'engagement', 'mifi', 'parrainage']
+        }
+      },
+      {
+        slug: 'article-refus-parrainage-relation-non-authentique.html',
+        img: 'assets/parrainage.jpg',
+        tags: ['parrainage', 'parrainage-familial', 'conjoint', 'bonne-foi', 'refus-immigration'],
+        fr: {
+          cat: 'Parrainage familial',
+          title: 'Refus de parrainage de conjoint : pourquoi un agent peut juger la relation « non authentique » (et comment l\'éviter)',
+          excerpt: 'Article 4 RIPR, test disjonctif, signaux de doute et comment bâtir un dossier solide : tout ce que le répondant doit savoir pour prouver l\'authenticité de sa relation.',
+          kw:      ['refus parrainage', 'relation authentique', 'bonne foi', 'mariage de complaisance'],
+          kwSlugs: ['parrainage', 'bonne-foi', 'conjoint', 'parrainage-familial']
+        },
+        en: {
+          cat: 'Family Sponsorship',
+          title: 'Spousal sponsorship refusal: why an officer may find a relationship "not genuine" (and how to avoid it)',
+          excerpt: 'Section 4 IRPR, the disjunctive test, red flags and how to build a strong file: everything a sponsor needs to know to prove the genuineness of their relationship.',
+          kw:      ['sponsorship refusal', 'genuine relationship', 'bad faith', 'marriage of convenience'],
+          kwSlugs: ['parrainage', 'bonne-foi', 'conjoint', 'parrainage-familial']
+        }
+      }
+    ];
+
+    var TAG_NAMES = {
+      'residence-permanente':   { fr: 'Résidence permanente',        en: 'Permanent Residence' },
+      'citoyennete':            { fr: 'Citoyenneté',                 en: 'Citizenship' },
+      'parrainage':             { fr: 'Parrainage',                        en: 'Sponsorship' },
+      'parrainage-familial':    { fr: 'Parrainage familial',               en: 'Family Sponsorship' },
+      'parrainage-enfant':      { fr: 'Parrainage d’enfant',          en: 'Child Sponsorship' },
+      'permis-de-travail':      { fr: 'Permis de travail',                 en: 'Work Permit' },
+      'travailleurs-etrangers': { fr: 'Travailleurs étrangers',       en: 'Foreign Workers' },
+      'csq':                    { fr: 'CSQ',                               en: 'CSQ' },
+      'mifi':                   { fr: 'MIFI',                              en: 'MIFI' },
+      'ircc':                   { fr: 'IRCC',                              en: 'IRCC' },
+      'delais':                 { fr: 'Délais',                       en: 'Processing Times' },
+      'documents':              { fr: 'Documents',                         en: 'Documents' },
+      'passeport':              { fr: 'Passeport',                         en: 'Passport' },
+      'adn':                    { fr: 'Test ADN',                          en: 'DNA Test' },
+      'adoption':               { fr: 'Adoption',                          en: 'Adoption' },
+      'tutelle':                { fr: 'Tutelle',                           en: 'Guardianship' },
+      'conjoint':               { fr: 'Conjoint',                          en: 'Spousal' },
+      'mariage':                { fr: 'Mariage',                           en: 'Marriage' },
+      'polygamie':              { fr: 'Polygamie',                         en: 'Polygamy' },
+      'eimt':                   { fr: 'EIMT / EDSC',                  en: 'LMIA / ESDC' },
+      'filiation':              { fr: 'Filiation',                         en: 'Filiation' },
+      'immigration-quebec':     { fr: 'Immigration Québec',           en: 'Quebec Immigration' },
+      'ave':                    { fr: 'AVE',                               en: 'eTA' },
+      'statut':                 { fr: 'Statut',                            en: 'Status' },
+      'detention':              { fr: 'Détention',                    en: 'Detention' },
+      'humanitaire':            { fr: 'Humanitaire',                       en: 'Humanitarian' },
+      'asile':                  { fr: 'Demande d\'asile',                  en: 'Asylum Claim' },
+      'erreurs':                { fr: 'Erreurs',                           en: 'Errors' },
+      'detention-immigration':  { fr: 'Détention immigration',             en: 'Immigration Detention' },
+      'sai-iad':                { fr: 'SAI — CISR',                        en: 'IAD — IRB' },
+      'appel-immigration':      { fr: 'Appel en immigration',              en: 'Immigration Appeal' },
+      'controle-detention':     { fr: 'Contrôle des motifs',               en: 'Detention Review' },
+      'asfc-cbsa':              { fr: 'ASFC / CBSA',                       en: 'CBSA / ASFC' },
+      'cisr-irb':               { fr: 'CISR / IRB',                        en: 'IRB / CISR' },
+      'mesure-renvoi':          { fr: 'Mesure de renvoi',                  en: 'Removal Order' },
+      'resident-permanent':     { fr: 'Résident permanent',                en: 'Permanent Resident' },
+      'demande-asile':          { fr: 'Demande d\'asile',                  en: 'Asylum Claim' },
+      'refugie':                { fr: 'Réfugié',                           en: 'Refugee' },
+      'spr':                    { fr: 'SPR — CISR',                        en: 'RPD — IRB' },
+      'rpd':                    { fr: 'SPR — CISR',                        en: 'RPD — IRB' },
+      'sar':                    { fr: 'SAR — CISR',                        en: 'RAD — IRB' },
+      'rad':                    { fr: 'SAR — CISR',                        en: 'RAD — IRB' },
+      'etps':                   { fr: 'ETPS',                              en: 'STCA' },
+      'stca':                   { fr: 'ETPS',                              en: 'STCA' },
+      'fda':                    { fr: 'Formulaire FDA',                    en: 'BOC Form' },
+      'boc':                    { fr: 'Formulaire FDA',                    en: 'BOC Form' },
+      'erar':                   { fr: 'ERAR',                              en: 'PRRA' },
+      'prra':                   { fr: 'ERAR',                              en: 'PRRA' },
+      'ch':                     { fr: 'Humanitaire (CH)',                  en: 'Humanitarian (H&C)' },
+      'hc':                     { fr: 'Humanitaire (CH)',                  en: 'Humanitarian (H&C)' },
+      'motifs-humanitaires':    { fr: 'Motifs humanitaires',              en: 'Humanitarian Grounds' },
+      'kanthasamy':             { fr: 'Arret Kanthasamy',                  en: 'Kanthasamy Decision' },
+      'interet-enfant':         { fr: 'Interet superieur de l\'enfant',    en: 'Best Interests of the Child' },
+      'best-interests':         { fr: 'Interet superieur de l\'enfant',    en: 'Best Interests of the Child' },
+      'etablissement':          { fr: 'Etablissement',                     en: 'Establishment' },
+      'super-visa':             { fr: 'Super Visa',                        en: 'Super Visa' },
+      'lico':                   { fr: 'Seuil LICO',                        en: 'LICO Threshold' },
+      'fausse-declaration':     { fr: 'Fausse declaration',                en: 'Misrepresentation' },
+      'misrepresentation':      { fr: 'Fausse declaration',                en: 'Misrepresentation' },
+      'double-intention':       { fr: 'Double intention',                  en: 'Dual Intent' },
+      'dual-intent':            { fr: 'Double intention',                  en: 'Dual Intent' },
+      'errors':                 { fr: 'Erreurs a eviter',                  en: 'Common Mistakes' },
+      'visa-visiteur':          { fr: 'Visa de visiteur',                  en: 'Visitor Visa' },
+      'biometrie':              { fr: 'Biometrie',                         en: 'Biometrics' },
+      'pstq':                   { fr: 'PSTQ',                               en: 'PSTQ' },
+      'arrima':                 { fr: 'Arrima',                             en: 'Arrima' },
+      'atip':                   { fr: 'ATIP',                               en: 'ATIP' },
+      'refus-immigration':      { fr: 'Refus immigration',                  en: 'Immigration Refusal' },
+      'depute':                 { fr: 'Député fédéral',                     en: 'Member of Parliament' },
+      'vfs':                    { fr: 'VFS Global',                          en: 'VFS Global' },
+      'permis-etudes':          { fr: 'Permis d\'études',                    en: 'Study Permit' },
+      'regroupement-familial':  { fr: 'Regroupement familial',               en: 'Family Reunification' },
+      'engagement':             { fr: 'Demande d\'engagement',               en: 'Undertaking Application' },
+      'bonne-foi':              { fr: 'Relation de bonne foi',               en: 'Genuine Relationship' }
+    };
+
+    function getParams() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        return { tag: p.get('tag') || '', q: p.get('q') || '' };
+      } catch(e) {
+        var tagM = window.location.search.match(/[?&]tag=([^&]*)/);
+        var qM = window.location.search.match(/[?&]q=([^&]*)/);
+        return {
+          tag: tagM ? decodeURIComponent(tagM[1]) : '',
+          q: qM ? decodeURIComponent(qM[1]) : ''
+        };
+      }
+    }
+
+    function normalizeStr(str) {
+      return String(str).toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+    }
+
+    function matchesQuery(article, query, lang) {
+      var norm = normalizeStr(query);
+      var d = article[lang];
+      var haystack = [d.cat, d.title, d.excerpt]
+        .concat(d.kw || [])
+        .concat(article.tags || [])
+        .map(normalizeStr).join(' ');
+      return haystack.indexOf(norm) !== -1;
+    }
+
+    function getLang() {
+      return document.documentElement.lang === 'en' ? 'en' : 'fr';
+    }
+
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function render() {
+      var params = getParams();
+      var lang = getLang();
+      var isSearch = !!params.q;
+      var slug = params.tag;
+      var query = params.q;
+      var matching;
+      var headerLabel;
+
+      if (isSearch) {
+        matching = query ? ARTICLES.filter(function(a) { return matchesQuery(a, query, lang); }) : [];
+        headerLabel = query;
+      } else {
+        var tagInfo = TAG_NAMES[slug];
+        headerLabel = tagInfo ? tagInfo[lang] : (slug || (lang === 'en' ? 'Tag' : 'Mot-cle'));
+        matching = slug ? ARTICLES.filter(function(a) { return a.tags.indexOf(slug) !== -1; }) : [];
+      }
+
+      document.title = esc(headerLabel) + ' — Blogue — MDPL Immigration';
+
+      var elBc    = document.getElementById('tag-bc-current');
+      var elTitle = document.getElementById('tag-hero-title');
+      var elDesc  = document.getElementById('tag-hero-desc');
+      var elArtH2 = document.getElementById('tag-arts-title');
+
+      if (isSearch) {
+        if (elBc) elBc.textContent = lang === 'en' ? 'Search' : 'Recherche';
+        if (elTitle) elTitle.innerHTML = lang === 'en'
+          ? 'Results for <em>' + esc(query) + '</em>'
+          : 'Résultats pour <em>' + esc(query) + '</em>';
+        if (elDesc) elDesc.textContent = lang === 'en'
+          ? 'Articles matching "' + query + '".'
+          : 'Articles correspondant à « ' + query + ' ».';
+        if (elArtH2) elArtH2.innerHTML = lang === 'en'
+          ? 'Results for <em>' + esc(query) + '</em>'
+          : 'Résultats pour <em>' + esc(query) + '</em>';
+      } else {
+        if (elBc) elBc.textContent = headerLabel;
+        if (elTitle) elTitle.innerHTML = lang === 'en'
+          ? 'Category: <em>' + esc(headerLabel) + '</em>'
+          : 'Catégorie : <em>' + esc(headerLabel) + '</em>';
+        if (elDesc) elDesc.textContent = lang === 'en'
+          ? 'All articles on "' + headerLabel + '" published by MDPL Immigration.'
+          : 'Tous les articles sur le thème « ' + headerLabel + ' » publiés par MDPL Immigration.';
+        if (elArtH2) elArtH2.innerHTML = lang === 'en'
+          ? 'Articles on <em>' + esc(headerLabel) + '</em>'
+          : 'Articles sur <em>' + esc(headerLabel) + '</em>';
+      }
+
+      var grid      = document.getElementById('tag-articles-grid');
+      var noResults = document.getElementById('tag-no-results');
+
+      if (!matching.length) {
+        grid.innerHTML = '';
+        noResults.style.display = '';
+        if (isSearch) {
+          noResults.textContent = lang === 'en'
+            ? 'No results for "' + query + '".'
+            : 'Aucun résultat pour « ' + query + ' ».';
+        } else {
+          noResults.textContent = lang === 'en'
+            ? 'No articles in this category yet.'
+            : 'Aucun article pour le moment dans cette catégorie.';
+        }
+        return;
+      }
+
+      noResults.style.display = 'none';
+      grid.innerHTML = matching.map(function(article) {
+        var d = article[lang] || article['fr'] || {};
+        var kws = (d.kw || []).map(function(k, i) {
+          var kwSlug = (d.kwSlugs && d.kwSlugs[i]) ? d.kwSlugs[i] : '';
+          return '<a class="kw dark" href="tag.html?tag=' + esc(kwSlug) + '">' + esc(k) + '</a>';
+        }).join('');
+        return '<article class="article-card-bottom">' +
+          '<img class="article-card-bottom-img" src="' + esc(article.img || '') + '" alt="' + esc(d.title || '') + '" />' +
+          '<div class="article-card-bottom-body">' +
+            '<span class="article-tag light">' + esc(d.cat || '') + '</span>' +
+            '<h3 class="article-card-bottom-title">' + (d.title || '') + '</h3>' +
+            '<p class="article-card-bottom-excerpt">' + (d.excerpt || '') + '</p>' +
+            '<div class="article-kw" style="margin-bottom:0.6rem;">' + kws + '</div>' +
+            '<a href="' + esc(article.slug || '') + '" class="btn-lire dark">' +
+              (lang === 'en' ? 'Read article' : 'Lire l\'article') +
+            '</a>' +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+
+    // Re-render on language switch (applyLang sets html[lang])
+    if (typeof MutationObserver !== 'undefined') {
+      new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === 'lang') { render(); break; }
+        }
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    }
+
+    render();
+  })();
+  </script>
+</body>
+</html>
+
+

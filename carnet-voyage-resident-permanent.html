@@ -1,0 +1,810 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWHSQ78PJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GWHSQ78PJ9');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="carnet.page.title">Carnet de voyage — Résident permanent | MDPL Immigration</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Jost', 'Arial', sans-serif;
+      font-size: 10pt;
+      background: #f0f0f0;
+      color: #1a1a2e;
+    }
+
+    /* ── SCREEN CHROME ────────────────────────────────── */
+    .screen-toolbar {
+      background: #0D1B2E;
+      color: #fff;
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .toolbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .toolbar-brand span { color: #C49A2A; }
+    .toolbar-desc {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+    }
+    .toolbar-actions { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; }
+    .btn-print {
+      background: #C49A2A;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .btn-print:hover { background: #a07e1f; }
+    .btn-back {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.18); }
+    .print-hint {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PAGE WRAPPER ─────────────────────────────────── */
+    .pages-wrapper {
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    /* ── PAGE ─────────────────────────────────────────── */
+    .page {
+      width: 215.9mm;   /* letter width */
+      min-height: 279.4mm;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      padding: 12mm 14mm 10mm;
+      page-break-after: always;
+      position: relative;
+    }
+
+    /* ── HEADER ───────────────────────────────────────── */
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 6mm;
+      border-bottom: 2.5pt solid #0D1B2E;
+      margin-bottom: 5mm;
+      gap: 1rem;
+    }
+    .header-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+    }
+    .logo-emblem {
+      width: 44pt;
+      height: 44pt;
+      background: #0D1B2E;
+      border-radius: 3pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2pt;
+      flex-shrink: 0;
+    }
+    .emblem-pillars {
+      display: flex;
+      gap: 2pt;
+      align-items: flex-end;
+    }
+    .emblem-pillar {
+      width: 4pt;
+      background: #C49A2A;
+      border-radius: 1pt 1pt 0 0;
+    }
+    .emblem-pillar:nth-child(1) { height: 16pt; }
+    .emblem-pillar:nth-child(2) { height: 20pt; }
+    .emblem-pillar:nth-child(3) { height: 18pt; }
+    .emblem-pillar:nth-child(4) { height: 14pt; }
+    .emblem-base {
+      width: 20pt;
+      height: 2.5pt;
+      background: #C49A2A;
+      border-radius: 1pt;
+    }
+    .logo-text-block { display: flex; flex-direction: column; line-height: 1.15; }
+    .logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 15pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      letter-spacing: 0.02em;
+    }
+    .logo-main span { color: #C49A2A; }
+    .logo-divider {
+      width: 100%;
+      height: 1pt;
+      background: #C49A2A;
+      margin: 2pt 0;
+    }
+    .logo-sub-text {
+      font-size: 5.5pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #5a5a6e;
+    }
+    .header-doc-title {
+      text-align: right;
+    }
+    .doc-title-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      line-height: 1.2;
+    }
+    .doc-title-sub {
+      font-size: 7pt;
+      color: #6b6b80;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2pt;
+    }
+
+    /* ── INFO SECTION (page 1 only) ───────────────────── */
+    .info-section {
+      background: #f8f6f0;
+      border: 1pt solid #d4c9a8;
+      border-left: 3pt solid #C49A2A;
+      padding: 5mm 6mm;
+      margin-bottom: 6mm;
+      border-radius: 0 2pt 2pt 0;
+    }
+    .info-section-title {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #0D1B2E;
+      margin-bottom: 4mm;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3mm 5mm;
+    }
+    .info-field { display: flex; flex-direction: column; gap: 1.5mm; }
+    .info-label {
+      font-size: 6.5pt;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b6b80;
+    }
+    .info-input {
+      border: none;
+      border-bottom: 1pt solid #9a9aaa;
+      background: transparent;
+      font-family: 'Jost', sans-serif;
+      font-size: 9pt;
+      color: #1a1a2e;
+      padding: 1.5mm 0;
+      width: 100%;
+      outline: none;
+    }
+    .info-input:focus { border-bottom-color: #C49A2A; }
+
+    /* ── NOTE BILINGUE ────────────────────────────────── */
+    .bilingual-note {
+      background: #eef4fb;
+      border: 1pt solid #b8d0e8;
+      padding: 3mm 4mm;
+      margin-bottom: 4mm;
+      border-radius: 2pt;
+      display: flex;
+      gap: 3mm;
+    }
+    .note-scissors {
+      font-size: 11pt;
+      flex-shrink: 0;
+      color: #555;
+      margin-top: 0.5mm;
+    }
+    .note-texts { flex: 1; }
+    .note-fr { font-size: 7.5pt; color: #1a1a2e; margin-bottom: 1.5mm; }
+    .note-en { font-size: 7pt; color: #555; font-style: italic; }
+
+    /* ── TABLE ────────────────────────────────────────── */
+    .travel-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    .travel-table th {
+      background: #0D1B2E;
+      color: #fff;
+      padding: 3.5mm 2mm;
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-align: center;
+      vertical-align: middle;
+      border: 0.5pt solid #2a4a6e;
+      line-height: 1.3;
+    }
+    .travel-table th.gold { background: #C49A2A; color: #fff; }
+    .travel-table th .th-fr { display: block; font-weight: 600; }
+    .travel-table th .th-en { display: block; font-weight: 400; font-style: italic; opacity: 0.82; margin-top: 1pt; }
+    .travel-table th .th-fmt { display: block; font-size: 5.5pt; opacity: 0.65; margin-top: 1.5pt; letter-spacing: 0.02em; }
+    /* Column widths: 2×(date + date + dest + reason) */
+    .travel-table col.date { width: 11.5%; }
+    .travel-table col.dest { width: 12%; }
+    .travel-table col.reason { width: 15%; }
+    .travel-table col.divider { width: 1.5pt; background: #0D1B2E; }
+    .travel-table td {
+      border: 0.5pt solid #c8c8d8;
+      padding: 0;
+      height: 7.5mm;
+      vertical-align: middle;
+    }
+    .travel-table td.divider-cell {
+      background: #0D1B2E;
+      width: 2pt;
+      padding: 0;
+      border: none;
+    }
+    .travel-table tr:nth-child(even) td:not(.divider-cell) {
+      background: #f5f5fb;
+    }
+    .travel-table tr:nth-child(odd) td:not(.divider-cell) {
+      background: #ffffff;
+    }
+    .travel-table td input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      font-family: 'Jost', sans-serif;
+      font-size: 7pt;
+      color: #1a1a2e;
+      padding: 0 2mm;
+      outline: none;
+      text-align: center;
+    }
+    .travel-table td input.reason-input {
+      text-align: left;
+      font-size: 6.5pt;
+    }
+    .travel-table td input:focus {
+      background: #fff8e6;
+    }
+    /* Row number */
+    .travel-table td.row-num {
+      background: #f0ede5 !important;
+      text-align: center;
+      font-size: 6pt;
+      color: #999;
+      font-weight: 600;
+      width: 12pt;
+      border-right: 1pt solid #d4c9a8;
+    }
+
+    /* ── PAGE FOOTER ──────────────────────────────────── */
+    .page-footer {
+      margin-top: 5mm;
+      padding-top: 3mm;
+      border-top: 1pt solid #d0d0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .page-footer-left {
+      font-size: 6pt;
+      color: #888;
+      line-height: 1.5;
+    }
+    .page-footer-right {
+      font-size: 6pt;
+      color: #888;
+      text-align: right;
+    }
+    .page-num {
+      font-size: 7pt;
+      font-weight: 600;
+      color: #0D1B2E;
+    }
+
+    /* ── CONTINUATION HEADER (pages 2–3) ─────────────── */
+    .continuation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 4mm;
+      border-bottom: 1.5pt solid #0D1B2E;
+      margin-bottom: 4mm;
+    }
+    .cont-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0D1B2E;
+    }
+    .cont-subtitle {
+      font-size: 6.5pt;
+      color: #888;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 1.5pt;
+    }
+    .cont-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 8pt;
+      font-weight: 700;
+      color: #0D1B2E;
+      text-align: right;
+    }
+    .cont-logo span { color: #C49A2A; }
+
+    /* ── SUMMARY BOX (page 3) ─────────────────────────── */
+    .summary-box {
+      margin-top: 6mm;
+      border: 1pt solid #d4c9a8;
+      border-top: 3pt solid #0D1B2E;
+      padding: 4mm 5mm;
+      border-radius: 0 0 3pt 3pt;
+    }
+    .summary-title {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0D1B2E;
+      margin-bottom: 3.5mm;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+    }
+    .summary-field { display: flex; flex-direction: column; gap: 1.5mm; }
+    .summary-label { font-size: 6pt; letter-spacing: 0.07em; text-transform: uppercase; color: #888; }
+    .summary-value {
+      font-size: 9pt;
+      font-weight: 600;
+      color: #0D1B2E;
+      border-bottom: 1pt solid #9a9aaa;
+      padding: 1mm 0;
+      min-height: 7mm;
+    }
+    .summary-input {
+      border: none;
+      border-bottom: 1pt solid #9a9aaa;
+      background: transparent;
+      font-family: 'Jost', sans-serif;
+      font-size: 9pt;
+      font-weight: 600;
+      color: #0D1B2E;
+      padding: 1mm 0;
+      width: 100%;
+      outline: none;
+      text-align: center;
+    }
+    .summary-input:focus { border-bottom-color: #C49A2A; }
+
+    /* ── PRINT STYLES ─────────────────────────────────── */
+    @media print {
+      body { background: #fff; font-size: 9pt; }
+      .screen-toolbar { display: none !important; }
+      .pages-wrapper { padding: 0; gap: 0; }
+      .page {
+        width: 100%;
+        min-height: auto;
+        box-shadow: none;
+        padding: 10mm 12mm 8mm;
+        page-break-after: always;
+        margin: 0;
+      }
+      .page:last-child { page-break-after: avoid; }
+      input, .info-input, .summary-input {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        background: transparent !important;
+      }
+      .travel-table tr:nth-child(even) td:not(.divider-cell) {
+        background: #f5f5fb !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .travel-table th, .travel-table td.divider-cell, .logo-emblem, .info-section {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    @page {
+      size: letter;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOOLBAR (screen only) ──────────────────────────────── -->
+<div class="screen-toolbar">
+  <div>
+    <div class="toolbar-brand">MDPL <span>Immigration</span></div>
+    <div class="toolbar-desc">Carnet de voyage — Résident permanent du Canada</div>
+  </div>
+  <div class="toolbar-actions">
+    <a href="article-registre-voyages-resident-permanent-citoyennete.html" class="btn-back" data-i18n="carnet.back.link">← Retour à l'article</a>
+    <div>
+      <button class="btn-print" onclick="window.print()">Imprimer / Sauvegarder en PDF</button>
+      <div class="print-hint" style="margin-top:3px; text-align:right;">Fichier → Imprimer → Enregistrer en PDF</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE 1
+═══════════════════════════════════════════════════════════════ -->
+<div class="pages-wrapper">
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="header-logo-block">
+      <div class="logo-emblem" aria-hidden="true">
+        <div class="emblem-pillars">
+          <div class="emblem-pillar"></div>
+          <div class="emblem-pillar"></div>
+          <div class="emblem-pillar"></div>
+          <div class="emblem-pillar"></div>
+        </div>
+        <div class="emblem-base"></div>
+      </div>
+      <div class="logo-text-block">
+        <div class="logo-main">M.D.P.L <span>Immigration</span></div>
+        <div class="logo-divider"></div>
+        <div class="logo-sub-text">Cabinet conseil en immigration</div>
+      </div>
+    </div>
+    <div class="header-doc-title">
+      <div class="doc-title-main">Carnet de voyage</div>
+      <div class="doc-title-sub">Résident permanent — Citoyenneté canadienne</div>
+    </div>
+  </div>
+
+  <!-- INFO SECTION -->
+  <div class="info-section">
+    <div class="info-section-title">Informations du résident permanent</div>
+    <div class="info-grid">
+      <div class="info-field">
+        <label class="info-label" for="i-nom">Nom de famille</label>
+        <input class="info-input" type="text" id="i-nom" placeholder="Nom" />
+      </div>
+      <div class="info-field">
+        <label class="info-label" for="i-prenom">Prénom(s)</label>
+        <input class="info-input" type="text" id="i-prenom" placeholder="Prénom" />
+      </div>
+      <div class="info-field">
+        <label class="info-label" for="i-dob">Date de naissance</label>
+        <input class="info-input" type="text" id="i-dob" placeholder="aaaa/mm/jj" />
+      </div>
+      <div class="info-field">
+        <label class="info-label" for="i-rp">Numéro de RP (UCI)</label>
+        <input class="info-input" type="text" id="i-rp" placeholder="XXXX-XXXX" />
+      </div>
+      <div class="info-field">
+        <label class="info-label" for="i-date-rp">Date d'obtention de la RP</label>
+        <input class="info-input" type="text" id="i-date-rp" placeholder="aaaa/mm/jj" />
+      </div>
+      <div class="info-field">
+        <label class="info-label" for="i-passport">Numéro de passeport</label>
+        <input class="info-input" type="text" id="i-passport" placeholder="No. passeport" />
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTE BILINGUE -->
+  <div class="bilingual-note">
+    <div class="note-scissors">✂</div>
+    <div class="note-texts">
+      <div class="note-fr"><strong>Remarque :</strong> Si vous avez visité plus d'un pays au cours du même voyage, inscrivez toutes les dates et pays visités.</div>
+      <div class="note-en"><strong>Note:</strong> If you visited more than one country during the same trip, record all the dates and countries visited.</div>
+    </div>
+  </div>
+
+  <!-- TRAVEL TABLE PAGE 1 (rows 1–18) -->
+  <table class="travel-table" aria-label="Registre de voyages">
+    <colgroup>
+      <col style="width:14pt" /> <!-- row num -->
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+      <col class="divider" />
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="background:#444; color:#fff; font-size:5.5pt; padding:2mm;">#</th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+        <th style="background:#0D1B2E; padding:0;"></th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody-p1"></tbody>
+  </table>
+
+  <!-- PAGE FOOTER -->
+  <div class="page-footer">
+    <div class="page-footer-left">
+      MDPL Immigration · 450 977-0066 · info@mdplimmigration.com<br />
+      Cabinet conseil en immigration · Laval, Québec
+    </div>
+    <div class="page-footer-right">
+      <span class="page-num">Page 1 / 3</span><br />
+      Registre de voyages — Résident permanent
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE 2
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="continuation-header">
+    <div>
+      <div class="cont-title">Registre de voyages — Suite / Continued</div>
+      <div class="cont-subtitle">Résident permanent du Canada · Présence physique · Citoyenneté canadienne</div>
+    </div>
+    <div class="cont-logo">MDPL <span>Immigration</span></div>
+  </div>
+
+  <div class="bilingual-note">
+    <div class="note-scissors">✂</div>
+    <div class="note-texts">
+      <div class="note-fr"><strong>Remarque :</strong> Si vous avez visité plus d'un pays au cours du même voyage, inscrivez toutes les dates et pays visités.</div>
+      <div class="note-en"><strong>Note:</strong> If you visited more than one country during the same trip, record all the dates and countries visited.</div>
+    </div>
+  </div>
+
+  <table class="travel-table">
+    <colgroup>
+      <col style="width:14pt" />
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+      <col class="divider" />
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="background:#444; color:#fff; font-size:5.5pt; padding:2mm;">#</th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+        <th style="background:#0D1B2E; padding:0;"></th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody-p2"></tbody>
+  </table>
+
+  <div class="page-footer">
+    <div class="page-footer-left">
+      MDPL Immigration · 450 977-0066 · info@mdplimmigration.com<br />
+      Cabinet conseil en immigration · Laval, Québec
+    </div>
+    <div class="page-footer-right">
+      <span class="page-num">Page 2 / 3</span><br />
+      Registre de voyages — Résident permanent
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     PAGE 3
+═══════════════════════════════════════════════════════════════ -->
+<div class="page">
+
+  <div class="continuation-header">
+    <div>
+      <div class="cont-title">Registre de voyages — Suite / Continued</div>
+      <div class="cont-subtitle">Résident permanent du Canada · Présence physique · Citoyenneté canadienne</div>
+    </div>
+    <div class="cont-logo">MDPL <span>Immigration</span></div>
+  </div>
+
+  <div class="bilingual-note">
+    <div class="note-scissors">✂</div>
+    <div class="note-texts">
+      <div class="note-fr"><strong>Remarque :</strong> Si vous avez visité plus d'un pays au cours du même voyage, inscrivez toutes les dates et pays visités.</div>
+      <div class="note-en"><strong>Note:</strong> If you visited more than one country during the same trip, record all the dates and countries visited.</div>
+    </div>
+  </div>
+
+  <table class="travel-table">
+    <colgroup>
+      <col style="width:14pt" />
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+      <col class="divider" />
+      <col class="date" /><col class="date" /><col class="dest" /><col class="reason" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th style="background:#444; color:#fff; font-size:5.5pt; padding:2mm;">#</th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+        <th style="background:#0D1B2E; padding:0;"></th>
+        <th><span class="th-fr">Départ du Canada</span><span class="th-en">Departure from Canada</span><span class="th-fmt">(aaaa/mm/jj)</span><br /></th>
+        <th><span class="th-fr">Retour au Canada</span><span class="th-en">Return to Canada</span><span class="th-fmt">(aaaa/mm/jj)</span></th>
+        <th><span class="th-fr">Destination(s)</span><span class="th-en">Destination(s)</span><span class="th-fmt">(pays / country)</span></th>
+        <th class="gold"><span class="th-fr">Raison / Reason</span></th>
+      </tr>
+    </thead>
+    <tbody id="tbody-p3"></tbody>
+  </table>
+
+  <!-- SUMMARY BOX -->
+  <div class="summary-box">
+    <div class="summary-title">Calcul récapitulatif — Résumé de présence physique</div>
+    <div class="summary-grid">
+      <div class="summary-field">
+        <label class="summary-label" for="s-total-voyages">Nombre total de voyages</label>
+        <input class="summary-input" type="text" id="s-total-voyages" placeholder="—" />
+      </div>
+      <div class="summary-field">
+        <label class="summary-label" for="s-jours-hors">Total de jours hors Canada</label>
+        <input class="summary-input" type="text" id="s-jours-hors" placeholder="—" />
+      </div>
+      <div class="summary-field">
+        <label class="summary-label" for="s-jours-canada">Jours de présence physique au Canada</label>
+        <input class="summary-input" type="text" id="s-jours-canada" placeholder="—  / 1 825" />
+      </div>
+      <div class="summary-field">
+        <label class="summary-label" for="s-periode-debut">Début de la période de référence</label>
+        <input class="summary-input" type="text" id="s-periode-debut" placeholder="aaaa/mm/jj" />
+      </div>
+      <div class="summary-field">
+        <label class="summary-label" for="s-periode-fin">Fin de la période de référence</label>
+        <input class="summary-input" type="text" id="s-periode-fin" placeholder="aaaa/mm/jj" />
+      </div>
+      <div class="summary-field">
+        <label class="summary-label" for="s-admissible">Seuil de 1 095 jours atteint ?</label>
+        <input class="summary-input" type="text" id="s-admissible" placeholder="Oui / Non" />
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="page-footer-left">
+      MDPL Immigration · 450 977-0066 · info@mdplimmigration.com<br />
+      Cabinet conseil en immigration · Laval, Québec · mdplimmigration.com
+    </div>
+    <div class="page-footer-right">
+      <span class="page-num">Page 3 / 3</span><br />
+      Registre de voyages — Résident permanent
+    </div>
+  </div>
+
+</div>
+</div><!-- end pages-wrapper -->
+
+<script>
+  // Generate table rows with input fields
+  function buildRows(tbodyId, startRow, count) {
+    var tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
+    for (var i = 0; i < count; i++) {
+      var rowNum = startRow + i;
+      var pairNum = Math.ceil(rowNum / 2); // display row number in table
+      var isLeft = (rowNum % 2 === 1);
+
+      if (isLeft) {
+        // Start a new <tr>
+        var tr = document.createElement('tr');
+        tr.id = 'row-' + tbodyId + '-' + rowNum;
+
+        // Row number cell (spans 2 logical rows but we do one per physical row)
+        var numCell = document.createElement('td');
+        numCell.className = 'row-num';
+        numCell.textContent = pairNum;
+        tr.appendChild(numCell);
+
+        // Left side: 4 input cells
+        ['depart','retour','dest','raison'].forEach(function(f) {
+          var td = document.createElement('td');
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.className = (f === 'raison' || f === 'dest') ? 'reason-input' : '';
+          input.setAttribute('aria-label', f + ' voyage ' + rowNum);
+          if (f === 'depart' || f === 'retour') input.placeholder = 'aaaa/mm/jj';
+          td.appendChild(input);
+          tr.appendChild(td);
+        });
+
+        // Divider
+        var divCell = document.createElement('td');
+        divCell.className = 'divider-cell';
+        tr.appendChild(divCell);
+
+        // Right side: 4 input cells (for the paired entry)
+        var rightNum = rowNum + 1;
+        ['depart','retour','dest','raison'].forEach(function(f) {
+          var td = document.createElement('td');
+          var input = document.createElement('input');
+          input.type = 'text';
+          input.className = (f === 'raison' || f === 'dest') ? 'reason-input' : '';
+          input.setAttribute('aria-label', f + ' voyage ' + rightNum);
+          if (f === 'depart' || f === 'retour') input.placeholder = 'aaaa/mm/jj';
+          td.appendChild(input);
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+      }
+      // Right side entries are already handled in the paired tr above
+    }
+  }
+
+  // Page 1: rows 1–36 (18 physical rows = 18 left + 18 right = 36 entries)
+  buildRows('tbody-p1', 1, 36);
+  // Page 2: rows 37–72
+  buildRows('tbody-p2', 37, 36);
+  // Page 3: rows 73–108
+  buildRows('tbody-p3', 73, 28);
+</script>
+
+</body>
+</html>

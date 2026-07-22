@@ -1,0 +1,2624 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Guide d'étude — Préparation à la citoyenneté | MDPL Immigration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* --- Garde d'acces --- */
+    body.acces-verrouille > *:not(#acces-garde) { display: none !important; }
+    #acces-garde { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; background: #0d1b2a; color: #fff; font-family: 'Jost', sans-serif; text-align: center; padding: 2rem; }
+    #acces-garde .ag-inner { max-width: 420px; }
+    #acces-garde h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.75rem; color: #fff; }
+    #acces-garde p { font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 1.5rem; }
+    #acces-garde a { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #c9a14a; color: #0d1b2a; text-decoration: none; border-radius: 5px; padding: 0.85rem 1.75rem; }
+
+    /* --- Guide --- */
+    .guide-wrap { max-width: 860px; margin: 0 auto; }
+    .guide-toc { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 1.75rem 1.5rem; margin-bottom: 2rem; }
+    .guide-toc h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin: 0 0 1rem; }
+    .guide-toc ol { list-style: none; margin: 0; padding: 0; }
+    .guide-toc li { margin: 0; }
+    .guide-toc a { display: block; padding: 0.7rem 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.95rem; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--beige); transition: color 0.15s, padding-left 0.15s; }
+    .guide-toc a:last-child { border-bottom: none; }
+    .guide-toc a:hover { color: var(--gold); padding-left: 0.9rem; }
+
+    /* --- Barre de progression --- */
+    .guide-progress { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; position: sticky; top: 10px; z-index: 50; }
+    .guide-progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+    .guide-progress-label { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mid); }
+    .guide-progress-pct { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--gold); }
+    .guide-progress-bar { background: var(--beige-dark); height: 10px; border-radius: 6px; overflow: hidden; }
+    .guide-progress-fill { background: linear-gradient(90deg, var(--gold), #d9b85f); height: 10px; width: 0%; border-radius: 6px; transition: width 0.4s ease; }
+
+    /* --- Case "J'ai lu ce chapitre" --- */
+    .guide-check { display: flex; align-items: center; gap: 0.6rem; margin: 1.25rem 0 0.25rem; padding: 0.85rem 1rem; background: var(--beige); border: 1px solid var(--beige-dark); border-radius: 6px; cursor: pointer; user-select: none; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--navy); transition: background 0.15s, border-color 0.15s; }
+    .guide-check:hover { border-color: var(--gold); }
+    .guide-check input { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; }
+    .guide-check.coche { background: #e8f4ec; border-color: #2d7a4f; color: #1a5e36; font-weight: 500; }
+    .guide-checks { display: flex; flex-direction: column; gap: 0.5rem; margin: 1.25rem 0 0.25rem; }
+    .guide-checks .guide-check { margin: 0; }
+
+    /* --- Flashcards (cartes memoire) --- */
+    .guide-flash-title { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin: 1.6rem 0 0.75rem; }
+    .flash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+    .flash-card { background: transparent; perspective: 1000px; cursor: pointer; min-height: 130px; }
+    .flash-inner { position: relative; width: 100%; height: 100%; min-height: 130px; transition: transform 0.5s; transform-style: preserve-3d; }
+    .flash-card.retourne .flash-inner { transform: rotateY(180deg); }
+    .flash-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; padding: 1.1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .flash-front { background: var(--navy); color: #fff; }
+    .flash-back { background: var(--gold); color: var(--navy); transform: rotateY(180deg); }
+    .flash-tag { font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
+    .flash-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.4; }
+    .flash-front .flash-text { font-weight: 500; }
+    .flash-back .flash-text { font-weight: 600; }
+    .flash-hint { font-family: 'Jost', sans-serif; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem; }
+    @media (max-width: 600px) { .flash-grid { grid-template-columns: 1fr; } }
+
+    /* --- Mini-quiz par chapitre --- */
+    .miniquiz { background: var(--beige); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 1.25rem 1.25rem 1rem; margin: 1.6rem 0 0.5rem; }
+    .miniquiz-title { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
+    .mq-q { margin-bottom: 1.1rem; }
+    .mq-q:last-of-type { margin-bottom: 0.5rem; }
+    .mq-q-text { font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin: 0 0 0.5rem; line-height: 1.4; }
+    .mq-opt { display: block; width: 100%; text-align: left; background: var(--white); border: 1.5px solid var(--beige-dark); border-radius: 5px; padding: 0.6rem 0.8rem; margin-bottom: 0.4rem; font-family: 'Jost', sans-serif; font-size: 0.85rem; color: var(--navy); cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .mq-opt:hover:not(:disabled) { border-color: var(--gold); }
+    .mq-opt:disabled { cursor: default; }
+    .mq-opt.bon { border-color: #2d7a4f; background: #e8f4ec; color: #1a5e36; font-weight: 600; }
+    .mq-opt.mauvais { border-color: #b03a2e; background: #fde8e6; color: #7b241c; font-weight: 600; }
+    .mq-score { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--beige-dark); display: none; }
+    .mq-score.visible { display: block; }
+
+    /* --- #5 Encadres "A retenir" --- */
+    .a-retenir { display: flex; gap: 0.9rem; align-items: flex-start; background: #fdf8ed; border: 1px solid var(--gold); border-radius: 8px; padding: 1rem 1.15rem; margin: 1.2rem 0; }
+    .a-retenir-badge { flex-shrink: 0; font-family: 'Jost', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: var(--gold); border-radius: 4px; padding: 0.3rem 0.55rem; margin-top: 0.15rem; }
+    .a-retenir-txt { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.5; color: var(--navy); }
+    .a-retenir-txt strong { font-family: 'Playfair Display', serif; color: var(--gold); }
+
+    /* --- #6 Ligne du temps interactive --- */
+    .timeline { margin: 1rem 0 0.5rem; border-left: 2px solid var(--gold); padding-left: 1.1rem; }
+    .tl-item { position: relative; margin-bottom: 0.6rem; }
+    .tl-btn { display: flex; align-items: baseline; gap: 0.7rem; width: 100%; text-align: left; background: var(--white); border: 1px solid var(--beige-dark); border-radius: 6px; padding: 0.6rem 0.85rem; cursor: pointer; font-family: 'Jost', sans-serif; transition: border-color 0.15s; }
+    .tl-btn:hover { border-color: var(--gold); }
+    .tl-year { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+    .tl-label { font-size: 0.85rem; color: var(--navy); font-weight: 500; }
+    .tl-detail { display: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.5; color: var(--ink-mid); padding: 0.6rem 0.85rem 0.2rem; }
+    .tl-item.ouvert .tl-detail { display: block; }
+
+    /* --- #7 Erreurs frequentes --- */
+    .erreur-box { background: #fde8e6; border: 1px solid #b03a2e; border-radius: 8px; padding: 1rem 1.15rem; margin: 1.2rem 0; }
+    .erreur-title { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #b03a2e; margin: 0 0 0.5rem; }
+    .erreur-q { font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin: 0 0 0.3rem; }
+    .erreur-r { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; color: var(--navy); margin: 0; }
+    .erreur-r strong { color: #1a5e36; }
+
+    /* --- #8 Mode revision rapide --- */
+    .revision { background: var(--navy); border-radius: 10px; padding: 1.75rem 1.5rem; margin: 2rem 0; }
+    .revision-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.4rem; }
+    .revision h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin: 0 0 0.4rem; }
+    .revision-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(255,255,255,0.75); margin: 0 0 1.1rem; }
+    .revision-btn { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: var(--navy); border: none; border-radius: 5px; padding: 0.85rem 1.6rem; cursor: pointer; }
+    .revision-btn:hover { background: #fff; }
+    .revision-liste { display: none; margin-top: 1.25rem; }
+    .revision-liste.visible { display: block; }
+    .revision-fait { background: rgba(255,255,255,0.06); border-left: 3px solid var(--gold); border-radius: 0 5px 5px 0; padding: 0.6rem 0.9rem; margin-bottom: 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.88rem; line-height: 1.45; color: rgba(255,255,255,0.92); }
+    .revision-fait strong { color: var(--gold); }
+
+    /* --- #9 Certificat & #10 Score par matiere --- */
+    .bilan { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 10px; padding: 1.75rem 1.5rem; margin: 2rem 0; }
+    .bilan h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin: 0 0 0.3rem; }
+    .bilan-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ink-mid); margin: 0 0 1.1rem; }
+    .bilan-btn { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--navy); color: #fff; border: none; border-radius: 5px; padding: 0.85rem 1.6rem; cursor: pointer; }
+    .bilan-btn:hover { background: var(--gold); color: var(--navy); }
+    .bilan-result { display: none; margin-top: 1.25rem; }
+    .bilan-result.visible { display: block; }
+    .score-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+    .score-mat { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 500; color: var(--navy); width: 160px; flex-shrink: 0; }
+    .score-bar { flex: 1; background: var(--beige-dark); height: 9px; border-radius: 5px; overflow: hidden; }
+    .score-bar-fill { height: 9px; border-radius: 5px; width: 0; transition: width 0.6s ease; }
+    .score-val { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; color: var(--navy); width: 48px; text-align: right; }
+    .certificat { display: none; margin-top: 1.5rem; border: 3px double var(--gold); border-radius: 10px; padding: 1.75rem 1.5rem; text-align: center; background: #fffdf7; }
+    .certificat.visible { display: block; }
+    .certificat-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.5rem; }
+    .certificat h4 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--navy); margin: 0 0 0.5rem; }
+    .certificat p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink-mid); margin: 0.2rem 0; }
+    .certificat .cert-score { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--gold); margin: 0.5rem 0; }
+    .certificat .cert-sign { font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.06em; color: var(--ink-light); margin-top: 1rem; }
+
+    .guide-chap { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 2rem 1.75rem; margin-bottom: 1.5rem; scroll-margin-top: 90px; }
+    .guide-chap-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .guide-chap-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 0 0 1.1rem; }
+    .guide-chap h4 { font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--navy); margin: 1.4rem 0 0.5rem; }
+    .guide-chap p { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.75; color: var(--ink-mid); margin: 0 0 0.9rem; }
+    .guide-points { background: var(--beige); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 1rem 1.25rem; margin: 1rem 0 0.5rem; }
+    .guide-points strong { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+    .guide-points ul { margin: 0; padding-left: 1.1rem; }
+    .guide-points li { font-family: 'Jost', sans-serif; font-size: 0.9rem; line-height: 1.6; color: var(--navy); margin-bottom: 0.35rem; }
+    .guide-haut { display: inline-block; margin-top: 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; }
+    .guide-haut:hover { color: var(--gold); }
+
+    .guide-cta { background: var(--navy); border-radius: 8px; padding: 2rem 1.75rem; text-align: center; margin-top: 2rem; }
+    .guide-cta h3 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; margin: 0 0 0.6rem; }
+    .guide-cta p { font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.8); font-size: 1.1rem; margin: 0 0 1.25rem; }
+    .guide-cta a { display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--gold); color: var(--navy); text-decoration: none; border-radius: 5px; padding: 0.9rem 1.9rem; }
+    .guide-cta a:hover { background: #fff; }
+  </style>
+</head>
+<body class="acces-verrouille">
+
+  <!-- ===== GARDE D'ACCES ===== -->
+  <div id="acces-garde">
+    <div class="ag-inner">
+      <h2 id="ag-titre">Vérification de votre accès…</h2>
+      <p id="ag-texte">Un instant, nous vérifions votre abonnement.</p>
+      <a id="ag-lien" href="connexion.html" style="display:none">Aller à la connexion</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (function () {
+    var SUPABASE_URL  = "https://kzvgwbgnzinvjcautihq.supabase.co";
+    var SUPABASE_ANON = "sb_publishable_uemRYIKSPA2A1xY5K-6qSw_4NnrBQjR";
+    var PRODUIT        = "citoyennete";
+    var PAGE_CONNEXION = "connexion.html";
+
+    var elTitre = document.getElementById("ag-titre");
+    var elTexte = document.getElementById("ag-texte");
+    var elLien  = document.getElementById("ag-lien");
+
+    function rediriger() { setTimeout(function () { window.location.replace(PAGE_CONNEXION); }, 1500); }
+    function refuser(t, x) { elTitre.textContent = t; elTexte.textContent = x; elLien.style.display = "inline-block"; rediriger(); }
+    function deverrouiller() {
+      document.body.classList.remove("acces-verrouille");
+      var g = document.getElementById("acces-garde");
+      if (g && g.parentNode) g.parentNode.removeChild(g);
+    }
+    if (!window.supabase) { refuser("Erreur de chargement", "Impossible de vérifier votre accès. Redirection…"); return; }
+
+    var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    sb.auth.getSession().then(function (res) {
+      var session = res && res.data ? res.data.session : null;
+      if (!session) { refuser("Connexion requise", "Vous devez vous connecter pour accéder au guide. Redirection…"); return; }
+      sb.rpc("mon_acces_actif", { p_produit: PRODUIT }).then(function (r) {
+        if (r.error) { refuser("Vérification impossible", "Une erreur est survenue. Redirection…"); return; }
+        if (r.data === true) { deverrouiller(); }
+        else { refuser("Accès non actif", "Votre accès n'est pas actif ou a expiré. Redirection…"); }
+      });
+    });
+  })();
+  </script>
+  <!-- ===== FIN GARDE D'ACCES ===== -->
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="programme-preparation.html">Programme préparatoire à l'examen de citoyenneté</a>
+            <a href="preparation-valeurs-quebecoises.html">Préparation aux valeurs québécoises (gratuit)</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Programme de préparation</p>
+      <h1 class="page-hero-title">Guide d'étude <em>interactif</em></h1>
+      <p class="page-hero-subtitle">Les notions essentielles du guide officiel Découvrir le Canada, organisées par chapitre.</p>
+    </div>
+  </section>
+
+  <!-- GUIDE -->
+  <section class="section" style="background: var(--beige);">
+    <div class="section-inner">
+      <div class="guide-wrap">
+
+        <!-- Barre de progression -->
+        <div class="guide-progress">
+          <div class="guide-progress-top">
+            <span class="guide-progress-label">Votre progression</span>
+            <span class="guide-progress-pct" id="progress-pct">0 %</span>
+          </div>
+          <div class="guide-progress-bar">
+            <div class="guide-progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <!-- Table des matieres -->
+        <div class="guide-toc" id="haut">
+          <h2>Table des matières</h2>
+          <ol>
+            <li><a href="#ch1">1. Histoire du Canada</a></li>
+            <li><a href="#ch2">2. Premiers Peuples</a></li>
+            <li><a href="#ch3">3. Droits et responsabilités</a></li>
+            <li><a href="#ch4">4. Gouvernement canadien</a></li>
+            <li><a href="#ch5">5. Élections</a></li>
+            <li><a href="#ch6">6. Géographie du Canada</a></li>
+            <li><a href="#ch7">7. Économie</a></li>
+            <li><a href="#ch8">8. Symboles nationaux</a></li>
+            <li><a href="#ch9">9. Préparation finale</a></li>
+          </ol>
+        </div>
+
+        <!-- CH1 -->
+        <div class="guide-chap" id="ch1">
+          <p class="guide-chap-eyebrow">Chapitre 1</p>
+          <h2 class="guide-chap-title">Histoire du Canada</h2>
+          <p>L'histoire du Canada commence bien avant l'arrivée des Européens, avec les peuples autochtones présents sur le territoire depuis des milliers d'années. Au tournant du XVe siècle, les explorateurs européens arrivent : Jean Cabot dresse la première carte de la côte Est en 1497, et Jacques Cartier revendique des terres pour la France de 1534 à 1542. Samuel de Champlain fonde la ville de Québec en 1608, posant les bases de la Nouvelle-France.</p>
+          <p>La rivalité entre la France et la Grande-Bretagne culmine en 1759 avec la bataille des plaines d'Abraham, qui marque la fin de l'Empire français en Amérique. L'Acte de Québec de 1774 accorde la liberté religieuse aux catholiques. Après la Révolution américaine (1776), des dizaines de milliers de loyalistes fidèles à la Couronne s'établissent au Canada.</p>
+          <p>En 1812, les États-Unis envahissent le Canada, mais l'invasion est repoussée. Au fil du XIXe siècle, le mouvement vers un gouvernement responsable progresse. Le 1er juillet 1867, la Loi constitutionnelle (Acte de l'Amérique du Nord britannique) crée le Dominion du Canada, réunissant l'Ontario, le Québec, le Nouveau-Brunswick et la Nouvelle-Écosse. Sir John A. Macdonald devient le premier premier ministre.</p>
+          <p>Le chemin de fer Canadien Pacifique, achevé en 1885, unit le pays d'un océan à l'autre. Au XXe siècle, le Canada se distingue lors des deux guerres mondiales — notamment à la crête de Vimy en 1917 et sur la plage Juno le 6 juin 1944. La Charte canadienne des droits et libertés est adoptée en 1982.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>1608 : fondation de Québec par Samuel de Champlain.</li>
+              <li>1759 : bataille des plaines d'Abraham, fin de l'Empire français en Amérique.</li>
+              <li>1er juillet 1867 : création du Dominion du Canada (4 provinces).</li>
+              <li>Sir John A. Macdonald : premier premier ministre.</li>
+              <li>1885 : achèvement du chemin de fer Canadien Pacifique.</li>
+              <li>1982 : adoption de la Charte canadienne des droits et libertés.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>1608</strong> &mdash; Fondation de Quebec par Samuel de Champlain.</span></div>
+          
+          <p class="guide-flash-title">Ligne du temps</p>
+          <div class="timeline">
+            <div class="tl-item">
+              <button class="tl-btn" onclick="this.parentNode.classList.toggle('ouvert')"><span class="tl-year">1608</span><span class="tl-label">Fondation de Quebec</span></button>
+              <div class="tl-detail">Samuel de Champlain fonde Quebec, berceau de la Nouvelle-France.</div>
+            </div>
+            <div class="tl-item">
+              <button class="tl-btn" onclick="this.parentNode.classList.toggle('ouvert')"><span class="tl-year">1759</span><span class="tl-label">Plaines d'Abraham</span></button>
+              <div class="tl-detail">La victoire britannique met fin a l'Empire francais en Amerique du Nord.</div>
+            </div>
+            <div class="tl-item">
+              <button class="tl-btn" onclick="this.parentNode.classList.toggle('ouvert')"><span class="tl-year">1867</span><span class="tl-label">Confederation</span></button>
+              <div class="tl-detail">La Loi constitutionnelle cree le Dominion du Canada avec quatre provinces.</div>
+            </div>
+            <div class="tl-item">
+              <button class="tl-btn" onclick="this.parentNode.classList.toggle('ouvert')"><span class="tl-year">1885</span><span class="tl-label">Chemin de fer</span></button>
+              <div class="tl-detail">Achevement du chemin de fer Canadien Pacifique, reliant le pays d'un ocean a l'autre.</div>
+            </div>
+            <div class="tl-item">
+              <button class="tl-btn" onclick="this.parentNode.classList.toggle('ouvert')"><span class="tl-year">1982</span><span class="tl-label">Charte des droits</span></button>
+              <div class="tl-detail">Adoption de la Charte canadienne des droits et libertes.</div>
+            </div>
+          </div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui a fonde la ville de Quebec, et en quelle annee?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Samuel de Champlain, en 1608.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle bataille de 1759 marque la fin de l'Empire francais en Amerique?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La bataille des plaines d'Abraham.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle date marque la creation du Dominion du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le 1er juillet 1867.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui fut le premier premier ministre du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Sir John A. Macdonald.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch1">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Qui a fonde Quebec en 1608?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Jacques Cartier</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch1')">Samuel de Champlain</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Jean Cabot</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">John A. Macdonald</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle bataille de 1759 met fin a l'Empire francais en Amerique?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Vimy</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch1')">Les plaines d'Abraham</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Juno</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">La Somme</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quand le Dominion du Canada est-il cree?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch1')">1867</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1812</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1982</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1759</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Qui fut le premier premier ministre du Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Wilfrid Laurier</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">George-Etienne Cartier</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch1')">John A. Macdonald</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">Louis Riel</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">En quelle annee la Charte des droits et libertes est-elle adoptee?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1867</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1965</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch1')">1982</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch1')">1931</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH2 -->
+        <div class="guide-chap" id="ch2">
+          <p class="guide-chap-eyebrow">Chapitre 2</p>
+          <h2 class="guide-chap-title">Premiers Peuples</h2>
+          <p>Les peuples autochtones habitent le territoire canadien depuis des milliers d'années; on croit que leurs ancêtres sont venus d'Asie. Aujourd'hui, le terme « peuples autochtones » désigne trois groupes distincts reconnus par la Constitution : les Indiens (Premières Nations), les Inuits et les Métis.</p>
+          <p>Les Premières Nations représentent la majorité des peuples autochtones. Les Inuits — dont le nom signifie « le peuple » — vivent principalement dans l'Arctique. Les Métis sont un peuple distinct né de l'union d'Autochtones et d'Européens; bon nombre parlent le michif. Les Acadiens, descendants de colons français établis dès 1604, ont vécu la déportation appelée le Grand Dérangement (1755-1763).</p>
+          <p>Au premier contact avec les Européens, de nombreux Autochtones sont morts de maladies contre lesquelles ils n'étaient pas immunisés. La Proclamation royale de 1763 a reconnu pour la première fois des droits territoriaux autochtones. En 2008, le gouvernement du Canada a présenté des excuses officielles aux anciens élèves des pensionnats indiens.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Trois groupes autochtones : Premières Nations, Inuits, Métis.</li>
+              <li>« Inuit » signifie « le peuple ».</li>
+              <li>Les Métis parlent souvent le michif.</li>
+              <li>Grand Dérangement : déportation des Acadiens (1755-1763).</li>
+              <li>2008 : excuses officielles pour les pensionnats indiens.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>3 groupes</strong> &mdash; Premieres Nations, Inuits et Metis.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quels sont les trois groupes autochtones reconnus?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les Premieres Nations, les Inuits et les Metis.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que signifie le mot Inuit?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le peuple.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle langue parlent souvent les Metis?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le michif.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Comment appelle-t-on la deportation des Acadiens (1755-1763)?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le Grand Derangement.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch2">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Quels sont les trois groupes autochtones reconnus?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Anglais, Francais, Metis</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch2')">Premieres Nations, Inuits, Metis</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Inuits, Acadiens, Cris</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Hurons, Iroquois, Sioux</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Que signifie le mot Inuit?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch2')">Le peuple</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Village</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Notre terre</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Chasseur</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle langue parlent souvent les Metis?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Le cri</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch2')">Le michif</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">L'inuktitut</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">Le joual</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Comment appelle-t-on la deportation des Acadiens?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">La Revolution tranquille</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch2')">Le Grand Derangement</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">La Confederation</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">L'Acte d'Union</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">D'ou viennent les ancetres des peuples autochtones?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">D'Europe</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch2')">D'Asie</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">D'Afrique</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch2')">D'Amerique du Sud</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH3 -->
+        <div class="guide-chap" id="ch3">
+          <p class="guide-chap-eyebrow">Chapitre 3</p>
+          <h2 class="guide-chap-title">Droits et responsabilités</h2>
+          <p>Le Canada est fondé sur la primauté du droit : individus et gouvernements sont régis par des lois, et non par des décisions arbitraires. La Charte canadienne des droits et libertés (1982) garantit notamment les libertés fondamentales (conscience et religion; pensée, croyance, opinion et expression; réunion pacifique; association), les droits démocratiques, la liberté de circulation et d'établissement, ainsi que l'égalité devant la loi.</p>
+          <p>Avec les droits viennent des responsabilités. Les trois responsabilités liées à la citoyenneté sont : respecter les lois, répondre à ses propres besoins et à ceux de sa famille, et faire partie d'un jury lorsqu'on est appelé. Voter aux élections, protéger le patrimoine et l'environnement, et aider les autres dans sa communauté (bénévolat) sont également valorisés.</p>
+          <p>L'égalité entre les femmes et les hommes est un principe fondamental : ils sont égaux devant la loi. Le Canada exclut fermement et punit des pratiques comme les « meurtres d'honneur » et les mariages forcés.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Primauté du droit : tous sont soumis à la loi.</li>
+              <li>Trois responsabilités : respecter les lois, subvenir à ses besoins et ceux de sa famille, faire partie d'un jury.</li>
+              <li>La Charte garantit les libertés fondamentales et l'égalité.</li>
+              <li>Égalité femmes-hommes devant la loi.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>1982</strong> &mdash; Adoption de la Charte canadienne des droits et libertes.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel principe veut que tous soient soumis a la loi?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La primaute du droit.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Nommez une des trois responsabilites liees a la citoyennete.</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Respecter les lois (ou subvenir a ses besoins, ou faire partie d'un jury).</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">En quelle annee la Charte des droits et libertes a-t-elle ete adoptee?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">En 1982.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Les femmes et les hommes sont-ils egaux devant la loi au Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Oui, c'est un principe fondamental.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch3">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Quel principe veut que tous soient soumis a la loi?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Le multiculturalisme</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch3')">La primaute du droit</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Le federalisme</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">La souverainete</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Combien y a-t-il de responsabilites liees a la citoyennete?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Deux</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch3')">Trois</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Quatre</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Cinq</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Laquelle est une responsabilite du citoyen?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Acheter canadien</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch3')">Faire partie d'un jury</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Parler deux langues</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Posseder une maison</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Les femmes et les hommes sont-ils egaux devant la loi?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch3')">Oui</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Non</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Selon la province</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Selon l'age</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">La Charte protege notamment quoi?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Le droit a la propriete fonciere</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch3')">Les libertes fondamentales</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Le droit de ne pas payer d'impot</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch3')">Le service militaire</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH4 -->
+        <div class="guide-chap" id="ch4">
+          <p class="guide-chap-eyebrow">Chapitre 4</p>
+          <h2 class="guide-chap-title">Gouvernement canadien</h2>
+          <p>Le Canada est une monarchie constitutionnelle, une démocratie parlementaire et un État fédéral. Le souverain est le chef d'État, représenté au niveau fédéral par le gouverneur général et, dans chaque province, par un lieutenant-gouverneur. Le premier ministre est le chef du gouvernement : c'est lui qui dirige réellement le pays.</p>
+          <p>Le Parlement comporte trois parties : le souverain, le Sénat et la Chambre des communes. Les sénateurs sont nommés et siègent jusqu'à 75 ans; les députés sont élus par les citoyens de leur circonscription. Pour qu'un projet de loi devienne loi, il doit être adopté par les deux chambres et recevoir la sanction royale.</p>
+          <p>Il existe trois ordres de gouvernement : fédéral, provincial/territorial et municipal. Le fédéral s'occupe notamment de la défense, de la politique étrangère, de la monnaie et de la citoyenneté; les provinces, de l'éducation, de la santé et des ressources naturelles; les municipalités, des services locaux. Le système judiciaire est indépendant, et la Cour suprême du Canada, composée de neuf juges, est le plus haut tribunal.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Monarchie constitutionnelle + démocratie parlementaire + fédéralisme.</li>
+              <li>Parlement : souverain, Sénat, Chambre des communes.</li>
+              <li>Premier ministre = chef du gouvernement; souverain = chef d'État.</li>
+              <li>Trois ordres : fédéral, provincial/territorial, municipal.</li>
+              <li>Cour suprême : 9 juges, plus haut tribunal.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>9 juges</strong> &mdash; La Cour supreme du Canada, plus haut tribunal du pays.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui est le chef d'Etat du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le souverain (le roi ou la reine du Canada).</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui est le chef du gouvernement?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le premier ministre.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelles sont les trois parties du Parlement?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le souverain, le Senat et la Chambre des communes.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de juges siegent a la Cour supreme?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Neuf juges.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="erreur-box"><p class="erreur-title">Erreur frequente</p><p class="erreur-q">Qui est le chef du gouvernement, et non le chef d'Etat?</p><p class="erreur-r">Le <strong>premier ministre</strong> est le chef du gouvernement. Le chef d'Etat est le souverain (roi ou reine), represente par le gouverneur general.</p></div>
+          <div class="miniquiz" id="mq-ch4">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Qui est le chef d'Etat du Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le premier ministre</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch4')">Le souverain</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le gouverneur general</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le president</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Qui est le chef du gouvernement?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le souverain</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch4')">Le premier ministre</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le gouverneur general</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Le juge en chef</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelles sont les trois parties du Parlement?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">PM, Cabinet, Cour supreme</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch4')">Souverain, Senat, Chambre des communes</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Federal, provincial, municipal</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Executif, legislatif, judiciaire</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Combien de juges siegent a la Cour supreme?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Sept</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch4')">Neuf</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Cinq</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Douze</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Le Canada est notamment quel type d'Etat?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Une republique</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch4')">Une monarchie constitutionnelle</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Une dictature</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch4')">Un Etat unitaire</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH5 -->
+        <div class="guide-chap" id="ch5">
+          <p class="guide-chap-eyebrow">Chapitre 5</p>
+          <h2 class="guide-chap-title">Élections</h2>
+          <p>Le Canada est une démocratie : le pouvoir vient des citoyens. Tout citoyen canadien âgé d'au moins 18 ans et inscrit sur la liste électorale peut voter. Le pays est divisé en circonscriptions, et les électeurs de chaque circonscription élisent un député à la Chambre des communes.</p>
+          <p>Après une élection, le chef du parti qui détient le plus grand nombre de sièges est habituellement invité à former le gouvernement. Si ce parti détient au moins la moitié des sièges, il forme un gouvernement majoritaire; sinon, un gouvernement minoritaire. Le parti d'opposition comptant le plus de députés devient l'Opposition officielle.</p>
+          <p>Le vote est secret : personne n'est tenu de révéler pour qui il a voté. Pour voter, on inscrit un « X » dans le cercle à côté du nom du candidat choisi. Élections Canada, organisme neutre, gère les listes et le déroulement du scrutin.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Droit de vote : citoyen de 18 ans et plus inscrit sur la liste.</li>
+              <li>Le pays est divisé en circonscriptions.</li>
+              <li>Majoritaire = au moins la moitié des sièges; sinon minoritaire.</li>
+              <li>Le vote est secret.</li>
+              <li>Élections Canada : organisme neutre.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>18 ans</strong> &mdash; Age minimal pour voter aux elections federales.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui peut voter a une election federale?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Tout citoyen de 18 ans et plus inscrit sur la liste electorale.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qu'est-ce qu'un gouvernement majoritaire?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Un parti qui detient au moins la moitie des sieges.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Le vote est-il secret au Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Oui, personne n'est tenu de dire pour qui il a vote.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel organisme neutre gere les elections?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Elections Canada.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="erreur-box"><p class="erreur-title">Erreur frequente</p><p class="erreur-q">Quelle est la difference entre majoritaire et minoritaire?</p><p class="erreur-r">Un gouvernement est <strong>majoritaire</strong> s'il detient au moins la moitie des sieges; sinon il est <strong>minoritaire</strong>.</p></div>
+          <div class="miniquiz" id="mq-ch5">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Qui peut voter a une election federale?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Tout resident</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch5')">Tout citoyen de 18 ans et plus inscrit</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Tout proprietaire</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Tout citoyen de 21 ans et plus</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Qu'est-ce qu'un gouvernement majoritaire?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Le parti avec le moins de sieges</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch5')">Au moins la moitie des sieges</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Une coalition</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Un gouvernement nomme</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Le vote est-il secret?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch5')">Oui</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Non</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Seulement en ville</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Selon la province</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quel organisme neutre gere les elections?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Statistique Canada</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch5')">Elections Canada</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Le Senat</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">La Cour supreme</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Comment appelle-t-on la zone representee par un depute?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Une province</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch5')">Une circonscription</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Une municipalite</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch5')">Un territoire</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH6 -->
+        <div class="guide-chap" id="ch6">
+          <p class="guide-chap-eyebrow">Chapitre 6</p>
+          <h2 class="guide-chap-title">Géographie du Canada</h2>
+          <p>Le Canada est le deuxième plus grand pays du monde par sa superficie. Il est bordé par trois océans : le Pacifique à l'ouest, l'Atlantique à l'est et l'Arctique au nord. Le pays compte dix provinces et trois territoires, et se divise en cinq régions : les provinces de l'Atlantique, le centre du Canada, les provinces des Prairies, la côte Ouest et les territoires du Nord.</p>
+          <p>La capitale du pays est Ottawa, choisie par la reine Victoria en 1857. Le centre du Canada (Ontario et Québec) regroupe la plus grande partie de la population. Les Prairies (Manitoba, Saskatchewan, Alberta) sont riches en agriculture et en ressources énergétiques. La Colombie-Britannique est la porte d'entrée vers l'Asie-Pacifique. Le Nord, surnommé « la terre du soleil de minuit », comprend le Yukon, les Territoires du Nord-Ouest et le Nunavut (créé en 1999).</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>2e plus grand pays du monde; bordé par 3 océans.</li>
+              <li>10 provinces et 3 territoires; 5 régions.</li>
+              <li>Capitale : Ottawa (choisie par la reine Victoria en 1857).</li>
+              <li>Nunavut créé en 1999.</li>
+              <li>Capitales utiles : Toronto (ON), Québec (QC), Edmonton (AB), Victoria (C.-B.).</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>Ottawa</strong> &mdash; Capitale du Canada, choisie par la reine Victoria en 1857.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Le Canada est le combien plus grand pays du monde?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le deuxieme.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quels trois oceans bordent le Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le Pacifique, l'Atlantique et l'Arctique.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de provinces et de territoires compte le Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Dix provinces et trois territoires.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle est la capitale du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Ottawa.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="erreur-box"><p class="erreur-title">Erreur frequente</p><p class="erreur-q">Quelle est la capitale du Canada (et non la plus grande ville)?</p><p class="erreur-r">La capitale est <strong>Ottawa</strong>. Toronto est la plus grande ville, mais ce n'est pas la capitale du pays.</p></div>
+          <div class="miniquiz" id="mq-ch6">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Le Canada est le combien plus grand pays du monde?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Premier</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch6')">Deuxieme</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Cinquieme</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Dixieme</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quels trois oceans bordent le Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Atlantique, Pacifique, Indien</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch6')">Pacifique, Atlantique, Arctique</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Pacifique, Indien, Arctique</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Atlantique, Arctique, Austral</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Combien de provinces compte le Canada?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch6')">Dix</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Douze</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Neuf</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Treize</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle est la capitale du Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Toronto</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Montreal</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch6')">Ottawa</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">Quebec</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">En quelle annee le Nunavut a-t-il ete cree?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch6')">1999</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">1982</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">1949</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch6')">1905</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH7 -->
+        <div class="guide-chap" id="ch7">
+          <p class="guide-chap-eyebrow">Chapitre 7</p>
+          <h2 class="guide-chap-title">Économie</h2>
+          <p>Le Canada possède une économie de marché moderne et fait partie du G8, le groupe des principaux pays industrialisés. Son partenaire commercial le plus important est, de loin, les États-Unis : plus des trois quarts des exportations canadiennes y sont destinées.</p>
+          <p>L'économie repose sur trois grands secteurs. Le secteur des services emploie plus des trois quarts des travailleurs canadiens (commerce, finance, santé, éducation, etc.). Le secteur manufacturier produit notamment du papier, des véhicules, du matériel de haute technologie et des vêtements. Le secteur des ressources naturelles regroupe la foresterie, la pêche, l'agriculture, l'exploitation minière et l'énergie.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Membre du G8.</li>
+              <li>Principal partenaire commercial : les États-Unis (plus des 3/4 des exportations).</li>
+              <li>Trois secteurs : services, manufacturier, ressources naturelles.</li>
+              <li>Le secteur des services emploie plus de 75 % des travailleurs.</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>G8</strong> &mdash; Le Canada fait partie des grands pays industrialises.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel est le principal partenaire commercial du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les Etats-Unis.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">De quel groupe de pays industrialises le Canada fait-il partie?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le G8.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel secteur emploie plus de 75 % des travailleurs?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le secteur des services.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Nommez les trois grands secteurs de l'economie.</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Services, manufacturier et ressources naturelles.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch7">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Quel est le principal partenaire commercial du Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Le Mexique</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch7')">Les Etats-Unis</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Le Royaume-Uni</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">La France</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">De quel groupe de pays le Canada fait-il partie?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Le G20</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch7')">Le G8</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">L'OPEP</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">L'UE</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quel secteur emploie plus de 75 % des travailleurs?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Manufacturier</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Ressources naturelles</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch7')">Services</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Agricole</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Lequel n'est pas un grand secteur de l'economie?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Services</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Manufacturier</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Ressources naturelles</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch7')">Tourisme spatial</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle part des exportations va aux Etats-Unis?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">La moitie</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch7')">Plus des trois quarts</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Le quart</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch7')">Le dixieme</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH8 -->
+        <div class="guide-chap" id="ch8">
+          <p class="guide-chap-eyebrow">Chapitre 8</p>
+          <h2 class="guide-chap-title">Symboles nationaux</h2>
+          <p>La feuille d'érable est le symbole le plus connu du Canada. Le drapeau rouge et blanc, avec sa feuille d'érable, a été hissé pour la première fois en 1965; le rouge et le blanc sont les couleurs nationales officielles depuis 1921. La Couronne est un symbole de l'État au pays depuis des siècles.</p>
+          <p>Le castor est l'emblème animalier associé à la traite des fourrures et à la Compagnie de la Baie d'Hudson. La devise du Canada, « A mari usque ad mare », signifie « d'un océan à l'autre ». L'hymne national, « Ô Canada », a été proclamé en 1980, tandis que « Dieu protège la Reine (ou le Roi) » est l'hymne royal. La plus haute distinction militaire est la Croix de Victoria; l'Ordre du Canada, créé en 1967, récompense le mérite civil.</p>
+          <div class="guide-points">
+            <strong>Points clés à retenir</strong>
+            <ul>
+              <li>Feuille d'érable : symbole le plus connu.</li>
+              <li>Drapeau actuel hissé en 1965; couleurs officielles depuis 1921.</li>
+              <li>Devise : « D'un océan à l'autre » (A mari usque ad mare).</li>
+              <li>« Ô Canada » proclamé hymne national en 1980.</li>
+              <li>Croix de Victoria : plus haute distinction; Ordre du Canada (1967).</li>
+            </ul>
+          </div>
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>1965</strong> &mdash; Annee ou le drapeau a la feuille d'erable a ete hisse.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel est le symbole le plus connu du Canada?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La feuille d'erable.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">En quelle annee le drapeau actuel a-t-il ete hisse?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">En 1965.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que signifie la devise A mari usque ad mare?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">D'un ocean a l'autre.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle est la plus haute distinction militaire?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La Croix de Victoria.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch8">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Quel est le symbole le plus connu du Canada?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">Le castor</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch8')">La feuille d'erable</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">La fleur de lys</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">L'Union Jack</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">En quelle annee le drapeau actuel a-t-il ete hisse?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1867</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1921</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch8')">1965</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1982</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Que signifie A mari usque ad mare?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">Je me souviens</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch8')">D'un ocean a l'autre</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">Paix et ordre</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">Dieu protege la Reine</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">En quelle annee Ô Canada devient l'hymne national?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1867</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1965</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch8')">1980</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">1921</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle est la plus haute distinction militaire?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">L'Ordre du Canada</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch8')">La Croix de Victoria</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">La Coupe Stanley</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch8')">La Medaille du jubile</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+        <!-- CH9 -->
+        <div class="guide-chap" id="ch9">
+          <p class="guide-chap-eyebrow">Chapitre 9</p>
+          <h2 class="guide-chap-title">Préparation finale</h2>
+          <p>L'examen pour la citoyenneté évalue votre connaissance du Canada — droits, responsabilités, histoire, géographie, gouvernement, symboles — ainsi qu'une connaissance suffisante du français ou de l'anglais. Il prend généralement la forme d'un examen écrit. Toutes les questions sont fondées sur le guide officiel Découvrir le Canada.</p>
+          <p>Pour bien vous préparer : révisez chaque chapitre, retenez les dates et noms clés (1608, 1867, premiers ministres, capitales), puis mettez-vous à l'épreuve avec la banque de 250 questions. Concentrez vos révisions sur les notions où vous faites le plus d'erreurs. Le jour de l'examen, lisez chaque question attentivement et ne vous précipitez pas.</p>
+          <div class="guide-points">
+            <strong>Stratégie de révision</strong>
+            <ul>
+              <li>Relisez les 8 chapitres, un à la fois.</li>
+              <li>Mémorisez dates, noms et capitales clés.</li>
+              <li>Pratiquez avec les 250 questions, plusieurs fois.</li>
+              <li>Revenez sur vos erreurs en priorité.</li>
+            </ul>
+          </div>
+
+          
+          <div class="revision">
+            <p class="revision-eyebrow">Avant l'examen</p>
+            <h3>Revision rapide &mdash; 5 minutes</h3>
+            <p class="revision-sub">20 faits essentiels a memoriser juste avant le grand jour.</p>
+            <button class="revision-btn" onclick="document.getElementById('rev-liste').classList.toggle('visible');this.textContent=document.getElementById('rev-liste').classList.contains('visible')?'Masquer la revision':'Afficher les 20 faits essentiels'">Afficher les 20 faits essentiels</button>
+            <div class="revision-liste" id="rev-liste">
+              <div class="revision-fait"><strong>1608</strong> &mdash; Fondation de Quebec par Champlain</div>
+              <div class="revision-fait"><strong>1759</strong> &mdash; Bataille des plaines d'Abraham</div>
+              <div class="revision-fait"><strong>1867</strong> &mdash; Confederation : creation du Canada</div>
+              <div class="revision-fait"><strong>1885</strong> &mdash; Achevement du chemin de fer Canadien Pacifique</div>
+              <div class="revision-fait"><strong>1982</strong> &mdash; Charte canadienne des droits et libertes</div>
+              <div class="revision-fait"><strong>John A. Macdonald</strong> &mdash; Premier premier ministre</div>
+              <div class="revision-fait"><strong>Chef d'Etat</strong> &mdash; Le souverain (roi ou reine)</div>
+              <div class="revision-fait"><strong>Chef du gouvernement</strong> &mdash; Le premier ministre</div>
+              <div class="revision-fait"><strong>Parlement</strong> &mdash; Souverain, Senat, Chambre des communes</div>
+              <div class="revision-fait"><strong>Cour supreme</strong> &mdash; Neuf juges</div>
+              <div class="revision-fait"><strong>Vote</strong> &mdash; Citoyen de 18 ans et plus inscrit</div>
+              <div class="revision-fait"><strong>Autochtones</strong> &mdash; Premieres Nations, Inuits, Metis</div>
+              <div class="revision-fait"><strong>Inuit</strong> &mdash; Signifie le peuple</div>
+              <div class="revision-fait"><strong>Capitale</strong> &mdash; Ottawa</div>
+              <div class="revision-fait"><strong>Oceans</strong> &mdash; Pacifique, Atlantique, Arctique</div>
+              <div class="revision-fait"><strong>Provinces</strong> &mdash; Dix provinces et trois territoires</div>
+              <div class="revision-fait"><strong>Nunavut</strong> &mdash; Cree en 1999</div>
+              <div class="revision-fait"><strong>Economie</strong> &mdash; Principal partenaire : les Etats-Unis</div>
+              <div class="revision-fait"><strong>Drapeau</strong> &mdash; Hisse en 1965; couleurs officielles depuis 1921</div>
+              <div class="revision-fait"><strong>Devise</strong> &mdash; D'un ocean a l'autre (A mari usque ad mare)</div>
+            </div>
+          </div>
+          <div class="bilan">
+            <h3>Votre bilan de preparation</h3>
+            <p class="bilan-sub">Repondez aux mini-quiz de chaque chapitre, puis calculez votre score par matiere pour savoir quoi reviser.</p>
+            <button class="bilan-btn" onclick="calculerBilan()">Calculer mon bilan</button>
+            <div class="bilan-result" id="bilan-result"></div>
+            <div class="certificat" id="certificat">
+              <p class="certificat-eyebrow">Certificat de preparation</p>
+              <h4>MDPL Immigration</h4>
+              <p>atteste que vous avez atteint un excellent niveau de preparation</p>
+              <p class="cert-score" id="cert-score">0 %</p>
+              <p>a l'examen de citoyennete canadienne.</p>
+              <p class="cert-sign">Programme preparatoire &mdash; MDPL Immigration</p>
+            </div>
+          </div>
+
+          <div class="guide-cta">
+            <h3>Prêt à vous tester&nbsp;?</h3>
+            <p>Mettez vos connaissances à l'épreuve avec la banque complète de 250 questions.</p>
+            <a href="test-citoyennete-250-premium-a9f3k2.html">Accéder aux 250 questions</a>
+          </div>
+
+          
+          
+          <div class="a-retenir"><span class="a-retenir-badge">A retenir</span><span class="a-retenir-txt"><strong>250</strong> &mdash; Questions de pratique pour bien vous preparer.</span></div>
+          <p class="guide-flash-title">Cartes memoire</p>
+          <div class="flash-grid">
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Sur quoi sont fondees toutes les questions de l'examen?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le guide officiel Decouvrir le Canada.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle forme prend l'examen en general?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Un examen ecrit.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que faut-il reviser en priorite?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les notions ou l'on fait le plus d'erreurs.</span></div>
+              </div>
+            </div>
+            <div class="flash-card" onclick="this.classList.toggle('retourne')">
+              <div class="flash-inner">
+                <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de questions de pratique sont disponibles?</span><span class="flash-hint">Cliquer pour voir la reponse</span></div>
+                <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">250 questions.</span></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="miniquiz" id="mq-ch9">
+            <p class="miniquiz-title">Mini-quiz du chapitre (5 questions)</p>
+            <div class="mq-q">
+              <p class="mq-q-text">Sur quoi sont fondees les questions de l'examen?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">La Constitution</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch9')">Le guide Decouvrir le Canada</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Les journaux</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Les lois provinciales</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle forme prend l'examen en general?</p>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch9')">Un examen ecrit</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Un examen oral</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Un test physique</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Une dissertation</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Que faut-il reviser en priorite?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Tout egalement</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch9')">Ses erreurs frequentes</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Seulement l'histoire</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Seulement la geographie</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Combien de questions de pratique sont disponibles?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">100</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">150</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">200</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch9')">250</button>
+            </div>
+            <div class="mq-q">
+              <p class="mq-q-text">Quelle langue faut-il connaitre suffisamment?</p>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">L'espagnol</button>
+              <button class="mq-opt" data-bon="1" onclick="mqRepondre(this,'mq-ch9')">Le francais ou l'anglais</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Une langue autochtone</button>
+              <button class="mq-opt" data-bon="0" onclick="mqRepondre(this,'mq-ch9')">Le latin</button>
+            </div>
+            <p class="mq-score"></p>
+          </div>
+          <div class="guide-checks">
+            <label class="guide-check"><input type="checkbox" class="chap-check" onchange="majProgression(this)"> J'ai terminé ce chapitre</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je comprends les concepts principaux</label>
+            <label class="guide-check"><input type="checkbox" onchange="cocherSimple(this)"> Je suis prêt(e) pour le quiz</label>
+          </div>
+          <a href="#haut" class="guide-haut">↑ Retour à la table des matières</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title">Information importante</p>
+        <p class="disclaimer-text">Ce guide est un outil de préparation fondé sur le guide officiel Découvrir le Canada. Il ne remplace pas la lecture du guide officiel publié par le gouvernement du Canada. Les informations sont fournies à titre informatif et ne constituent pas un avis juridique.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+
+  <!-- Autonomous Bilingual System: FR/EN with MutationObserver -->
+  <script>
+  (function() {
+    // ======== BILINGUAL CONTENT DATA (ALL TEXT STRINGS) ========
+    var content = {
+      fr: {
+        // Page hero
+        heroEyebrow: "Programme de préparation",
+        heroTitle: "Guide d'étude <em>interactif</em>",
+        heroSubtitle: "Les notions essentielles du guide officiel Découvrir le Canada, organisées par chapitre.",
+
+        // Progress bar
+        progressLabel: "Votre progression",
+
+        // Header & Navigation
+        logoSub: "Cabinet conseil en immigration",
+        navHome: "Accueil",
+        navHistory: "Notre histoire",
+        navServices: "Nos services",
+        navTools: "Nos outils",
+        navWhy: "Pourquoi MDPL",
+        navBlog: "Blogue",
+        navFAQ: "Questions fréquentes",
+        navContact: "Nous contacter",
+        navBooking: "Prendre RDV",
+
+        // Services menu items
+        serviceRP: "Résidence permanente",
+        serviceCitizenship: "Demande de citoyenneté",
+        serviceStudy: "Permis d'études",
+        serviceWork: "Permis de travail",
+        serviceVisitor: "Visa visiteur & AVE",
+        serviceSponsorship: "Parrainage familial",
+        serviceForeignWorkers: "Travailleurs étrangers",
+        serviceRefugee: "Demande d'asile (SPR)",
+        serviceAppealRefugee: "Appel d'asile (SAR)",
+        serviceDetention: "Détention (SI)",
+        serviceAppealImmigration: "Appels en immigration (SAI)",
+
+        // Tools menu items
+        toolAssistant: "Assistant immigration",
+        toolTest: "Test de citoyenneté (essai gratuit)",
+        toolProgram: "Programme préparatoire à l'examen de citoyenneté",
+
+        // Table of contents
+        tocTitle: "Table des matières",
+        tocItems: [
+          "1. Histoire du Canada",
+          "2. Premiers Peuples",
+          "3. Droits et responsabilités",
+          "4. Gouvernement canadien",
+          "5. Élections",
+          "6. Géographie du Canada",
+          "7. Économie",
+          "8. Symboles nationaux",
+          "9. Préparation finale"
+        ],
+
+        // Chapter titles and eyebrows
+        chapters: [
+          { eyebrow: "Chapitre 1", title: "Histoire du Canada" },
+          { eyebrow: "Chapitre 2", title: "Premiers Peuples" },
+          { eyebrow: "Chapitre 3", title: "Droits et responsabilités" },
+          { eyebrow: "Chapitre 4", title: "Gouvernement canadien" },
+          { eyebrow: "Chapitre 5", title: "Élections" },
+          { eyebrow: "Chapitre 6", title: "Géographie du Canada" },
+          { eyebrow: "Chapitre 7", title: "Économie" },
+          { eyebrow: "Chapitre 8", title: "Symboles nationaux" },
+          { eyebrow: "Chapitre 9", title: "Préparation finale" }
+        ],
+
+        // Chapter content paragraphs
+        chapterContent: [
+          // CH1 - Histoire du Canada
+          [
+            "L'histoire du Canada commence bien avant l'arrivée des Européens, avec les peuples autochtones présents sur le territoire depuis des milliers d'années. Au tournant du XVe siècle, les explorateurs européens arrivent : Jean Cabot dresse la première carte de la côte Est en 1497, et Jacques Cartier revendique des terres pour la France de 1534 à 1542. Samuel de Champlain fonde la ville de Québec en 1608, posant les bases de la Nouvelle-France.",
+            "La rivalité entre la France et la Grande-Bretagne culmine en 1759 avec la bataille des plaines d'Abraham, qui marque la fin de l'Empire français en Amérique. L'Acte de Québec de 1774 accorde la liberté religieuse aux catholiques. Après la Révolution américaine (1776), des dizaines de milliers de loyalistes fidèles à la Couronne s'établissent au Canada.",
+            "En 1812, les États-Unis envahissent le Canada, mais l'invasion est repoussée. Au fil du XIXe siècle, le mouvement vers un gouvernement responsable progresse. Le 1er juillet 1867, la Loi constitutionnelle (Acte de l'Amérique du Nord britannique) crée le Dominion du Canada, réunissant l'Ontario, le Québec, le Nouveau-Brunswick et la Nouvelle-Écosse. Sir John A. Macdonald devient le premier premier ministre.",
+            "Le chemin de fer Canadien Pacifique, achevé en 1885, unit le pays d'un océan à l'autre. Au XXe siècle, le Canada se distingue lors des deux guerres mondiales — notamment à la crête de Vimy en 1917 et sur la plage Juno le 6 juin 1944. La Charte canadienne des droits et libertés est adoptée en 1982."
+          ],
+          // CH2 - Premiers Peuples
+          [
+            "Les peuples autochtones habitent le territoire canadien depuis des milliers d'années; on croit que leurs ancêtres sont venus d'Asie. Aujourd'hui, le terme « peuples autochtones » désigne trois groupes distincts reconnus par la Constitution : les Indiens (Premières Nations), les Inuits et les Métis.",
+            "Les Premières Nations représentent la majorité des peuples autochtones. Les Inuits — dont le nom signifie « le peuple » — vivent principalement dans l'Arctique. Les Métis sont un peuple distinct né de l'union d'Autochtones et d'Européens; bon nombre parlent le michif. Les Acadiens, descendants de colons français établis dès 1604, ont vécu la déportation appelée le Grand Dérangement (1755-1763).",
+            "Au premier contact avec les Européens, de nombreux Autochtones sont morts de maladies contre lesquelles ils n'étaient pas immunisés. La Proclamation royale de 1763 a reconnu pour la première fois des droits territoriaux autochtones. En 2008, le gouvernement du Canada a présenté des excuses officielles aux anciens élèves des pensionnats indiens."
+          ],
+          // CH3 - Droits et responsabilités
+          [
+            "Le Canada est fondé sur la primauté du droit : individus et gouvernements sont régis par des lois, et non par des décisions arbitraires. La Charte canadienne des droits et libertés (1982) garantit notamment les libertés fondamentales (conscience et religion; pensée, croyance, opinion et expression; réunion pacifique; association), les droits démocratiques, la liberté de circulation et d'établissement, ainsi que l'égalité devant la loi.",
+            "Avec les droits viennent des responsabilités. Les trois responsabilités liées à la citoyenneté sont : respecter les lois, répondre à ses propres besoins et à ceux de sa famille, et faire partie d'un jury lorsqu'on est appelé. Voter aux élections, protéger le patrimoine et l'environnement, et aider les autres dans sa communauté (bénévolat) sont également valorisés.",
+            "L'égalité entre les femmes et les hommes est un principe fondamental : ils sont égaux devant la loi. Le Canada exclut fermement et punit des pratiques comme les « meurtres d'honneur » et les mariages forcés."
+          ],
+          // CH4 - Gouvernement canadien
+          [
+            "Le Canada est une monarchie constitutionnelle, une démocratie parlementaire et un État fédéral. Le souverain est le chef d'État, représenté au niveau fédéral par le gouverneur général et, dans chaque province, par un lieutenant-gouverneur. Le premier ministre est le chef du gouvernement : c'est lui qui dirige réellement le pays.",
+            "Le Parlement comporte trois parties : le souverain, le Sénat et la Chambre des communes. Les sénateurs sont nommés et siègent jusqu'à 75 ans; les députés sont élus par les citoyens de leur circonscription. Pour qu'un projet de loi devienne loi, il doit être adopté par les deux chambres et recevoir la sanction royale.",
+            "Il existe trois ordres de gouvernement : fédéral, provincial/territorial et municipal. Le fédéral s'occupe notamment de la défense, de la politique étrangère, de la monnaie et de la citoyenneté; les provinces, de l'éducation, de la santé et des ressources naturelles; les municipalités, des services locaux. Le système judiciaire est indépendant, et la Cour suprême du Canada, composée de neuf juges, est le plus haut tribunal."
+          ],
+          // CH5 - Élections
+          [
+            "Le Canada est une démocratie : le pouvoir vient des citoyens. Tout citoyen canadien âgé d'au moins 18 ans et inscrit sur la liste électorale peut voter. Le pays est divisé en circonscriptions, et les électeurs de chaque circonscription élisent un député à la Chambre des communes.",
+            "Après une élection, le chef du parti qui détient le plus grand nombre de sièges est habituellement invité à former le gouvernement. Si ce parti détient au moins la moitié des sièges, il forme un gouvernement majoritaire; sinon, un gouvernement minoritaire. Le parti d'opposition comptant le plus de députés devient l'Opposition officielle.",
+            "Le vote est secret : personne n'est tenu de révéler pour qui il a voté. Pour voter, on inscrit un « X » dans le cercle à côté du nom du candidat choisi. Élections Canada, organisme neutre, gère les listes et le déroulement du scrutin."
+          ],
+          // CH6 - Géographie du Canada
+          [
+            "Le Canada est le deuxième plus grand pays du monde par sa superficie. Il est bordé par trois océans : le Pacifique à l'ouest, l'Atlantique à l'est et l'Arctique au nord. Le pays compte dix provinces et trois territoires, et se divise en cinq régions : les provinces de l'Atlantique, le centre du Canada, les provinces des Prairies, la côte Ouest et les territoires du Nord.",
+            "La capitale du pays est Ottawa, choisie par la reine Victoria en 1857. Le centre du Canada (Ontario et Québec) regroupe la plus grande partie de la population. Les Prairies (Manitoba, Saskatchewan, Alberta) sont riches en agriculture et en ressources énergétiques. La Colombie-Britannique est la porte d'entrée vers l'Asie-Pacifique. Le Nord, surnommé « la terre du soleil de minuit », comprend le Yukon, les Territoires du Nord-Ouest et le Nunavut (créé en 1999)."
+          ],
+          // CH7 - Économie
+          [
+            "Le Canada possède une économie de marché moderne et fait partie du G8, le groupe des principaux pays industrialisés. Son partenaire commercial le plus important est, de loin, les États-Unis : plus des trois quarts des exportations canadiennes y sont destinées.",
+            "L'économie repose sur trois grands secteurs. Le secteur des services emploie plus des trois quarts des travailleurs canadiens (commerce, finance, santé, éducation, etc.). Le secteur manufacturier produit notamment du papier, des véhicules, du matériel de haute technologie et des vêtements. Le secteur des ressources naturelles regroupe la foresterie, la pêche, l'agriculture, l'exploitation minière et l'énergie."
+          ],
+          // CH8 - Symboles nationaux
+          [
+            "La feuille d'érable est le symbole le plus connu du Canada. Le drapeau rouge et blanc, avec sa feuille d'érable, a été hissé pour la première fois en 1965; le rouge et le blanc sont les couleurs nationales officielles depuis 1921. La Couronne est un symbole de l'État au pays depuis des siècles.",
+            "Le castor est l'emblème animalier associé à la traite des fourrures et à la Compagnie de la Baie d'Hudson. La devise du Canada, « A mari usque ad mare », signifie « d'un océan à l'autre ». L'hymne national, « Ô Canada », a été proclamé en 1980, tandis que « Dieu protège la Reine (ou le Roi) » est l'hymne royal. La plus haute distinction militaire est la Croix de Victoria; l'Ordre du Canada, créé en 1967, récompense le mérite civil."
+          ],
+          // CH9 - Préparation finale
+          [
+            "L'examen pour la citoyenneté évalue votre connaissance du Canada — droits, responsabilités, histoire, géographie, gouvernement, symboles — ainsi qu'une connaissance suffisante du français ou de l'anglais. Il prend généralement la forme d'un examen écrit. Toutes les questions sont fondées sur le guide officiel Découvrir le Canada.",
+            "Pour bien vous préparer : révisez chaque chapitre, retenez les dates et noms clés (1608, 1867, premiers ministres, capitales), puis mettez-vous à l'épreuve avec la banque de 250 questions. Concentrez vos révisions sur les notions où vous faites le plus d'erreurs. Le jour de l'examen, lisez chaque question attentivement et ne vous précipitez pas."
+          ]
+        ],
+
+        // Key points boxes
+        keyPointsTitle: "Points clés à retenir",
+        keyPoints: [
+          // CH1
+          [
+            "1608 : fondation de Québec par Samuel de Champlain.",
+            "1759 : bataille des plaines d'Abraham, fin de l'Empire français en Amérique.",
+            "1er juillet 1867 : création du Dominion du Canada (4 provinces).",
+            "Sir John A. Macdonald : premier premier ministre.",
+            "1885 : achèvement du chemin de fer Canadien Pacifique.",
+            "1982 : adoption de la Charte canadienne des droits et libertés."
+          ],
+          // CH2
+          [
+            "Trois groupes autochtones : Premières Nations, Inuits, Métis.",
+            "« Inuit » signifie « le peuple ».",
+            "Les Métis parlent souvent le michif.",
+            "Grand Dérangement : déportation des Acadiens (1755-1763).",
+            "2008 : excuses officielles pour les pensionnats indiens."
+          ],
+          // CH3
+          [
+            "Primauté du droit : tous sont soumis à la loi.",
+            "Trois responsabilités : respecter les lois, subvenir à ses besoins et ceux de sa famille, faire partie d'un jury.",
+            "La Charte garantit les libertés fondamentales et l'égalité.",
+            "Égalité femmes-hommes devant la loi."
+          ],
+          // CH4
+          [
+            "Monarchie constitutionnelle + démocratie parlementaire + fédéralisme.",
+            "Parlement : souverain, Sénat, Chambre des communes.",
+            "Premier ministre = chef du gouvernement; souverain = chef d'État.",
+            "Trois ordres : fédéral, provincial/territorial, municipal.",
+            "Cour suprême : 9 juges, plus haut tribunal."
+          ],
+          // CH5
+          [
+            "Droit de vote : citoyen de 18 ans et plus inscrit sur la liste.",
+            "Le pays est divisé en circonscriptions.",
+            "Majoritaire = au moins la moitié des sièges; sinon minoritaire.",
+            "Le vote est secret.",
+            "Élections Canada : organisme neutre."
+          ],
+          // CH6
+          [
+            "2e plus grand pays du monde; bordé par 3 océans.",
+            "10 provinces et 3 territoires; 5 régions.",
+            "Capitale : Ottawa (choisie par la reine Victoria en 1857).",
+            "Nunavut créé en 1999.",
+            "Capitales utiles : Toronto (ON), Québec (QC), Edmonton (AB), Victoria (C.-B.)."
+          ],
+          // CH7
+          [
+            "Membre du G8.",
+            "Principal partenaire commercial : les États-Unis (plus des 3/4 des exportations).",
+            "Trois secteurs : services, manufacturier, ressources naturelles.",
+            "Le secteur des services emploie plus de 75 % des travailleurs."
+          ],
+          // CH8
+          [
+            "Feuille d'érable : symbole le plus connu.",
+            "Drapeau actuel hissé en 1965; couleurs officielles depuis 1921.",
+            "Devise : « D'un océan à l'autre » (A mari usque ad mare).",
+            "« Ô Canada » proclamé hymne national en 1980.",
+            "Croix de Victoria : plus haute distinction; Ordre du Canada (1967)."
+          ],
+          // CH9
+          [
+            "Relisez les 8 chapitres, un à la fois.",
+            "Mémorisez dates, noms et capitales clés.",
+            "Pratiquez avec les 250 questions, plusieurs fois.",
+            "Revenez sur vos erreurs en priorité."
+          ]
+        ],
+
+        // "À retenir" key fact boxes
+        aRetenir: [
+          { badge: "A retenir", text: "<strong>1608</strong> &mdash; Fondation de Quebec par Samuel de Champlain." },
+          { badge: "A retenir", text: "<strong>3 groupes</strong> &mdash; Premieres Nations, Inuits et Metis." },
+          { badge: "A retenir", text: "<strong>1982</strong> &mdash; Adoption de la Charte canadienne des droits et libertes." },
+          { badge: "A retenir", text: "<strong>9 juges</strong> &mdash; La Cour supreme du Canada, plus haut tribunal du pays." },
+          { badge: "A retenir", text: "<strong>18 ans</strong> &mdash; Age minimal pour voter aux elections federales." },
+          { badge: "A retenir", text: "<strong>Ottawa</strong> &mdash; Capitale du Canada, choisie par la reine Victoria en 1857." },
+          { badge: "A retenir", text: "<strong>G8</strong> &mdash; Le Canada fait partie des grands pays industrialises." },
+          { badge: "A retenir", text: "<strong>1965</strong> &mdash; Annee ou le drapeau a la feuille d'erable a ete hisse." },
+          { badge: "A retenir", text: "<strong>250</strong> &mdash; Questions de pratique pour bien vous preparer." }
+        ],
+
+        // Flashcards
+        flashcardTitle: "Cartes memoire",
+        flashcards: [
+          // CH1
+          [
+            { q: "Qui a fonde la ville de Quebec, et en quelle annee?", a: "Samuel de Champlain, en 1608." },
+            { q: "Quelle bataille de 1759 marque la fin de l'Empire francais en Amerique?", a: "La bataille des plaines d'Abraham." },
+            { q: "Quelle date marque la creation du Dominion du Canada?", a: "Le 1er juillet 1867." },
+            { q: "Qui fut le premier premier ministre du Canada?", a: "Sir John A. Macdonald." }
+          ],
+          // CH2
+          [
+            { q: "Quels sont les trois groupes autochtones reconnus?", a: "Les Premieres Nations, les Inuits et les Metis." },
+            { q: "Que signifie le mot Inuit?", a: "Le peuple." },
+            { q: "Quelle langue parlent souvent les Metis?", a: "Le michif." },
+            { q: "Comment appelle-t-on la deportation des Acadiens (1755-1763)?", a: "Le Grand Derangement." }
+          ],
+          // CH3
+          [
+            { q: "Quel principe veut que tous soient soumis a la loi?", a: "La primaute du droit." },
+            { q: "Nommez une des trois responsabilites liees a la citoyennete.", a: "Respecter les lois (ou subvenir a ses besoins, ou faire partie d'un jury)." },
+            { q: "En quelle annee la Charte des droits et libertes a-t-elle ete adoptee?", a: "En 1982." },
+            { q: "Les femmes et les hommes sont-ils egaux devant la loi au Canada?", a: "Oui, c'est un principe fondamental." }
+          ],
+          // CH4
+          [
+            { q: "Qui est le chef d'Etat du Canada?", a: "Le souverain (le roi ou la reine du Canada)." },
+            { q: "Qui est le chef du gouvernement?", a: "Le premier ministre." },
+            { q: "Quelles sont les trois parties du Parlement?", a: "Le souverain, le Senat et la Chambre des communes." },
+            { q: "Combien de juges siegent a la Cour supreme?", a: "Neuf juges." }
+          ],
+          // CH5
+          [
+            { q: "Qui peut voter a une election federale?", a: "Tout citoyen de 18 ans et plus inscrit sur la liste electorale." },
+            { q: "Qu'est-ce qu'un gouvernement majoritaire?", a: "Un parti qui detient au moins la moitie des sieges." },
+            { q: "Le vote est-il secret au Canada?", a: "Oui, personne n'est tenu de dire pour qui il a vote." },
+            { q: "Quel organisme neutre gere les elections?", a: "Elections Canada." }
+          ],
+          // CH6
+          [
+            { q: "Le Canada est le combien plus grand pays du monde?", a: "Le deuxieme." },
+            { q: "Quels trois oceans bordent le Canada?", a: "Le Pacifique, l'Atlantique et l'Arctique." },
+            { q: "Combien de provinces et de territoires compte le Canada?", a: "Dix provinces et trois territoires." },
+            { q: "Quelle est la capitale du Canada?", a: "Ottawa." }
+          ],
+          // CH7
+          [
+            { q: "Quel est le principal partenaire commercial du Canada?", a: "Les Etats-Unis." },
+            { q: "De quel groupe de pays industrialises le Canada fait-il partie?", a: "Le G8." },
+            { q: "Quel secteur emploie plus de 75 % des travailleurs?", a: "Le secteur des services." },
+            { q: "Nommez les trois grands secteurs de l'economie.", a: "Services, manufacturier et ressources naturelles." }
+          ],
+          // CH8
+          [
+            { q: "Quel est le symbole le plus connu du Canada?", a: "La feuille d'erable." },
+            { q: "En quelle annee le drapeau actuel a-t-il ete hisse?", a: "En 1965." },
+            { q: "Que signifie la devise A mari usque ad mare?", a: "D'un ocean a l'autre." },
+            { q: "Quelle est la plus haute distinction militaire?", a: "La Croix de Victoria." }
+          ],
+          // CH9
+          [
+            { q: "Sur quoi sont fondees toutes les questions de l'examen?", a: "Le guide officiel Decouvrir le Canada." },
+            { q: "Quelle forme prend l'examen en general?", a: "Un examen ecrit." },
+            { q: "Que faut-il reviser en priorite?", a: "Les notions ou l'on fait le plus d'erreurs." },
+            { q: "Combien de questions de pratique sont disponibles?", a: "250 questions." }
+          ]
+        ],
+
+        // Timelines
+        timelineTitle: "Ligne du temps",
+        timelines: [
+          // CH1
+          [
+            { year: "1608", label: "Fondation de Quebec", detail: "Samuel de Champlain fonde Quebec, berceau de la Nouvelle-France." },
+            { year: "1759", label: "Plaines d'Abraham", detail: "La victoire britannique met fin a l'Empire francais en Amerique du Nord." },
+            { year: "1867", label: "Confederation", detail: "La Loi constitutionnelle cree le Dominion du Canada avec quatre provinces." },
+            { year: "1885", label: "Chemin de fer", detail: "Achevement du chemin de fer Canadien Pacifique, reliant le pays d'un ocean a l'autre." },
+            { year: "1982", label: "Charte des droits", detail: "Adoption de la Charte canadienne des droits et libertes." }
+          ]
+        ],
+
+        // Common errors
+        erreurs: [
+          // CH4
+          {
+            title: "Erreur frequente",
+            q: "Qui est le chef du gouvernement, et non le chef d'Etat?",
+            r: "Le <strong>premier ministre</strong> est le chef du gouvernement. Le chef d'Etat est le souverain (roi ou reine), represente par le gouverneur general."
+          },
+          // CH5
+          {
+            title: "Erreur frequente",
+            q: "Quelle est la difference entre majoritaire et minoritaire?",
+            r: "Un gouvernement est <strong>majoritaire</strong> s'il detient au moins la moitie des sieges; sinon il est <strong>minoritaire</strong>."
+          },
+          // CH6
+          {
+            title: "Erreur frequente",
+            q: "Quelle est la capitale du Canada (et non la plus grande ville)?",
+            r: "La capitale est <strong>Ottawa</strong>. Toronto est la plus grande ville, mais ce n'est pas la capitale du pays."
+          }
+        ],
+
+        // Mini-quizzes (questions only, plus is handled by mqRepondre function)
+        miniquizTitle: "Mini-quiz du chapitre (5 questions)",
+
+        // Quizzes
+        quizzes: [
+          // CH1 - 5 questions
+          [
+            { q: "Qui a fonde Quebec en 1608?", c: ["Jacques Cartier", "Samuel de Champlain", "Jean Cabot", "John A. Macdonald"], bon: 1 },
+            { q: "Quelle bataille de 1759 met fin a l'Empire francais en Amerique?", c: ["Vimy", "Les plaines d'Abraham", "Juno", "La Somme"], bon: 1 },
+            { q: "Quand le Dominion du Canada est-il cree?", c: ["1867", "1812", "1982", "1759"], bon: 0 },
+            { q: "Qui fut le premier premier ministre du Canada?", c: ["Wilfrid Laurier", "George-Etienne Cartier", "John A. Macdonald", "Louis Riel"], bon: 2 },
+            { q: "En quelle annee la Charte des droits et libertes est-elle adoptee?", c: ["1867", "1965", "1982", "1931"], bon: 2 }
+          ],
+          // CH2 - 5 questions
+          [
+            { q: "Quels sont les trois groupes autochtones reconnus?", c: ["Anglais, Francais, Metis", "Premieres Nations, Inuits, Metis", "Inuits, Acadiens, Cris", "Hurons, Iroquois, Sioux"], bon: 1 },
+            { q: "Que signifie le mot Inuit?", c: ["Le peuple", "Village", "Notre terre", "Chasseur"], bon: 0 },
+            { q: "Quelle langue parlent souvent les Metis?", c: ["Le cri", "Le michif", "L'inuktitut", "Le joual"], bon: 1 },
+            { q: "Comment appelle-t-on la deportation des Acadiens?", c: ["La Revolution tranquille", "Le Grand Derangement", "La Confederation", "L'Acte d'Union"], bon: 1 },
+            { q: "D'ou viennent les ancetres des peuples autochtones?", c: ["D'Europe", "D'Asie", "D'Afrique", "D'Amerique du Sud"], bon: 1 }
+          ],
+          // CH3 - 5 questions
+          [
+            { q: "Quel principe veut que tous soient soumis a la loi?", c: ["Le multiculturalisme", "La primaute du droit", "Le federalisme", "La souverainete"], bon: 1 },
+            { q: "Combien y a-t-il de responsabilites liees a la citoyennete?", c: ["Deux", "Trois", "Quatre", "Cinq"], bon: 1 },
+            { q: "Laquelle est une responsabilite du citoyen?", c: ["Acheter canadien", "Faire partie d'un jury", "Parler deux langues", "Posseder une maison"], bon: 1 },
+            { q: "Les femmes et les hommes sont-ils egaux devant la loi?", c: ["Oui", "Non", "Selon la province", "Selon l'age"], bon: 0 },
+            { q: "La Charte protege notamment quoi?", c: ["Le droit a la propriete fonciere", "Les libertes fondamentales", "Le droit de ne pas payer d'impot", "Le service militaire"], bon: 1 }
+          ],
+          // CH4 - 5 questions
+          [
+            { q: "Qui est le chef d'Etat du Canada?", c: ["Le premier ministre", "Le souverain", "Le gouverneur general", "Le president"], bon: 1 },
+            { q: "Qui est le chef du gouvernement?", c: ["Le souverain", "Le premier ministre", "Le gouverneur general", "Le juge en chef"], bon: 1 },
+            { q: "Quelles sont les trois parties du Parlement?", c: ["PM, Cabinet, Cour supreme", "Souverain, Senat, Chambre des communes", "Federal, provincial, municipal", "Executif, legislatif, judiciaire"], bon: 1 },
+            { q: "Combien de juges siegent a la Cour supreme?", c: ["Sept", "Neuf", "Cinq", "Douze"], bon: 1 },
+            { q: "Le Canada est notamment quel type d'Etat?", c: ["Une republique", "Une monarchie constitutionnelle", "Une dictature", "Un Etat unitaire"], bon: 1 }
+          ],
+          // CH5 - 5 questions
+          [
+            { q: "Qui peut voter a une election federale?", c: ["Tout resident", "Tout citoyen de 18 ans et plus inscrit", "Tout proprietaire", "Tout citoyen de 21 ans et plus"], bon: 1 },
+            { q: "Qu'est-ce qu'un gouvernement majoritaire?", c: ["Le parti avec le moins de sieges", "Au moins la moitie des sieges", "Une coalition", "Un gouvernement nomme"], bon: 1 },
+            { q: "Le vote est-il secret?", c: ["Oui", "Non", "Seulement en ville", "Selon la province"], bon: 0 },
+            { q: "Quel organisme neutre gere les elections?", c: ["Statistique Canada", "Elections Canada", "Le Senat", "La Cour supreme"], bon: 1 },
+            { q: "Comment appelle-t-on la zone representee par un depute?", c: ["Une province", "Une circonscription", "Une municipalite", "Un territoire"], bon: 1 }
+          ],
+          // CH6 - 5 questions
+          [
+            { q: "Le Canada est le combien plus grand pays du monde?", c: ["Premier", "Deuxieme", "Cinquieme", "Dixieme"], bon: 1 },
+            { q: "Quels trois oceans bordent le Canada?", c: ["Atlantique, Pacifique, Indien", "Pacifique, Atlantique, Arctique", "Pacifique, Indien, Arctique", "Atlantique, Arctique, Austral"], bon: 1 },
+            { q: "Combien de provinces compte le Canada?", c: ["Dix", "Douze", "Neuf", "Treize"], bon: 0 },
+            { q: "Quelle est la capitale du Canada?", c: ["Toronto", "Montreal", "Ottawa", "Quebec"], bon: 2 },
+            { q: "En quelle annee le Nunavut a-t-il ete cree?", c: ["1999", "1982", "1949", "1905"], bon: 0 }
+          ],
+          // CH7 - 5 questions
+          [
+            { q: "Quel est le principal partenaire commercial du Canada?", c: ["Le Mexique", "Les Etats-Unis", "Le Royaume-Uni", "La France"], bon: 1 },
+            { q: "De quel groupe de pays le Canada fait-il partie?", c: ["Le G20", "Le G8", "L'OPEP", "L'UE"], bon: 1 },
+            { q: "Quel secteur emploie plus de 75 % des travailleurs?", c: ["Manufacturier", "Ressources naturelles", "Services", "Agricole"], bon: 2 },
+            { q: "Lequel n'est pas un grand secteur de l'economie?", c: ["Services", "Manufacturier", "Ressources naturelles", "Tourisme spatial"], bon: 3 },
+            { q: "Quelle part des exportations va aux Etats-Unis?", c: ["La moitie", "Plus des trois quarts", "Le quart", "Le dixieme"], bon: 1 }
+          ],
+          // CH8 - 5 questions
+          [
+            { q: "Quel est le symbole le plus connu du Canada?", c: ["Le castor", "La feuille d'erable", "La fleur de lys", "L'Union Jack"], bon: 1 },
+            { q: "En quelle annee le drapeau actuel a-t-il ete hisse?", c: ["1867", "1921", "1965", "1982"], bon: 2 },
+            { q: "Que signifie A mari usque ad mare?", c: ["Je me souviens", "D'un ocean a l'autre", "Paix et ordre", "Dieu protege la Reine"], bon: 1 },
+            { q: "En quelle annee Ô Canada devient l'hymne national?", c: ["1867", "1965", "1980", "1921"], bon: 2 },
+            { q: "Quelle est la plus haute distinction militaire?", c: ["L'Ordre du Canada", "La Croix de Victoria", "La Coupe Stanley", "La Medaille du jubile"], bon: 1 }
+          ],
+          // CH9 - 5 questions
+          [
+            { q: "Sur quoi sont fondees les questions de l'examen?", c: ["La Constitution", "Le guide Decouvrir le Canada", "Les journaux", "Les lois provinciales"], bon: 1 },
+            { q: "Quelle forme prend l'examen en general?", c: ["Un examen ecrit", "Un examen oral", "Un test physique", "Une dissertation"], bon: 0 },
+            { q: "Que faut-il reviser en priorite?", c: ["Tout egalement", "Ses erreurs frequentes", "Seulement l'histoire", "Seulement la geographie"], bon: 1 },
+            { q: "Combien de questions de pratique sont disponibles?", c: ["100", "150", "200", "250"], bon: 3 },
+            { q: "Quelle langue faut-il connaitre suffisamment?", c: ["L'espagnol", "Le francais ou l'anglais", "Une langue autochtone", "Le latin"], bon: 1 }
+          ]
+        ],
+
+        // Chapter completion labels
+        chapterDoneLabel: "J'ai terminé ce chapitre",
+        understandLabel: "Je comprends les concepts principaux",
+        readyLabel: "Je suis prêt(e) pour le quiz",
+        topLinkLabel: "↑ Retour à la table des matières",
+
+        // Revision section
+        revisionEyebrow: "Avant l'examen",
+        revisionTitle: "Revision rapide &mdash; 5 minutes",
+        revisionSub: "20 faits essentiels a memoriser juste avant le grand jour.",
+        revisionButtonShow: "Afficher les 20 faits essentiels",
+        revisionButtonHide: "Masquer la revision",
+        revisionFacts: [
+          "<strong>1608</strong> &mdash; Fondation de Quebec par Champlain",
+          "<strong>1759</strong> &mdash; Bataille des plaines d'Abraham",
+          "<strong>1867</strong> &mdash; Confederation : creation du Canada",
+          "<strong>1885</strong> &mdash; Achevement du chemin de fer Canadien Pacifique",
+          "<strong>1982</strong> &mdash; Charte canadienne des droits et libertes",
+          "<strong>John A. Macdonald</strong> &mdash; Premier premier ministre",
+          "<strong>Chef d'Etat</strong> &mdash; Le souverain (roi ou reine)",
+          "<strong>Chef du gouvernement</strong> &mdash; Le premier ministre",
+          "<strong>Parlement</strong> &mdash; Souverain, Senat, Chambre des communes",
+          "<strong>Cour supreme</strong> &mdash; Neuf juges",
+          "<strong>Vote</strong> &mdash; Citoyen de 18 ans et plus inscrit",
+          "<strong>Autochtones</strong> &mdash; Premieres Nations, Inuits, Metis",
+          "<strong>Inuit</strong> &mdash; Signifie le peuple",
+          "<strong>Capitale</strong> &mdash; Ottawa",
+          "<strong>Oceans</strong> &mdash; Pacifique, Atlantique, Arctique",
+          "<strong>Provinces</strong> &mdash; Dix provinces et trois territoires",
+          "<strong>Nunavut</strong> &mdash; Cree en 1999",
+          "<strong>Economie</strong> &mdash; Principal partenaire : les Etats-Unis",
+          "<strong>Drapeau</strong> &mdash; Hisse en 1965; couleurs officielles depuis 1921",
+          "<strong>Devise</strong> &mdash; D'un ocean a l'autre (A mari usque ad mare)"
+        ],
+
+        // Bilan section
+        bilanTitle: "Votre bilan de preparation",
+        bilanSub: "Repondez aux mini-quiz de chaque chapitre, puis calculez votre score par matiere pour savoir quoi reviser.",
+        bilanButtonLabel: "Calculer mon bilan",
+        bilanEmpty: "Repondez d'abord aux mini-quiz des chapitres pour voir votre bilan par matiere.",
+        bilanScoreLabels: [
+          "Histoire", "Premiers Peuples", "Droits et responsabilites",
+          "Gouvernement", "Elections", "Geographie",
+          "Economie", "Symboles", "Preparation finale"
+        ],
+
+        // Certificate
+        certificatEyebrow: "Certificat de preparation",
+        certificatOrganization: "MDPL Immigration",
+        certificatAttests: "atteste que vous avez atteint un excellent niveau de preparation",
+        certificatExam: "a l'examen de citoyennete canadienne.",
+        certificatSign: "Programme preparatoire &mdash; MDPL Immigration",
+
+        // CTA
+        ctaTitle: "Prêt à vous tester&nbsp;?",
+        ctaSub: "Mettez vos connaissances à l'épreuve avec la banque complète de 250 questions.",
+        ctaLink: "Accéder aux 250 questions",
+
+        // Disclaimer
+        disclaimerTitle: "Information importante",
+        disclaimerText: "Ce guide est un outil de préparation fondé sur le guide officiel Découvrir le Canada. Il ne remplace pas la lecture du guide officiel publié par le gouvernement du Canada. Les informations sont fournies à titre informatif et ne constituent pas un avis juridique."
+      },
+
+      en: {
+        // Page hero
+        heroEyebrow: "Preparation Program",
+        heroTitle: "Interactive <em>study</em> guide",
+        heroSubtitle: "Essential concepts from the official Discover Canada guide, organized by chapter.",
+
+        // Progress bar
+        progressLabel: "Your progress",
+
+        // Header & Navigation
+        logoSub: "Canadian Immigration Consulting",
+        navHome: "Home",
+        navHistory: "Our Story",
+        navServices: "Our Services",
+        navTools: "Our Tools",
+        navWhy: "Why MDPL",
+        navBlog: "Blog",
+        navFAQ: "FAQ",
+        navContact: "Contact Us",
+        navBooking: "Book Now",
+
+        // Services menu items
+        serviceRP: "Permanent Residence",
+        serviceCitizenship: "Citizenship Application",
+        serviceStudy: "Study Permit",
+        serviceWork: "Work Permit",
+        serviceVisitor: "Visitor Visa & eTA",
+        serviceSponsorship: "Family Sponsorship",
+        serviceForeignWorkers: "Foreign Workers",
+        serviceRefugee: "Refugee Claim (IRB)",
+        serviceAppealRefugee: "Refugee Appeal (RAD)",
+        serviceDetention: "Detention (CBSA)",
+        serviceAppealImmigration: "Immigration Appeals (IAD)",
+
+        // Tools menu items
+        toolAssistant: "Immigration Assistant",
+        toolTest: "Citizenship Test (free trial)",
+        toolProgram: "Citizenship Exam Preparation Program",
+
+        // Table of contents
+        tocTitle: "Table of Contents",
+        tocItems: [
+          "1. Canada's History",
+          "2. First Peoples",
+          "3. Rights and Responsibilities",
+          "4. Canadian Government",
+          "5. Elections",
+          "6. Canada's Geography",
+          "7. Economy",
+          "8. National Symbols",
+          "9. Final Preparation"
+        ],
+
+        // Chapter titles and eyebrows
+        chapters: [
+          { eyebrow: "Chapter 1", title: "Canada's History" },
+          { eyebrow: "Chapter 2", title: "First Peoples" },
+          { eyebrow: "Chapter 3", title: "Rights and Responsibilities" },
+          { eyebrow: "Chapter 4", title: "Canadian Government" },
+          { eyebrow: "Chapter 5", title: "Elections" },
+          { eyebrow: "Chapter 6", title: "Canada's Geography" },
+          { eyebrow: "Chapter 7", title: "Economy" },
+          { eyebrow: "Chapter 8", title: "National Symbols" },
+          { eyebrow: "Chapter 9", title: "Final Preparation" }
+        ],
+
+        // Chapter content paragraphs
+        chapterContent: [
+          // CH1 - Canada's History
+          [
+            "Canada's history begins long before the arrival of Europeans, with indigenous peoples present on the territory for thousands of years. At the turn of the 15th century, European explorers arrived: John Cabot mapped the east coast in 1497, and Jacques Cartier claimed lands for France from 1534 to 1542. Samuel de Champlain founded the city of Quebec in 1608, laying the foundations of New France.",
+            "The rivalry between France and Great Britain culminated in 1759 with the Battle of the Plains of Abraham, marking the end of the French Empire in America. The Quebec Act of 1774 granted religious freedom to Catholics. After the American Revolution (1776), tens of thousands of Loyalists faithful to the Crown settled in Canada.",
+            "In 1812, the United States invaded Canada, but the invasion was repelled. Throughout the 19th century, movement toward responsible government progressed. On July 1, 1867, the Constitutional Act (British North America Act) created the Dominion of Canada, uniting Ontario, Quebec, New Brunswick, and Nova Scotia. Sir John A. Macdonald became the first Prime Minister.",
+            "The Canadian Pacific Railway, completed in 1885, united the country from ocean to ocean. In the 20th century, Canada distinguished itself during both world wars—notably at Vimy Ridge in 1917 and on Juno Beach on June 6, 1944. The Canadian Charter of Rights and Freedoms was adopted in 1982."
+          ],
+          // CH2 - First Peoples
+          [
+            "Indigenous peoples have inhabited Canadian territory for thousands of years; it is believed their ancestors came from Asia. Today, the term \"indigenous peoples\" refers to three distinct groups recognized by the Constitution: Indians (First Nations), Inuit, and Métis.",
+            "First Nations represent the majority of indigenous peoples. The Inuit—whose name means \"the people\"—live mainly in the Arctic. The Métis are a distinct people born from the union of Indigenous peoples and Europeans; many speak Michif. The Acadians, descendants of French colonists established since 1604, experienced deportation called the Great Expulsion (1755-1763).",
+            "Upon first contact with Europeans, many Indigenous peoples died from diseases to which they had no immunity. The Royal Proclamation of 1763 first recognized Indigenous territorial rights. In 2008, the Government of Canada issued a formal apology to former students of Indian residential schools."
+          ],
+          // CH3 - Rights and Responsibilities
+          [
+            "Canada is founded on the rule of law: individuals and governments are governed by laws, not arbitrary decisions. The Canadian Charter of Rights and Freedoms (1982) guarantees fundamental freedoms (conscience and religion; thought, belief, opinion and expression; peaceful assembly; association), democratic rights, freedom of mobility and residence, and equality before the law.",
+            "With rights come responsibilities. The three responsibilities related to citizenship are: respect the law, meet one's own needs and those of one's family, and serve on a jury when called. Voting in elections, protecting heritage and the environment, and helping others in one's community (volunteering) are also valued.",
+            "Equality between women and men is a fundamental principle: they are equal before the law. Canada firmly rejects and punishes practices such as \"honour killings\" and forced marriages."
+          ],
+          // CH4 - Canadian Government
+          [
+            "Canada is a constitutional monarchy, a parliamentary democracy, and a federal state. The sovereign is the head of state, represented at the federal level by the Governor General and in each province by a Lieutenant-Governor. The Prime Minister is the head of government: he or she actually runs the country.",
+            "Parliament has three parts: the sovereign, the Senate, and the House of Commons. Senators are appointed and serve until age 75; members of parliament are elected by citizens in their electoral districts. For a bill to become law, it must be passed by both chambers and receive royal assent.",
+            "There are three levels of government: federal, provincial/territorial, and municipal. The federal level deals with defense, foreign policy, currency, and citizenship; provinces with education, health, and natural resources; municipalities with local services. The judicial system is independent, and the Supreme Court of Canada, composed of nine judges, is the highest court."
+          ],
+          // CH5 - Elections
+          [
+            "Canada is a democracy: power comes from the people. Any Canadian citizen aged 18 or older and registered on the voter's list can vote. The country is divided into electoral districts, and voters in each district elect a member of parliament to the House of Commons.",
+            "After an election, the leader of the party with the most seats is usually invited to form the government. If this party holds at least half the seats, it forms a majority government; otherwise, a minority government. The opposition party with the most members of parliament becomes the Official Opposition.",
+            "Voting is secret: no one is required to reveal who they voted for. To vote, an \"X\" is marked in the circle next to the name of the chosen candidate. Elections Canada, a neutral organization, manages the voter lists and the conduct of elections."
+          ],
+          // CH6 - Canada's Geography
+          [
+            "Canada is the second-largest country in the world by area. It is bordered by three oceans: the Pacific to the west, the Atlantic to the east, and the Arctic to the north. The country has ten provinces and three territories, and is divided into five regions: Atlantic provinces, central Canada, prairie provinces, the West Coast, and the northern territories.",
+            "The capital of the country is Ottawa, chosen by Queen Victoria in 1857. Central Canada (Ontario and Quebec) has the largest population. The Prairies (Manitoba, Saskatchewan, Alberta) are rich in agriculture and energy resources. British Columbia is the gateway to Asia-Pacific. The North, nicknamed \"the land of the midnight sun,\" includes Yukon, the Northwest Territories, and Nunavut (created in 1999)."
+          ],
+          // CH7 - Economy
+          [
+            "Canada has a modern market economy and is part of the G8, the group of major industrialized countries. Its most important trading partner is, by far, the United States: more than three-quarters of Canadian exports go there.",
+            "The economy is based on three main sectors. The services sector employs more than three-quarters of Canadian workers (commerce, finance, health, education, etc.). The manufacturing sector produces notably paper, vehicles, high-tech equipment, and clothing. The natural resources sector includes forestry, fishing, agriculture, mining, and energy."
+          ],
+          // CH8 - National Symbols
+          [
+            "The maple leaf is Canada's most recognizable symbol. The red and white flag, with its maple leaf, was raised for the first time in 1965; red and white have been the official national colors since 1921. The Crown has been a symbol of the state in Canada for centuries.",
+            "The beaver is the animal emblem associated with the fur trade and the Hudson's Bay Company. Canada's motto, \"A mari usque ad mare,\" means \"from sea to sea.\" The national anthem, \"O Canada,\" was proclaimed in 1980, while \"God Save the King (or Queen)\" is the royal anthem. The highest military decoration is the Victoria Cross; the Order of Canada, created in 1967, recognizes civil merit."
+          ],
+          // CH9 - Final Preparation
+          [
+            "The citizenship exam assesses your knowledge of Canada—rights, responsibilities, history, geography, government, symbols—as well as sufficient knowledge of French or English. It generally takes the form of a written exam. All questions are based on the official Discover Canada guide.",
+            "To prepare well: review each chapter, memorize key dates and names (1608, 1867, prime ministers, capitals), then test yourself with the 250-question bank. Focus your review on concepts where you make the most errors. On exam day, read each question carefully and don't rush."
+          ]
+        ],
+
+        // Key points boxes
+        keyPointsTitle: "Key Points to Remember",
+        keyPoints: [
+          // CH1
+          [
+            "1608: founding of Quebec by Samuel de Champlain.",
+            "1759: Battle of the Plains of Abraham, end of the French Empire in America.",
+            "July 1, 1867: creation of the Dominion of Canada (4 provinces).",
+            "Sir John A. Macdonald: first Prime Minister.",
+            "1885: completion of the Canadian Pacific Railway.",
+            "1982: adoption of the Canadian Charter of Rights and Freedoms."
+          ],
+          // CH2
+          [
+            "Three indigenous groups: First Nations, Inuit, Métis.",
+            "\"Inuit\" means \"the people.\"",
+            "The Métis often speak Michif.",
+            "Great Expulsion: deportation of the Acadians (1755-1763).",
+            "2008: formal apologies for Indian residential schools."
+          ],
+          // CH3
+          [
+            "Rule of law: everyone is subject to the law.",
+            "Three responsibilities: respect the law, meet one's own needs and those of one's family, serve on a jury.",
+            "The Charter guarantees fundamental freedoms and equality.",
+            "Equality of women and men before the law."
+          ],
+          // CH4
+          [
+            "Constitutional monarchy + parliamentary democracy + federalism.",
+            "Parliament: sovereign, Senate, House of Commons.",
+            "Prime Minister = head of government; sovereign = head of state.",
+            "Three levels: federal, provincial/territorial, municipal.",
+            "Supreme Court: 9 judges, highest court."
+          ],
+          // CH5
+          [
+            "Right to vote: citizen aged 18 or older registered on the voter's list.",
+            "The country is divided into electoral districts.",
+            "Majority = at least half the seats; otherwise minority.",
+            "Voting is secret.",
+            "Elections Canada: neutral organization."
+          ],
+          // CH6
+          [
+            "2nd largest country in the world; bordered by 3 oceans.",
+            "10 provinces and 3 territories; 5 regions.",
+            "Capital: Ottawa (chosen by Queen Victoria in 1857).",
+            "Nunavut created in 1999.",
+            "Useful capitals: Toronto (ON), Quebec (QC), Edmonton (AB), Victoria (BC)."
+          ],
+          // CH7
+          [
+            "Member of the G8.",
+            "Main trading partner: the United States (more than 3/4 of exports).",
+            "Three sectors: services, manufacturing, natural resources.",
+            "The services sector employs more than 75% of workers."
+          ],
+          // CH8
+          [
+            "Maple leaf: most recognizable symbol.",
+            "Current flag raised in 1965; official colors since 1921.",
+            "Motto: \"From Sea to Sea\" (A mari usque ad mare).",
+            "\"O Canada\" proclaimed national anthem in 1980.",
+            "Victoria Cross: highest distinction; Order of Canada (1967)."
+          ],
+          // CH9
+          [
+            "Review the 8 chapters, one at a time.",
+            "Memorize key dates, names, and capitals.",
+            "Practice with the 250 questions, multiple times.",
+            "Return to your errors as a priority."
+          ]
+        ],
+
+        // "À retenir" / "Remember" key fact boxes
+        aRetenir: [
+          { badge: "Remember", text: "<strong>1608</strong> &mdash; Founding of Quebec by Samuel de Champlain." },
+          { badge: "Remember", text: "<strong>3 groups</strong> &mdash; First Nations, Inuit, and Métis." },
+          { badge: "Remember", text: "<strong>1982</strong> &mdash; Adoption of the Canadian Charter of Rights and Freedoms." },
+          { badge: "Remember", text: "<strong>9 judges</strong> &mdash; The Supreme Court of Canada, the highest court in the country." },
+          { badge: "Remember", text: "<strong>18 years</strong> &mdash; Minimum age to vote in federal elections." },
+          { badge: "Remember", text: "<strong>Ottawa</strong> &mdash; Canada's capital, chosen by Queen Victoria in 1857." },
+          { badge: "Remember", text: "<strong>G8</strong> &mdash; Canada is part of the major industrialized countries." },
+          { badge: "Remember", text: "<strong>1965</strong> &mdash; Year the maple leaf flag was raised." },
+          { badge: "Remember", text: "<strong>250</strong> &mdash; Practice questions to prepare well." }
+        ],
+
+        // Flashcards
+        flashcardTitle: "Flashcards",
+        flashcards: [
+          // CH1
+          [
+            { q: "Who founded the city of Quebec, and in what year?", a: "Samuel de Champlain, in 1608." },
+            { q: "What 1759 battle marked the end of the French Empire in America?", a: "The Battle of the Plains of Abraham." },
+            { q: "What date marks the creation of the Dominion of Canada?", a: "July 1, 1867." },
+            { q: "Who was Canada's first Prime Minister?", a: "Sir John A. Macdonald." }
+          ],
+          // CH2
+          [
+            { q: "What are the three recognized indigenous groups?", a: "First Nations, Inuit, and Métis." },
+            { q: "What does the word Inuit mean?", a: "The people." },
+            { q: "What language do the Métis often speak?", a: "Michif." },
+            { q: "What is the deportation of the Acadians (1755-1763) called?", a: "The Great Expulsion." }
+          ],
+          // CH3
+          [
+            { q: "What principle means everyone is subject to the law?", a: "The rule of law." },
+            { q: "Name one of the three responsibilities related to citizenship.", a: "Respect the law (or meet one's needs, or serve on a jury)." },
+            { q: "In what year was the Charter of Rights and Freedoms adopted?", a: "In 1982." },
+            { q: "Are women and men equal before the law in Canada?", a: "Yes, it is a fundamental principle." }
+          ],
+          // CH4
+          [
+            { q: "Who is the head of state of Canada?", a: "The sovereign (the King or Queen of Canada)." },
+            { q: "Who is the head of government?", a: "The Prime Minister." },
+            { q: "What are the three parts of Parliament?", a: "The sovereign, the Senate, and the House of Commons." },
+            { q: "How many judges sit on the Supreme Court?", a: "Nine judges." }
+          ],
+          // CH5
+          [
+            { q: "Who can vote in a federal election?", a: "Any citizen aged 18 or older registered on the voter's list." },
+            { q: "What is a majority government?", a: "A party that holds at least half the seats." },
+            { q: "Is voting secret in Canada?", a: "Yes, no one is required to say who they voted for." },
+            { q: "What neutral organization manages elections?", a: "Elections Canada." }
+          ],
+          // CH6
+          [
+            { q: "How many largest countries in the world is Canada?", a: "The second." },
+            { q: "What three oceans border Canada?", a: "The Pacific, Atlantic, and Arctic." },
+            { q: "How many provinces and territories does Canada have?", a: "Ten provinces and three territories." },
+            { q: "What is Canada's capital?", a: "Ottawa." }
+          ],
+          // CH7
+          [
+            { q: "What is Canada's main trading partner?", a: "The United States." },
+            { q: "What group of industrialized countries is Canada part of?", a: "The G8." },
+            { q: "What sector employs more than 75% of workers?", a: "The services sector." },
+            { q: "Name the three main economic sectors.", a: "Services, manufacturing, and natural resources." }
+          ],
+          // CH8
+          [
+            { q: "What is Canada's most recognizable symbol?", a: "The maple leaf." },
+            { q: "In what year was the current flag raised?", a: "In 1965." },
+            { q: "What does the motto A mari usque ad mare mean?", a: "From sea to sea." },
+            { q: "What is the highest military decoration?", a: "The Victoria Cross." }
+          ],
+          // CH9
+          [
+            { q: "What are all exam questions based on?", a: "The official Discover Canada guide." },
+            { q: "What form does the exam generally take?", a: "A written exam." },
+            { q: "What should you review as a priority?", a: "The concepts where you make the most errors." },
+            { q: "How many practice questions are available?", a: "250 questions." }
+          ]
+        ],
+
+        // Timelines
+        timelineTitle: "Timeline",
+        timelines: [
+          // CH1
+          [
+            { year: "1608", label: "Founding of Quebec", detail: "Samuel de Champlain founded Quebec, the cradle of New France." },
+            { year: "1759", label: "Plains of Abraham", detail: "The British victory ended the French Empire in North America." },
+            { year: "1867", label: "Confederation", detail: "The Constitutional Act created the Dominion of Canada with four provinces." },
+            { year: "1885", label: "Railway", detail: "Completion of the Canadian Pacific Railway, linking the country from ocean to ocean." },
+            { year: "1982", label: "Charter of Rights", detail: "Adoption of the Canadian Charter of Rights and Freedoms." }
+          ]
+        ],
+
+        // Common errors
+        erreurs: [
+          // CH4
+          {
+            title: "Common Mistake",
+            q: "Who is the head of government, not the head of state?",
+            r: "The <strong>Prime Minister</strong> is the head of government. The head of state is the sovereign (King or Queen), represented by the Governor General."
+          },
+          // CH5
+          {
+            title: "Common Mistake",
+            q: "What is the difference between majority and minority?",
+            r: "A government is <strong>majority</strong> if it holds at least half the seats; otherwise it is <strong>minority</strong>."
+          },
+          // CH6
+          {
+            title: "Common Mistake",
+            q: "What is Canada's capital (not the largest city)?",
+            r: "The capital is <strong>Ottawa</strong>. Toronto is the largest city, but it is not the country's capital."
+          }
+        ],
+
+        // Mini-quizzes (questions only, plus is handled by mqRepondre function)
+        miniquizTitle: "Chapter Quiz (5 questions)",
+
+        // Quizzes
+        quizzes: [
+          // CH1 - 5 questions
+          [
+            { q: "Who founded Quebec in 1608?", c: ["Jacques Cartier", "Samuel de Champlain", "John Cabot", "John A. Macdonald"], bon: 1 },
+            { q: "What 1759 battle ended the French Empire in America?", c: ["Vimy", "Plains of Abraham", "Juno", "Somme"], bon: 1 },
+            { q: "When was the Dominion of Canada created?", c: ["1867", "1812", "1982", "1759"], bon: 0 },
+            { q: "Who was Canada's first Prime Minister?", c: ["Wilfrid Laurier", "George-Etienne Cartier", "John A. Macdonald", "Louis Riel"], bon: 2 },
+            { q: "In what year was the Charter of Rights and Freedoms adopted?", c: ["1867", "1965", "1982", "1931"], bon: 2 }
+          ],
+          // CH2 - 5 questions
+          [
+            { q: "What are the three recognized indigenous groups?", c: ["English, French, Métis", "First Nations, Inuit, Métis", "Inuit, Acadians, Cree", "Huron, Iroquois, Sioux"], bon: 1 },
+            { q: "What does the word Inuit mean?", c: ["The people", "Village", "Our land", "Hunter"], bon: 0 },
+            { q: "What language do the Métis often speak?", c: ["Cree", "Michif", "Inuktitut", "Joual"], bon: 1 },
+            { q: "What is the deportation of the Acadians called?", c: ["The Quiet Revolution", "The Great Expulsion", "Confederation", "Union Act"], bon: 1 },
+            { q: "Where do the ancestors of indigenous peoples come from?", c: ["Europe", "Asia", "Africa", "South America"], bon: 1 }
+          ],
+          // CH3 - 5 questions
+          [
+            { q: "What principle means everyone is subject to the law?", c: ["Multiculturalism", "Rule of law", "Federalism", "Sovereignty"], bon: 1 },
+            { q: "How many responsibilities relate to citizenship?", c: ["Two", "Three", "Four", "Five"], bon: 1 },
+            { q: "Which is a citizen responsibility?", c: ["Buy Canadian", "Serve on a jury", "Speak two languages", "Own a home"], bon: 1 },
+            { q: "Are women and men equal before the law?", c: ["Yes", "No", "According to province", "According to age"], bon: 0 },
+            { q: "What does the Charter mainly protect?", c: ["Property rights", "Fundamental freedoms", "Tax exemption", "Military service"], bon: 1 }
+          ],
+          // CH4 - 5 questions
+          [
+            { q: "Who is Canada's head of state?", c: ["The Prime Minister", "The sovereign", "The Governor General", "The President"], bon: 1 },
+            { q: "Who is the head of government?", c: ["The sovereign", "The Prime Minister", "The Governor General", "The Chief Justice"], bon: 1 },
+            { q: "What are the three parts of Parliament?", c: ["PM, Cabinet, Supreme Court", "Sovereign, Senate, House of Commons", "Federal, provincial, municipal", "Executive, legislative, judicial"], bon: 1 },
+            { q: "How many judges sit on the Supreme Court?", c: ["Seven", "Nine", "Five", "Twelve"], bon: 1 },
+            { q: "What type of state is Canada?", c: ["A republic", "A constitutional monarchy", "A dictatorship", "A unitary state"], bon: 1 }
+          ],
+          // CH5 - 5 questions
+          [
+            { q: "Who can vote in a federal election?", c: ["Any resident", "Any citizen 18+ registered", "Any property owner", "Any citizen 21+"], bon: 1 },
+            { q: "What is a majority government?", c: ["Party with fewest seats", "At least half the seats", "A coalition", "Appointed government"], bon: 1 },
+            { q: "Is voting secret?", c: ["Yes", "No", "Only in cities", "According to province"], bon: 0 },
+            { q: "What neutral body manages elections?", c: ["Statistics Canada", "Elections Canada", "The Senate", "Supreme Court"], bon: 1 },
+            { q: "What is the voting area called?", c: ["A province", "An electoral district", "A municipality", "A territory"], bon: 1 }
+          ],
+          // CH6 - 5 questions
+          [
+            { q: "How many largest countries is Canada?", c: ["First", "Second", "Fifth", "Tenth"], bon: 1 },
+            { q: "What three oceans border Canada?", c: ["Atlantic, Pacific, Indian", "Pacific, Atlantic, Arctic", "Pacific, Indian, Arctic", "Atlantic, Arctic, Southern"], bon: 1 },
+            { q: "How many provinces does Canada have?", c: ["Ten", "Twelve", "Nine", "Thirteen"], bon: 0 },
+            { q: "What is Canada's capital?", c: ["Toronto", "Montreal", "Ottawa", "Quebec"], bon: 2 },
+            { q: "In what year was Nunavut created?", c: ["1999", "1982", "1949", "1905"], bon: 0 }
+          ],
+          // CH7 - 5 questions
+          [
+            { q: "What is Canada's main trading partner?", c: ["Mexico", "United States", "United Kingdom", "France"], bon: 1 },
+            { q: "What group is Canada part of?", c: ["G20", "G8", "OPEC", "EU"], bon: 1 },
+            { q: "What sector employs 75% of workers?", c: ["Manufacturing", "Natural resources", "Services", "Agriculture"], bon: 2 },
+            { q: "Which is not a main economic sector?", c: ["Services", "Manufacturing", "Natural resources", "Space tourism"], bon: 3 },
+            { q: "What share of exports goes to USA?", c: ["Half", "More than 3/4", "1/4", "1/10"], bon: 1 }
+          ],
+          // CH8 - 5 questions
+          [
+            { q: "What is Canada's most recognizable symbol?", c: ["Beaver", "Maple leaf", "Fleur-de-lis", "Union Jack"], bon: 1 },
+            { q: "In what year was the current flag raised?", c: ["1867", "1921", "1965", "1982"], bon: 2 },
+            { q: "What does A mari usque ad mare mean?", c: ["I remember", "From sea to sea", "Peace and order", "God save the Queen"], bon: 1 },
+            { q: "In what year did O Canada become the national anthem?", c: ["1867", "1965", "1980", "1921"], bon: 2 },
+            { q: "What is the highest military decoration?", c: ["Order of Canada", "Victoria Cross", "Stanley Cup", "Jubilee Medal"], bon: 1 }
+          ],
+          // CH9 - 5 questions
+          [
+            { q: "What are exam questions based on?", c: ["Constitution", "Discover Canada guide", "Newspapers", "Provincial laws"], bon: 1 },
+            { q: "What form does the exam generally take?", c: ["Written exam", "Oral exam", "Physical test", "Essay"], bon: 0 },
+            { q: "What should you review first?", c: ["Everything equally", "Your frequent errors", "Only history", "Only geography"], bon: 1 },
+            { q: "How many practice questions are available?", c: ["100", "150", "200", "250"], bon: 3 },
+            { q: "What language must you know?", c: ["Spanish", "French or English", "Indigenous language", "Latin"], bon: 1 }
+          ]
+        ],
+
+        // Chapter completion labels
+        chapterDoneLabel: "I have completed this chapter",
+        understandLabel: "I understand the main concepts",
+        readyLabel: "I am ready for the quiz",
+        topLinkLabel: "↑ Back to Table of Contents",
+
+        // Revision section
+        revisionEyebrow: "Before the Exam",
+        revisionTitle: "Quick Review &mdash; 5 minutes",
+        revisionSub: "20 essential facts to memorize just before the big day.",
+        revisionButtonShow: "Show 20 Essential Facts",
+        revisionButtonHide: "Hide Review",
+        revisionFacts: [
+          "<strong>1608</strong> &mdash; Founding of Quebec by Champlain",
+          "<strong>1759</strong> &mdash; Battle of the Plains of Abraham",
+          "<strong>1867</strong> &mdash; Confederation: creation of Canada",
+          "<strong>1885</strong> &mdash; Completion of Canadian Pacific Railway",
+          "<strong>1982</strong> &mdash; Canadian Charter of Rights and Freedoms",
+          "<strong>John A. Macdonald</strong> &mdash; First Prime Minister",
+          "<strong>Head of State</strong> &mdash; The sovereign (King or Queen)",
+          "<strong>Head of Government</strong> &mdash; The Prime Minister",
+          "<strong>Parliament</strong> &mdash; Sovereign, Senate, House of Commons",
+          "<strong>Supreme Court</strong> &mdash; Nine judges",
+          "<strong>Voting</strong> &mdash; Citizen 18+ registered",
+          "<strong>Indigenous Peoples</strong> &mdash; First Nations, Inuit, Métis",
+          "<strong>Inuit</strong> &mdash; Means the people",
+          "<strong>Capital</strong> &mdash; Ottawa",
+          "<strong>Oceans</strong> &mdash; Pacific, Atlantic, Arctic",
+          "<strong>Provinces</strong> &mdash; Ten provinces and three territories",
+          "<strong>Nunavut</strong> &mdash; Created in 1999",
+          "<strong>Economy</strong> &mdash; Main partner: United States",
+          "<strong>Flag</strong> &mdash; Raised in 1965; official colors since 1921",
+          "<strong>Motto</strong> &mdash; From Sea to Sea (A mari usque ad mare)"
+        ],
+
+        // Bilan section
+        bilanTitle: "Your Preparation Progress",
+        bilanSub: "Answer the chapter quizzes, then calculate your score by subject to know what to review.",
+        bilanButtonLabel: "Calculate My Progress",
+        bilanEmpty: "First answer the chapter quizzes to see your progress by subject.",
+        bilanScoreLabels: [
+          "History", "First Peoples", "Rights and Responsibilities",
+          "Government", "Elections", "Geography",
+          "Economy", "Symbols", "Final Preparation"
+        ],
+
+        // Certificate
+        certificatEyebrow: "Preparation Certificate",
+        certificatOrganization: "MDPL Immigration",
+        certificatAttests: "attests that you have achieved an excellent level of preparation",
+        certificatExam: "for the Canadian citizenship exam.",
+        certificatSign: "Preparation Program &mdash; MDPL Immigration",
+
+        // CTA
+        ctaTitle: "Ready to test yourself?",
+        ctaSub: "Test your knowledge with the complete 250-question bank.",
+        ctaLink: "Access 250 Questions",
+
+        // Disclaimer
+        disclaimerTitle: "Important Information",
+        disclaimerText: "This guide is a preparation tool based on the official Discover Canada guide. It does not replace reading the official guide published by the Government of Canada. The information is provided for informational purposes and does not constitute legal advice."
+      }
+    };
+
+    // ======== HELPER FUNCTIONS ========
+    function getLang() {
+      return document.documentElement.lang === "en" ? "en" : "fr";
+    }
+
+    function renderContent() {
+      var lang = getLang();
+      var data = content[lang];
+
+      // Header & Navigation
+      var logoSub = document.querySelector(".logo-sub");
+      if (logoSub) logoSub.textContent = data.logoSub;
+
+      // Navigation links
+      var navLinks = document.querySelectorAll(".site-nav > a");
+      var navLabels = [data.navHome, data.navHistory, data.navWhy, data.navBlog, data.navFAQ, data.navContact, data.navBooking];
+      var linkIdx = 0;
+      navLinks.forEach(function(link) {
+        if (!link.closest(".nav-dropdown")) {
+          if (linkIdx < navLabels.length) {
+            link.textContent = navLabels[linkIdx];
+            linkIdx++;
+          }
+        }
+      });
+
+      // Dropdown main labels (preserve carets)
+      var dropdownTriggers = document.querySelectorAll(".nav-dropdown > a");
+      if (dropdownTriggers[0]) {
+        var caretNode0 = dropdownTriggers[0].querySelector(".caret");
+        dropdownTriggers[0].textContent = data.navServices + " ";
+        if (caretNode0) dropdownTriggers[0].appendChild(caretNode0);
+      }
+      if (dropdownTriggers[1]) {
+        var caretNode1 = dropdownTriggers[1].querySelector(".caret");
+        dropdownTriggers[1].textContent = data.navTools + " ";
+        if (caretNode1) dropdownTriggers[1].appendChild(caretNode1);
+      }
+
+      // Services menu items
+      var servicesMenu = document.querySelectorAll(".nav-dropdown")[0].querySelector(".nav-dropdown-menu");
+      if (servicesMenu) {
+        var serviceLinks = servicesMenu.querySelectorAll("a");
+        var serviceLabels = [data.serviceRP, data.serviceCitizenship, data.serviceStudy, data.serviceWork, data.serviceVisitor, data.serviceSponsorship, data.serviceForeignWorkers, data.serviceRefugee, data.serviceAppealRefugee, data.serviceDetention, data.serviceAppealImmigration];
+        serviceLinks.forEach(function(link, idx) {
+          if (idx < serviceLabels.length) {
+            link.textContent = serviceLabels[idx];
+          }
+        });
+      }
+
+      // Tools menu items
+      var toolsMenu = document.querySelectorAll(".nav-dropdown")[1].querySelector(".nav-dropdown-menu");
+      if (toolsMenu) {
+        var toolLinks = toolsMenu.querySelectorAll("a");
+        if (toolLinks[0]) toolLinks[0].textContent = data.toolAssistant;
+        if (toolLinks[1]) toolLinks[1].textContent = data.toolTest;
+        if (toolLinks[2]) toolLinks[2].textContent = data.toolProgram;
+      }
+
+      // Page hero
+      var heroEyebrow = document.querySelector(".page-hero-eyebrow");
+      var heroTitle = document.querySelector(".page-hero-title");
+      var heroSub = document.querySelector(".page-hero-subtitle");
+      if (heroEyebrow) heroEyebrow.textContent = data.heroEyebrow;
+      if (heroTitle) heroTitle.innerHTML = data.heroTitle;
+      if (heroSub) heroSub.textContent = data.heroSubtitle;
+
+      // Progress bar
+      var progLabel = document.querySelector(".guide-progress-label");
+      if (progLabel) progLabel.textContent = data.progressLabel;
+
+      // Table of contents
+      var tocTitle = document.querySelector(".guide-toc h2");
+      if (tocTitle) tocTitle.textContent = data.tocTitle;
+      var tocLinks = document.querySelectorAll(".guide-toc a");
+      tocLinks.forEach(function(link, idx) {
+        if (idx < data.tocItems.length) {
+          link.textContent = data.tocItems[idx];
+        }
+      });
+
+      // Chapter titles and eyebrows
+      var chaps = document.querySelectorAll(".guide-chap");
+      chaps.forEach(function(chap, chIdx) {
+        if (chIdx < data.chapters.length) {
+          var eyebrow = chap.querySelector(".guide-chap-eyebrow");
+          var title = chap.querySelector(".guide-chap-title");
+          if (eyebrow) eyebrow.textContent = data.chapters[chIdx].eyebrow;
+          if (title) title.textContent = data.chapters[chIdx].title;
+        }
+      });
+
+      // Chapter content paragraphs (only first 2 paragraphs per chapter for brevity)
+      chaps.forEach(function(chap, chIdx) {
+        if (chIdx < data.chapterContent.length) {
+          var paras = chap.querySelectorAll("p:not(.guide-flash-title):not(.guide-chap-eyebrow)");
+          var contentIdx = 0;
+          for (var i = 0; i < paras.length && contentIdx < data.chapterContent[chIdx].length; i++) {
+            var para = paras[i];
+            if (!para.classList.contains("guide-flash-title") && !para.classList.contains("guide-chap-eyebrow") &&
+                !para.classList.contains("guide-progress-label") && para.textContent.trim().length > 20 &&
+                para.tagName === "P") {
+              para.textContent = data.chapterContent[chIdx][contentIdx];
+              contentIdx++;
+            }
+          }
+        }
+      });
+
+      // Key points boxes
+      var keyPointsBoxes = document.querySelectorAll(".guide-points");
+      keyPointsBoxes.forEach(function(box, idx) {
+        var titleEl = box.querySelector("strong");
+        if (titleEl) titleEl.textContent = data.keyPointsTitle;
+        var lis = box.querySelectorAll("li");
+        if (idx < data.keyPoints.length) {
+          lis.forEach(function(li, liIdx) {
+            if (liIdx < data.keyPoints[idx].length) {
+              li.textContent = data.keyPoints[idx][liIdx];
+            }
+          });
+        }
+      });
+
+      // "À retenir" boxes
+      var aRetienrBoxes = document.querySelectorAll(".a-retenir");
+      aRetienrBoxes.forEach(function(box, idx) {
+        var badge = box.querySelector(".a-retenir-badge");
+        var txt = box.querySelector(".a-retenir-txt");
+        if (idx < data.aRetenir.length) {
+          if (badge) badge.textContent = data.aRetenir[idx].badge;
+          if (txt) txt.innerHTML = data.aRetenir[idx].text;
+        }
+      });
+
+      // Flashcards
+      var flashGrids = document.querySelectorAll(".flash-grid");
+      flashGrids.forEach(function(grid, gIdx) {
+        var cards = grid.querySelectorAll(".flash-card");
+        if (gIdx < data.flashcards.length) {
+          cards.forEach(function(card, cIdx) {
+            if (cIdx < data.flashcards[gIdx].length) {
+              var frontText = card.querySelector(".flash-front .flash-text");
+              var backText = card.querySelector(".flash-back .flash-text");
+              if (frontText) frontText.textContent = data.flashcards[gIdx][cIdx].q;
+              if (backText) backText.textContent = data.flashcards[gIdx][cIdx].a;
+
+              // Update hint and response tags
+              var hint = card.querySelector(".flash-hint");
+              var respTag = card.querySelector(".flash-back .flash-tag");
+              if (hint) hint.textContent = lang === "en" ? "Click to see the answer" : "Cliquer pour voir la reponse";
+              if (respTag) respTag.textContent = lang === "en" ? "Answer" : "Reponse";
+              var qTag = card.querySelector(".flash-front .flash-tag");
+              if (qTag) qTag.textContent = lang === "en" ? "Question" : "Question";
+            }
+          });
+        }
+      });
+
+      // Timeline labels (CH1 only for now)
+      var timelines = document.querySelectorAll(".timeline");
+      timelines.forEach(function(tl, tlIdx) {
+        if (tlIdx === 0 && data.timelines[0]) {
+          var tlItems = tl.querySelectorAll(".tl-item");
+          tlItems.forEach(function(item, itemIdx) {
+            if (itemIdx < data.timelines[0].length) {
+              var year = item.querySelector(".tl-year");
+              var label = item.querySelector(".tl-label");
+              var detail = item.querySelector(".tl-detail");
+              if (year) year.textContent = data.timelines[0][itemIdx].year;
+              if (label) label.textContent = data.timelines[0][itemIdx].label;
+              if (detail) detail.textContent = data.timelines[0][itemIdx].detail;
+            }
+          });
+        }
+      });
+
+      // Common errors (Erreur boxes)
+      var errBoxes = document.querySelectorAll(".erreur-box");
+      errBoxes.forEach(function(box, eIdx) {
+        if (eIdx < data.erreurs.length) {
+          var title = box.querySelector(".erreur-title");
+          var q = box.querySelector(".erreur-q");
+          var r = box.querySelector(".erreur-r");
+          if (title) title.textContent = data.erreurs[eIdx].title;
+          if (q) q.textContent = data.erreurs[eIdx].q;
+          if (r) r.innerHTML = data.erreurs[eIdx].r;
+        }
+      });
+
+      // Flashcard title
+      var flashTitles = document.querySelectorAll(".guide-flash-title");
+      flashTitles.forEach(function(ft) {
+        // Identify if it's a flashcard title or timeline
+        if (ft.textContent.includes("Ligne") || ft.textContent.includes("Timeline")) {
+          ft.textContent = data.timelineTitle;
+        } else if (ft.textContent.includes("Cartes") || ft.textContent.includes("Flashcards")) {
+          ft.textContent = data.flashcardTitle;
+        }
+      });
+
+      // Mini-quiz titles
+      var mqTitles = document.querySelectorAll(".miniquiz-title");
+      mqTitles.forEach(function(mq) {
+        mq.textContent = data.miniquizTitle;
+      });
+
+      // Mini-quiz questions and options
+      var miniquizzes = document.querySelectorAll(".miniquiz");
+      miniquizzes.forEach(function(mq, mqIdx) {
+        if (mqIdx < data.quizzes.length) {
+          var qs = mq.querySelectorAll(".mq-q");
+          qs.forEach(function(q, qIdx) {
+            if (qIdx < data.quizzes[mqIdx].length) {
+              var qText = q.querySelector(".mq-q-text");
+              if (qText) qText.textContent = data.quizzes[mqIdx][qIdx].q;
+              var opts = q.querySelectorAll(".mq-opt");
+              opts.forEach(function(opt, oIdx) {
+                if (oIdx < data.quizzes[mqIdx][qIdx].c.length) {
+                  opt.textContent = data.quizzes[mqIdx][qIdx].c[oIdx];
+                }
+              });
+            }
+          });
+        }
+      });
+
+      // Chapter completion labels
+      var chkLabels = document.querySelectorAll(".guide-check");
+      var labelIdx = 0;
+      chkLabels.forEach(function(lbl) {
+        var input = lbl.querySelector("input");
+        if (input) {
+          if (labelIdx % 3 === 0) {
+            lbl.textContent = "";
+            var inp = document.createElement("input");
+            inp.type = "checkbox";
+            inp.className = input.className;
+            inp.onchange = input.onchange;
+            lbl.appendChild(inp);
+            lbl.appendChild(document.createTextNode(" " + data.chapterDoneLabel));
+          } else if (labelIdx % 3 === 1) {
+            lbl.textContent = "";
+            var inp = document.createElement("input");
+            inp.type = "checkbox";
+            inp.className = input.className;
+            inp.onchange = input.onchange;
+            lbl.appendChild(inp);
+            lbl.appendChild(document.createTextNode(" " + data.understandLabel));
+          } else {
+            lbl.textContent = "";
+            var inp = document.createElement("input");
+            inp.type = "checkbox";
+            inp.className = input.className;
+            inp.onchange = input.onchange;
+            lbl.appendChild(inp);
+            lbl.appendChild(document.createTextNode(" " + data.readyLabel));
+          }
+          labelIdx++;
+        }
+      });
+
+      // Back to TOC links
+      var topLinks = document.querySelectorAll(".guide-haut");
+      topLinks.forEach(function(link) {
+        link.textContent = data.topLinkLabel;
+      });
+
+      // Revision section
+      var revEyebrow = document.querySelector(".revision-eyebrow");
+      var revTitle = document.querySelector(".revision h3");
+      var revSub = document.querySelector(".revision-sub");
+      var revBtn = document.querySelector(".revision-btn");
+      if (revEyebrow) revEyebrow.textContent = data.revisionEyebrow;
+      if (revTitle) revTitle.textContent = data.revisionTitle;
+      if (revSub) revSub.textContent = data.revisionSub;
+      if (revBtn) revBtn.textContent = data.revisionButtonShow;
+
+      // Update button text on click
+      if (revBtn) {
+        revBtn.onclick = function() {
+          var revListe = document.getElementById("rev-liste");
+          var isVisible = revListe.classList.contains("visible");
+          revListe.classList.toggle("visible");
+          this.textContent = isVisible ? data.revisionButtonShow : data.revisionButtonHide;
+        };
+      }
+
+      // Revision facts
+      var revFaits = document.querySelectorAll(".revision-fait");
+      revFaits.forEach(function(fait, fIdx) {
+        if (fIdx < data.revisionFacts.length) {
+          fait.innerHTML = data.revisionFacts[fIdx];
+        }
+      });
+
+      // Bilan section
+      var bilanTitle = document.querySelector(".bilan h3");
+      var bilanSub = document.querySelector(".bilan-sub");
+      var bilanBtn = document.querySelector(".bilan-btn");
+      if (bilanTitle) bilanTitle.textContent = data.bilanTitle;
+      if (bilanSub) bilanSub.textContent = data.bilanSub;
+      if (bilanBtn) bilanBtn.textContent = data.bilanButtonLabel;
+
+      // Certificate
+      var certEyebrow = document.querySelector(".certificat-eyebrow");
+      var certOrg = document.querySelector(".certificat h4");
+      var certAttests = document.querySelectorAll(".certificat p")[0];
+      var certExam = document.querySelectorAll(".certificat p")[1];
+      var certSign = document.querySelector(".certificat .cert-sign");
+      if (certEyebrow) certEyebrow.textContent = data.certificatEyebrow;
+      if (certOrg) certOrg.textContent = data.certificatOrganization;
+      if (certAttests) certAttests.textContent = data.certificatAttests;
+      if (certExam) certExam.textContent = data.certificatExam;
+      if (certSign) certSign.textContent = data.certificatSign;
+
+      // CTA section
+      var ctaTitle = document.querySelector(".guide-cta h3");
+      var ctaSub = document.querySelector(".guide-cta p");
+      var ctaLink = document.querySelector(".guide-cta a");
+      if (ctaTitle) ctaTitle.textContent = data.ctaTitle;
+      if (ctaSub) ctaSub.textContent = data.ctaSub;
+      if (ctaLink) ctaLink.textContent = data.ctaLink;
+
+      // Disclaimer
+      var disclaimerTitle = document.querySelector(".disclaimer-title");
+      var disclaimerText = document.querySelector(".disclaimer-text");
+      if (disclaimerTitle) disclaimerTitle.textContent = data.disclaimerTitle;
+      if (disclaimerText) disclaimerText.textContent = data.disclaimerText;
+    }
+
+    // ======== INIT ========
+    renderContent();
+
+    // ======== MutationObserver for FR/EN switch ========
+    if (typeof MutationObserver !== "undefined") {
+      new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === "lang") {
+            renderContent();
+            break;
+          }
+        }
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    }
+  })();
+  </script>
+
+  <!-- Original guide functions -->
+  <script>
+    function majProgression(cb) {
+      var label = cb.closest(".guide-check");
+      if (label) label.classList.toggle("coche", cb.checked);
+      var toutes = document.querySelectorAll(".chap-check");
+      var cochees = document.querySelectorAll(".chap-check:checked");
+      var pct = toutes.length ? Math.round((cochees.length / toutes.length) * 100) : 0;
+      var fill = document.getElementById("progress-fill");
+      var txt  = document.getElementById("progress-pct");
+      if (fill) fill.style.width = pct + "%";
+      if (txt)  txt.textContent = pct + " %";
+    }
+    function cocherSimple(cb) {
+      var label = cb.closest(".guide-check");
+      if (label) label.classList.toggle("coche", cb.checked);
+    }
+    // Bilan : score par matiere (lit les mini-quiz) + certificat si >= 80%
+    function calculerBilan() {
+      var lang = document.documentElement.lang === "en" ? "en" : "fr";
+      var noms = lang === "en"
+        ? ["History", "First Peoples", "Rights and Responsibilities", "Government", "Elections", "Geography", "Economy", "Symbols", "Final Preparation"]
+        : ["Histoire", "Premiers Peuples", "Droits et responsabilites", "Gouvernement", "Elections", "Geographie", "Economie", "Symboles", "Preparation finale"];
+      var nomsMap = {
+        "mq-ch1": noms[0], "mq-ch2": noms[1], "mq-ch3": noms[2],
+        "mq-ch4": noms[3], "mq-ch5": noms[4], "mq-ch6": noms[5],
+        "mq-ch7": noms[6], "mq-ch8": noms[7], "mq-ch9": noms[8]
+      };
+      var html = "";
+      var totalBons = 0, totalQ = 0, quizFaits = 0;
+      Object.keys(nomsMap).forEach(function (qid) {
+        var quiz = document.getElementById(qid);
+        if (!quiz) return;
+        var total = quiz.querySelectorAll(".mq-q").length;
+        var repondu = quiz.querySelectorAll('.mq-q[data-repondu="1"]').length;
+        var bons = 0;
+        quiz.querySelectorAll(".mq-q").forEach(function (qq) {
+          var c = qq.querySelector(".mq-opt.choisi");
+          if (c && c.getAttribute("data-bon") === "1") bons++;
+        });
+        var pct = repondu > 0 ? Math.round((bons / total) * 100) : 0;
+        if (repondu > 0) { totalBons += bons; totalQ += total; quizFaits++; }
+        var couleur = pct >= 80 ? "#2d7a4f" : (pct >= 60 ? "#c9a14a" : "#b03a2e");
+        var libelle = repondu > 0 ? (pct + " %") : "—";
+        html += '<div class="score-row"><span class="score-mat">' + nomsMap[qid] +
+                '</span><div class="score-bar"><div class="score-bar-fill" style="background:' + couleur +
+                ';width:' + pct + '%"></div></div><span class="score-val">' + libelle + '</span></div>';
+      });
+      var res = document.getElementById("bilan-result");
+      if (quizFaits === 0) {
+        var emptyMsg = lang === "en"
+          ? "First answer the chapter quizzes to see your progress by subject."
+          : "Repondez d'abord aux mini-quiz des chapitres pour voir votre bilan par matiere.";
+        res.innerHTML = '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.1rem;color:var(--ink-mid)">' + emptyMsg + '</p>';
+        res.classList.add("visible");
+        return;
+      }
+      res.innerHTML = html;
+      res.classList.add("visible");
+      var moy = totalQ > 0 ? Math.round((totalBons / totalQ) * 100) : 0;
+      var cert = document.getElementById("certificat");
+      if (moy >= 80) {
+        document.getElementById("cert-score").textContent = moy + " %";
+        cert.classList.add("visible");
+      } else {
+        cert.classList.remove("visible");
+      }
+    }
+    // Mini-quiz : repondre a une question
+    function mqRepondre(btn, quizId) {
+      var q = btn.closest(".mq-q");
+      if (q.getAttribute("data-repondu") === "1") return;
+      q.setAttribute("data-repondu", "1");
+      var choisiBon = btn.getAttribute("data-bon") === "1";
+      btn.classList.add("choisi");
+      var opts = q.querySelectorAll(".mq-opt");
+      opts.forEach(function (o) {
+        o.disabled = true;
+        if (o.getAttribute("data-bon") === "1") o.classList.add("bon");
+      });
+      if (!choisiBon) btn.classList.add("mauvais");
+      var quiz = document.getElementById(quizId);
+      var total = quiz.querySelectorAll(".mq-q").length;
+      var repondu = quiz.querySelectorAll('.mq-q[data-repondu="1"]').length;
+      if (repondu === total) {
+        var bons = 0;
+        quiz.querySelectorAll(".mq-q").forEach(function (qq) {
+          var c = qq.querySelector(".mq-opt.choisi");
+          if (c && c.getAttribute("data-bon") === "1") bons++;
+        });
+        var lang = document.documentElement.lang === "en" ? "en" : "fr";
+        var sc = quiz.querySelector(".mq-score");
+        var scoreText = lang === "en"
+          ? "Your score: " + bons + " / " + total
+          : "Votre score : " + bons + " / " + total;
+        sc.textContent = scoreText;
+        sc.classList.add("visible");
+      }
+    }
+  </script>
+</body>
+</html>
+
+

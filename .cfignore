@@ -1,0 +1,12 @@
+# Cloudflare Pages ignore file
+# Excludes files/folders from being deployed to Cloudflare
+
+# Git history (stays local, not deployed)
+.git/
+.git
+
+# Other local artifacts
+.claude/
+.claude.zip
+*.tmp
+*.bak

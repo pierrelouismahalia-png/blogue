@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Questionnaire - Statut temporaire | MDPL Immigration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .form-wrap { max-width: 760px; margin: 0 auto; }
+
+    /* Disclaimer fausse declaration */
+    .form-disclaimer { background: #fdf6f5; border: 1px solid #b03a2e; border-left: 4px solid #b03a2e; border-radius: 8px; padding: 1.25rem 1.4rem; margin-bottom: 1.75rem; }
+    .form-disclaimer-title { font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #b03a2e; margin: 0 0 0.6rem; }
+    .form-disclaimer-text { font-family: 'Jost', sans-serif; font-size: 0.86rem; line-height: 1.6; color: var(--navy); margin: 0; }
+    .form-disclaimer-text strong { color: #7b241c; }
+
+    /* Barre d'etapes */
+    .form-steps { display: flex; gap: 0.4rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .form-step-pill { flex: 1; min-width: 90px; text-align: center; font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); padding: 0.6rem 0.4rem; border-radius: 6px; background: var(--white); border: 1px solid var(--beige-dark); }
+    .form-step-pill.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .form-step-pill.done { background: #e8f4ec; color: #1a5e36; border-color: #2d7a4f; }
+
+    .form-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 10px; padding: 2rem 1.75rem; }
+    .form-section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.4rem; }
+    .form-section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 0 0 0.5rem; }
+    .form-section-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.6; color: var(--ink-mid); margin: 0 0 1.75rem; }
+
+    .form-field { margin-bottom: 1.25rem; }
+    .form-field label { display: block; font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.4; }
+    .form-field label .req { color: #b03a2e; margin-left: 2px; }
+    .form-field input, .form-field select, .form-field textarea {
+      width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--beige-dark); border-radius: 6px;
+      font-family: 'Jost', sans-serif; font-size: 0.92rem; color: var(--navy); background: var(--beige);
+      box-sizing: border-box;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--gold); background: #fff; }
+    .form-field textarea { resize: vertical; min-height: 70px; }
+    .form-field .hint { font-family: 'Jost', sans-serif; font-size: 0.78rem; color: var(--ink-mid); margin-top: 0.3rem; line-height: 1.4; }
+    .form-field.error input, .form-field.error select, .form-field.error textarea { border-color: #b03a2e; background: #fde8e6; }
+    .form-field .err-msg { display: none; font-family: 'Jost', sans-serif; font-size: 0.74rem; color: #b03a2e; margin-top: 0.3rem; }
+    .form-field.error .err-msg { display: block; }
+
+    .form-radios { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-radio { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.9rem; border: 1px solid var(--beige-dark); border-radius: 6px; background: var(--beige); cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--navy); }
+    .form-radio:hover { border-color: var(--gold); }
+    .form-radio input { width: auto; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Sous-sections et lignes dynamiques */
+    .form-subtitle { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 0 0 0.3rem; }
+    .form-sub-desc { font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink-mid); margin: 0 0 1rem; line-height: 1.5; }
+    .form-dyn-row { background: var(--beige); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 1.1rem 1.1rem 0.4rem; margin-bottom: 0.85rem; position: relative; }
+    .form-dyn-row .dyn-num { font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .form-dyn-remove { position: absolute; top: 0.8rem; right: 0.9rem; background: none; border: none; color: #b03a2e; font-family: 'Jost', sans-serif; font-size: 0.74rem; font-weight: 600; cursor: pointer; text-decoration: underline; }
+    .form-dyn-row .form-field { margin-bottom: 0.85rem; }
+    .form-dyn-row .form-field input, .form-dyn-row .form-field select { background: #fff; }
+    .form-add-btn { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--navy); background: #fff; border: 1px dashed var(--navy); border-radius: 6px; padding: 0.7rem 1.2rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .form-add-btn:hover { background: var(--navy); color: #fff; }
+    .form-na-check { display: flex; align-items: center; gap: 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.84rem; color: var(--ink-mid); cursor: pointer; margin-bottom: 1rem; padding: 0.6rem 0.8rem; background: var(--beige); border: 1px dashed var(--beige-dark); border-radius: 6px; }
+    .form-na-check input { width: auto; }
+    .na-desactive { opacity: 0.4; pointer-events: none; }
+    .form-periode { background: #eef4fb; border: 1px solid var(--navy); border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-family: 'Jost', sans-serif; font-size: 0.86rem; color: var(--navy); }
+    .form-periode-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+    .form-dates-avert { background: #fdf6f5; border-left: 4px solid #b03a2e; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-family: 'Jost', sans-serif; font-size: 0.82rem; line-height: 1.55; color: var(--navy); }
+    .form-dates-avert strong { color: #b03a2e; }
+    .form-bloc-msg { background: #fde8e6; border: 1px solid #b03a2e; border-radius: 6px; padding: 0.8rem 1rem; margin-top: 1rem; font-family: 'Jost', sans-serif; font-size: 0.84rem; color: #7b241c; line-height: 1.5; display: none; }
+    .form-bloc-msg.actif { display: block; }
+    .form-empty { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--ink-mid); font-style: italic; padding: 0.5rem 0 1rem; }
+
+    /* Questions admissibilite */
+    .form-admiss { border-bottom: 1px solid var(--beige-dark); padding: 1.1rem 0; }
+    .form-admiss-q { font-family: 'Jost', sans-serif; font-size: 0.88rem; line-height: 1.5; color: var(--navy); margin: 0 0 0.7rem; font-weight: 500; }
+    .form-admiss-choices { display: flex; gap: 1.5rem; }
+    .form-radio-inline { display: flex; align-items: center; gap: 0.4rem; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--navy); cursor: pointer; }
+    .form-radio-inline input { width: auto; }
+
+    /* Documents */
+    .form-doc { border: 1px solid var(--beige-dark); border-radius: 8px; padding: 1rem 1.1rem; margin-bottom: 0.85rem; background: var(--beige); }
+    .form-doc-nom { font-family: 'Jost', sans-serif; font-size: 0.86rem; line-height: 1.5; color: var(--navy); margin: 0 0 0.7rem; font-weight: 500; }
+    .form-doc-actions { display: flex; flex-direction: column; gap: 0.6rem; }
+    .form-doc-file input { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--navy); }
+    .form-doc-na { display: flex; align-items: center; gap: 0.5rem; font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--ink-mid); cursor: pointer; }
+    .form-doc-na input { width: auto; }
+
+    .form-nav { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+    .form-btn { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: none; border-radius: 6px; padding: 0.9rem 1.75rem; cursor: pointer; }
+    .form-btn-next { background: var(--navy); color: #fff; }
+    .form-btn-next:hover { background: var(--gold); color: var(--navy); }
+    .form-btn-prev { background: transparent; color: var(--ink-mid); border: 1px solid var(--beige-dark); }
+    .form-btn-prev:hover { border-color: var(--gold); color: var(--navy); }
+    .form-btn-prev[disabled] { opacity: 0.4; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="programme-preparation.html">Programme préparatoire à l'examen</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow" data-i18n=" qst.hero.eyebrow">Questionnaire client</p>
+      <h1 class="page-hero-title" data-i18n="qst.hero.title">Questionnaire &mdash; <em>statut temporaire</em></h1>
+      <p class="page-hero-subtitle" data-i18n="qst.hero.sub">Remplissez ce formulaire pour préparer votre demande de statut temporaire au Canada.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--beige);">
+    <div class="section-inner">
+      <div class="form-wrap">
+
+        <!-- Etapes -->
+        <div class="form-steps">
+          <div class="form-step-pill active" data-i18n="qst.step.a">A. Identité</div>
+          <div class="form-step-pill" data-i18n="qst.step.b">B. Éducation &amp; travail</div>
+          <div class="form-step-pill" data-i18n="qst.step.c">C. Famille</div>
+          <div class="form-step-pill" data-i18n="qst.step.d">D. Voyages</div>
+          <div class="form-step-pill" data-i18n="qst.step.e">Admissibilité</div>
+          <div class="form-step-pill" data-i18n="qst.step.f">Documents</div>
+        </div>
+
+        <!-- DISCLAIMER FAUSSE DECLARATION (rappel au debut) -->
+        <div class="form-disclaimer" id="disclaimer-debut">
+          <p class="form-disclaimer-title" data-i18n="qst.disc.title">Déclaration importante &mdash; à lire attentivement</p>
+          <p class="form-disclaimer-text" data-i18n="qst.disc.text">Toutes les informations fournies dans ce questionnaire doivent être <strong>véridiques, exactes et complètes</strong>. Elles seront transmises aux autorités d'immigration. Une fausse déclaration ou la dissimulation d'informations peut entraîner le refus de votre demande et une <strong>interdiction de territoire au Canada pour une période de cinq (5) ans</strong>, conformément à la Loi sur l'immigration et la protection des réfugiés (article 40). En cas de doute ou de difficulté à répondre, communiquez avec votre conseiller(ère) avant de soumettre.</p>
+        </div>
+
+        <!-- ETAPE A : IDENTITE -->
+        <div class="form-card" id="etape-a">
+          <p class="form-section-eyebrow" data-i18n="qst.a.eyebrow">Section A</p>
+          <h2 class="form-section-title" data-i18n="qst.a.title">Renseignements personnels</h2>
+          <p class="form-section-desc" data-i18n="qst.a.desc">Veuillez fournir vos renseignements tels qu'ils apparaissent sur votre passeport.</p>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.nom">Nom, Prénom (tel qu'indiqué sur le passeport) <span class="req">*</span></label>
+            <input type="text" name="nom_complet" required data-i18n-ph="qst.a.nom.ph" placeholder="Nom de famille, Prénom" />
+            <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label data-i18n="qst.a.tel">Numéro de téléphone <span class="req">*</span></label>
+              <input type="tel" name="telephone" required placeholder="+1 514 000 0000" />
+              <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+            </div>
+            <div class="form-field">
+              <label data-i18n="qst.a.courriel">Courriel <span class="req">*</span></label>
+              <input type="email" name="courriel" required placeholder="vous@exemple.com" />
+              <p class="err-msg" data-i18n="qst.err.email">Veuillez entrer un courriel valide.</p>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.autrenom">Avez-vous déjà utilisé un autre nom ? (mariage, pseudonyme, surnom) Si oui, précisez :</label>
+            <input type="text" name="autre_nom" placeholder="" />
+            <p class="hint" data-i18n="qst.a.autrenom.hint">Laissez vide si non applicable.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label data-i18n="qst.a.naissance">Date de naissance <span class="req">*</span></label>
+              <input type="date" name="date_naissance" required />
+              <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+            </div>
+            <div class="form-field">
+              <label data-i18n="qst.a.lieu">Lieu de naissance (ville, province, pays) <span class="req">*</span></label>
+              <input type="text" name="lieu_naissance" required placeholder="Ville, province, pays" />
+              <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.langues">Langues parlées couramment <span class="req">*</span></label>
+            <input type="text" name="langues" required placeholder="Français, anglais, ..." />
+            <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+          </div>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.adresse">Adresse résidentielle actuelle <span class="req">*</span></label>
+            <textarea name="adresse_actuelle" required placeholder=""></textarea>
+            <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+          </div>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.civil">Votre état civil <span class="req">*</span></label>
+            <div class="form-radios">
+              <label class="form-radio"><input type="radio" name="etat_civil" value="celibataire" required> <span data-i18n="qst.a.civil.single">Célibataire</span></label>
+              <label class="form-radio"><input type="radio" name="etat_civil" value="marie"> <span data-i18n="qst.a.civil.married">Marié(e) / Conjoint(e) de fait</span></label>
+              <label class="form-radio"><input type="radio" name="etat_civil" value="divorce"> <span data-i18n="qst.a.civil.divorced">Divorcé(e)</span></label>
+              <label class="form-radio"><input type="radio" name="etat_civil" value="veuf"> <span data-i18n="qst.a.civil.widowed">Veuf(ve)</span></label>
+            </div>
+            <p class="err-msg" data-i18n="qst.err.required">Ce champ est obligatoire.</p>
+          </div>
+
+          <div class="form-field">
+            <label data-i18n="qst.a.autrepays">Au cours des 5 dernières années, avez-vous vécu plus de 6 mois dans un pays autre que celui de votre citoyenneté ou de résidence ? Si oui, détaillez (pays, statut, dates) :</label>
+            <label class="form-na-check"><input type="checkbox" onchange="toggleNAchamp('autre_pays', this.checked)"> <span data-i18n="qst.na.simple">Non applicable</span></label>
+            <textarea name="autre_pays" placeholder=""></textarea>
+            <p class="hint" data-i18n="qst.a.autrepays.hint">Statut : visiteur, étudiant, travailleur ou autre.</p>
+          </div>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" disabled data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="allerEtape('b')" data-i18n="qst.next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- ETAPE B : EDUCATION ET TRAVAIL -->
+        <div class="form-card" id="etape-b" style="display:none;">
+          <p class="form-section-eyebrow" data-i18n="qst.b.eyebrow">Section B</p>
+          <h2 class="form-section-title" data-i18n="qst.b.title">Éducation et expérience de travail</h2>
+          <p class="form-section-desc" data-i18n="qst.b.desc">Indiquez votre parcours scolaire et professionnel. Ajoutez autant de lignes que nécessaire.</p>
+
+          <!-- Education -->
+          <h3 class="form-subtitle" data-i18n="qst.b.edu.title">Éducation</h3>
+          <p class="form-sub-desc" data-i18n="qst.b.edu.desc">École primaire, secondaire, école de métiers, collège, université.</p>
+          <div class="form-dyn" id="edu-list"></div>
+          <button type="button" class="form-add-btn" onclick="ajouterLigne('edu')" data-i18n="qst.b.edu.add">+ Ajouter une formation</button>
+
+          <!-- Experience de travail -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.b.work.title">Expérience de travail (10 dernières années)</h3>
+          <p class="form-sub-desc" data-i18n="qst.b.work.desc">Incluez tout poste gouvernemental (fonctionnaire, juge, policier, maire, député, administrateur d'hôpital). N'oubliez aucune période; en cas d'inactivité, précisez (chômage, études, voyage).</p>
+          <div class="form-periode" id="periode-banniere">
+            <span class="form-periode-label" data-i18n="qst.b.periode.label">Période à couvrir obligatoirement :</span>
+            <strong id="periode-texte">—</strong>
+          </div>
+          <div class="form-dates-avert">
+            <strong data-i18n="qst.b.dates.avert">IMPORTANT — Les dates sont essentielles.</strong>
+            <span data-i18n="qst.b.dates.avert2"> Chaque mois doit être couvert, sans interruption. Tout trou entre deux périodes bloquera le formulaire. Exemple : si un emploi se termine en 06/2022 et que le suivant commence en 01/2023, les mois de 07/2022 à 12/2022 manquent — précisez ce que vous faisiez (chômage, études, voyage).</span>
+          </div>
+          <div class="form-dyn" id="work-list"></div>
+          <button type="button" class="form-add-btn" onclick="ajouterLigne('work')" data-i18n="qst.b.work.add">+ Ajouter un emploi</button>
+          <div class="form-bloc-msg" id="work-bloc-msg"></div>
+
+          <!-- Permis de travail Canada -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.b.permit.title">Permis de travail au Canada</h3>
+          <p class="form-sub-desc" data-i18n="qst.b.permit.desc">Si vous avez occupé un poste au Canada, indiquez le type de permis et les dates de validité (ex. EIMT/CAQ, post-diplôme, conjoint, PVT, jeune professionnel).</p>
+          <label class="form-na-check"><input type="checkbox" id="na-permit" onchange="toggleNA('permit', this.checked)"> <span data-i18n="qst.na">Non applicable / Je n'ai jamais travaillé au Canada</span></label>
+          <div id="wrap-permit">
+            <div class="form-dyn" id="permit-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('permit')" data-i18n="qst.b.permit.add">+ Ajouter un permis</button>
+          </div>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" onclick="allerEtape('a')" data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="allerEtape('c')" data-i18n="qst.next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- ETAPE C : FAMILLE -->
+        <div class="form-card" id="etape-c" style="display:none;">
+          <p class="form-section-eyebrow" data-i18n="qst.c.eyebrow">Section C</p>
+          <h2 class="form-section-title" data-i18n="qst.c.title">Renseignements sur la famille</h2>
+          <p class="form-section-desc" data-i18n="qst.c.desc">Veuillez fournir les renseignements sur les membres de votre famille. Ajoutez autant de lignes que nécessaire.</p>
+
+          <!-- Conjoint actuel (conditionnel) -->
+          <div class="bloc-conjoint">
+          <h3 class="form-subtitle" data-i18n="qst.c.spouse.title">Conjoint(e) actuel(le)</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.spouse.desc">À remplir si vous êtes marié(e) ou en union de fait. Rappel : l'union de fait suppose une vie commune à la même adresse depuis au moins 12 mois.</p>
+          <div class="form-field">
+            <label data-i18n="qst.c.spouse.nom">Nom de famille (à la naissance) et prénom, tel qu'indiqué sur le passeport</label>
+            <input type="text" name="conjoint_nom" placeholder="" />
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label data-i18n="qst.c.spouse.naissance">Date de naissance</label><input type="date" name="conjoint_naissance" /></div>
+            <div class="form-field"><label data-i18n="qst.c.spouse.citoyennete">Citoyenneté</label><input type="text" name="conjoint_citoyennete" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label data-i18n="qst.c.spouse.type">Type de relation</label>
+              <select name="conjoint_type">
+                <option value="" data-i18n="qst.c.spouse.type.choose">Choisir...</option>
+                <option value="mariage" data-i18n="qst.c.spouse.type.married">Mariage</option>
+                <option value="union_fait" data-i18n="qst.c.spouse.type.common">Union de fait</option>
+              </select>
+            </div>
+            <div class="form-field"><label data-i18n="qst.c.spouse.date">Date du mariage ou début de l'union</label><input type="month" name="conjoint_date" /></div>
+          </div>
+          <div class="form-field"><label data-i18n="qst.c.spouse.iuc">Votre numéro d'IUC (si vous en avez un)</label>
+            <label class="form-na-check"><input type="checkbox" onchange="toggleNAchamp('conjoint_iuc', this.checked)"> <span data-i18n="qst.na.simple">Non applicable</span></label>
+            <input type="text" name="conjoint_iuc" placeholder="" /></div>
+          </div>
+          <!-- fin bloc-conjoint -->
+
+          <!-- Ex-conjoints -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.ex.title">Relations antérieures</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.ex.desc">Avez-vous déjà été marié(e) ou en union de fait auparavant ? Si oui, ajoutez chaque relation.</p>
+          <label class="form-na-check"><input type="checkbox" id="na-ex" onchange="toggleNA('ex', this.checked)"> <span data-i18n="qst.na">Non applicable / Je n'ai rien à déclarer dans cette section</span></label>
+          <div id="wrap-ex">
+            <div class="form-dyn" id="ex-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('ex')" data-i18n="qst.c.ex.add">+ Ajouter une relation antérieure</button>
+          </div>
+
+          <!-- Parents -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.parents.title">Parents</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.parents.desc">Mère et père.</p>
+          <div class="form-dyn" id="parent-list"></div>
+          <button type="button" class="form-add-btn" onclick="ajouterLigne('parent')" data-i18n="qst.c.parents.add">+ Ajouter un parent</button>
+
+          <!-- Enfants -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.children.title">Enfants</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.children.desc">Mentionnez tous vos enfants, qu'ils soient à votre charge ou non.</p>
+          <label class="form-na-check"><input type="checkbox" id="na-child" onchange="toggleNA('child', this.checked)"> <span data-i18n="qst.na.children">Non applicable / Je n'ai pas d'enfants</span></label>
+          <div id="wrap-child">
+            <div class="form-dyn" id="child-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('child')" data-i18n="qst.c.children.add">+ Ajouter un enfant</button>
+          </div>
+
+          <!-- Freres et soeurs -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.siblings.title">Frères et sœurs</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.siblings.desc">Incluant les demi-frères et demi-sœurs.</p>
+          <label class="form-na-check"><input type="checkbox" id="na-sibling" onchange="toggleNA('sibling', this.checked)"> <span data-i18n="qst.na.siblings">Non applicable / Je n'ai pas de frères ni sœurs</span></label>
+          <div id="wrap-sibling">
+            <div class="form-dyn" id="sibling-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('sibling')" data-i18n="qst.c.siblings.add">+ Ajouter un frère / une sœur</button>
+          </div>
+
+          <!-- Petits-enfants -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.grandchildren.title">Petits-enfants</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.grandchildren.desc">Le cas échéant.</p>
+          <label class="form-na-check"><input type="checkbox" id="na-grandchild" onchange="toggleNA('grandchild', this.checked)"> <span data-i18n="qst.na.grandchildren">Non applicable / Je n'ai pas de petits-enfants</span></label>
+          <div id="wrap-grandchild">
+            <div class="form-dyn" id="grandchild-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('grandchild')" data-i18n="qst.c.grandchildren.add">+ Ajouter un petit-enfant</button>
+          </div>
+
+          <!-- Adresses depuis 18 ans -->
+          <h3 class="form-subtitle" style="margin-top:2rem;" data-i18n="qst.c.address.title">Historique des adresses</h3>
+          <p class="form-sub-desc" data-i18n="qst.c.address.desc">Toutes les adresses où vous avez résidé depuis votre 18e anniversaire ou au cours des 10 dernières années (la période la plus récente).</p>
+          <div class="form-dyn" id="address-list"></div>
+          <button type="button" class="form-add-btn" onclick="ajouterLigne('address')" data-i18n="qst.c.address.add">+ Ajouter une adresse</button>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" onclick="allerEtape('b')" data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="validerSectionC()" data-i18n="qst.next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- ETAPE D : VOYAGES -->
+        <div class="form-card" id="etape-d" style="display:none;">
+          <p class="form-section-eyebrow" data-i18n="qst.d.eyebrow">Section D</p>
+          <h2 class="form-section-title" data-i18n="qst.d.title">Liste des voyages</h2>
+          <p class="form-section-desc" data-i18n="qst.d.desc">Énumérez tous les voyages effectués au cours des dernières années.</p>
+          <label class="form-na-check"><input type="checkbox" id="na-travel" onchange="toggleNA('travel', this.checked)"> <span data-i18n="qst.na.travel">Non applicable / Je n'ai pas voyagé au cours des 10 dernières années</span></label>
+          <div id="wrap-travel">
+            <div class="form-dyn" id="travel-list"></div>
+            <button type="button" class="form-add-btn" onclick="ajouterLigne('travel')" data-i18n="qst.d.add">+ Ajouter un voyage</button>
+          </div>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" onclick="allerEtape('c')" data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="allerEtape('e')" data-i18n="qst.next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- ETAPE E : ADMISSIBILITE -->
+        <div class="form-card" id="etape-e" style="display:none;">
+          <p class="form-section-eyebrow" data-i18n="qst.e.eyebrow">Admissibilité</p>
+          <h2 class="form-section-title" data-i18n="qst.e.title">Questions d'admissibilité au Canada</h2>
+          <p class="form-section-desc" data-i18n="qst.e.desc">Répondez à chaque question. Si vous répondez « Oui », veuillez fournir des précisions dans l'espace prévu.</p>
+
+          <div class="form-field">
+            <label data-i18n="qst.e.status">Si vous êtes déjà au Canada, quel est votre statut actuel ?</label>
+            <select name="statut_canada">
+              <option value="" data-i18n="qst.e.status.choose">Choisir...</option>
+              <option value="sans_papier" data-i18n="qst.e.status.none">Sans papier / sans statut</option>
+              <option value="permis_travail" data-i18n="qst.e.status.work">Permis de travail</option>
+              <option value="permis_etudes" data-i18n="qst.e.status.study">Permis d'études</option>
+              <option value="visa_visiteur" data-i18n="qst.e.status.visitor">Visa visiteur</option>
+              <option value="autre" data-i18n="qst.e.status.other">Autre</option>
+            </select>
+          </div>
+
+          <div id="admiss-questions"></div>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" onclick="allerEtape('d')" data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="allerEtape('f')" data-i18n="qst.next">Suivant</button>
+          </div>
+        </div>
+
+        <!-- ETAPE F : DOCUMENTS + INITIALES -->
+        <div class="form-card" id="etape-f" style="display:none;">
+          <p class="form-section-eyebrow" data-i18n="qst.f.eyebrow">Documents</p>
+          <h2 class="form-section-title" data-i18n="qst.f.title">Documents à fournir</h2>
+          <p class="form-section-desc" data-i18n="qst.f.desc">Téléversez chaque document demandé. Si vous ne pouvez pas fournir un document, cochez la case et expliquez pourquoi. Les documents doivent être en français ou en anglais (ou traduits par un traducteur officiel).</p>
+
+          <div id="documents-list"></div>
+
+          <!-- Disclaimer final + initiales -->
+          <div class="form-disclaimer" style="margin-top:2rem;">
+            <p class="form-disclaimer-title" data-i18n="qst.f.attest.title">Attestation de véracité</p>
+            <p class="form-disclaimer-text" data-i18n="qst.f.attest.text">Je certifie que toutes les informations fournies dans ce questionnaire sont véridiques, exactes et complètes. Je comprends qu'une fausse déclaration peut entraîner le refus de ma demande et une interdiction de territoire au Canada de cinq (5) ans (article 40 de la LIPR).</p>
+          </div>
+          <div class="form-field" style="margin-top:1rem;">
+            <label data-i18n="qst.f.initials">Inscrivez vos initiales pour confirmer <span class="req">*</span></label>
+            <input type="text" name="initiales" id="champ-initiales" maxlength="5" required placeholder="Ex. M.D." style="max-width:140px;" />
+            <p class="err-msg" data-i18n="qst.f.initials.err">Veuillez inscrire vos initiales pour confirmer.</p>
+          </div>
+
+          <div class="form-nav">
+            <button class="form-btn form-btn-prev" onclick="allerEtape('e')" data-i18n="qst.prev">Précédent</button>
+            <button class="form-btn form-btn-next" onclick="soumettre()" data-i18n="qst.submit">Soumettre le questionnaire</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    // ====== NAVIGATION MULTI-ETAPES ======
+    var etapesOrdre = ['a','b','c','d','e','f'];
+    var pilColIndex = { a:0, b:1, c:2, d:3, e:4, f:5 };
+
+    function allerEtape(cible) {
+      // Si on quitte l'etape A en avancant, valider d'abord
+      var actuelle = etapeActuelle();
+      var avance = etapesOrdre.indexOf(cible) > etapesOrdre.indexOf(actuelle);
+      if (actuelle === 'a' && avance) {
+        if (!validerEtapeA()) return;
+      }
+      // Si on quitte l'etape B en avancant, verifier les trous
+      if (actuelle === 'b' && avance) {
+        if (!verifierTrous()) return;
+      }
+      // Cacher toutes les etapes, afficher la cible
+      etapesOrdre.forEach(function (e) {
+        var el = document.getElementById('etape-' + e);
+        if (el) el.style.display = (e === cible) ? 'block' : 'none';
+      });
+      majPilules(cible);
+      if (cible === 'b') afficherPeriode();
+      window.scrollTo({ top: document.querySelector('.form-steps').offsetTop - 20, behavior: 'smooth' });
+    }
+
+    // ====== PERIODE OBLIGATOIRE (depuis date de naissance) ======
+    function moisAujourdhui() { var d = new Date(); return d.getFullYear() * 12 + d.getMonth(); }
+    function calculerPeriodeObligatoire() {
+      var dn = document.querySelector('[name="date_naissance"]');
+      if (!dn || !dn.value) return null;
+      var parts = dn.value.split('-');
+      if (parts.length < 2) return null;
+      var anneeNaiss = parseInt(parts[0], 10);
+      var moisNaiss = parseInt(parts[1], 10) - 1;
+      var mois18 = (anneeNaiss + 18) * 12 + moisNaiss;
+      var fin = moisAujourdhui();
+      var dixAns = fin - (10 * 12);
+      var debut = Math.max(mois18, dixAns);
+      if (debut > fin) debut = fin;
+      return { debut: debut, fin: fin, mois18: mois18, dixAns: dixAns };
+    }
+    function moisVersTexte(m) {
+      var annee = Math.floor(m / 12); var mois = (m % 12) + 1;
+      return (mois < 10 ? '0' + mois : mois) + '/' + annee;
+    }
+    function afficherPeriode() {
+      var p = calculerPeriodeObligatoire();
+      var el = document.getElementById('periode-texte');
+      if (!el) return;
+      var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      if (!p) {
+        el.textContent = lang === 'en' ? 'Please enter your date of birth in Section A.' : 'Veuillez saisir votre date de naissance à la Section A.';
+        return;
+      }
+      var depuis18 = (p.debut === p.mois18 && p.mois18 >= p.dixAns);
+      var base = moisVersTexte(p.debut) + (lang === 'en' ? ' to today' : ' à aujourd\'hui');
+      var precision = depuis18
+        ? (lang === 'en' ? ' (since your 18th birthday)' : ' (depuis vos 18 ans)')
+        : (lang === 'en' ? ' (the last 10 years)' : ' (les 10 dernières années)');
+      el.textContent = base + precision;
+    }
+
+    // ====== TROUS + COUVERTURE (BLOCAGE STRICT) ======
+    function moisVers(numStr) {
+      if (!numStr) return null;
+      var m = numStr.trim().match(/^(\d{4})[-\/](\d{1,2})$/);
+      if (!m) return null;
+      var annee = parseInt(m[1], 10), mois = parseInt(m[2], 10);
+      if (mois < 1 || mois > 12) return null;
+      return annee * 12 + (mois - 1);
+    }
+    function verifierTrous() {
+      var msgEl = document.getElementById('work-bloc-msg');
+      function bloquer(txt) {
+        if (msgEl) { msgEl.textContent = txt; msgEl.classList.add('actif'); msgEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        return false;
+      }
+      if (msgEl) msgEl.classList.remove('actif');
+      var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      var p = calculerPeriodeObligatoire();
+      if (!p) {
+        return bloquer(lang === 'en' ? 'Please enter your date of birth in Section A before continuing.' : 'Veuillez saisir votre date de naissance à la Section A avant de continuer.');
+      }
+      var periodes = [];
+      var champsIncomplets = false;
+      for (var i = 1; i <= compteurs.work; i++) {
+        var deEl = document.querySelector('[name="work_de_' + i + '"]');
+        var aEl = document.querySelector('[name="work_a_' + i + '"]');
+        if (!deEl || !aEl) continue;
+        var deV = deEl.value.trim(), aV = aEl.value.trim();
+        if (deV === '' && aV === '') continue;
+        var d = moisVers(deV), f = moisVers(aV);
+        if (d === null || f === null) { champsIncomplets = true; continue; }
+        if (d > f) { var tmp = d; d = f; f = tmp; }
+        periodes.push({ debut: d, fin: f });
+      }
+      if (champsIncomplets) {
+        return bloquer(lang === 'en' ? 'Some periods have an invalid or incomplete date (use the format YYYY-MM). Please correct them.' : 'Certaines périodes ont une date invalide ou incomplète (format AAAA-MM). Veuillez les corriger.');
+      }
+      if (periodes.length === 0) {
+        return bloquer(lang === 'en' ? 'Please fill in your work history for the required period.' : 'Veuillez remplir votre expérience pour la période demandée.');
+      }
+      periodes.sort(function (x, y) { return x.debut - y.debut; });
+      var fusion = [periodes[0]];
+      for (var j = 1; j < periodes.length; j++) {
+        var dernier = fusion[fusion.length - 1];
+        if (periodes[j].debut <= dernier.fin + 1) { dernier.fin = Math.max(dernier.fin, periodes[j].fin); }
+        else { fusion.push(periodes[j]); }
+      }
+      if (fusion[0].debut > p.debut) {
+        return bloquer(lang === 'en' ? 'Your history must start at ' + moisVersTexte(p.debut) + '. Please cover the full required period.' : 'Vos antécédents doivent commencer en ' + moisVersTexte(p.debut) + '. Veuillez couvrir toute la période demandée.');
+      }
+      for (var k = 0; k < fusion.length - 1; k++) {
+        if (fusion[k].fin < p.fin && (fusion[k + 1].debut - fusion[k].fin) > 1) {
+          return bloquer(lang === 'en' ? 'There is a gap between ' + moisVersTexte(fusion[k].fin) + ' and ' + moisVersTexte(fusion[k + 1].debut) + '. Every month must be accounted for.' : 'Il y a un trou entre ' + moisVersTexte(fusion[k].fin) + ' et ' + moisVersTexte(fusion[k + 1].debut) + '. Chaque mois doit être couvert, sans interruption.');
+        }
+      }
+      var couvertureFin = fusion[fusion.length - 1].fin;
+      if (couvertureFin < p.fin - 1) {
+        return bloquer(lang === 'en' ? 'Your history must continue until today. The last period ends at ' + moisVersTexte(couvertureFin) + '.' : 'Vos antécédents doivent aller jusqu\'à aujourd\'hui. La dernière période se termine en ' + moisVersTexte(couvertureFin) + '.');
+      }
+      return true;
+    }
+
+    function etapeActuelle() {
+      for (var i = 0; i < etapesOrdre.length; i++) {
+        var el = document.getElementById('etape-' + etapesOrdre[i]);
+        if (el && el.style.display !== 'none') return etapesOrdre[i];
+      }
+      return 'a';
+    }
+
+    function majPilules(cible) {
+      var pills = document.querySelectorAll('.form-step-pill');
+      var idxCible = etapesOrdre.indexOf(cible);
+      pills.forEach(function (p, i) {
+        p.classList.remove('active', 'done');
+        if (i < idxCible) p.classList.add('done');
+        else if (i === idxCible) p.classList.add('active');
+      });
+    }
+
+    // ====== VALIDATION SECTION A ======
+    function validerEtapeA() {
+      var card = document.getElementById("etape-a");
+      var champs = card.querySelectorAll("[required]");
+      var ok = true;
+      card.querySelectorAll(".form-field").forEach(function (f) { f.classList.remove("error"); });
+      var radioGroups = {};
+      champs.forEach(function (el) {
+        if (el.type === "radio") {
+          radioGroups[el.name] = radioGroups[el.name] || false;
+          if (el.checked) radioGroups[el.name] = true;
+          return;
+        }
+        var val = (el.value || "").trim();
+        var valide = val !== "";
+        if (el.type === "email" && valide) {
+          valide = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val);
+        }
+        if (!valide) { el.closest(".form-field").classList.add("error"); ok = false; }
+      });
+      Object.keys(radioGroups).forEach(function (name) {
+        if (!radioGroups[name]) {
+          var anyRadio = card.querySelector('[name="' + name + '"]');
+          if (anyRadio) { anyRadio.closest(".form-field").classList.add("error"); ok = false; }
+        }
+      });
+      if (!ok) {
+        var firstErr = card.querySelector(".form-field.error");
+        if (firstErr) firstErr.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      return ok;
+    }
+
+    // ====== LIGNES DYNAMIQUES ======
+    var compteurs = { edu: 0, work: 0, permit: 0, ex: 0, parent: 0, child: 0, sibling: 0, grandchild: 0, address: 0, travel: 0 };
+
+    function champTexte(label, name, ph) {
+      return '<div class="form-field"><label>' + label + '</label>'
+           + '<input type="text" name="' + name + '" placeholder="' + (ph || '') + '" /></div>';
+    }
+
+    // Selecteur mois + annee (calendrier de mois)
+    function champMois(label, name) {
+      return '<div class="form-field"><label>' + label + '</label>'
+           + '<input type="month" name="' + name + '" /></div>';
+    }
+
+    // Selecteur date complete (jour/mois/annee)
+    function champDate(label, name) {
+      return '<div class="form-field"><label>' + label + '</label>'
+           + '<input type="date" name="' + name + '" /></div>';
+    }
+
+    function ajouterLigne(type) {
+      compteurs[type]++;
+      var n = compteurs[type];
+      var list = document.getElementById(type + '-list');
+      var row = document.createElement('div');
+      row.className = 'form-dyn-row';
+      var html = '';
+
+      if (type === 'edu') {
+        html += '<p class="dyn-num">Formation ' + n + '</p>';
+        html += '<div class="form-row">'
+              + champMois('De', 'edu_de_' + n)
+              + champMois('À', 'edu_a_' + n) + '</div>';
+        html += champTexte('Niveau d\'études', 'edu_niveau_' + n, 'Secondaire, collégial, universitaire...');
+        html += champTexte('Nom du programme', 'edu_programme_' + n, '');
+        html += champTexte('Nom de l\'école / l\'établissement', 'edu_ecole_' + n, '');
+        html += champTexte('Lieu (ville et pays)', 'edu_lieu_' + n, '');
+      } else if (type === 'work') {
+        html += '<p class="dyn-num">Emploi ' + n + '</p>';
+        html += '<div class="form-row">'
+              + champMois('De', 'work_de_' + n)
+              + champMois('À', 'work_a_' + n) + '</div>';
+        html += champTexte('Activité / Occupation', 'work_poste_' + n, '');
+        html += champTexte('Nom de l\'employeur', 'work_employeur_' + n, '');
+        html += champTexte('Lieu (ville et pays)', 'work_lieu_' + n, '');
+      } else if (type === 'permit') {
+        html += '<p class="dyn-num">Permis ' + n + '</p>';
+        html += champTexte('Type de permis de travail', 'permit_type_' + n, 'EIMT/CAQ, post-diplôme, conjoint, PVT...');
+        html += '<div class="form-row">'
+              + champMois('Du', 'permit_de_' + n)
+              + champMois('Au', 'permit_a_' + n) + '</div>';
+      } else if (type === 'ex') {
+        html += '<p class="dyn-num">Relation antérieure ' + n + '</p>';
+        html += champTexte('Nom et prénom de l\'ex-conjoint(e)', 'ex_nom_' + n, '');
+        html += champTexte('Type de relation (mariage ou union de fait)', 'ex_type_' + n, '');
+        html += '<div class="form-row">'
+              + champMois('Du', 'ex_de_' + n)
+              + champMois('Au', 'ex_a_' + n) + '</div>';
+      } else if (type === 'parent') {
+        html += '<p class="dyn-num">Parent ' + n + '</p>';
+        html += champTexte('Nom, prénom', 'parent_nom_' + n, '');
+        html += '<div class="form-row">'
+              + champTexte('Relation', 'parent_relation_' + n, 'Mère / Père')
+              + champDate('Date de naissance', 'parent_naissance_' + n) + '</div>';
+        html += '<div class="form-row">'
+              + champTexte('Pays de naissance', 'parent_pays_' + n, '')
+              + champTexte('État civil', 'parent_civil_' + n, '') + '</div>';
+        html += champTexte('Profession', 'parent_profession_' + n, '');
+        html += champTexte('Adresse actuelle (ou date et lieu du décès si décédé)', 'parent_adresse_' + n, '');
+      } else if (type === 'child') {
+        html += '<p class="dyn-num">Enfant ' + n + '</p>';
+        html += champTexte('Nom, prénom', 'child_nom_' + n, '');
+        html += '<div class="form-row">'
+              + champTexte('Relation (fille / fils)', 'child_relation_' + n, '')
+              + champDate('Date de naissance', 'child_naissance_' + n) + '</div>';
+        html += '<div class="form-row">'
+              + champTexte('Pays de naissance', 'child_pays_' + n, '')
+              + champTexte('État civil', 'child_civil_' + n, '') + '</div>';
+        html += champTexte('Adresse actuelle (ou date et lieu du décès si décédé)', 'child_adresse_' + n, '');
+      } else if (type === 'sibling') {
+        html += '<p class="dyn-num">Frère / sœur ' + n + '</p>';
+        html += champTexte('Nom, prénom', 'sibling_nom_' + n, '');
+        html += '<div class="form-row">'
+              + champTexte('Relation (frère / sœur)', 'sibling_relation_' + n, '')
+              + champDate('Date de naissance', 'sibling_naissance_' + n) + '</div>';
+        html += '<div class="form-row">'
+              + champTexte('Pays de naissance', 'sibling_pays_' + n, '')
+              + champTexte('État civil', 'sibling_civil_' + n, '') + '</div>';
+        html += champTexte('Adresse actuelle (ou date et lieu du décès si décédé)', 'sibling_adresse_' + n, '');
+      } else if (type === 'grandchild') {
+        html += '<p class="dyn-num">Petit-enfant ' + n + '</p>';
+        html += champTexte('Nom, prénom', 'grandchild_nom_' + n, '');
+        html += '<div class="form-row">'
+              + champTexte('Relation', 'grandchild_relation_' + n, '')
+              + champDate('Date de naissance', 'grandchild_naissance_' + n) + '</div>';
+        html += '<div class="form-row">'
+              + champTexte('Pays de naissance', 'grandchild_pays_' + n, '')
+              + champTexte('État civil', 'grandchild_civil_' + n, '') + '</div>';
+        html += champTexte('Adresse actuelle', 'grandchild_adresse_' + n, '');
+      } else if (type === 'address') {
+        html += '<p class="dyn-num">Adresse ' + n + '</p>';
+        html += '<div class="form-row">'
+              + champMois('De', 'address_de_' + n)
+              + champMois('À', 'address_a_' + n) + '</div>';
+        html += champTexte('Adresse', 'address_rue_' + n, '');
+        html += '<div class="form-row">'
+              + champTexte('Ville et province', 'address_ville_' + n, '')
+              + champTexte('Pays', 'address_pays_' + n, '') + '</div>';
+      } else if (type === 'travel') {
+        html += '<p class="dyn-num">Voyage ' + n + '</p>';
+        html += '<div class="form-row">'
+              + champMois('De', 'travel_de_' + n)
+              + champMois('Au', 'travel_a_' + n) + '</div>';
+        html += '<div class="form-row">'
+              + champTexte('Pays', 'travel_pays_' + n, '')
+              + champTexte('Ville', 'travel_ville_' + n, '') + '</div>';
+        html += champTexte('Raison du voyage', 'travel_raison_' + n, '');
+        html += champTexte('Nombre de jours / semaines', 'travel_duree_' + n, '');
+      }
+
+      row.innerHTML = html;
+      list.appendChild(row);
+    }
+
+    // ====== QUESTIONS D'ADMISSIBILITE (8) ======
+    var questionsAdmiss = [
+      { id: 'tuberculose', q: "Au cours des 2 dernières années, vous ou un membre de votre famille avez-vous eu la tuberculose ou été en contact étroit avec une personne atteinte de tuberculose ?" },
+      { id: 'trouble', q: "Avez-vous un trouble physique ou mental qui nécessiterait des services sociaux ou de santé (autres que des médicaments) durant votre séjour au Canada ?" },
+      { id: 'illegal', q: "Êtes-vous resté au Canada après l'expiration de votre statut, avez-vous étudié sans permis d'études ou travaillé sans permis de travail au Canada ?" },
+      { id: 'refus', q: "Vous a-t-on déjà refusé un visa ou l'entrée, ou ordonné de quitter le Canada OU TOUT AUTRE PAYS ? (indiquez tous les pays, dates, type de demande, motif du refus)" },
+      { id: 'criminel', q: "Avez-vous déjà commis, été arrêté, accusé ou reconnu coupable d'une infraction pénale dans un pays ? (si oui, contactez votre conseiller pour les détails)" },
+      { id: 'militaire', q: "Avez-vous déjà fait partie d'une armée, milice, unité de défense civile, service de renseignement ou corps de police (incluant service national, réserve ou unités volontaires) ?" },
+      { id: 'parti', q: "Êtes-vous, ou avez-vous déjà été, membre d'un parti, groupe ou organisation ayant utilisé ou prôné la violence pour atteindre un objectif politique ou religieux, ou associé à des activités criminelles ?" },
+      { id: 'temoin', q: "Avez-vous été témoin ou participé à de mauvais traitements infligés à des prisonniers ou des civils, à du pillage ou à la profanation d'édifices religieux ?" }
+    ];
+
+    function construireAdmiss() {
+      var cont = document.getElementById('admiss-questions');
+      if (!cont) return;
+      questionsAdmiss.forEach(function (item, i) {
+        var bloc = document.createElement('div');
+        bloc.className = 'form-admiss';
+        bloc.innerHTML =
+          '<p class="form-admiss-q">' + (i + 1) + '. ' + item.q + '</p>'
+          + '<div class="form-admiss-choices">'
+          + '<label class="form-radio-inline"><input type="radio" name="adm_' + item.id + '" value="non" onchange="toggleDetail(\'' + item.id + '\', false)"> Non</label>'
+          + '<label class="form-radio-inline"><input type="radio" name="adm_' + item.id + '" value="oui" onchange="toggleDetail(\'' + item.id + '\', true)"> Oui</label>'
+          + '</div>'
+          + '<div class="form-field admiss-detail" id="detail_' + item.id + '" style="display:none; margin-top:0.6rem;">'
+          + '<label>Veuillez préciser :</label><textarea name="adm_' + item.id + '_detail"></textarea></div>';
+        cont.appendChild(bloc);
+      });
+    }
+
+    function toggleDetail(id, montrer) {
+      var d = document.getElementById('detail_' + id);
+      if (d) d.style.display = montrer ? 'block' : 'none';
+    }
+
+    // ====== CASE NON APPLICABLE ======
+    function toggleNA(section, coche) {
+      var wrap = document.getElementById('wrap-' + section);
+      if (!wrap) return;
+      if (coche) {
+        wrap.classList.add('na-desactive');
+        wrap.querySelectorAll('input, textarea, select').forEach(function (el) { el.value = ''; });
+      } else {
+        wrap.classList.remove('na-desactive');
+      }
+    }
+
+    // Case Non applicable pour un champ simple (textarea/input unique)
+    function toggleNAchamp(nomChamp, coche) {
+      var el = document.querySelector('[name="' + nomChamp + '"]');
+      if (!el) return;
+      if (coche) { el.value = ''; el.disabled = true; el.style.opacity = '0.4'; }
+      else { el.disabled = false; el.style.opacity = '1'; }
+    }
+
+    // Griser les sections conjoint/relations anterieures si celibataire
+    function majSectionsConjoint() {
+      var radio = document.querySelector('[name="etat_civil"]:checked');
+      var celibataire = radio && radio.value === 'celibataire';
+      // Section conjoint actuel (etape C) et relations anterieures
+      var blocsConjoint = document.querySelectorAll('.bloc-conjoint, #wrap-ex');
+      blocsConjoint.forEach(function (b) {
+        if (celibataire) {
+          b.classList.add('na-desactive');
+          b.querySelectorAll('input, textarea, select').forEach(function (el) { if (el.type !== 'checkbox') el.value = ''; });
+        } else {
+          b.classList.remove('na-desactive');
+        }
+      });
+    }
+    function sectionRemplie(section) {
+      var wrap = document.getElementById('wrap-' + section);
+      if (!wrap) return true;
+      var rempli = false;
+      wrap.querySelectorAll('input, textarea, select').forEach(function (el) {
+        if ((el.value || '').trim() !== '') rempli = true;
+      });
+      return rempli;
+    }
+    function validerSectionsNA(sections) {
+      var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      for (var i = 0; i < sections.length; i++) {
+        var s = sections[i];
+        var caseNA = document.getElementById('na-' + s.section);
+        var coche = caseNA && caseNA.checked;
+        if (!coche && !sectionRemplie(s.section)) {
+          var nom = s.label[lang];
+          var msg = lang === 'en'
+            ? 'Please complete the "' + nom + '" section, or check "Not applicable" if it does not apply to you.'
+            : 'Veuillez remplir la section « ' + nom + ' », ou cocher « Non applicable » si elle ne vous concerne pas.';
+          alert(msg);
+          if (caseNA) caseNA.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return false;
+        }
+      }
+      return true;
+    }
+    function validerSectionC() {
+      if (!validerSectionsNA([
+        { section: 'ex', label: { fr: 'Relations antérieures', en: 'Previous relationships' } },
+        { section: 'child', label: { fr: 'Enfants', en: 'Children' } },
+        { section: 'sibling', label: { fr: 'Frères et sœurs', en: 'Brothers and sisters' } },
+        { section: 'grandchild', label: { fr: 'Petits-enfants', en: 'Grandchildren' } }
+      ])) return;
+      allerEtape('d');
+    }
+
+    // ====== DOCUMENTS A FOURNIR ======
+    var documentsRequis = [
+      "Page frontispice du passeport (signature et expiration)",
+      "Étampes du passeport (étranger et ancien passeport)",
+      "Photo numérique (PDF, fond blanc)",
+      "Documents canadiens (visa visiteur, permis d'études, permis de travail)",
+      "Couverture d'assurance maladie voyage",
+      "Passeport ou carte de résidence permanente de l'hôte au Canada",
+      "Preuve d'adresse de l'hôte au Canada (permis de conduire, facture)",
+      "Preuve d'attachement au pays d'origine (acte de propriété, attestation de travail ou scolaire, certificat de mariage ou de naissance des enfants restés au pays, bail, etc.)",
+      "Preuve de vos avoirs",
+      "Factures mensuelles des 3 derniers mois (électricité, automobile, téléphonie)",
+      "Attestation d'emploi (salaire et date d'embauche)",
+      "Talons de paie des 3 derniers mois",
+      "Relevé bancaire des 3 derniers mois (minimum 5 000 $)",
+      "Enregistrement de votre entreprise (si applicable)",
+      "Épargne-retraite (REER, si applicable)"
+    ];
+
+    function construireDocuments() {
+      var cont = document.getElementById('documents-list');
+      if (!cont) return;
+      documentsRequis.forEach(function (doc, i) {
+        var bloc = document.createElement('div');
+        bloc.className = 'form-doc';
+        bloc.innerHTML =
+          '<p class="form-doc-nom">' + (i + 1) + '. ' + doc + '</p>'
+          + '<div class="form-doc-actions">'
+          + '<label class="form-doc-file"><input type="file" name="doc_' + i + '" /></label>'
+          + '<label class="form-doc-na"><input type="checkbox" onchange="toggleDocNA(' + i + ', this.checked)"> Je ne peux pas fournir ce document</label>'
+          + '</div>'
+          + '<div class="form-field doc-explain" id="docexp_' + i + '" style="display:none; margin-top:0.5rem;">'
+          + '<label>Expliquez pourquoi :</label><textarea name="doc_' + i + '_explication"></textarea></div>';
+        cont.appendChild(bloc);
+      });
+    }
+
+    function toggleDocNA(i, coche) {
+      var d = document.getElementById('docexp_' + i);
+      if (d) d.style.display = coche ? 'block' : 'none';
+    }
+
+    // ====== SOUMISSION ======
+    // ====== CONNEXION SUPABASE ======
+    var SB_URL  = "https://kzvgwbgnzinvjcautihq.supabase.co";
+    var SB_ANON = "sb_publishable_uemRYIKSPA2A1xY5K-6qSw_4NnrBQjR";
+    var sbForm = window.supabase ? window.supabase.createClient(SB_URL, SB_ANON) : null;
+
+    // Recolter toutes les reponses du formulaire dans un objet
+    function collecterReponses() {
+      var data = {};
+      // Champs simples (input texte/date/email/tel, textarea, select)
+      document.querySelectorAll('input[name], textarea[name], select[name]').forEach(function (el) {
+        if (el.type === 'radio') {
+          if (el.checked) data[el.name] = el.value;
+        } else if (el.type === 'checkbox') {
+          data[el.name] = el.checked;
+        } else if (el.type === 'file') {
+          // Les fichiers seront geres a l'etape televersement (etape 3)
+        } else {
+          if ((el.value || '').trim() !== '') data[el.name] = el.value;
+        }
+      });
+      return data;
+    }
+
+    function soumettre() {
+      var initiales = document.getElementById('champ-initiales');
+      var champInit = initiales.closest('.form-field');
+      champInit.classList.remove('error');
+      if (!initiales.value.trim()) {
+        champInit.classList.add('error');
+        initiales.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      var lang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+      var btn = event && event.target ? event.target : null;
+      if (btn) { btn.disabled = true; btn.textContent = lang === 'en' ? 'Sending...' : 'Envoi en cours...'; }
+
+      var reponses = collecterReponses();
+      var nomClient = reponses['nom_complet'] || '';
+      var courrielClient = reponses['courriel'] || '';
+
+      if (!sbForm) {
+        alert(lang === 'en' ? 'Connection error. Please try again later.' : 'Erreur de connexion. Veuillez réessayer plus tard.');
+        if (btn) { btn.disabled = false; btn.textContent = lang === 'en' ? 'Submit questionnaire' : 'Soumettre le questionnaire'; }
+        return;
+      }
+
+      sbForm.from('soumissions').insert({
+        type_formulaire: 'temporaire',
+        nom_client: nomClient,
+        courriel_client: courrielClient,
+        reponses: reponses
+      }).then(function (res) {
+        if (res.error) {
+          alert(lang === 'en'
+            ? 'An error occurred while sending. Please try again.'
+            : 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+          if (btn) { btn.disabled = false; btn.textContent = lang === 'en' ? 'Submit questionnaire' : 'Soumettre le questionnaire'; }
+          return;
+        }
+        // Succes : afficher un message de confirmation
+        var card = document.getElementById('etape-f');
+        if (card) {
+          card.innerHTML = '<div style="text-align:center; padding:2rem 1rem;">'
+            + '<h2 class="form-section-title">' + (lang === 'en' ? 'Thank you!' : 'Merci !') + '</h2>'
+            + '<p class="form-section-desc">' + (lang === 'en'
+                ? 'Your questionnaire has been submitted successfully. Our team will review it and contact you if needed.'
+                : 'Votre questionnaire a été soumis avec succès. Notre équipe le révisera et vous contactera au besoin.')
+            + '</p></div>';
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
+
+    // Une ligne par defaut pour chaque tableau au chargement
+    document.addEventListener('DOMContentLoaded', function () {
+      ajouterLigne('edu');
+      ajouterLigne('work');
+      ajouterLigne('permit');
+      ajouterLigne('ex');
+      ajouterLigne('parent');
+      ajouterLigne('child');
+      ajouterLigne('sibling');
+      ajouterLigne('grandchild');
+      ajouterLigne('address');
+      ajouterLigne('travel');
+      construireAdmiss();
+      construireDocuments();
+      // Griser conjoint/relations si celibataire
+      document.querySelectorAll('[name="etat_civil"]').forEach(function (r) {
+        r.addEventListener('change', majSectionsConjoint);
+      });
+    });
+  </script>
+</body>
+</html>

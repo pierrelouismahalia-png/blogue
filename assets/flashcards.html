@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Cartes memoire (flashcards) — MDPL Immigration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body.acces-verrouille > *:not(#acces-garde) { display: none !important; }
+    #acces-garde { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; background: #0d1b2a; color: #fff; font-family: 'Jost', sans-serif; text-align: center; padding: 2rem; }
+    #acces-garde .ag-inner { max-width: 420px; }
+    #acces-garde h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.75rem; color: #fff; }
+    #acces-garde p { font-size: 0.95rem; line-height: 1.6; opacity: 0.85; margin-bottom: 1.5rem; }
+    #acces-garde a { display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: #c9a14a; color: #0d1b2a; text-decoration: none; border-radius: 5px; padding: 0.85rem 1.75rem; }
+
+    .fc-wrap { max-width: 900px; margin: 0 auto; }
+    .fc-intro { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--ink-mid); line-height: 1.6; margin-bottom: 1.5rem; }
+    .fc-tools { text-align: center; margin-bottom: 2rem; }
+    .fc-btn { font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: var(--navy); color: #fff; border: none; border-radius: 5px; padding: 0.75rem 1.5rem; cursor: pointer; margin: 0 0.3rem; }
+    .fc-btn:hover { background: var(--gold); color: var(--navy); }
+    .fc-count { font-family: 'Jost', sans-serif; font-size: 0.8rem; color: var(--ink-light); margin-top: 0.75rem; }
+    .flash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+    .flash-card { background: transparent; perspective: 1000px; cursor: pointer; min-height: 140px; }
+    .flash-inner { position: relative; width: 100%; height: 100%; min-height: 140px; transition: transform 0.5s; transform-style: preserve-3d; }
+    .flash-card.retourne .flash-inner { transform: rotateY(180deg); }
+    .flash-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; padding: 1.1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .flash-front { background: var(--navy); color: #fff; }
+    .flash-back { background: var(--gold); color: var(--navy); transform: rotateY(180deg); }
+    .flash-tag { font-family: 'Jost', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
+    .flash-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.4; }
+    .flash-front .flash-text { font-weight: 500; }
+    .flash-back .flash-text { font-weight: 600; }
+    .flash-hint { font-family: 'Jost', sans-serif; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; margin-top: 0.6rem; }
+    @media (max-width: 600px) { .flash-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="acces-verrouille">
+
+  <div id="acces-garde">
+    <div class="ag-inner">
+      <h2 id="ag-titre">Verification de votre acces...</h2>
+      <p id="ag-texte">Un instant, nous verifions votre abonnement.</p>
+      <a id="ag-lien" href="connexion.html" style="display:none">Aller a la connexion</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (function () {
+    var SUPABASE_URL  = "https://kzvgwbgnzinvjcautihq.supabase.co";
+    var SUPABASE_ANON = "sb_publishable_uemRYIKSPA2A1xY5K-6qSw_4NnrBQjR";
+    var PRODUIT        = "citoyennete";
+    var PAGE_CONNEXION = "connexion.html";
+    var elTitre = document.getElementById("ag-titre");
+    var elTexte = document.getElementById("ag-texte");
+    var elLien  = document.getElementById("ag-lien");
+    function rediriger() { setTimeout(function () { window.location.replace(PAGE_CONNEXION); }, 1500); }
+    function refuser(t, x) { elTitre.textContent = t; elTexte.textContent = x; elLien.style.display = "inline-block"; rediriger(); }
+    function deverrouiller() {
+      document.body.classList.remove("acces-verrouille");
+      var g = document.getElementById("acces-garde");
+      if (g && g.parentNode) g.parentNode.removeChild(g);
+    }
+    if (!window.supabase) { refuser("Erreur de chargement", "Impossible de verifier votre acces. Redirection..."); return; }
+    var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+    sb.auth.getSession().then(function (res) {
+      var session = res && res.data ? res.data.session : null;
+      if (!session) { refuser("Connexion requise", "Vous devez vous connecter pour acceder aux flashcards. Redirection..."); return; }
+      sb.rpc("mon_acces_actif", { p_produit: PRODUIT }).then(function (r) {
+        if (r.error) { refuser("Verification impossible", "Une erreur est survenue. Redirection..."); return; }
+        if (r.data === true) { deverrouiller(); }
+        else { refuser("Acces non actif", "Votre acces n'est pas actif ou a expire. Redirection..."); }
+      });
+    });
+  })();
+  </script>
+
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tel.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h a 17 h</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="https://square.link/u/0eJllmks" target="_blank" rel="noreferrer">Programme préparatoire à l'examen de citoyenneté</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">Pratique</p>
+      <h1 class="page-hero-title">Cartes <em>memoire</em></h1>
+      <p class="page-hero-subtitle">Pratiquez seul ou en famille. Cliquez une carte pour reveler la reponse.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--beige);">
+    <div class="section-inner">
+      <div class="fc-wrap">
+        <p class="fc-intro">48 cartes couvrant tout le guide officiel. Une bonne facon de reviser : posez la question a voix haute, repondez, puis cliquez pour verifier.</p>
+        <div class="fc-tools">
+          <button class="fc-btn" onclick="melanger()">Melanger les cartes</button>
+          <button class="fc-btn" onclick="toutRetourner(false)">Tout afficher (questions)</button>
+          <p class="fc-count" id="fc-count"></p>
+        </div>
+        <div class="flash-grid" id="fc-grid">
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui a fonde la ville de Quebec, et en quelle annee?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Samuel de Champlain, en 1608.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle bataille de 1759 marque la fin de l'Empire francais en Amerique?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La bataille des plaines d'Abraham.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle date marque la creation du Dominion du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le 1er juillet 1867.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui fut le premier premier ministre du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Sir John A. Macdonald.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quels sont les trois groupes autochtones reconnus?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les Premieres Nations, les Inuits et les Metis.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que signifie le mot Inuit?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le peuple.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle langue parlent souvent les Metis?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le michif.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Comment appelle-t-on la deportation des Acadiens (1755-1763)?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le Grand Derangement.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui a donne son nom au Canada a partir du mot kanata?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Jacques Cartier.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui a fonde Quebec en 1608?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Samuel de Champlain.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">De quoi vivait surtout la Nouvelle-France?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">De la traite des fourrures.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que protege l'Acte de Quebec de 1774?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le francais, la religion catholique et le droit civil.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle date marque la Confederation?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le 1er juillet 1867.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de provinces forment le Canada en 1867?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Quatre.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui fut le premier premier ministre?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Sir John A. Macdonald.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que commemore la fete du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La Confederation de 1867.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel principe veut que tous soient soumis a la loi?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La primaute du droit.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Nommez une des trois responsabilites liees a la citoyennete.</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Respecter les lois (ou subvenir a ses besoins, ou faire partie d'un jury).</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">En quelle annee la Charte des droits et libertes a-t-elle ete adoptee?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">En 1982.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Les femmes et les hommes sont-ils egaux devant la loi au Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Oui, c'est un principe fondamental.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui est le chef d'Etat du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le souverain (le roi ou la reine du Canada).</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui est le chef du gouvernement?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le premier ministre.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelles sont les trois parties du Parlement?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le souverain, le Senat et la Chambre des communes.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de juges siegent a la Cour supreme?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Neuf juges.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qui peut voter a une election federale?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Tout citoyen de 18 ans et plus inscrit sur la liste electorale.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Qu'est-ce qu'un gouvernement majoritaire?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Un parti qui detient au moins la moitie des sieges.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Le vote est-il secret au Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Oui, personne n'est tenu de dire pour qui il a vote.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel organisme neutre gere les elections?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Elections Canada.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel principe veut que tous soient soumis a la loi?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La primaute du droit.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Une personne accusee est-elle presumee coupable ou innocente?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Innocente, jusqu'a preuve du contraire.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de juges siegent a la Cour supreme?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Neuf.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quels sont les deux grands types de lois?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le droit penal et le droit civil.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Le Canada est le combien plus grand pays du monde?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le deuxieme.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quels trois oceans bordent le Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le Pacifique, l'Atlantique et l'Arctique.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de provinces et de territoires compte le Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Dix provinces et trois territoires.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle est la capitale du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Ottawa.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel est le principal partenaire commercial du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les Etats-Unis.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">De quel groupe de pays industrialises le Canada fait-il partie?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le G8.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel secteur emploie plus de 75 % des travailleurs?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le secteur des services.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Nommez les trois grands secteurs de l'economie.</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Services, manufacturier et ressources naturelles.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quel est le symbole le plus connu du Canada?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La feuille d'erable.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">En quelle annee le drapeau actuel a-t-il ete hisse?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">En 1965.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que signifie la devise A mari usque ad mare?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">D'un ocean a l'autre.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle est la plus haute distinction militaire?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">La Croix de Victoria.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Sur quoi sont fondees toutes les questions de l'examen?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Le guide officiel Decouvrir le Canada.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Quelle forme prend l'examen en general?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Un examen ecrit.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Que faut-il reviser en priorite?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">Les notions ou l'on fait le plus d'erreurs.</span></div>
+            </div>
+          </div>
+          <div class="flash-card" onclick="this.classList.toggle('retourne')">
+            <div class="flash-inner">
+              <div class="flash-face flash-front"><span class="flash-tag">Question</span><span class="flash-text">Combien de questions de pratique sont disponibles?</span><span class="flash-hint">Cliquer pour la reponse</span></div>
+              <div class="flash-face flash-back"><span class="flash-tag">Reponse</span><span class="flash-text">250 questions.</span></div>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center; margin-top:2rem;"><a href="mon-programme.html" style="font-family:'Jost',sans-serif; font-size:0.8rem; color:var(--ink-light); text-decoration:underline;">Retour a mon programme</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits reserves.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialite</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+  <script>
+    var grid = document.getElementById("fc-grid");
+    document.getElementById("fc-count").textContent = grid.querySelectorAll(".flash-card").length + " cartes";
+    function melanger() {
+      var cards = Array.prototype.slice.call(grid.querySelectorAll(".flash-card"));
+      cards.forEach(function (c) { c.classList.remove("retourne"); });
+      // Fisher-Yates
+      for (var i = cards.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp;
+      }
+      cards.forEach(function (c) { grid.appendChild(c); });
+    }
+    function toutRetourner(versReponse) {
+      grid.querySelectorAll(".flash-card").forEach(function (c) {
+        c.classList.toggle("retourne", versReponse);
+      });
+    }
+  </script>
+</body>
+</html>

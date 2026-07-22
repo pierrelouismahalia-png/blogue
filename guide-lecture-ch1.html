@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Chapitre 1 — Histoire du Canada | Guide de lecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fffdf7; --beige:#fdf8ed; --beige-dark:#ece1c8;
+  --navy:#0d1b2a; --ink2:#2a3744; --slate:#4b5563; --muted:#8a8270;
+  --line:#e7ddc7; --gold:#c9a14a; --gold-bright:#d9b85f; --gold-soft:#fdf8ed; --white:#ffffff;
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Jost',system-ui,sans-serif;color:var(--slate);background:var(--beige);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(22px,5vw,64px)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--navy);font-weight:700;letter-spacing:-.01em;line-height:1.14}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold);opacity:.8}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:13.5px;font-weight:600;letter-spacing:.04em;line-height:1;padding:14px 24px;border-radius:5px;border:1px solid transparent;cursor:pointer;transition:background .18s,border-color .18s,color .18s;font-family:'Jost',sans-serif}
+.btn-dark{background:var(--navy);color:#fff}.btn-dark:hover{background:var(--gold);color:var(--navy)}
+.btn .arr{transition:transform .18s}.btn:hover .arr{transform:translateX(3px)}
+
+/* topbar */
+.topbar{background:var(--navy)}
+.topbar .wrap{display:flex;align-items:center;justify-content:center;gap:10px;height:40px;font-size:12px;color:rgba(255,255,255,.85);text-align:center}
+.topbar .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,253,247,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--navy)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--ink2);padding:4px 0}
+.nav-links a:not(.btn):hover{color:var(--gold)}
+.nav-links .btn{padding:11px 20px}
+.lang-btn{font-family:'Jost',sans-serif;font-size:13px;font-weight:600;color:var(--navy);background:none;border:1px solid var(--beige-dark);border-radius:5px;padding:7px 12px;cursor:pointer}
+.lang-btn:hover{border-color:var(--gold)}
+.lang-btn .on{color:var(--gold)}
+.menu-btn{display:none;background:none;border:0;cursor:pointer;width:30px;height:22px;position:relative}
+.menu-btn span{position:absolute;left:0;width:100%;height:2px;background:var(--navy);transition:.25s}
+.menu-btn span:nth-child(1){top:0}.menu-btn span:nth-child(2){top:10px}.menu-btn span:nth-child(3){top:20px}
+
+/* page head */
+.phead{padding:clamp(44px,6vw,78px) 0 clamp(24px,3vw,34px);border-bottom:1px solid var(--line)}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:22px}
+.crumb a:hover{color:var(--gold)}
+.phead h1{font-size:clamp(30px,4vw,48px);font-weight:700;margin-bottom:14px;max-width:24ch}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.meta .pill{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--ink2);background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.meta .pill b{color:var(--gold)}
+
+/* section */
+.sec{padding:clamp(34px,4vw,52px) 0 clamp(56px,8vw,92px)}
+.ch-wrap{max-width:740px}
+.intro p{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--ink2);line-height:1.55;margin-bottom:14px}
+.block{margin-top:34px}
+.block>h2{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;margin-bottom:14px}
+.sub{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--navy);margin:36px 0 12px}
+.para p{font-size:16px;color:var(--ink2);line-height:1.8;margin-bottom:14px}
+ul.clean{list-style:none}
+ul.clean li{font-size:15.5px;color:var(--ink2);padding:11px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start}
+ul.clean li:last-child{border-bottom:none}
+ul.clean li::before{content:"";width:14px;height:1px;background:var(--gold);margin-top:12px;flex-shrink:0}
+.deflist{border-top:1px solid var(--line);margin-top:8px}
+.deflist .row{padding:14px 0;border-bottom:1px solid var(--line)}
+.deflist .k{font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:16px}
+.deflist .v{font-size:15px;color:var(--slate);margin-top:4px;line-height:1.6}
+.retenir{margin-top:40px;background:var(--white);border:1px solid var(--beige-dark);border-left:3px solid var(--gold);border-radius:8px;padding:24px 26px}
+.retenir h3{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-family:'Jost',sans-serif;margin-bottom:12px}
+.retenir ul{list-style:none}
+.retenir li{font-size:15.5px;color:#6b5a2e;padding:8px 0 8px 22px;position:relative;line-height:1.55}
+.retenir li::before{content:"\2713";position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* navigation chapitres */
+.chnav{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap}
+.chnav .side{display:flex;gap:12px;flex-wrap:wrap}
+.linkbtn{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--navy);border:1px solid var(--beige-dark);border-radius:5px;padding:12px 20px;transition:border-color .18s,background .18s,color .18s;font-family:'Jost',sans-serif}
+.linkbtn:hover{border-color:var(--gold)}
+.linkbtn.solid{background:var(--navy);color:#fff;border-color:var(--navy)}.linkbtn.solid:hover{background:var(--gold);color:var(--navy)}
+.linkbtn.disabled{opacity:.4;pointer-events:none}
+
+/* footer */
+footer{background:var(--navy);color:rgba(255,255,255,.6);padding:54px 0 26px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#fff;margin-bottom:14px}
+.foot-logo span{color:var(--gold-bright)}
+.foot-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,.5);max-width:34ch;font-family:'Cormorant Garamond',serif}
+.foot-col h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:18px}
+.foot-col a{display:block;font-size:14px;color:rgba(255,255,255,.6);margin-bottom:11px}.foot-col a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:24px;font-size:12px;color:rgba(255,255,255,.35)}
+
+/* bilingue : on cache l'anglais par defaut */
+[data-en]{display:none}
+html[lang="en"] [data-fr]{display:none}
+html[lang="en"] [data-en]{display:revert}
+
+@media(max-width:980px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+ .nav-links{position:fixed;inset:74px 0 auto 0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 0;display:none;box-shadow:0 20px 40px -20px rgba(0,0,0,.2)}
+ .nav-links.open{display:flex}.nav-links a{padding:15px clamp(22px,5vw,64px);border-bottom:1px solid var(--line)}
+ .nav-links .btn,.nav-links .lang-btn{margin:12px clamp(22px,5vw,64px);text-align:center}.menu-btn{display:block}.foot-grid{grid-template-columns:1fr}
+}
+</style></head>
+<body>
+
+<div class="topbar"><div class="wrap"><span class="dot"></span>
+  <span data-fr>Guide de lecture inclus avec votre programme de preparation a la citoyennete canadienne</span>
+  <span data-en>Reading guide included with your Canadian citizenship preparation program</span>
+</div></div>
+
+<nav><div class="wrap">
+  <a href="mon-programme.html" class="logo">MDPL <span>Immigration</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="mon-programme.html"><span data-fr>Mon programme</span><span data-en>My program</span></a>
+    <a href="guide-lecture.html"><span data-fr>Guide de lecture</span><span data-en>Reading guide</span></a>
+    <a href="guide-etude.html"><span data-fr>Guide interactif</span><span data-en>Interactive guide</span></a>
+    <button class="lang-btn" id="langBtn" type="button" onclick="basculerLangue()"><span class="opt-fr">FR</span> / <span class="opt-en">EN</span></button>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+
+<header class="phead"><div class="wrap ch-wrap">
+  <div class="crumb">
+    <a href="mon-programme.html"><span data-fr>Mon programme</span><span data-en>My program</span></a> &nbsp;/&nbsp;
+    <a href="guide-lecture.html"><span data-fr>Guide de lecture</span><span data-en>Reading guide</span></a> &nbsp;/&nbsp;
+    <span data-fr>Chapitre 1</span><span data-en>Chapter 1</span>
+  </div>
+  <span class="eyebrow"><span data-fr>Chapitre 1 — Guide de lecture</span><span data-en>Chapter 1 — Reading guide</span></span>
+  <h1><span data-fr>Histoire du Canada</span><span data-en>History of Canada</span></h1>
+  <div class="meta">
+    <span class="pill"><b>15 min</b>&nbsp; <span data-fr>de lecture</span><span data-en>reading</span></span>
+    <span class="pill"><span data-fr><b>Chapitre 1</b>&nbsp; sur 12</span><span data-en><b>Chapter 1</b>&nbsp; of 12</span></span>
+  </div>
+</div></header>
+
+<section class="sec"><div class="wrap ch-wrap">
+
+  <div class="intro">
+    <p data-fr>L'histoire du Canada commence bien avant l'arrivee des Europeens, avec les peuples autochtones presents sur le territoire depuis des milliers d'annees. Comprendre cette histoire, des premiers explorateurs jusqu'a la Confederation et au Canada moderne, est essentiel pour reussir l'examen de citoyennete.</p>
+    <p data-en>The history of Canada begins long before the arrival of Europeans, with Indigenous peoples present on the land for thousands of years. Understanding this history, from the first explorers to Confederation and modern Canada, is essential to pass the citizenship test.</p>
+  </div>
+
+  <div class="block">
+    <h2><span data-fr>Ce que couvre ce chapitre</span><span data-en>What this chapter covers</span></h2>
+    <ul class="clean">
+      <li><span data-fr>L'arrivee des explorateurs europeens et la fondation de la Nouvelle-France</span><span data-en>The arrival of European explorers and the founding of New France</span></li>
+      <li><span data-fr>La rivalite franco-britannique et la Conquete de 1759</span><span data-en>The French-British rivalry and the Conquest of 1759</span></li>
+      <li><span data-fr>La creation du Dominion du Canada en 1867</span><span data-en>The creation of the Dominion of Canada in 1867</span></li>
+      <li><span data-fr>Le Canada au XXe siecle et l'adoption de la Charte</span><span data-en>Canada in the 20th century and the adoption of the Charter</span></li>
+    </ul>
+  </div>
+
+  <h3 class="sub"><span data-fr>Les premiers explorateurs et la Nouvelle-France</span><span data-en>The first explorers and New France</span></h3>
+  <div class="para">
+    <p data-fr>Au tournant du XVe siecle, les explorateurs europeens arrivent sur les cotes du continent. Jean Cabot dresse la premiere carte de la cote Est en 1497. De 1534 a 1542, Jacques Cartier effectue trois voyages et revendique des terres au nom de la France. En 1608, Samuel de Champlain fonde la ville de Quebec, posant les bases de la Nouvelle-France, une colonie qui vivra surtout de la traite des fourrures et nouera des alliances avec plusieurs nations autochtones.</p>
+    <p data-en>At the turn of the 15th century, European explorers arrived on the coasts of the continent. John Cabot drew the first map of the East Coast in 1497. From 1534 to 1542, Jacques Cartier made three voyages and claimed land in the name of France. In 1608, Samuel de Champlain founded the city of Quebec, laying the foundations of New France, a colony that lived mainly from the fur trade and formed alliances with several Indigenous nations.</p>
+  </div>
+
+  <h3 class="sub"><span data-fr>La rivalite franco-britannique</span><span data-en>The French-British rivalry</span></h3>
+  <div class="para">
+    <p data-fr>Pendant plus d'un siecle, la France et la Grande-Bretagne se disputent le controle de l'Amerique du Nord. La rivalite culmine en 1759 avec la bataille des plaines d'Abraham, a Quebec, qui marque la fin de l'Empire francais en Amerique. L'Acte de Quebec de 1774 est un texte important : il accorde la liberte religieuse aux catholiques et protege le droit civil francais. Apres la Revolution americaine de 1776, des dizaines de milliers de loyalistes fideles a la Couronne britannique s'etablissent au Canada.</p>
+    <p data-en>For more than a century, France and Great Britain fought for control of North America. The rivalry came to a head in 1759 with the Battle of the Plains of Abraham, in Quebec, marking the end of the French Empire in America. The Quebec Act of 1774 was an important text: it granted religious freedom to Catholics and protected French civil law. After the American Revolution of 1776, tens of thousands of Loyalists faithful to the British Crown settled in Canada.</p>
+  </div>
+
+  <h3 class="sub"><span data-fr>Vers la Confederation</span><span data-en>Towards Confederation</span></h3>
+  <div class="para">
+    <p data-fr>En 1812, les Etats-Unis envahissent le Canada, mais l'invasion est repoussee. Au fil du XIXe siecle, le mouvement vers un gouvernement responsable progresse. Le 1er juillet 1867, la Loi constitutionnelle (autrefois appelee Acte de l'Amerique du Nord britannique) cree le Dominion du Canada, reunissant quatre provinces : l'Ontario, le Quebec, le Nouveau-Brunswick et la Nouvelle-Ecosse. Sir John A. Macdonald devient le premier premier ministre du pays.</p>
+    <p data-en>In 1812, the United States invaded Canada, but the invasion was repelled. Over the course of the 19th century, the movement towards responsible government advanced. On July 1, 1867, the Constitution Act (formerly the British North America Act) created the Dominion of Canada, uniting four provinces: Ontario, Quebec, New Brunswick and Nova Scotia. Sir John A. Macdonald became the country's first prime minister.</p>
+  </div>
+
+  <h3 class="sub"><span data-fr>Le Canada moderne</span><span data-en>Modern Canada</span></h3>
+  <div class="para">
+    <p data-fr>Le chemin de fer Canadien Pacifique, acheve en 1885, unit le pays d'un ocean a l'autre et favorise le peuplement de l'Ouest. Au XXe siecle, le Canada se distingue lors des deux guerres mondiales, notamment a la crete de Vimy en 1917 et sur la plage Juno le 6 juin 1944. En 1982, l'adoption de la Charte canadienne des droits et libertes marque une etape majeure dans l'histoire constitutionnelle du pays.</p>
+    <p data-en>The Canadian Pacific Railway, completed in 1885, united the country from coast to coast and encouraged the settlement of the West. In the 20th century, Canada distinguished itself in both World Wars, notably at Vimy Ridge in 1917 and on Juno Beach on June 6, 1944. In 1982, the adoption of the Canadian Charter of Rights and Freedoms marked a major milestone in the country's constitutional history.</p>
+  </div>
+
+  <div class="block">
+    <h2><span data-fr>Les dates cles</span><span data-en>Key dates</span></h2>
+    <div class="deflist">
+      <div class="row"><div class="k">1608</div><div class="v"><span data-fr>Fondation de Quebec par Samuel de Champlain.</span><span data-en>Founding of Quebec by Samuel de Champlain.</span></div></div>
+      <div class="row"><div class="k">1759</div><div class="v"><span data-fr>Bataille des plaines d'Abraham, fin de l'Empire francais en Amerique.</span><span data-en>Battle of the Plains of Abraham, end of the French Empire in America.</span></div></div>
+      <div class="row"><div class="k">1867</div><div class="v"><span data-fr>Creation du Dominion du Canada (quatre provinces).</span><span data-en>Creation of the Dominion of Canada (four provinces).</span></div></div>
+      <div class="row"><div class="k">1885</div><div class="v"><span data-fr>Achevement du chemin de fer Canadien Pacifique.</span><span data-en>Completion of the Canadian Pacific Railway.</span></div></div>
+      <div class="row"><div class="k">1982</div><div class="v"><span data-fr>Adoption de la Charte canadienne des droits et libertes.</span><span data-en>Adoption of the Canadian Charter of Rights and Freedoms.</span></div></div>
+    </div>
+  </div>
+
+  <div class="retenir">
+    <h3><span data-fr>A retenir</span><span data-en>Key takeaways</span></h3>
+    <ul>
+      <li><span data-fr>1608 : fondation de Quebec par Samuel de Champlain.</span><span data-en>1608: founding of Quebec by Samuel de Champlain.</span></li>
+      <li><span data-fr>1759 : bataille des plaines d'Abraham, fin de l'Empire francais.</span><span data-en>1759: Battle of the Plains of Abraham, end of the French Empire.</span></li>
+      <li><span data-fr>1er juillet 1867 : creation du Dominion du Canada (4 provinces).</span><span data-en>July 1, 1867: creation of the Dominion of Canada (4 provinces).</span></li>
+      <li><span data-fr>Sir John A. Macdonald : premier premier ministre.</span><span data-en>Sir John A. Macdonald: first prime minister.</span></li>
+      <li><span data-fr>1982 : adoption de la Charte canadienne des droits et libertes.</span><span data-en>1982: adoption of the Canadian Charter of Rights and Freedoms.</span></li>
+    </ul>
+  </div>
+
+  <div class="chnav">
+    <div class="side">
+      <a class="linkbtn disabled" href="#">&larr; <span data-fr>Chapitre precedent</span><span data-en>Previous chapter</span></a>
+      <a class="linkbtn" href="guide-lecture-ch2.html"><span data-fr>Chapitre suivant</span><span data-en>Next chapter</span> &rarr;</a>
+    </div>
+    <div class="side">
+      <a class="linkbtn" href="guide-lecture.html"><span data-fr>Tous les chapitres</span><span data-en>All chapters</span></a>
+      <a class="linkbtn solid" href="test-citoyennete-250-premium-a9f3k2.html"><span data-fr>Questions de pratique</span><span data-en>Practice questions</span> &rarr;</a>
+    </div>
+  </div>
+
+</div></section>
+
+<footer><div class="wrap"><div class="foot-grid">
+  <div><div class="foot-logo">MDPL <span>Immigration</span></div>
+  <p class="foot-desc"><span data-fr>Programme de preparation a l'examen de citoyennete canadienne. Cabinet conseil etabli a Laval depuis 2015.</span><span data-en>Canadian citizenship exam preparation program. Consulting firm established in Laval since 2015.</span></p></div>
+  <div class="foot-col"><h4><span data-fr>Mon programme</span><span data-en>My program</span></h4>
+    <a href="guide-lecture.html"><span data-fr>Guide de lecture</span><span data-en>Reading guide</span></a>
+    <a href="guide-etude.html"><span data-fr>Guide interactif</span><span data-en>Interactive guide</span></a>
+    <a href="flashcards.html"><span data-fr>Cartes memoire</span><span data-en>Flashcards</span></a>
+    <a href="test-citoyennete-250-premium-a9f3k2.html"><span data-fr>Questions de pratique</span><span data-en>Practice questions</span></a></div>
+  <div class="foot-col"><h4>MDPL Immigration</h4>
+    <a href="index.html"><span data-fr>Accueil</span><span data-en>Home</span></a>
+    <a href="nos-services.html"><span data-fr>Nos services</span><span data-en>Our services</span></a>
+    <a href="contact.html"><span data-fr>Nous joindre</span><span data-en>Contact</span></a></div>
+</div><div class="foot-bottom">
+  <span>&copy; 2025 MDPL Immigration</span>
+  <span data-fr>Preparation a la citoyennete canadienne</span><span data-en>Canadian citizenship preparation</span>
+</div></div></footer>
+
+<script>
+  var mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
+  mb.addEventListener('click',function(){var o=nl.classList.toggle('open');mb.setAttribute('aria-expanded',o);});
+  function appliquerLangue(lang){
+    document.documentElement.lang=lang;
+    try{localStorage.setItem('mdpl-lang',lang);}catch(e){}
+    var fr=document.querySelector('.opt-fr'),en=document.querySelector('.opt-en');
+    if(fr&&en){fr.classList.toggle('on',lang==='fr');en.classList.toggle('on',lang==='en');}
+  }
+  function basculerLangue(){appliquerLangue(document.documentElement.lang==='en'?'fr':'en');}
+  (function(){var l='fr';try{l=localStorage.getItem('mdpl-lang')||'fr';}catch(e){}appliquerLangue(l);})();
+</script>
+</body></html>

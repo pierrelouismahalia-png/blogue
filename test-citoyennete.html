@@ -1,0 +1,683 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GWHSQ78PJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GWHSQ78PJ9');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Test de citoyenneté canadienne : 20 questions à choix multiples basées sur le guide officiel Découvrir le Canada. Outil gratuit en français et en anglais." data-i18n-content="quiz.citoy.meta.desc" />
+  <title data-i18n="quiz.page.title">Test de citoyenneté canadienne — MDPL Immigration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .quiz-wrap { max-width: 720px; margin: 0 auto; }
+
+    /* Start screen */
+    .quiz-start-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 2.5rem 2rem; text-align: center; }
+    .quiz-start-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .quiz-start-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+    .quiz-start-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 0.75rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+    .quiz-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; margin: 1.5rem 0 2rem; }
+    .quiz-meta-item { font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--ink-light); display: flex; align-items: center; gap: 0.4rem; }
+    .quiz-meta-icon { color: var(--gold); font-size: 1rem; }
+
+    /* Progress */
+    .quiz-progress { margin-bottom: 1.75rem; }
+    .quiz-prog-bar-outer { background: var(--beige-dark); height: 4px; border-radius: 2px; margin-bottom: 0.6rem; overflow: hidden; }
+    .quiz-prog-bar-inner { background: var(--gold); height: 4px; border-radius: 2px; transition: width 0.35s ease; }
+    .quiz-prog-text { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+
+    /* Question card */
+    .quiz-card { background: var(--white); border: 1px solid var(--beige-dark); border-radius: 8px; padding: 2rem 2rem 1.75rem; }
+    .quiz-q-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .quiz-q-text { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 1.5rem; }
+    .quiz-choices { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+    .quiz-choice { background: var(--beige); border: 2px solid var(--beige-dark); border-radius: 6px; padding: 0.8rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.875rem; font-weight: 400; color: var(--navy); text-align: left; cursor: pointer; transition: border-color 0.15s, background 0.15s; width: 100%; }
+    .quiz-choice:hover:not(:disabled) { border-color: var(--gold); background: #fdf8ed; }
+    .quiz-choice.selected { border-color: var(--gold); background: #fdf8ed; font-weight: 500; }
+    .quiz-choice:disabled { cursor: default; }
+    .quiz-choice.correct { border-color: #2d7a4f; background: #e8f4ec; color: #1a5e36; font-weight: 500; }
+    .quiz-choice.wrong { border-color: #b03a2e; background: #fde8e6; color: #7b241c; font-weight: 500; }
+    .quiz-btn { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--navy); color: var(--white); border: none; border-radius: 4px; padding: 0.85rem 2.25rem; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .quiz-btn:hover:not(:disabled) { background: var(--gold); color: var(--navy); }
+    .quiz-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .quiz-btn.gold { background: var(--gold); color: var(--navy); }
+    .quiz-btn.gold:hover { background: var(--navy); color: var(--white); }
+    .quiz-btn-row { display: flex; justify-content: flex-end; }
+
+    /* Score banner */
+    .quiz-score-banner { background: var(--navy); border-radius: 8px; padding: 2.5rem 2rem; text-align: center; margin-bottom: 2.5rem; }
+    .quiz-score-num { font-family: 'Playfair Display', serif; font-size: 3.75rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .quiz-score-sub { font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin: 0.4rem 0 0.9rem; }
+    .quiz-verdict { font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.06em; }
+    .quiz-verdict.pass { color: #5dce8c; }
+    .quiz-verdict.fail { color: #ff7c6e; }
+
+    /* Correction */
+    .quiz-corr-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 1.25rem; }
+    .quiz-corr-item { border-bottom: 1px solid var(--beige-dark); padding: 1.2rem 0; }
+    .quiz-corr-item:last-child { border-bottom: none; }
+    .quiz-corr-q { font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.45; }
+    .quiz-corr-status { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .quiz-corr-status.pass { color: #2d7a4f; }
+    .quiz-corr-status.fail { color: #b03a2e; }
+    .quiz-corr-answer { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: var(--ink-light); line-height: 1.5; }
+    .quiz-corr-answer strong { color: var(--navy); }
+    .quiz-corr-ref { font-family: 'Jost', sans-serif; font-size: 0.68rem; color: var(--ink-lighter, #aaa); font-style: italic; margin-top: 0.25rem; }
+    .quiz-restart-row { text-align: center; margin-top: 2.5rem; }
+
+    @media (max-width: 600px) {
+      .quiz-start-card, .quiz-card { padding: 1.5rem 1.1rem; }
+      .quiz-score-num { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="top-banner-inner">
+      <span class="top-banner-item"><strong>Tél.</strong>&nbsp;<a href="tel:+14509770066">450&nbsp;977-0066</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item"><strong>Courriel</strong>&nbsp;<a href="mailto:info@mdplimmigration.com">info@mdplimmigration.com</a></span>
+      <span class="top-banner-sep">|</span>
+      <span class="top-banner-item">Lundi au vendredi, 9 h à 17 h</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-name">MDPL <span>Immigration</span></span>
+        <span class="logo-sub">Cabinet conseil en immigration</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" type="button">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="notre-histoire.html">Notre histoire</a>
+        <div class="nav-dropdown">
+          <a href="nos-services.html">Nos services <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="residence-permanente.html">Résidence permanente</a>
+            <a href="demande-citoyennete.html">Demande de citoyenneté</a>
+            <a href="permis-etudes.html">Permis d'études</a>
+            <a href="permis-travail.html">Permis de travail</a>
+            <a href="visa-visiteur-ave.html">Visa visiteur &amp; AVE</a>
+            <a href="parrainage-regroupement-familial.html">Parrainage familial</a>
+            <a href="travailleurs-etrangers-temporaires.html">Travailleurs étrangers</a>
+            <a href="demande-asile.html">Demande d'asile (SPR)</a>
+            <a href="appel-demande-asile.html">Appel d'asile (SAR)</a>
+            <a href="detention-immigration.html">Détention (SI)</a>
+            <a href="appels-immigration.html">Appels en immigration (SAI)</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="outils.html" class="active">Nos outils <span class="caret">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="assistant-immigration.html">Assistant immigration</a>
+            <a href="test-citoyennete.html">Test de citoyenneté (essai gratuit)</a>
+            <a href="programme-preparation.html">Programme préparatoire à l'examen de citoyenneté</a>
+            <a href="preparation-valeurs-quebecoises.html">Préparation aux valeurs québécoises (gratuit)</a>
+          </div>
+        </div>
+        <a href="pourquoi-mdpl.html">Pourquoi MDPL</a>
+        <a href="blog.html">Blogue</a>
+        <a href="questions-frequentes.html">Questions fréquentes</a>
+        <a href="contact.html">Nous contacter</a>
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" class="nav-rdv" target="_blank" rel="noreferrer">Prendre RDV</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="index.html">Accueil</a><span class="breadcrumb-sep">/</span><a href="outils.html" data-i18n="quiz.bc.outils">Nos outils</a><span class="breadcrumb-sep">/</span><span data-i18n="quiz.bc.current">Test de citoyenneté</span>
+      </nav>
+      <p class="page-hero-eyebrow" data-i18n="quiz.hero.eyebrow">Outil interactif gratuit</p>
+      <h1 class="page-hero-title" data-i18n="quiz.hero.title">Test de <em>citoyenneté canadienne</em></h1>
+      <p class="page-hero-subtitle" data-i18n="quiz.hero.subtitle">20 questions basées sur le guide officiel Découvrir le Canada. Seuil de réussite : 15/20.</p>
+    </div>
+  </section>
+
+  <!-- QUIZ SECTION -->
+  <section class="section" style="background: var(--beige);">
+    <div class="section-inner">
+      <div class="quiz-wrap">
+
+        <!-- START SCREEN -->
+        <div id="quiz-start">
+          <div class="quiz-start-card">
+            <p class="quiz-start-eyebrow" data-i18n="quiz.start.eyebrow">Prêt à commencer ?</p>
+            <h2 class="quiz-start-title" data-i18n="quiz.start.title">Test de connaissances civiques</h2>
+            <p class="quiz-start-desc" data-i18n="quiz.start.desc">Ce test évalue vos connaissances de l'histoire, des valeurs, des institutions et des symboles du Canada. Les 20 questions sont toutes tirées du guide officiel Découvrir le Canada.</p>
+            <div class="quiz-meta">
+              <span class="quiz-meta-item"><span class="quiz-meta-icon">?</span> <span data-i18n="quiz.meta.questions">20 questions</span></span>
+              <span class="quiz-meta-item"><span class="quiz-meta-icon">✓</span> <span data-i18n="quiz.meta.choices">4 choix par question</span></span>
+              <span class="quiz-meta-item"><span class="quiz-meta-icon">★</span> <span data-i18n="quiz.meta.pass">Seuil : 15 / 20</span></span>
+            </div>
+            <button class="quiz-btn gold" id="quiz-start-btn" data-i18n="quiz.start.btn">Commencer le test</button>
+          </div>
+        </div>
+
+        <!-- QUESTION SCREEN -->
+        <div id="quiz-question" style="display:none">
+          <div class="quiz-progress">
+            <div class="quiz-prog-bar-outer">
+              <div class="quiz-prog-bar-inner" id="quiz-prog-bar" style="width:5%"></div>
+            </div>
+            <p class="quiz-prog-text" id="quiz-prog-text">Question 1 / 20</p>
+          </div>
+          <div class="quiz-card">
+            <p class="quiz-q-eyebrow" id="quiz-q-eyebrow">Question 1</p>
+            <p class="quiz-q-text" id="quiz-q-text"></p>
+            <div class="quiz-choices" id="quiz-choices"></div>
+            <div class="quiz-btn-row">
+              <button class="quiz-btn" id="quiz-next-btn" disabled>Question suivante &rarr;</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULTS SCREEN -->
+        <div id="quiz-results" style="display:none">
+          <div class="quiz-score-banner">
+            <div class="quiz-score-num" id="quiz-score-num">—</div>
+            <p class="quiz-score-sub" id="quiz-score-sub"></p>
+            <p class="quiz-verdict" id="quiz-verdict"></p>
+          </div>
+          <h3 class="quiz-corr-title" data-i18n="quiz.corr.title">Correction détaillée</h3>
+          <div id="quiz-correction"></div>
+          <div class="quiz-restart-row">
+            <button class="quiz-btn gold" id="quiz-restart-btn" data-i18n="quiz.restart.btn">Recommencer</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2 data-i18n="outils.cta.title">Besoin d'une <em>analyse personnalisée</em>&nbsp;?</h2>
+      <p data-i18n="outils.cta.p1">Nos outils sont un excellent point de départ. Pour une stratégie sur mesure adaptée à votre situation précise, parlons-en en consultation.</p>
+      <div class="cta-band-actions">
+        <a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer" class="btn-gold" data-i18n="outils.cta.rdv">Prendre rendez-vous</a>
+        <a href="contact.html" class="btn-outline gold" data-i18n="outils.cta.contact">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer-section" role="note">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-bar"></div>
+      <div>
+        <p class="disclaimer-title" data-i18n="outils.disclaimer.title">Information importante</p>
+        <p class="disclaimer-text" data-i18n="outils.disclaimer.p1">Les informations présentées sur ce site sont fournies à titre informatif uniquement et ne constituent pas un avis juridique. Chaque situation d'immigration est unique et dépend de plusieurs facteurs. Pour toute démarche concrète, une consultation personnalisée avec un représentant autorisé en immigration est nécessaire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="footer-logo-name">MDPL <span>Immigration</span></div>
+            <div class="footer-logo-sub">Cabinet conseil en immigration</div>
+          </a>
+          <p class="footer-desc">Fondé à Laval en 2015, MDPL Immigration accompagne particuliers, familles et employeurs dans leurs démarches d'immigration canadienne avec rigueur, transparence et bienveillance.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="notre-histoire.html">Notre histoire</a></li>
+            <li><a href="nos-services.html">Nos services</a></li>
+            <li><a href="outils.html">Nos outils</a></li>
+            <li><a href="pourquoi-mdpl.html">Pourquoi MDPL</a></li>
+            <li><a href="blog.html">Blogue</a></li>
+            <li><a href="questions-frequentes.html">Questions fréquentes</a></li>
+            <li><a href="contact.html">Nous contacter</a></li>
+            <li><a href="https://mdplimmigration.setmore.com/r3731150a46bca7648410cd349784a64f6980c813" target="_blank" rel="noreferrer">Prendre rendez-vous</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Coordonnées</p>
+          <div class="footer-contact-block">
+            <div>
+              <span class="footer-contact-label">Adresse</span>
+              <address class="footer-address"><a href="https://www.google.com/maps/search/1565+boul.+de+l'Avenir+suite+206+Laval+Quebec+H7S+2N5" target="_blank" rel="noreferrer">1565 boul. de l'Avenir, suite 206<br />Laval, Québec H7S 2N5</a></address>
+            </div>
+            <div>
+              <span class="footer-contact-label">Téléphone</span>
+              <a href="tel:+14509770066" class="footer-contact-value">450 977-0066</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Courriel</span>
+              <a href="mailto:info@mdplimmigration.com" class="footer-contact-value">info@mdplimmigration.com</a>
+            </div>
+            <div>
+              <span class="footer-contact-label">Horaires</span>
+              <span class="footer-contact-value">Lundi au vendredi, 9 h à 17 h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 MDPL Immigration. Tous droits réservés.</p>
+        <nav class="footer-legal">
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
+          <a href="conditions-utilisation.html">Conditions d'utilisation</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+
+  <!-- Citizenship quiz — 20 questions, bilingual FR/EN, all ASCII string delimiters -->
+  <script>
+  (function() {
+
+    var Q = [
+      { correct: 1, ref: "p. 9",
+        fr: { q: "Quelles sont les trois responsabilites liees a la citoyennete?",
+              c: ["Etre fidele au Canada, recycler le papier journal, s’enrôler dans la Marine, l’Armée ou la Force aérienne.",
+                  "Respecter les lois, répondre à ses propres besoins et à ceux de sa famille, faire partie d’un jury.",
+                  "Apprendre les deux langues officielles, voter aux élections, faire partie d’un syndicat.",
+                  "Acheter des produits canadiens, exploiter sa propre entreprise, utiliser moins d’eau potable."] },
+        en: { q: "What are the three responsibilities tied to citizenship?",
+              c: ["Be loyal to Canada, recycle newspaper, enlist in the Navy, Army or Air Force.",
+                  "Obey the law, take care of oneself and one's family, serve on a jury.",
+                  "Learn both official languages, vote in elections, join a union.",
+                  "Buy Canadian products, run one's own business, use less drinking water."] } },
+
+      { correct: 3, ref: "p. 22",
+        fr: { q: "Quelle est la signification du coquelicot du jour du Souvenir?",
+              c: ["Honorer notre souveraine, la reine Elizabeth II.",
+                  "Célébrer la Confédération.",
+                  "Rendre hommage aux premiers ministres qui sont décédés.",
+                  "Honorer les sacrifices des Canadiens qui ont participé ou sont morts à la guerre, d’hier à aujourd’hui."] },
+        en: { q: "What does the Remembrance Day poppy symbolize?",
+              c: ["To honour our sovereign, Queen Elizabeth II.",
+                  "To celebrate Confederation.",
+                  "To pay tribute to prime ministers who have died.",
+                  "To honour the sacrifices of Canadians who served in or died in wars, past and present."] } },
+
+      { correct: 2, ref: "p. 30",
+        fr: { q: "Comment les députés sont-ils choisis?",
+              c: ["Ils sont nommés par les Nations Unies.",
+                  "Ils sont choisis par les premiers ministres provinciaux.",
+                  "Ils sont élus par les citoyens de leur circonscription.",
+                  "Ils sont élus par les propriétaires fonciers et les chefs de police."] },
+        en: { q: "How are Members of Parliament chosen?",
+              c: ["They are appointed by the United Nations.",
+                  "They are chosen by provincial premiers.",
+                  "They are elected by citizens in their constituency.",
+                  "They are elected by landowners and police chiefs."] } },
+
+      { correct: 1, ref: "p. 10",
+        fr: { q: "Quels sont les trois peuples fondateurs du Canada?",
+              c: ["Les Anglais, les Français et les Américains.",
+                  "Les Autochtones, les Français et les Britanniques.",
+                  "Les Vikings, les Français et les Espagnols.",
+                  "Les Inuits, les Anglais et les Irlandais."] },
+        en: { q: "Who are the three founding peoples of Canada?",
+              c: ["The English, French and Americans.",
+                  "Aboriginal peoples, French and British.",
+                  "Vikings, French and Spanish.",
+                  "Inuit, English and Irish."] } },
+
+      { correct: 2, ref: "p. 38",
+        fr: { q: "En quelle année le drapeau canadien actuel a-t-il été hissé pour la première fois?",
+              c: ["1867", "1921", "1965", "1982"] },
+        en: { q: "In what year was the current Canadian flag first raised?",
+              c: ["1867", "1921", "1965", "1982"] } },
+
+      { correct: 1, ref: "p. 38",
+        fr: { q: "Que signifie la devise du Canada, «A mari usque ad mare»?",
+              c: ["«Je me souviens»",
+                  "«D’un océan à l’autre»",
+                  "«Paix, ordre et bon gouvernement»",
+                  "«Dieu protège la Reine»"] },
+        en: { q: "What does Canada's motto 'A mari usque ad mare' mean?",
+              c: ["'I remember'",
+                  "'From sea to sea'",
+                  "'Peace, order and good government'",
+                  "'God save the Queen'"] } },
+
+      { correct: 1, ref: "p. 29",
+        fr: { q: "Quels sont les trois pouvoirs (branches) du gouvernement du Canada?",
+              c: ["Le fédéral, le provincial et le municipal.",
+                  "L’exécutif, le législatif et le judiciaire.",
+                  "La Chambre des communes, le Sénat et la Cour suprême.",
+                  "Le souverain, le premier ministre et le gouverneur général."] },
+        en: { q: "What are the three branches of Canada's government?",
+              c: ["Federal, provincial and municipal.",
+                  "Executive, legislative and judicial.",
+                  "House of Commons, Senate and Supreme Court.",
+                  "Sovereign, Prime Minister and Governor General."] } },
+
+      { correct: 2, ref: "p. 19",
+        fr: { q: "Qui était le premier premier ministre du Canada?",
+              c: ["Sir Wilfrid Laurier",
+                  "Sir George-Étienne Cartier",
+                  "Sir John A. Macdonald",
+                  "Sir Louis-Hippolyte La Fontaine"] },
+        en: { q: "Who was Canada's first Prime Minister?",
+              c: ["Sir Wilfrid Laurier",
+                  "Sir George-Étienne Cartier",
+                  "Sir John A. Macdonald",
+                  "Sir Louis-Hippolyte La Fontaine"] } },
+
+      { correct: 1, ref: "p. 18",
+        fr: { q: "Quelle est la date de la fête du Canada, qui commémore la création du Dominion du Canada en 1867?",
+              c: ["Le 24 juin", "Le 1er juillet", "Le 11 novembre", "Le 1er janvier"] },
+        en: { q: "What is the date of Canada Day, which commemorates the creation of the Dominion of Canada in 1867?",
+              c: ["June 24", "July 1", "November 11", "January 1"] } },
+
+      { correct: 1, ref: "p. 30",
+        fr: { q: "Qui peut voter à une élection fédérale canadienne?",
+              c: ["Toute personne qui réside au Canada.",
+                  "Tout citoyen canadien âgé d’au moins 18 ans et inscrit sur la liste électorale.",
+                  "Tout propriétaire foncier âgé d’au moins 21 ans.",
+                  "Tout résident permanent âgé d’au moins 18 ans."] },
+        en: { q: "Who can vote in a Canadian federal election?",
+              c: ["Anyone who lives in Canada.",
+                  "Any Canadian citizen at least 18 years old registered on the voters list.",
+                  "Any landowner at least 21 years old.",
+                  "Any permanent resident at least 18 years old."] } },
+
+      { correct: 1, ref: "p. 41",
+        fr: { q: "Quelle est la plus haute distinction que les Canadiens peuvent recevoir?",
+              c: ["L’Ordre du Canada", "La Croix de Victoria", "La Coupe Stanley", "La Médaille du jubilé"] },
+        en: { q: "What is the highest honour Canadians can receive?",
+              c: ["Order of Canada", "Victoria Cross", "Stanley Cup", "Jubilee Medal"] } },
+
+      { correct: 2, ref: "p. 39",
+        fr: { q: "Quel est le sport d’hiver national du Canada?",
+              c: ["Le curling", "La crosse", "Le hockey (sur glace)", "Le ski"] },
+        en: { q: "What is Canada's national winter sport?",
+              c: ["Curling", "Lacrosse", "Hockey (ice hockey)", "Skiing"] } },
+
+      { correct: 1, ref: "p. 28",
+        fr: { q: "Quels sont les trois principaux faits qui caractérisent le système de gouvernement du Canada?",
+              c: ["Une république, une démocratie directe et un État unitaire.",
+                  "Un État fédéral, une démocratie parlementaire et une monarchie constitutionnelle.",
+                  "Une monarchie absolue, un État fédéral et une dictature.",
+                  "Une confédération, une démocratie présidentielle et une théocratie."] },
+        en: { q: "What are the three main features of Canada's system of government?",
+              c: ["A republic, a direct democracy and a unitary state.",
+                  "A federal state, a parliamentary democracy and a constitutional monarchy.",
+                  "An absolute monarchy, a federal state and a dictatorship.",
+                  "A confederation, a presidential democracy and a theocracy."] } },
+
+      { correct: 1, ref: "p. 29",
+        fr: { q: "Qui représente le souverain (à l’échelle du Canada)?",
+              c: ["Le premier ministre",
+                  "Le gouverneur général",
+                  "Le lieutenant-gouverneur",
+                  "Le président du Sénat"] },
+        en: { q: "Who represents the Sovereign at the federal level in Canada?",
+              c: ["The Prime Minister",
+                  "The Governor General",
+                  "The Lieutenant Governor",
+                  "The Speaker of the Senate"] } },
+
+      { correct: 0, ref: "p. 11",
+        fr: { q: "Que signifie le mot «Inuit»?",
+              c: ["«Le peuple»", "«Village»", "«Notre terre»", "«Chasseur»"] },
+        en: { q: "What does the word 'Inuit' mean?",
+              c: ["'The People'", "'Village'", "'Our land'", "'Hunter'"] } },
+
+      { correct: 2, ref: "p. 11",
+        fr: { q: "Quelle est la seule province officiellement bilingue du Canada?",
+              c: ["Le Québec", "L’Ontario", "Le Nouveau-Brunswick", "Le Manitoba"] },
+        en: { q: "Which is the only officially bilingual province in Canada?",
+              c: ["Quebec", "Ontario", "New Brunswick", "Manitoba"] } },
+
+      { correct: 0, ref: "p. 44",
+        fr: { q: "Combien de provinces et de territoires compte le Canada?",
+              c: ["10 provinces et 3 territoires",
+                  "12 provinces et 2 territoires",
+                  "9 provinces et 3 territoires",
+                  "13 provinces et aucun territoire"] },
+        en: { q: "How many provinces and territories does Canada have?",
+              c: ["10 provinces and 3 territories",
+                  "12 provinces and 2 territories",
+                  "9 provinces and 3 territories",
+                  "13 provinces and no territories"] } },
+
+      { correct: 2, ref: "p. 44",
+        fr: { q: "Quelle ville est la capitale du Canada?",
+              c: ["Toronto", "Montréal", "Ottawa", "Québec"] },
+        en: { q: "What city is Canada's capital?",
+              c: ["Toronto", "Montreal", "Ottawa", "Quebec City"] } },
+
+      { correct: 1, ref: "p. 21",
+        fr: { q: "A quelle bataille de la Première Guerre mondiale (avril 1917) le Corps canadien s’est-il illustré, un moment décrit comme «la naissance d’un pays»?",
+              c: ["La bataille de la Somme",
+                  "La bataille de la crête de Vimy",
+                  "La bataille de Normandie",
+                  "La bataille de l’Atlantique"] },
+        en: { q: "At which World War I battle (April 1917) did the Canadian Corps distinguish itself, a moment described as 'the birth of a nation'?",
+              c: ["Battle of the Somme",
+                  "Battle of Vimy Ridge",
+                  "Battle of Normandy",
+                  "Battle of the Atlantic"] } },
+
+      { correct: 1, ref: "p. 27",
+        fr: { q: "Qui a découvert l’insuline, une hormone utilisée pour traiter le diabète?",
+              c: ["Le Dr Wilder Penfield",
+                  "Sir Frederick Banting et Charles Best",
+                  "Alexander Graham Bell",
+                  "Sir Sandford Fleming"] },
+        en: { q: "Who discovered insulin, a hormone used to treat diabetes?",
+              c: ["Dr. Wilder Penfield",
+                  "Sir Frederick Banting and Charles Best",
+                  "Alexander Graham Bell",
+                  "Sir Sandford Fleming"] } }
+    ];
+
+    // ---- State ----
+    var state = { phase: "start", current: 0, answers: [] };
+    // phases: "start" | "question" | "done"
+
+    // ---- DOM refs ----
+    var elStart    = document.getElementById("quiz-start");
+    var elQuestion = document.getElementById("quiz-question");
+    var elResults  = document.getElementById("quiz-results");
+    var elProgBar  = document.getElementById("quiz-prog-bar");
+    var elProgTxt  = document.getElementById("quiz-prog-text");
+    var elQEye     = document.getElementById("quiz-q-eyebrow");
+    var elQText    = document.getElementById("quiz-q-text");
+    var elChoices  = document.getElementById("quiz-choices");
+    var elNext     = document.getElementById("quiz-next-btn");
+    var elScoreNum = document.getElementById("quiz-score-num");
+    var elScoreSub = document.getElementById("quiz-score-sub");
+    var elVerdict  = document.getElementById("quiz-verdict");
+    var elCorr     = document.getElementById("quiz-correction");
+
+    // ---- Helpers ----
+    function getLang() {
+      return document.documentElement.lang === "en" ? "en" : "fr";
+    }
+
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function showPhase(p) {
+      state.phase = p;
+      elStart.style.display    = p === "start"    ? "" : "none";
+      elQuestion.style.display = p === "question" ? "" : "none";
+      elResults.style.display  = p === "done"     ? "" : "none";
+    }
+
+    // ---- Render question ----
+    function renderQuestion() {
+      var lang = getLang();
+      var n    = state.current;
+      var qd   = Q[n][lang];
+      var pct  = Math.round((n / 20) * 100);
+      if (pct < 5) pct = 5;
+
+      elProgBar.style.width = pct + "%";
+      elProgTxt.textContent = (lang === "en" ? "Question " : "Question ") + (n + 1) + " / 20";
+      elQEye.textContent    = (lang === "en" ? "Question " : "Question ") + (n + 1);
+      elQText.textContent   = qd.q;
+
+      elChoices.innerHTML = "";
+      var sel = state.answers[n];
+      qd.c.forEach(function(text, i) {
+        var btn = document.createElement("button");
+        btn.className    = "quiz-choice" + (sel === i ? " selected" : "");
+        btn.textContent  = text;
+        btn.addEventListener("click", function() { selectChoice(i); });
+        elChoices.appendChild(btn);
+      });
+
+      updateNextBtn();
+    }
+
+    function selectChoice(i) {
+      state.answers[state.current] = i;
+      var btns = elChoices.querySelectorAll(".quiz-choice");
+      btns.forEach(function(btn, idx) {
+        btn.classList.toggle("selected", idx === i);
+      });
+      updateNextBtn();
+    }
+
+    function updateNextBtn() {
+      var lang = getLang();
+      var sel  = state.answers[state.current];
+      elNext.disabled = (sel === undefined || sel === null);
+      var isLast = state.current === 19;
+      elNext.innerHTML = isLast
+        ? (lang === "en" ? "See my results &rarr;" : "Voir mes r&eacute;sultats &rarr;")
+        : (lang === "en" ? "Next question &rarr;" : "Question suivante &rarr;");
+    }
+
+    // ---- Render results ----
+    function renderResults() {
+      var lang  = getLang();
+      var score = 0;
+      Q.forEach(function(q, i) { if (state.answers[i] === q.correct) score++; });
+
+      elScoreNum.textContent = score + "/20";
+      elScoreSub.textContent = lang === "en"
+        ? "correct answer" + (score !== 1 ? "s" : "") + " out of 20"
+        : "bonne" + (score !== 1 ? "s" : "") + " réponse" + (score !== 1 ? "s" : "") + " sur 20";
+
+      var pass = score >= 15;
+      elVerdict.className = "quiz-verdict " + (pass ? "pass" : "fail");
+      elVerdict.textContent = pass
+        ? (lang === "en" ? "✓ Passed — 15/20 required" : "✓ Réussi — seuil : 15/20")
+        : (lang === "en" ? "✗ Not passed — 15/20 required" : "✗ Non réussi — seuil : 15/20");
+
+      var html = "";
+      Q.forEach(function(q, i) {
+        var qd      = q[lang];
+        var ua      = state.answers[i];
+        var correct = ua === q.correct;
+        var status  = correct
+          ? (lang === "en" ? "✓ Correct" : "✓ Bonne réponse")
+          : (lang === "en" ? "✗ Incorrect" : "✗ Mauvaise réponse");
+        var refLabel = lang === "en"
+          ? "Discover Canada guide, " + q.ref
+          : "Guide Découvrir le Canada, " + q.ref;
+
+        html += "<div class=\"quiz-corr-item\">"
+          + "<p class=\"quiz-corr-q\">" + (i + 1) + ". " + esc(qd.q) + "</p>"
+          + "<p class=\"quiz-corr-status " + (correct ? "pass" : "fail") + "\">" + status + "</p>";
+
+        if (!correct) {
+          var userText = (ua !== undefined && ua !== null) ? esc(qd.c[ua]) : (lang === "en" ? "No answer" : "Sans réponse");
+          html += "<p class=\"quiz-corr-answer\">"
+            + (lang === "en" ? "Your answer: " : "Votre réponse : ")
+            + "<span style=\"color:var(--ink-light)\">" + userText + "</span><br>"
+            + (lang === "en" ? "Correct answer: " : "Bonne réponse : ")
+            + "<strong>" + esc(qd.c[q.correct]) + "</strong>"
+            + "</p>";
+        } else {
+          html += "<p class=\"quiz-corr-answer\"><strong>" + esc(qd.c[q.correct]) + "</strong></p>";
+        }
+
+        html += "<p class=\"quiz-corr-ref\">" + esc(refLabel) + "</p>"
+          + "</div>";
+      });
+      elCorr.innerHTML = html;
+
+      var restartBtn = document.getElementById("quiz-restart-btn");
+      if (restartBtn) {
+        restartBtn.textContent = lang === "en" ? "Restart" : "Recommencer";
+      }
+    }
+
+    // ---- Re-render on language switch ----
+    function renderCurrent() {
+      if (state.phase === "question") renderQuestion();
+      else if (state.phase === "done") renderResults();
+    }
+
+    // ---- Events ----
+    document.getElementById("quiz-start-btn").addEventListener("click", function() {
+      state.answers = [];
+      state.current = 0;
+      showPhase("question");
+      renderQuestion();
+    });
+
+    elNext.addEventListener("click", function() {
+      if (state.current < 19) {
+        state.current++;
+        renderQuestion();
+      } else {
+        showPhase("done");
+        renderResults();
+      }
+    });
+
+    document.getElementById("quiz-restart-btn").addEventListener("click", function() {
+      state.answers = [];
+      state.current = 0;
+      showPhase("start");
+    });
+
+    // ---- MutationObserver for FR/EN switch ----
+    if (typeof MutationObserver !== "undefined") {
+      new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          if (mutations[i].attributeName === "lang") { renderCurrent(); break; }
+        }
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+    }
+
+    // ---- Init ----
+    showPhase("start");
+
+  })();
+  </script>
+</body>
+</html>
+
+
